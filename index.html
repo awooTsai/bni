@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=5">
+<title>BNI 富真分會・每週實況</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@500;700;900&family=Noto+Sans+TC:wght@400;500;700&family=Bodoni+Moda:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#0a1929;--ink2:#0f2540;--paper:#f6f1e7;--gold:#c9a24a;--gold2:#e8c876;
+  --coral:#e35d4f;--sea:#1a3a5c;--mist:rgba(246,241,231,.08);--line:rgba(246,241,231,.18);
+  --serif:'Noto Serif TC',serif;--sans:'Noto Sans TC',sans-serif;--display:'Bodoni Moda',serif;
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;padding:0;background:var(--ink);color:var(--paper);font-family:var(--sans);font-size:15px;line-height:1.7;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit}
+
+/* TAB BAR */
+.tabbar{position:sticky;top:0;z-index:100;background:rgba(10,25,41,.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--line);display:flex;justify-content:center;gap:0}
+.tabbar button{padding:14px 18px;font-size:13px;font-weight:500;letter-spacing:.05em;color:rgba(246,241,231,.55);border-bottom:2px solid transparent;transition:.3s}
+.tabbar button.active{color:var(--gold2);border-bottom-color:var(--gold)}
+
+/* HERO */
+.hero{position:relative;min-height:92vh;display:flex;flex-direction:column;justify-content:center;padding:60px 24px 80px;overflow:hidden}
+.hero::before{content:"";position:absolute;inset:0;background:
+  radial-gradient(ellipse at 70% 30%,#1e4870 0%,transparent 60%),
+  radial-gradient(ellipse at 20% 80%,#0d2842 0%,transparent 50%),
+  linear-gradient(180deg,#0a1929 0%,#0f2540 50%,#0a1929 100%);
+  z-index:0}
+/* SVG 港都意象 */
+.skyline{position:absolute;left:0;right:0;bottom:0;height:42%;z-index:1;opacity:.35;filter:blur(.4px)}
+.hero::after{content:"";position:absolute;inset:0;background:
+  radial-gradient(circle at 50% 40%,transparent 0%,rgba(10,25,41,.6) 100%);z-index:2;pointer-events:none}
+.hero-inner{position:relative;z-index:3;max-width:680px;margin:0 auto;text-align:center}
+.hero-eyebrow{font-family:var(--display);font-style:italic;font-size:14px;letter-spacing:.3em;color:var(--gold);margin-bottom:24px;text-transform:uppercase}
+.hero-eyebrow::before,.hero-eyebrow::after{content:"";display:inline-block;width:24px;height:1px;background:var(--gold);vertical-align:middle;margin:0 12px}
+h1.hero-title{font-family:var(--serif);font-weight:900;font-size:clamp(28px,6.8vw,42px);line-height:1.35;margin:0 0 28px;color:var(--paper);letter-spacing:.01em}
+h1.hero-title .accent{color:var(--gold2);font-style:italic;font-family:var(--display);padding:0 4px}
+.hero-meta{font-size:12px;letter-spacing:.25em;color:rgba(246,241,231,.55);margin-top:32px}
+.hero-meta b{color:var(--gold2);font-weight:700;letter-spacing:.05em}
+
+/* 隱藏入口 - 藏在右下角一個小光點，看起來像背景的星光 */
+.secret{position:absolute;right:18px;bottom:24px;width:14px;height:14px;border-radius:50%;background:radial-gradient(circle,rgba(232,200,118,.7),rgba(232,200,118,0));z-index:5;cursor:pointer;animation:twinkle 3s infinite}
+@keyframes twinkle{0%,100%{opacity:.3}50%{opacity:.9}}
+
+/* SECTIONS */
+section{padding:64px 22px;position:relative}
+.section-num{font-family:var(--display);font-style:italic;font-size:13px;color:var(--gold);letter-spacing:.2em}
+.section-title{font-family:var(--serif);font-weight:700;font-size:26px;margin:6px 0 8px;color:var(--paper);line-height:1.3}
+.section-sub{font-size:13px;color:rgba(246,241,231,.55);margin-bottom:36px;letter-spacing:.05em}
+
+/* 本週之星 */
+.stars{display:flex;flex-direction:column;gap:18px}
+.star{position:relative;background:linear-gradient(135deg,rgba(201,162,74,.08),rgba(201,162,74,.02));border:1px solid rgba(201,162,74,.25);padding:24px 22px;border-radius:2px}
+.star::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:linear-gradient(180deg,var(--gold),var(--coral))}
+.star-rank{font-family:var(--display);font-style:italic;font-size:42px;font-weight:700;color:var(--gold);line-height:1;margin-bottom:6px}
+.star-tag{display:inline-block;font-size:10px;letter-spacing:.2em;color:var(--coral);border:1px solid var(--coral);padding:3px 8px;margin-bottom:12px;text-transform:uppercase}
+.star-name{font-family:var(--serif);font-size:20px;font-weight:700;margin:0 0 4px}
+.star-role{font-size:12px;color:var(--gold2);margin-bottom:14px;letter-spacing:.05em}
+.star-why{font-size:14px;line-height:1.75;color:rgba(246,241,231,.85)}
+
+/* 熱門需求 */
+.demands{display:flex;flex-direction:column;gap:14px}
+.demand{display:flex;align-items:center;gap:14px;padding:14px 0;border-bottom:1px solid var(--line)}
+.demand-rank{font-family:var(--display);font-style:italic;font-size:24px;color:var(--gold);min-width:36px}
+.demand-text{flex:1;font-size:15px}
+.demand-bar{height:6px;background:rgba(201,162,74,.15);border-radius:3px;overflow:hidden;margin-top:6px}
+.demand-bar span{display:block;height:100%;background:linear-gradient(90deg,var(--gold),var(--coral))}
+.demand-count{font-size:11px;color:rgba(246,241,231,.5);letter-spacing:.1em;margin-left:auto}
+
+/* 產業鏈卡片牆 */
+.chain{margin-bottom:36px}
+.chain-head{display:flex;align-items:baseline;gap:12px;margin-bottom:18px;padding-bottom:10px;border-bottom:1px dashed var(--line)}
+.chain-name{font-family:var(--serif);font-size:17px;font-weight:700;color:var(--gold2)}
+.chain-en{font-family:var(--display);font-style:italic;font-size:11px;color:rgba(246,241,231,.4);letter-spacing:.15em}
+.cards{display:flex;flex-direction:column;gap:14px}
+.card{background:rgba(246,241,231,.03);border:1px solid var(--line);padding:20px 18px;border-radius:2px;transition:.3s;position:relative;overflow:hidden}
+.card:hover{border-color:var(--gold);background:rgba(201,162,74,.05)}
+.card-name{font-family:var(--serif);font-size:17px;font-weight:700;margin:0 0 2px}
+.card-co{font-size:11px;color:var(--gold2);letter-spacing:.08em;margin-bottom:14px}
+.card-block{margin-bottom:14px}
+.card-label{font-size:10px;letter-spacing:.2em;color:var(--gold);text-transform:uppercase;margin-bottom:6px;display:flex;align-items:center;gap:8px}
+.card-label::before{content:"";width:14px;height:1px;background:var(--gold)}
+.card-content{font-size:14px;line-height:1.7;color:rgba(246,241,231,.88)}
+.card-need{font-size:15px;font-weight:500;color:var(--paper);background:rgba(227,93,79,.08);border-left:2px solid var(--coral);padding:10px 12px}
+.dialog{background:rgba(10,25,41,.4);border:1px dashed rgba(201,162,74,.3);padding:14px;font-size:13px;line-height:1.85}
+.dialog p{margin:4px 0}
+.dialog .ico{display:inline-block;width:18px;color:var(--gold)}
+.card-actions{display:flex;gap:8px;margin-top:14px;padding-top:14px;border-top:1px solid var(--line)}
+.card-btn{flex:1;padding:10px;font-size:12px;letter-spacing:.1em;border:1px solid var(--line);color:rgba(246,241,231,.7);transition:.2s;border-radius:2px}
+.card-btn:hover,.card-btn:active{background:var(--gold);color:var(--ink);border-color:var(--gold)}
+
+/* 頁尾 CTA */
+footer{padding:80px 24px 60px;text-align:center;background:linear-gradient(180deg,var(--ink) 0%,#000 100%);border-top:1px solid var(--line)}
+.cta-eyebrow{font-family:var(--display);font-style:italic;color:var(--gold);font-size:13px;letter-spacing:.2em;margin-bottom:12px}
+.cta-title{font-family:var(--serif);font-size:28px;font-weight:700;margin:0 0 28px;line-height:1.3}
+.cta-btn{display:inline-block;padding:18px 38px;background:var(--gold);color:var(--ink);font-weight:700;font-size:15px;letter-spacing:.1em;border-radius:2px;transition:.3s}
+.cta-btn:hover{background:var(--gold2);transform:translateY(-2px);box-shadow:0 12px 30px rgba(201,162,74,.3)}
+.foot-meta{font-size:11px;color:rgba(246,241,231,.35);margin-top:40px;letter-spacing:.1em}
+
+/* 主題簡報頁 */
+.page{display:none}.page.active{display:block}
+.gallery-hero{padding:60px 24px 30px;text-align:center}
+.gallery-grid{display:grid;grid-template-columns:1fr;gap:20px;padding:0 22px 80px}
+.edm-card{background:#000;border:1px solid var(--line);overflow:hidden;border-radius:2px}
+.edm-img{width:100%;aspect-ratio:16/9;background:linear-gradient(135deg,#1a3a5c,#0a1929);display:flex;align-items:center;justify-content:center;color:rgba(246,241,231,.3);font-size:13px;letter-spacing:.1em}
+.edm-actions{display:flex;gap:8px;padding:12px}
+.edm-actions button{flex:1;padding:10px;font-size:12px;border:1px solid var(--line);border-radius:2px;color:rgba(246,241,231,.7)}
+.edm-empty{text-align:center;padding:60px 24px;color:rgba(246,241,231,.4);font-size:14px;line-height:2}
+
+/* 後台 */
+.modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.85);z-index:200;overflow-y:auto;padding:60px 20px}
+.modal.active{display:block}
+.modal-inner{max-width:680px;margin:0 auto;background:var(--ink2);border:1px solid var(--gold);padding:40px 28px;border-radius:2px;position:relative}
+.modal-close{position:absolute;right:16px;top:16px;font-size:24px;color:var(--gold)}
+.modal h2{font-family:var(--serif);color:var(--gold2);margin-top:0}
+.placeholder-box{padding:24px;background:rgba(201,162,74,.06);border:1px dashed var(--line);text-align:center;color:rgba(246,241,231,.5);font-size:13px;line-height:2;margin:18px 0}
+
+@media(min-width:768px){
+  section{padding:90px 40px;max-width:920px;margin:0 auto}
+  .gallery-grid{grid-template-columns:1fr 1fr;max-width:920px;margin:0 auto}
+  .stars{display:grid;grid-template-columns:1fr 1fr 1fr;gap:18px}
+}
+</style>
+</head>
+<body>
+
+<nav class="tabbar">
+  <button class="tab-btn active" data-page="home">首頁</button>
+  <button class="tab-btn" data-page="gallery">富真每週專業主題簡報</button>
+</nav>
+
+<!-- ============ 首頁 ============ -->
+<div class="page active" id="home">
+
+<section class="hero">
+  <svg class="skyline" viewBox="0 0 1200 300" preserveAspectRatio="xMidYMax slice">
+    <path d="M0,300 L0,180 L60,180 L60,140 L100,140 L100,170 L140,170 L140,90 L180,90 L180,160 L220,160 L220,120 L260,120 L260,180 L320,180 L320,60 L360,60 L380,40 L400,60 L400,170 L460,170 L460,130 L500,130 L500,180 L540,180 L540,150 L580,150 L580,100 L620,100 L640,80 L660,100 L660,180 L720,180 L720,140 L760,140 L760,170 L820,170 L820,90 L860,90 L860,160 L900,160 L900,120 L940,120 L940,180 L1000,180 L1000,150 L1060,150 L1060,170 L1120,170 L1120,140 L1160,140 L1200,160 L1200,300 Z" fill="#c9a24a" opacity=".6"/>
+    <path d="M380,60 L380,40 L400,40 L400,60 Z M620,100 L620,80 L640,80 L640,100 Z" fill="#e8c876"/>
+  </svg>
+  <div class="hero-inner">
+    <div class="hero-eyebrow">BNI Fuzhen Chapter · Kaohsiung</div>
+    <h1 class="hero-title">超過高雄 <span class="accent">50</span> 位<br>各行各業老闆的<br>專業交流、引薦合作！</h1>
+    <div class="hero-meta">第 <b>01</b> 週 實況　·　<b>2026.04.10</b></div>
+  </div>
+  <div class="secret" id="secretBtn" title=""></div>
+</section>
+
+<section>
+  <div class="section-num">— 01</div>
+  <h2 class="section-title">本週之星</h2>
+  <p class="section-sub">依專業清晰度・案例具體度・引薦明確度評選</p>
+  <div class="stars">
+
+    <div class="star">
+      <div class="star-rank">01</div>
+      <div class="star-tag">引薦最具體</div>
+      <h3 class="star-name">徐家翔</h3>
+      <div class="star-role">會計師・中小企業營運</div>
+      <p class="star-why">引薦需求極為精準（名下五間房產的企業主），佐以實戰案例（協助上市櫃公司董娘節稅 2,000 萬），可信度極高。</p>
+    </div>
+
+    <div class="star">
+      <div class="star-rank">02</div>
+      <div class="star-tag">案例最動人</div>
+      <h3 class="star-name">黃叡仁</h3>
+      <div class="star-role">誠實堅果・送禮專家</div>
+      <p class="star-why">具體數字（1kg 到 1000kg 彈性出貨）+ 知名客戶（吳淑敏、新光三越）+ 明確時機（五一勞動節送禮），三段論完整。</p>
+    </div>
+
+    <div class="star">
+      <div class="star-rank">03</div>
+      <div class="star-tag">表達最有梗</div>
+      <h3 class="star-name">葉留佳</h3>
+      <div class="star-role">手機通訊行・你的手機醫生</div>
+      <p class="star-why">「手機就是不想理你」開場即勾住注意力，明確的引薦需求（未修主機板的通訊行 + 三大電信店員），記憶點極強。</p>
+    </div>
+
+  </div>
+</section>
+
+<section>
+  <div class="section-num">— 02</div>
+  <h2 class="section-title">本週熱門需求</h2>
+  <p class="section-sub">大家這禮拜最在找什麼樣的客戶</p>
+  <div class="demands">
+    <div class="demand"><div class="demand-rank">01</div><div class="demand-text">企業主・送禮客戶<div class="demand-bar"><span style="width:92%"></span></div></div><div class="demand-count">×6</div></div>
+    <div class="demand"><div class="demand-rank">02</div><div class="demand-text">美術館周邊房仲與屋主<div class="demand-bar"><span style="width:75%"></span></div></div><div class="demand-count">×4</div></div>
+    <div class="demand"><div class="demand-rank">03</div><div class="demand-text">連鎖品牌與精品業主<div class="demand-bar"><span style="width:62%"></span></div></div><div class="demand-count">×3</div></div>
+    <div class="demand"><div class="demand-rank">04</div><div class="demand-text">飯店民宿業者<div class="demand-bar"><span style="width:50%"></span></div></div><div class="demand-count">×2</div></div>
+    <div class="demand"><div class="demand-rank">05</div><div class="demand-text">工程業大型貨車車主<div class="demand-bar"><span style="width:40%"></span></div></div><div class="demand-count">×2</div></div>
+  </div>
+</section>
+
+<section>
+  <div class="section-num">— 03</div>
+  <h2 class="section-title">19 大產業鏈・本週分享</h2>
+  <p class="section-sub">每一張卡片都可一鍵複製、分享到 LINE</p>
+
+  <div class="chain">
+    <div class="chain-head">
+      <div class="chain-name">中小企業營運</div>
+      <div class="chain-en">SME Operations</div>
+    </div>
+    <div class="cards">
+
+      <div class="card">
+        <h3 class="card-name">徐家翔</h3>
+        <div class="card-co">會計師</div>
+        <div class="card-block">
+          <div class="card-label">專業</div>
+          <div class="card-content">企業稅務規劃、資產傳承、家族鬥爭預防，協助客戶進行國稅局溝通已 12 年。</div>
+        </div>
+        <div class="card-block">
+          <div class="card-label">本週亮點</div>
+          <div class="card-content">代表性客戶：上市櫃公司董娘，協助節省遺產稅約 2,000 萬元。</div>
+        </div>
+        <div class="card-block">
+          <div class="card-label">本週引薦需求</div>
+          <div class="card-need">名下有五間房產的企業主</div>
+        </div>
+        <div class="card-block">
+          <div class="card-label">開啟引薦對話</div>
+          <div class="dialog">
+            <p><span class="ico">🪝</span>你知道辛苦賺一輩子的房產，可能一夕被國稅局收走嗎？</p>
+            <p><span class="ico">👤</span>我介紹徐家翔會計師，專做企業資產傳承規劃。</p>
+            <p><span class="ico">📊</span>他曾幫上市櫃董娘合法節稅 2,000 萬。</p>
+            <p><span class="ico">💬</span>「12 年資產傳承經驗，幫你守住每一分。」</p>
+            <p><span class="ico">🤝</span>你身邊有名下五間以上房產的老闆嗎？我幫你拉個群。</p>
+          </div>
+        </div>
+        <div class="card-actions">
+          <button class="card-btn" onclick="copyCard(this)">📋 複製</button>
+          <button class="card-btn" onclick="shareLine(this)">💬 分享 LINE</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="chain">
+    <div class="chain-head">
+      <div class="chain-name">食品禮品</div>
+      <div class="chain-en">Food & Gifts</div>
+    </div>
+    <div class="cards">
+
+      <div class="card">
+        <h3 class="card-name">黃叡仁</h3>
+        <div class="card-co">誠實堅果</div>
+        <div class="card-block">
+          <div class="card-label">專業</div>
+          <div class="card-content">最新鮮的堅果，自家烘焙調配，1 公斤到 1000 公斤皆可彈性出貨。</div>
+        </div>
+        <div class="card-block">
+          <div class="card-label">本週亮點</div>
+          <div class="card-content">過去 5 年透過客製代工協助超過百位企業主解決送禮需求。代表性客戶：台語小天后吳淑敏、新光三越超市。</div>
+        </div>
+        <div class="card-block">
+          <div class="card-label">本週引薦需求</div>
+          <div class="card-need">五一勞動節有員工送禮需求的老闆</div>
+        </div>
+        <div class="card-block">
+          <div class="card-label">開啟引薦對話</div>
+          <div class="dialog">
+            <p><span class="ico">🪝</span>勞動節又快到了，員工禮品還沒頭緒嗎？</p>
+            <p><span class="ico">👤</span>介紹你誠實堅果的黃叡仁，自家烘焙、客製代工。</p>
+            <p><span class="ico">📊</span>5 年內服務上百位企業主，連吳淑敏跟新光三越超市都是客戶。</p>
+            <p><span class="ico">💬</span>「想要送禮笑呵呵，來找誠實。」</p>
+            <p><span class="ico">🤝</span>你身邊有正在傷腦筋勞動節送禮的老闆嗎？我介紹你們認識。</p>
+          </div>
+        </div>
+        <div class="card-actions">
+          <button class="card-btn" onclick="copyCard(this)">📋 複製</button>
+          <button class="card-btn" onclick="shareLine(this)">💬 分享 LINE</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="chain">
+    <div class="chain-head">
+      <div class="chain-name">3C 通訊</div>
+      <div class="chain-en">Mobile & Telecom</div>
+    </div>
+    <div class="cards">
+      <div class="card">
+        <h3 class="card-name">葉留佳</h3>
+        <div class="card-co">手機通訊行・你的手機醫生</div>
+        <div class="card-block">
+          <div class="card-label">專業</div>
+          <div class="card-content">手機維修，特別擅長處理手機明明有電卻無反應、訊息延遲的電池問題。</div>
+        </div>
+        <div class="card-block">
+          <div class="card-label">本週引薦需求</div>
+          <div class="card-need">未修主機板的通訊行 + 三大電信店員</div>
+        </div>
+        <div class="card-block">
+          <div class="card-label">開啟引薦對話</div>
+          <div class="dialog">
+            <p><span class="ico">🪝</span>手機明明有電卻不理你？電池該換了。</p>
+            <p><span class="ico">👤</span>介紹你「你的手機醫生」葉留佳，手機通訊行老闆。</p>
+            <p><span class="ico">💬</span>「手機要換電池了，找你的手機醫生。」</p>
+            <p><span class="ico">🤝</span>你認識做通訊行但不修主機板的老闆，或三大電信的店員嗎？我幫你介紹。</p>
+          </div>
+        </div>
+        <div class="card-actions">
+          <button class="card-btn" onclick="copyCard(this)">📋 複製</button>
+          <button class="card-btn" onclick="shareLine(this)">💬 分享 LINE</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div style="text-align:center;padding:30px 0;color:rgba(246,241,231,.4);font-size:13px;letter-spacing:.1em">
+    — 完整 50+ 位會員資料下次更新陸續補齊 —
+  </div>
+
+</section>
+
+<footer>
+  <div class="cta-eyebrow">JOIN US</div>
+  <h2 class="cta-title">想一起加速生意成長嗎？</h2>
+  <a class="cta-btn" href="https://line.me/ti/p/8bgrVHyVXQ" target="_blank">加入蔡阿達的 LINE</a>
+  <div class="foot-meta">BNI 富真分會 · 高雄 · 第 01 週</div>
+</footer>
+
+</div>
+
+<!-- ============ 主題簡報頁 ============ -->
+<div class="page" id="gallery">
+  <div class="gallery-hero">
+    <div class="section-num">— FEATURED</div>
+    <h2 class="section-title">富真每週專業主題簡報</h2>
+    <p class="section-sub">每週兩位會員深度展演專業</p>
+  </div>
+  <div class="edm-empty">
+    本週尚無主題簡報<br>
+    下週起每週將有兩位會員主講
+  </div>
+  <div class="gallery-grid">
+    <!-- 範例卡：之後 EDM 上傳到 /edm/ 後加進來 -->
+  </div>
+</div>
+
+<!-- ============ 隱藏後台 ============ -->
+<div class="modal" id="modal">
+  <div class="modal-inner">
+    <button class="modal-close" onclick="document.getElementById('modal').classList.remove('active')">×</button>
+    <h2>🔒 招集人後台</h2>
+    <p style="color:rgba(246,241,231,.6);font-size:13px">本週富真分會內部交流情報</p>
+
+    <h3 style="color:var(--gold2);margin-top:30px">🎯 我這週可以幫誰</h3>
+    <div class="placeholder-box">本週 50+ 位需求總表將於完整逐字稿匯入後生成</div>
+
+    <h3 style="color:var(--gold2)">🛰 產業鏈交叉媒合雷達</h3>
+    <div class="placeholder-box">語義配對結果（A 需求 ↔ B 專業）將於完整資料匯入後生成</div>
+
+    <h3 style="color:var(--gold2)">📣 本週三大簡報技巧提醒</h3>
+    <ol style="font-size:14px;line-height:2;color:rgba(246,241,231,.85)">
+      <li><b>引薦需求過於開放</b>：本週多位夥伴的需求停留在「幫我介紹做○○的」，建議補上產業別、規模、地區等具體輪廓。</li>
+      <li><b>缺少數字佐證</b>：成功案例若能加上一個具體數字（金額、客戶數、節省時間），可信度立刻翻倍。</li>
+      <li><b>金句缺席</b>：30 秒結尾若有一句押韻或對稱的標語，引薦人才記得住、傳得出去。</li>
+    </ol>
+  </div>
+</div>
+
+<script>
+// Tab 切換
+document.querySelectorAll('.tab-btn').forEach(btn=>{
+  btn.onclick=()=>{
+    document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+    document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById(btn.dataset.page).classList.add('active');
+    window.scrollTo(0,0);
+  }
+});
+
+// 隱藏入口
+document.getElementById('secretBtn').onclick=()=>{
+  document.getElementById('modal').classList.add('active');
+};
+
+// 卡片複製
+function copyCard(btn){
+  const card=btn.closest('.card');
+  const name=card.querySelector('.card-name').innerText;
+  const co=card.querySelector('.card-co').innerText;
+  const dialog=card.querySelector('.dialog');
+  const text=Array.from(dialog.querySelectorAll('p')).map(p=>p.innerText).join('\n');
+  const full=`【BNI 富真分會・${name}・${co}】\n\n${text}`;
+  navigator.clipboard.writeText(full).then(()=>{
+    const o=btn.innerText;btn.innerText='✓ 已複製';setTimeout(()=>btn.innerText=o,1500);
+  });
+}
+
+// 分享 LINE
+function shareLine(btn){
+  const card=btn.closest('.card');
+  const name=card.querySelector('.card-name').innerText;
+  const co=card.querySelector('.card-co').innerText;
+  const dialog=card.querySelector('.dialog');
+  const text=Array.from(dialog.querySelectorAll('p')).map(p=>p.innerText).join('\n');
+  const full=`【BNI 富真分會・${name}・${co}】\n\n${text}`;
+  window.open('https://line.me/R/msg/text/?'+encodeURIComponent(full),'_blank');
+}
+</script>
+
+</body>
+</html>
