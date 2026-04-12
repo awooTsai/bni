@@ -11,15 +11,15 @@ body{font-family:"Inter","Noto Sans TC",-apple-system,BlinkMacSystemFont,sans-se
 h1,h2,h3,h4{font-family:"Noto Serif TC",serif;font-weight:900;letter-spacing:.02em}
 .en{font-family:"Bodoni Moda",serif;font-style:italic;font-weight:700}
 .hero{position:relative;min-height:100vh;display:flex;overflow:hidden}
-.hero-bg{position:absolute;inset:0;background:url('img/hero-bg.jpg') center/cover;filter:blur(4px) brightness(.4);transform:scale(1.08);z-index:0}
-.hero-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(6,21,43,.5),rgba(6,21,43,.85))}
+.hero-bg{position:absolute;inset:0;background:url('img/hero-bg.jpg') center/cover;filter:blur(3px) brightness(.55);transform:scale(1.08);z-index:0}
+.hero-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(6,21,43,.3),rgba(6,21,43,.65))}
 .hero-in{position:relative;z-index:2;text-align:center;padding:48px 24px;max-width:1100px;width:100%}
 .week{color:var(--gold);font-size:clamp(1rem,2.2vw,1.4rem);letter-spacing:.4em;margin-bottom:28px;opacity:0;transform:translateY(20px);animation:fadeUp .8s .2s forwards}
 .week::before,.week::after{content:"—";margin:0 18px;opacity:.5}
 /* === hero C 方案 === */
 .hero{flex-direction:column;justify-content:flex-start;padding:0}
 .hero-top{position:relative;z-index:2;width:100%;flex:0 0 auto;min-height:72vh;display:flex;align-items:center;justify-content:center;padding:48px 24px 32px}
-.hero-next{position:relative;z-index:2;width:100%;padding:28px 24px 60px;background:linear-gradient(180deg,rgba(0,0,0,.3),rgba(0,0,0,.55));border-top:1px solid rgba(212,171,93,.2)}
+.hero-next{position:relative;z-index:2;width:100%;padding:28px 24px 60px;background:linear-gradient(180deg,rgba(0,0,0,.15),rgba(0,0,0,.4));border-top:1px solid rgba(212,171,93,.25)}
 .next-inner{max-width:95vw;margin:0 auto;text-align:center}
 .next-label{font-family:"Bodoni Moda",serif;font-style:italic;color:var(--gold);font-size:clamp(.85rem,1.6vw,1.05rem);letter-spacing:.35em;opacity:.75;margin-bottom:16px}
 .next-label::before,.next-label::after{content:"—";margin:0 14px;opacity:.5}
@@ -45,8 +45,8 @@ h1,h2,h3,h4{font-family:"Noto Serif TC",serif;font-weight:900;letter-spacing:.02
 .lbx-cap b{color:var(--gold);font-family:"Noto Serif TC",serif;margin-right:10px;font-size:1.1rem}
  /* hero-title */ .hero-title{font-family:"Noto Serif TC",serif;font-size:clamp(1.4rem,3.2vw,2.2rem);font-weight:900;color:var(--paper);margin-bottom:36px;line-height:1.5;opacity:0;transform:translateY(20px);animation:fadeUp .9s .35s forwards;text-shadow:0 2px 20px rgba(0,0,0,.5)} .feat{display:flex;gap:24px;justify-content:center;flex-wrap:wrap;margin-bottom:32px}
 .edm-card{position:relative;max-width:420px;width:100%;opacity:0;transform:translateY(20px);animation:fadeUp 1s .5s forwards;transition:transform .4s}
-.edm-card:hover{transform:translateY(-6px)}
-.edm-card img{width:100%;display:block;border-radius:6px;box-shadow:0 24px 60px rgba(0,0,0,.5),0 0 0 1px rgba(212,171,93,.3);background:#1a3458;min-height:200px}
+.edm-card:hover{transform:translateY(-6px)} .edm-card:hover img{filter:brightness(1.1)}
+.edm-card img{width:100%;display:block;border-radius:6px;transition:filter .3s;box-shadow:0 24px 60px rgba(0,0,0,.5),0 0 0 1px rgba(212,171,93,.3);background:#1a3458;min-height:200px}
 .edm-meta{margin-top:16px}
 .edm-meta .t{font-family:"Noto Serif TC",serif;font-size:1.25rem;color:var(--gold)}
 .edm-meta .s{font-size:.95rem;opacity:.75;margin-top:4px}
@@ -57,8 +57,8 @@ h1,h2,h3,h4{font-family:"Noto Serif TC",serif;font-weight:900;letter-spacing:.02
 @keyframes shine{0%{transform:translateX(-100%)}60%,100%{transform:translateX(100%)}}
 .scroll-hint{position:absolute;bottom:24px;left:50%;transform:translateX(-50%);color:var(--gold);font-size:.8rem;opacity:.6;letter-spacing:.3em;animation:bounce 2s infinite;z-index:2}
 @keyframes bounce{0%,100%{transform:translate(-50%,0)}50%{transform:translate(-50%,8px)}}
-.deck{padding:80px 0;display:none}
-.deck.on{display:block;animation:fadeIn .6s}
+.deck{padding:80px 0}
+.deck{animation:fadeIn .6s}
 @keyframes fadeIn{from{opacity:0}to{opacity:1}}
 .wrap{max-width:1280px;margin:0 auto;padding:0 24px}
 .deck-head{text-align:center;margin-bottom:48px}
@@ -108,11 +108,11 @@ h1,h2,h3,h4{font-family:"Noto Serif TC",serif;font-weight:900;letter-spacing:.02
 <div class="week en" id="week">WEEK OF · 2026.04.10</div>
 <h1 class="hero-title">每週超過 50 位高雄在地業者的<br>專業交流・商機引薦</h1>
 <div class="feat" id="feat"></div>
-<button class="open-btn" onclick="openDeck()">開啟本週專業卡牌 →</button>
+
 </div>
 </div>
 <div class="hero-next" id="heroNext"></div>
-<div class="scroll-hint">SCROLL</div>
+<div class="scroll-hint" onclick="openDeck()" style="cursor:pointer">SCROLL ↓</div>
 </section>
 
 <section class="deck" id="deck">
@@ -137,7 +137,8 @@ function render(){
   document.getElementById('week').textContent='WEEK OF · '+wk;
   document.getElementById('deckTitle').textContent=wk+' 本週專業卡牌';
   const featured=DATA['本週主秀']||DATA.featured||[{name:'酈瀅鵑',industry:'律師業',edm:'edm/2026-04-10-酈瀅鵑-律師業.jpg'}];
-  document.getElementById('feat').innerHTML=featured.map(f=>`<div class="edm-card"><img src="${f.edm}" alt="${f.name} ${f.industry}" onerror="this.onerror=null;this.style.cssText='background:linear-gradient(135deg,#1a3458,#0a1f3d);min-height:280px;display:flex;align-items:center;justify-content:center;color:#d4ab5d;font-size:1.1rem;padding:40px;text-align:center';this.src='data:image/svg+xml;charset=utf-8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22420%22 height=%22280%22><rect width=%22420%22 height=%22280%22 fill=%22%230a1f3d%22/><text x=%2250%25%22 y=%2245%25%22 text-anchor=%22middle%22 fill=%22%23d4ab5d%22 font-size=%2220%22 font-family=%22serif%22>EDM 圖片未載入</text><text x=%2250%25%22 y=%2260%25%22 text-anchor=%22middle%22 fill=%22%23d4ab5d%22 font-size=%2214%22 opacity=%220.6%22>請確認 GitHub 路徑</text></svg>'"><div class="edm-meta"><div class="t">本週主題簡報・${f.name}</div><div class="s">${f.industry}</div></div></div>`).join('');
+  document.getElementById('feat').innerHTML=featured.map((f,i)=>`<div class="edm-card" onclick="openLbxWeek(${i})" style="cursor:pointer"><img src="${f.edm}" alt="${f.name} ${f.industry}" onerror="this.onerror=null;this.style.cssText='background:linear-gradient(135deg,#1a3458,#0a1f3d);min-height:280px;display:flex;align-items:center;justify-content:center;color:#d4ab5d;font-size:1.1rem;padding:40px;text-align:center';this.src='data:image/svg+xml;charset=utf-8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22420%22 height=%22280%22><rect width=%22420%22 height=%22280%22 fill=%22%230a1f3d%22/><text x=%2250%25%22 y=%2245%25%22 text-anchor=%22middle%22 fill=%22%23d4ab5d%22 font-size=%2220%22 font-family=%22serif%22>EDM 圖片未載入</text><text x=%2250%25%22 y=%2260%25%22 text-anchor=%22middle%22 fill=%22%23d4ab5d%22 font-size=%2214%22 opacity=%220.6%22>請確認 GitHub 路徑</text></svg>'"><div class="edm-meta"><div class="t">本週主題簡報・${f.name}</div><div class="s">${f.industry}</div></div></div>`).join('');
+  window.__WEEK=featured;
   // 下週預告
   const nx=DATA['下週預告'];
   if(nx&&nx.主秀&&nx.主秀.length){
@@ -204,16 +205,23 @@ function shareMore(enc,name){
   }
 }
 
-function openDeck(){document.getElementById('deck').classList.add('on');setTimeout(()=>document.getElementById('deck').scrollIntoView({behavior:'smooth'}),50)}
+function openDeck(){document.getElementById('deck').scrollIntoView({behavior:'smooth'})}
 </script>
 <div class="lbx" id="lbx" onclick="if(event.target===this)closeLbx()"><button class="lbx-close" onclick="closeLbx()">✕</button><div class="lbx-in"><img id="lbxImg" src=""><div class="lbx-cap" id="lbxCap"></div><div class="lbx-btns"><button onclick="dlEdm()">📥 下載 EDM</button><button class="sec" onclick="shareEdm()">📤 更多分享</button></div></div></div>
 <script>
 let _LBX=null;
 function openLbx(i){
   if(!window.__NEXT)return;
-  const f=window.__NEXT[i];_LBX=f;
+  showLbx(window.__NEXT[i],'下週主題簡報・');
+}
+function openLbxWeek(i){
+  if(!window.__WEEK)return;
+  showLbx(window.__WEEK[i],'本週主題簡報・');
+}
+function showLbx(f,prefix){
+  _LBX=f;
   document.getElementById('lbxImg').src=f.edm;
-  document.getElementById('lbxCap').innerHTML='<b>'+f.name+'</b>'+f.industry;
+  document.getElementById('lbxCap').innerHTML='<b>'+(prefix||'')+f.name+'</b>'+f.industry;
   document.getElementById('lbx').classList.add('on');
   document.body.style.overflow='hidden';
 }
@@ -222,7 +230,7 @@ document.addEventListener('keydown',e=>{if(e.key==='Escape')closeLbx()});
 function dlEdm(){if(!_LBX)return;const a=document.createElement('a');a.href=_LBX.edm;a.download=_LBX.edm.split('/').pop();a.click()}
 async function shareEdm(){
   if(!_LBX)return;
-  const txt='📅 BNI 富真分會・下週主題簡報：'+_LBX.name+'｜'+_LBX.industry+'\n'+window.location.href;
+  const txt='📅 BNI 富真分會・'+_LBX.name+'｜'+_LBX.industry+'\n'+window.location.href;
   // Tier 1: 嘗試 files
   if(navigator.share&&navigator.canShare){
     try{
