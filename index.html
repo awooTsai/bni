@@ -16,7 +16,7 @@ h1,h2,h3,h4{font-family:"Noto Serif TC",serif;font-weight:900;letter-spacing:.02
 .hero-in{position:relative;z-index:2;text-align:center;padding:48px 24px;max-width:1100px;width:100%}
 .week{color:var(--gold);font-size:clamp(1rem,2.2vw,1.4rem);letter-spacing:.4em;margin-bottom:28px;opacity:0;transform:translateY(20px);animation:fadeUp .8s .2s forwards}
 .week::before,.week::after{content:"—";margin:0 18px;opacity:.5}
-.feat{display:flex;gap:24px;justify-content:center;flex-wrap:wrap;margin-bottom:32px}
+/* hero-title */ .hero-title{font-family:"Noto Serif TC",serif;font-size:clamp(1.4rem,3.2vw,2.2rem);font-weight:900;color:var(--paper);margin-bottom:36px;line-height:1.5;opacity:0;transform:translateY(20px);animation:fadeUp .9s .35s forwards;text-shadow:0 2px 20px rgba(0,0,0,.5)} .feat{display:flex;gap:24px;justify-content:center;flex-wrap:wrap;margin-bottom:32px}
 .edm-card{position:relative;max-width:420px;width:100%;opacity:0;transform:translateY(20px);animation:fadeUp 1s .5s forwards;transition:transform .4s}
 .edm-card:hover{transform:translateY(-6px)}
 .edm-card img{width:100%;display:block;border-radius:6px;box-shadow:0 24px 60px rgba(0,0,0,.5),0 0 0 1px rgba(212,171,93,.3);background:#1a3458;min-height:200px}
@@ -64,7 +64,12 @@ h1,h2,h3,h4{font-family:"Noto Serif TC",serif;font-weight:900;letter-spacing:.02
 .toast{position:fixed;bottom:32px;left:50%;transform:translateX(-50%);background:var(--gold);color:var(--deep);padding:14px 28px;border-radius:4px;font-weight:700;box-shadow:0 12px 32px rgba(0,0,0,.4);opacity:0;transition:opacity .3s;pointer-events:none;z-index:100}
 .toast.on{opacity:1}
 .foot{text-align:center;padding:60px 24px;border-top:1px solid var(--line);opacity:.6;font-size:.9rem}
-.foot a{color:var(--gold);text-decoration:none}
+.foot a{color:var(--gold);text-decoration:none} .signature{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:10px;font-family:"Inter","Noto Sans TC",sans-serif;font-size:.9rem;opacity:.85;margin-top:8px}
+.signature .awoo-logo img{height:26px;vertical-align:middle;filter:brightness(1.1);transition:filter .3s}
+.signature .awoo-logo:hover img{filter:brightness(1.3) drop-shadow(0 0 8px rgba(212,171,93,.5))}
+.ada-link{font-family:"Noto Sans TC",sans-serif;font-size:1.1rem;font-weight:700;color:#c8f5ff;text-decoration:none;letter-spacing:1px;padding:5px 6px 3px;border-bottom:2px solid rgba(0,255,255,.4);transition:all .3s ease;display:inline-block;cursor:pointer}
+.ada-link:hover{color:#fff;text-shadow:0 0 8px rgba(0,255,255,.9),0 0 20px rgba(0,255,255,.7);border-bottom-color:rgba(0,255,255,.9)}
+.sig-tail{opacity:.7;font-size:.85rem}
 @media(max-width:640px){.card{flex:0 0 88vw}.week{letter-spacing:.2em}}
 </style></head>
 <body>
@@ -73,6 +78,7 @@ h1,h2,h3,h4{font-family:"Noto Serif TC",serif;font-weight:900;letter-spacing:.02
 <div class="hero-bg"></div>
 <div class="hero-in">
 <div class="week en" id="week">WEEK OF · 2026.04.10</div>
+<h1 class="hero-title">每週超過 50 位高雄在地業者的<br>專業交流・商機引薦</h1>
 <div class="feat" id="feat"></div>
 <button class="open-btn" onclick="openDeck()">開啟本週專業卡牌 →</button>
 </div>
@@ -84,7 +90,8 @@ h1,h2,h3,h4{font-family:"Noto Serif TC",serif;font-weight:900;letter-spacing:.02
 <div class="deck-head"><div class="en">BNI FUZHEN · WEEKLY DECK</div><h2 id="deckTitle">本週專業卡牌</h2></div>
 <div id="chains"></div>
 </div>
-<div class="foot">BNI 富真分會・高雄・每週五清晨 ｜ <a href="https://line.me/ti/p/8bgrVHyVXQ" target="_blank">加入招集人 LINE</a></div>
+<div class="foot"><div style="margin-bottom:14px;font-size:.95rem">BNI 富真分會・高雄・每週五清晨 ｜ <a href="https://line.me/ti/p/8bgrVHyVXQ" target="_blank">加入招集人 LINE</a></div>
+<div class="signature">Powered by <a href="https://awoo.ai" target="_blank" class="awoo-logo"><img src="https://lh3.googleusercontent.com/pw/AP1GczMZZWr30_dY1Ke-Bi8Y5xkmHCR6LbpulIszDS4CBY-83hv8qlFlMUYq0BIpRHWnb-ECK73QEhMme3wZrk8MBJFjJ2AYBa13o6MtY0i6yliFbayXMCTZZ5f0kLXkpqh1nv0HMPKvDTGyUN8a_OQhNpkh6A=w451-h159-s-no-gm?authuser=0" alt="awoo 阿物科技官網"></a><a href="https://www.triplew.tw/tsai" target="_blank" data-text="蔡阿達" class="ada-link" onmouseover="adaGlitch(this,true)" onmouseout="adaGlitch(this,false)">蔡阿達</a><span class="sig-tail">| Crafted with Precision and Innovation</span></div></div>
 </section>
 
 <div class="toast" id="toast">已複製到剪貼簿 ✓</div>
@@ -132,6 +139,20 @@ function esc(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;',
 function cpDlg(enc){const t=decodeURIComponent(enc);navigator.clipboard.writeText(t).then(()=>toast('已複製引薦對話 ✓')).catch(()=>{const ta=document.createElement('textarea');ta.value=t;document.body.appendChild(ta);ta.select();document.execCommand('copy');document.body.removeChild(ta);toast('已複製引薦對話 ✓')})}
 function shareLine(enc){window.open('https://line.me/R/msg/text/?'+enc,'_blank')}
 function toast(msg){const el=document.getElementById('toast');el.textContent=msg;el.classList.add('on');setTimeout(()=>el.classList.remove('on'),2000)}
+
+function adaGlitch(el,on){
+  if(on){
+    const txt=el.getAttribute('data-text');const chars='█▓▒░_';
+    el.glitchInterval=setInterval(()=>{
+      let s='';for(let i=0;i<txt.length;i++){s+=Math.random()>0.9?chars[Math.floor(Math.random()*chars.length)]:txt[i]}
+      el.innerText=s;
+    },80);
+  }else{
+    clearInterval(el.glitchInterval);el.glitchInterval=null;
+    el.innerText=el.getAttribute('data-text');
+  }
+}
+
 function openDeck(){document.getElementById('deck').classList.add('on');setTimeout(()=>document.getElementById('deck').scrollIntoView({behavior:'smooth'}),50)}
 </script>
 </body></html>
