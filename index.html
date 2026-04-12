@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="zh-Hant"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>BNI 富真分會・每週專業卡牌</title>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,700;1,700&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@700;900&display=swap" rel="stylesheet">
+<style>
+:root{--deep:#06152b;--ink:#0a1f3d;--gold:#d4ab5d;--coral:#ff6b5b;--paper:#f6efe1;--line:#1a3458}
+*{box-sizing:border-box;margin:0;padding:0}
+html{font-size:17px;scroll-behavior:smooth}
+body{font-family:"Noto Sans TC",sans-serif;background:var(--deep);color:var(--paper);line-height:1.75;overflow-x:hidden}
+h1,h2,h3,h4{font-family:"Noto Serif TC",serif;font-weight:900;letter-spacing:.02em}
+.en{font-family:"Bodoni Moda",serif;font-style:italic;font-weight:700}
+.hero{position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background:url('img/hero-bg.jpg') center/cover;filter:blur(4px) brightness(.4);transform:scale(1.08);z-index:0}
+.hero-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(6,21,43,.5),rgba(6,21,43,.85))}
+.hero-in{position:relative;z-index:2;text-align:center;padding:48px 24px;max-width:1100px;width:100%}
+.week{color:var(--gold);font-size:clamp(1rem,2.2vw,1.4rem);letter-spacing:.4em;margin-bottom:28px;opacity:0;transform:translateY(20px);animation:fadeUp .8s .2s forwards}
+.week::before,.week::after{content:"—";margin:0 18px;opacity:.5}
+.feat{display:flex;gap:24px;justify-content:center;flex-wrap:wrap;margin-bottom:32px}
+.edm-card{position:relative;max-width:420px;width:100%;opacity:0;transform:translateY(20px);animation:fadeUp 1s .5s forwards;transition:transform .4s}
+.edm-card:hover{transform:translateY(-6px)}
+.edm-card img{width:100%;display:block;border-radius:6px;box-shadow:0 24px 60px rgba(0,0,0,.5),0 0 0 1px rgba(212,171,93,.3);background:#1a3458;min-height:200px}
+.edm-meta{margin-top:16px}
+.edm-meta .t{font-family:"Noto Serif TC",serif;font-size:1.25rem;color:var(--gold)}
+.edm-meta .s{font-size:.95rem;opacity:.75;margin-top:4px}
+.open-btn{margin-top:16px;background:var(--gold);color:var(--deep);border:none;padding:18px 44px;border-radius:4px;font-family:"Noto Serif TC",serif;font-weight:700;font-size:1.15rem;cursor:pointer;letter-spacing:.1em;opacity:0;transform:translateY(20px);animation:fadeUp 1s .9s forwards;position:relative;overflow:hidden}
+.open-btn::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,transparent,rgba(255,255,255,.35),transparent);transform:translateX(-100%);animation:shine 3s 2s infinite}
+.open-btn:hover{box-shadow:0 12px 28px rgba(212,171,93,.4)}
+@keyframes fadeUp{to{opacity:1;transform:translateY(0)}}
+@keyframes shine{0%{transform:translateX(-100%)}60%,100%{transform:translateX(100%)}}
+.scroll-hint{position:absolute;bottom:24px;left:50%;transform:translateX(-50%);color:var(--gold);font-size:.8rem;opacity:.6;letter-spacing:.3em;animation:bounce 2s infinite;z-index:2}
+@keyframes bounce{0%,100%{transform:translate(-50%,0)}50%{transform:translate(-50%,8px)}}
+.deck{padding:80px 0;display:none}
+.deck.on{display:block;animation:fadeIn .6s}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+.wrap{max-width:1280px;margin:0 auto;padding:0 24px}
+.deck-head{text-align:center;margin-bottom:48px}
+.deck-head .en{color:var(--gold);font-size:1rem;letter-spacing:.3em}
+.deck-head h2{font-size:clamp(1.8rem,4vw,2.6rem);margin-top:10px}
+.chain{margin-bottom:56px}
+.chain-head{display:flex;align-items:baseline;gap:14px;margin-bottom:18px;padding-bottom:12px;border-bottom:1px solid var(--line);flex-wrap:wrap}
+.chain-no{font-family:"Bodoni Moda",serif;font-style:italic;color:var(--gold);font-size:2.2rem;line-height:1}
+.chain-head h3{font-size:1.4rem}
+.scroller{display:flex;gap:18px;overflow-x:auto;scroll-snap-type:x mandatory;padding:4px 4px 20px}
+.scroller::-webkit-scrollbar{height:6px}
+.scroller::-webkit-scrollbar-thumb{background:var(--gold);border-radius:3px}
+.card{flex:0 0 340px;scroll-snap-align:start;background:linear-gradient(160deg,rgba(26,52,88,.5),rgba(10,31,61,.8));border:1px solid var(--line);border-radius:6px;padding:24px;transition:all .3s}
+.card:hover{transform:translateY(-4px);border-color:var(--gold);box-shadow:0 16px 40px rgba(0,0,0,.3)}
+.card .name{font-family:"Noto Serif TC",serif;font-size:1.35rem;font-weight:900;margin-bottom:4px}
+.card .biz{font-size:.88rem;color:var(--gold);margin-bottom:14px;padding-bottom:12px;border-bottom:1px dashed rgba(212,171,93,.25)}
+.row{margin-bottom:10px;font-size:.92rem;line-height:1.65}
+.row .k{display:inline-block;font-weight:700;color:var(--gold);font-size:.78rem;letter-spacing:.05em;margin-right:6px}
+.row.need{padding:10px 12px;background:rgba(255,107,91,.08);border-left:3px solid var(--coral);border-radius:2px;margin:12px 0}
+.row.need .k{color:var(--coral)}
+.dlg{margin-top:14px;padding:14px;background:linear-gradient(135deg,rgba(212,171,93,.12),rgba(255,107,91,.06));border:1px solid rgba(212,171,93,.35);border-radius:4px}
+.dlg-h{font-family:"Noto Serif TC",serif;color:var(--gold);font-size:.95rem;font-weight:700;margin-bottom:8px}
+.dlg p{font-size:.9rem;line-height:1.8;color:#f0e8d0}
+.sp{margin-top:10px;font-size:.85rem}
+.sp summary{cursor:pointer;color:var(--gold);opacity:.75;padding:4px 0}
+.sp p{padding:10px 12px;background:rgba(0,0,0,.25);border-radius:2px;margin-top:6px;line-height:1.75;font-size:.86rem;opacity:.9}
+.btns{display:flex;gap:8px;margin-top:14px}
+.btns button{flex:1;background:transparent;border:1px solid var(--gold);color:var(--gold);padding:10px;border-radius:3px;cursor:pointer;font-size:.85rem;font-family:inherit;transition:all .2s}
+.btns button:hover{background:var(--gold);color:var(--deep)}
+.toast{position:fixed;bottom:32px;left:50%;transform:translateX(-50%);background:var(--gold);color:var(--deep);padding:14px 28px;border-radius:4px;font-weight:700;box-shadow:0 12px 32px rgba(0,0,0,.4);opacity:0;transition:opacity .3s;pointer-events:none;z-index:100}
+.toast.on{opacity:1}
+.foot{text-align:center;padding:60px 24px;border-top:1px solid var(--line);opacity:.6;font-size:.9rem}
+.foot a{color:var(--gold);text-decoration:none}
+@media(max-width:640px){.card{flex:0 0 88vw}.week{letter-spacing:.2em}}
+</style></head>
+<body>
+
+<section class="hero">
+<div class="hero-bg"></div>
+<div class="hero-in">
+<div class="week en" id="week">WEEK OF · 2026.04.10</div>
+<div class="feat" id="feat"></div>
+<button class="open-btn" onclick="openDeck()">開啟本週專業卡牌 →</button>
+</div>
+<div class="scroll-hint">SCROLL</div>
+</section>
+
+<section class="deck" id="deck">
+<div class="wrap">
+<div class="deck-head"><div class="en">BNI FUZHEN · WEEKLY DECK</div><h2 id="deckTitle">本週專業卡牌</h2></div>
+<div id="chains"></div>
+</div>
+<div class="foot">BNI 富真分會・高雄・每週五清晨 ｜ <a href="https://line.me/ti/p/8bgrVHyVXQ" target="_blank">加入招集人 LINE</a></div>
+</section>
+
+<div class="toast" id="toast">已複製到剪貼簿 ✓</div>
+
+<script>
+let DATA=null;
+fetch('data/2026-04-10.json').then(r=>r.json()).then(d=>{DATA=d;render()}).catch(e=>{
+  document.getElementById('feat').innerHTML='<div style="color:#ff6b5b;padding:20px;max-width:500px">⚠️ 找不到 data/2026-04-10.json，請確認已上傳到 repo 的 data/ 資料夾</div>';
+});
+
+function render(){
+  const wk=(DATA['會議日期']||'2026-04-10').replace(/-/g,'.');
+  document.getElementById('week').textContent='WEEK OF · '+wk;
+  document.getElementById('deckTitle').textContent=wk+' 本週專業卡牌';
+  const featured=DATA.featured||[{name:'酈瀅鵑',industry:'律師業',edm:'edm/2026-04-10-酈瀅鵑-律師業.jpg'}];
+  document.getElementById('feat').innerHTML=featured.map(f=>`<div class="edm-card"><img src="${f.edm}" alt="${f.name} ${f.industry}"><div class="edm-meta"><div class="t">本週主題簡報・${f.name}</div><div class="s">${f.industry}</div></div></div>`).join('');
+  const chains={};
+  (DATA['會員簡報']||[]).forEach(m=>{const k=m['產業鏈']||'其他';(chains[k]=chains[k]||[]).push(m)});
+  const keys=Object.keys(chains).sort((a,b)=>{const na=parseInt((a.match(/第(\d+)/)||[])[1]||99);const nb=parseInt((b.match(/第(\d+)/)||[])[1]||99);return na-nb});
+  document.getElementById('chains').innerHTML=keys.map(k=>{
+    const mt=k.match(/第(\d+)產業鏈\s*(.+)/);const no=mt?mt[1]:'';const nm=mt?mt[2]:k;
+    return `<div class="chain"><div class="chain-head"><span class="chain-no">${no.padStart(2,'0')}</span><h3>${nm}</h3></div><div class="scroller">${chains[k].map(renderCard).join('')}</div></div>`;
+  }).join('');
+}
+
+function renderCard(m){
+  const dlg=buildDlg(m);
+  const rows=[];
+  if(m['會員專業'])rows.push(`<div class="row"><span class="k">專業</span>${esc(m['會員專業'])}</div>`);
+  if(m['本週亮點'])rows.push(`<div class="row"><span class="k">亮點</span>${esc(m['本週亮點'])}</div>`);
+  if(m['代表性客戶'])rows.push(`<div class="row"><span class="k">代表客戶</span>${esc(m['代表性客戶'])}</div>`);
+  if(m['引薦需求'])rows.push(`<div class="row need"><span class="k">引薦需求</span>${esc(m['引薦需求'])}</div>`);
+  const dlgHtml=dlg?`<div class="dlg"><div class="dlg-h">💬 開啟引薦對話</div><p>${esc(dlg)}</p></div>`:'';
+  const spHtml=m['簡報原文']?`<details class="sp"><summary>📜 簡報原文</summary><p>${esc(m['簡報原文'])}</p></details>`:'';
+  const enc=encodeURIComponent(dlg||'');
+  return `<div class="card"><div class="name">${esc(m['姓名']||'')}</div><div class="biz">${esc(m['行業別']||'')}</div>${rows.join('')}${dlgHtml}${spHtml}<div class="btns"><button onclick="cpDlg('${enc}')">📋 複製引薦對話</button><button onclick="shareLine('${enc}')">💬 分享 LINE</button></div></div>`;
+}
+
+function buildDlg(m){
+  const d=m['黃金開啟引薦對話'];if(!d)return '';
+  if(typeof d==='string')return d;
+  return [d['痛點梗開場'],d['一句話專業'],d['戰績'],d['對應情境']].filter(Boolean).join('');
+}
+function esc(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'})[c])}
+function cpDlg(enc){const t=decodeURIComponent(enc);navigator.clipboard.writeText(t).then(()=>toast('已複製引薦對話 ✓')).catch(()=>{const ta=document.createElement('textarea');ta.value=t;document.body.appendChild(ta);ta.select();document.execCommand('copy');document.body.removeChild(ta);toast('已複製引薦對話 ✓')})}
+function shareLine(enc){window.open('https://line.me/R/msg/text/?'+enc,'_blank')}
+function toast(msg){const el=document.getElementById('toast');el.textContent=msg;el.classList.add('on');setTimeout(()=>el.classList.remove('on'),2000)}
+function openDeck(){document.getElementById('deck').classList.add('on');setTimeout(()=>document.getElementById('deck').scrollIntoView({behavior:'smooth'}),50)}
+</script>
+</body></html>
