@@ -55,20 +55,22 @@ h1,h2,h3,h4{font-family:"Noto Serif TC",serif;font-weight:900;letter-spacing:.02
 .galaxy-sub{margin-top:10px;font-size:.95rem;opacity:.65;letter-spacing:.05em}
 .galaxy-stage{position:relative;max-width:1080px;margin:0 auto;min-height:520px}
 .galaxy-svg{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:1}
-.galaxy-grid{position:relative;z-index:2;display:grid;grid-template-columns:repeat(7,1fr);gap:18px 14px;padding:20px 0}
-.star-btn{aspect-ratio:1;border-radius:50%;background:rgba(10,31,61,.75);border:1.5px solid rgba(212,171,93,.45);color:var(--gold);display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer;transition:all .35s cubic-bezier(.4,0,.2,1);font-family:inherit;position:relative;backdrop-filter:blur(4px)}
-.star-btn .n{font-family:"Bodoni Moda",serif;font-style:italic;font-size:clamp(1.2rem,2.2vw,1.8rem);font-weight:700;line-height:1}
-.star-btn .t{font-family:"Noto Serif TC",serif;font-size:clamp(.7rem,1.1vw,.85rem);margin-top:3px;letter-spacing:.05em}
-.star-btn:hover{background:linear-gradient(135deg,#d4ab5d,#e8c478);color:var(--deep);border-color:var(--gold);transform:scale(1.12);box-shadow:0 0 36px rgba(212,171,93,.55),0 0 12px rgba(212,171,93,.8)}
-.star-btn::after{content:attr(data-count);position:absolute;bottom:-22px;left:50%;transform:translateX(-50%);font-size:.72rem;color:var(--gold);opacity:0;transition:opacity .3s;white-space:nowrap;font-family:"Inter",sans-serif}
-.star-btn:hover::after{opacity:.85}
+.galaxy-grid{position:relative;z-index:2;display:grid;grid-template-columns:repeat(10,1fr);gap:22px 12px;padding:20px 0;max-width:900px;margin:0 auto}
+.star-btn{aspect-ratio:1;border-radius:50%;background:rgba(10,31,61,.75);border:1.5px solid rgba(212,171,93,.45);color:var(--gold);display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer;transition:all .35s cubic-bezier(.4,0,.2,1);font-family:inherit;position:relative;backdrop-filter:blur(4px);padding:4px}
+.star-btn .n{font-family:"Bodoni Moda",serif;font-style:italic;font-size:clamp(.95rem,1.3vw,1.2rem);font-weight:700;line-height:1}
+.star-btn .t{font-family:"Noto Serif TC",serif;font-size:clamp(.62rem,.78vw,.72rem);margin-top:2px;letter-spacing:.02em;line-height:1}
+.star-btn .cnt{font-family:"Inter",sans-serif;font-size:clamp(.55rem,.68vw,.62rem);margin-top:2px;opacity:.6;letter-spacing:.02em;line-height:1}
+.star-btn:hover{background:linear-gradient(135deg,#d4ab5d,#e8c478);color:var(--deep);border-color:var(--gold);transform:scale(1.18);box-shadow:0 0 32px rgba(212,171,93,.55),0 0 10px rgba(212,171,93,.8);z-index:5}
+.star-btn:hover .cnt{opacity:.9}
 /* 不規則排列：部份顆往上/下偏移，製造星座感 */
-.star-btn:nth-child(7n+2){transform:translateY(-8px)}
-.star-btn:nth-child(7n+4){transform:translateY(10px)}
-.star-btn:nth-child(7n+6){transform:translateY(-6px)}
-.star-btn:nth-child(7n+2):hover,.star-btn:nth-child(7n+4):hover,.star-btn:nth-child(7n+6):hover{transform:translateY(0) scale(1.12)}
-@media(max-width:768px){.galaxy-grid{grid-template-columns:repeat(4,1fr);gap:16px 10px}.galaxy-stage{min-height:auto}.galaxy-svg{display:none}}
-@media(max-width:420px){.galaxy-grid{grid-template-columns:repeat(3,1fr)}}
+.star-btn:nth-child(10n+2){transform:translateY(-6px)}
+.star-btn:nth-child(10n+5){transform:translateY(8px)}
+.star-btn:nth-child(10n+7){transform:translateY(-4px)}
+.star-btn:nth-child(10n+9){transform:translateY(6px)}
+.star-btn:nth-child(10n+2):hover,.star-btn:nth-child(10n+5):hover,.star-btn:nth-child(10n+7):hover,.star-btn:nth-child(10n+9):hover{transform:translateY(0) scale(1.18)}
+@media(max-width:900px){.galaxy-grid{grid-template-columns:repeat(7,1fr);max-width:680px}}
+@media(max-width:640px){.galaxy-grid{grid-template-columns:repeat(5,1fr);gap:16px 10px}.galaxy-stage{min-height:auto}.galaxy-svg{display:none}}
+@media(max-width:420px){.galaxy-grid{grid-template-columns:repeat(4,1fr)}}
 
 /* === 回頂浮動鈕 === */
 .back-top{position:fixed;left:24px;bottom:24px;width:52px;height:52px;border-radius:50%;background:linear-gradient(135deg,#d4ab5d,#b8933f);color:var(--deep);border:none;cursor:pointer;font-size:1.3rem;box-shadow:0 8px 24px rgba(0,0,0,.45),0 0 0 1px rgba(212,171,93,.3);opacity:0;transform:translateY(20px);pointer-events:none;transition:all .3s ease;z-index:90;display:flex;align-items:center;justify-content:center}
@@ -211,7 +213,7 @@ function render(){
 
 function renderGalaxy(chains){
   const keys=Object.keys(chains).sort((a,b)=>{const na=parseInt((a.match(/第(\d+)/)||[])[1]||99);const nb=parseInt((b.match(/第(\d+)/)||[])[1]||99);return na-nb});
-  const cells=keys.map(k=>{const mt=k.match(/第(\d+)/);const no=mt?parseInt(mt[1]):0;const nick=CHAIN_NICK[no]||'';const cnt=chains[k].length;return `<button class="star-btn" data-no="${no}" data-count="${cnt} 位會員 →" onclick="jumpChain(${no})"><span class="n">${String(no).padStart(2,'0')}</span><span class="t">${nick}</span></button>`}).join('');
+  const cells=keys.map(k=>{const mt=k.match(/第(\d+)/);const no=mt?parseInt(mt[1]):0;const nick=CHAIN_NICK[no]||'';const cnt=chains[k].length;return `<button class="star-btn" data-no="${no}" onclick="jumpChain(${no})"><span class="n">${String(no).padStart(2,'0')}</span><span class="t">${nick}</span><span class="cnt">${cnt} 位</span></button>`}).join('');
   document.getElementById('galaxyGrid').innerHTML=cells;
   // 等 DOM layout 完再畫 SVG 連線
   setTimeout(drawLinks,100);
