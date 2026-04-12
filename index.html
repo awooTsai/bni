@@ -59,7 +59,7 @@ h1,h2,h3,h4{font-family:"Noto Serif TC",serif;font-weight:900;letter-spacing:.02
 .sp summary{cursor:pointer;color:var(--gold);opacity:.75;padding:4px 0}
 .sp p{padding:10px 12px;background:rgba(0,0,0,.25);border-radius:2px;margin-top:6px;line-height:1.75;font-size:.95rem;opacity:.9}
 .btns{display:flex;gap:8px;margin-top:14px}
-.btns button{flex:1;background:transparent;border:1px solid var(--gold);color:var(--gold);padding:12px;border-radius:3px;cursor:pointer;font-size:.95rem;font-family:inherit;transition:all .2s}
+.btns button{flex:1;background:transparent;border:1px solid var(--gold);color:var(--gold);padding:11px 6px;border-radius:3px;cursor:pointer;font-size:.9rem;font-family:inherit;transition:all .2s;white-space:nowrap} .btns button.more{border-color:rgba(212,171,93,.5);color:rgba(212,171,93,.85)}
 .btns button:hover{background:var(--gold);color:var(--deep)}
 .toast{position:fixed;bottom:32px;left:50%;transform:translateX(-50%);background:var(--gold);color:var(--deep);padding:14px 28px;border-radius:4px;font-weight:700;box-shadow:0 12px 32px rgba(0,0,0,.4);opacity:0;transition:opacity .3s;pointer-events:none;z-index:100}
 .toast.on{opacity:1}
@@ -127,7 +127,7 @@ function renderCard(m){
   const dlgHtml=dlg?`<div class="dlg"><div class="dlg-h">💬 開啟引薦對話</div><p>${esc(dlg)}</p></div>`:'';
   const spHtml=m['簡報原文']?`<details class="sp"><summary>📜 簡報原文</summary><p>${esc(m['簡報原文'])}</p></details>`:'';
   const enc=encodeURIComponent(dlg||'');
-  return `<div class="card"><div class="name">${esc(m['姓名']||'')}</div><div class="biz">${esc(m['行業別']||'')}</div>${rows.join('')}${dlgHtml}${spHtml}<div class="btns"><button onclick="cpDlg('${enc}')">📋 複製引薦對話</button><button onclick="shareLine('${enc}')">💬 分享 LINE</button></div></div>`;
+  return `<div class="card"><div class="name">${esc(m['姓名']||'')}</div><div class="biz">${esc(m['行業別']||'')}</div>${rows.join('')}${dlgHtml}${spHtml}<div class="btns"><button onclick="cpDlg('${enc}')">📋 複製對話</button><button onclick="shareLine('${enc}')">💬 LINE</button><button onclick="shareMore('${enc}','${esc(m['姓名']||'')}')" class="more">📤 更多</button></div></div>`;
 }
 
 function buildDlg(m){
@@ -137,7 +137,7 @@ function buildDlg(m){
 }
 function esc(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'})[c])}
 function cpDlg(enc){const t=decodeURIComponent(enc);navigator.clipboard.writeText(t).then(()=>toast('已複製引薦對話 ✓')).catch(()=>{const ta=document.createElement('textarea');ta.value=t;document.body.appendChild(ta);ta.select();document.execCommand('copy');document.body.removeChild(ta);toast('已複製引薦對話 ✓')})}
-function shareLine(enc){window.open('https://line.me/R/msg/text/?'+enc,'_blank')}
+function shareLine(enc){const t=decodeURIComponent(enc);window.open('https://social-plugins.line.me/lineit/share?text='+encodeURIComponent(t),'_blank','width=600,height=600')}
 function toast(msg){const el=document.getElementById('toast');el.textContent=msg;el.classList.add('on');setTimeout(()=>el.classList.remove('on'),2000)}
 
 function adaGlitch(el,on){
@@ -150,6 +150,17 @@ function adaGlitch(el,on){
   }else{
     clearInterval(el.glitchInterval);el.glitchInterval=null;
     el.innerText=el.getAttribute('data-text');
+  }
+}
+
+
+function shareMore(enc,name){
+  const t=decodeURIComponent(enc);
+  if(navigator.share){
+    navigator.share({title:'BNI 富真分會・'+name+' 引薦對話',text:t}).catch(()=>{});
+  }else{
+    // 桌機沒有 Web Share API：退回複製 + 提示
+    navigator.clipboard.writeText(t).then(()=>toast('已複製！請手動貼到 FB/IG/其他 ✓')).catch(()=>toast('請長按複製後分享'));
   }
 }
 
