@@ -2,12 +2,12 @@
 <html lang="zh-Hant"><head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>BNI 富真分會・每週專業卡牌</title>
-<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,700;1,700&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@700;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,700;1,700&family=Inter:wght@400;500;600;700&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@700;900&display=swap" rel="stylesheet">
 <style>
 :root{--deep:#06152b;--ink:#0a1f3d;--gold:#d4ab5d;--coral:#ff6b5b;--paper:#f6efe1;--line:#1a3458}
 *{box-sizing:border-box;margin:0;padding:0}
-html{font-size:17px;scroll-behavior:smooth}
-body{font-family:"Noto Sans TC",sans-serif;background:var(--deep);color:var(--paper);line-height:1.75;overflow-x:hidden}
+html{font-size:17px;-webkit-font-smoothing:antialiased;scroll-behavior:smooth}
+body{font-family:"Inter","Noto Sans TC",-apple-system,BlinkMacSystemFont,sans-serif;background:var(--deep);color:var(--paper);line-height:1.75;overflow-x:hidden}
 h1,h2,h3,h4{font-family:"Noto Serif TC",serif;font-weight:900;letter-spacing:.02em}
 .en{font-family:"Bodoni Moda",serif;font-style:italic;font-weight:700}
 .hero{position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;overflow:hidden}
@@ -40,26 +40,26 @@ h1,h2,h3,h4{font-family:"Noto Serif TC",serif;font-weight:900;letter-spacing:.02
 .chain{margin-bottom:56px}
 .chain-head{display:flex;align-items:baseline;gap:14px;margin-bottom:18px;padding-bottom:12px;border-bottom:1px solid var(--line);flex-wrap:wrap}
 .chain-no{font-family:"Bodoni Moda",serif;font-style:italic;color:var(--gold);font-size:2.2rem;line-height:1}
-.chain-head h3{font-size:1.4rem}
+.chain-head h3{font-size:1.5rem} .swipe-hint{margin-left:auto;color:var(--gold);font-size:.85rem;opacity:.6;display:flex;align-items:center;gap:6px;animation:swipe 2s ease-in-out infinite} .swipe-hint .arrow{display:inline-block;animation:arrow 1.5s ease-in-out infinite} @keyframes arrow{0%,100%{transform:translateX(0)}50%{transform:translateX(6px)}} @keyframes swipe{0%,100%{opacity:.4}50%{opacity:.9}} .scroller-wrap{position:relative} .scroller-wrap::after{content:"";position:absolute;top:0;right:0;width:50px;height:calc(100% - 20px);background:linear-gradient(90deg,transparent,rgba(6,21,43,.8));pointer-events:none;z-index:1} @media(min-width:900px){.swipe-hint{display:none} .scroller-wrap::after{display:none}}
 .scroller{display:flex;gap:18px;overflow-x:auto;scroll-snap-type:x mandatory;padding:4px 4px 20px}
 .scroller::-webkit-scrollbar{height:6px}
 .scroller::-webkit-scrollbar-thumb{background:var(--gold);border-radius:3px}
-.card{flex:0 0 340px;scroll-snap-align:start;background:linear-gradient(160deg,rgba(26,52,88,.5),rgba(10,31,61,.8));border:1px solid var(--line);border-radius:6px;padding:24px;transition:all .3s}
+.card{flex:0 0 360px;scroll-snap-align:start;background:linear-gradient(160deg,rgba(26,52,88,.5),rgba(10,31,61,.8));border:1px solid var(--line);border-radius:6px;padding:24px;transition:all .3s}
 .card:hover{transform:translateY(-4px);border-color:var(--gold);box-shadow:0 16px 40px rgba(0,0,0,.3)}
 .card .name{font-family:"Noto Serif TC",serif;font-size:1.35rem;font-weight:900;margin-bottom:4px}
-.card .biz{font-size:.88rem;color:var(--gold);margin-bottom:14px;padding-bottom:12px;border-bottom:1px dashed rgba(212,171,93,.25)}
-.row{margin-bottom:10px;font-size:.92rem;line-height:1.65}
-.row .k{display:inline-block;font-weight:700;color:var(--gold);font-size:.78rem;letter-spacing:.05em;margin-right:6px}
+.card .biz{font-size:.95rem;color:var(--gold);margin-bottom:14px;padding-bottom:12px;border-bottom:1px dashed rgba(212,171,93,.25)}
+.row{margin-bottom:12px;font-size:1rem;line-height:1.65}
+.row .k{display:inline-block;font-weight:700;color:var(--gold);font-size:.85rem;letter-spacing:.05em;margin-right:6px}
 .row.need{padding:10px 12px;background:rgba(255,107,91,.08);border-left:3px solid var(--coral);border-radius:2px;margin:12px 0}
 .row.need .k{color:var(--coral)}
 .dlg{margin-top:14px;padding:14px;background:linear-gradient(135deg,rgba(212,171,93,.12),rgba(255,107,91,.06));border:1px solid rgba(212,171,93,.35);border-radius:4px}
-.dlg-h{font-family:"Noto Serif TC",serif;color:var(--gold);font-size:.95rem;font-weight:700;margin-bottom:8px}
-.dlg p{font-size:.9rem;line-height:1.8;color:#f0e8d0}
+.dlg-h{font-family:"Noto Serif TC",serif;color:var(--gold);font-size:1.05rem;font-weight:700;margin-bottom:8px}
+.dlg p{font-size:.98rem;line-height:1.85;color:#f0e8d0}
 .sp{margin-top:10px;font-size:.85rem}
 .sp summary{cursor:pointer;color:var(--gold);opacity:.75;padding:4px 0}
-.sp p{padding:10px 12px;background:rgba(0,0,0,.25);border-radius:2px;margin-top:6px;line-height:1.75;font-size:.86rem;opacity:.9}
+.sp p{padding:10px 12px;background:rgba(0,0,0,.25);border-radius:2px;margin-top:6px;line-height:1.75;font-size:.95rem;opacity:.9}
 .btns{display:flex;gap:8px;margin-top:14px}
-.btns button{flex:1;background:transparent;border:1px solid var(--gold);color:var(--gold);padding:10px;border-radius:3px;cursor:pointer;font-size:.85rem;font-family:inherit;transition:all .2s}
+.btns button{flex:1;background:transparent;border:1px solid var(--gold);color:var(--gold);padding:12px;border-radius:3px;cursor:pointer;font-size:.95rem;font-family:inherit;transition:all .2s}
 .btns button:hover{background:var(--gold);color:var(--deep)}
 .toast{position:fixed;bottom:32px;left:50%;transform:translateX(-50%);background:var(--gold);color:var(--deep);padding:14px 28px;border-radius:4px;font-weight:700;box-shadow:0 12px 32px rgba(0,0,0,.4);opacity:0;transition:opacity .3s;pointer-events:none;z-index:100}
 .toast.on{opacity:1}
@@ -100,13 +100,13 @@ function render(){
   document.getElementById('week').textContent='WEEK OF · '+wk;
   document.getElementById('deckTitle').textContent=wk+' 本週專業卡牌';
   const featured=DATA.featured||[{name:'酈瀅鵑',industry:'律師業',edm:'edm/2026-04-10-酈瀅鵑-律師業.jpg'}];
-  document.getElementById('feat').innerHTML=featured.map(f=>`<div class="edm-card"><img src="${f.edm}" alt="${f.name} ${f.industry}"><div class="edm-meta"><div class="t">本週主題簡報・${f.name}</div><div class="s">${f.industry}</div></div></div>`).join('');
+  document.getElementById('feat').innerHTML=featured.map(f=>`<div class="edm-card"><img src="${f.edm}" alt="${f.name} ${f.industry}" onerror="this.onerror=null;this.style.cssText='background:linear-gradient(135deg,#1a3458,#0a1f3d);min-height:280px;display:flex;align-items:center;justify-content:center;color:#d4ab5d;font-size:1.1rem;padding:40px;text-align:center';this.src='data:image/svg+xml;charset=utf-8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22420%22 height=%22280%22><rect width=%22420%22 height=%22280%22 fill=%22%230a1f3d%22/><text x=%2250%25%22 y=%2245%25%22 text-anchor=%22middle%22 fill=%22%23d4ab5d%22 font-size=%2220%22 font-family=%22serif%22>EDM 圖片未載入</text><text x=%2250%25%22 y=%2260%25%22 text-anchor=%22middle%22 fill=%22%23d4ab5d%22 font-size=%2214%22 opacity=%220.6%22>請確認 GitHub 路徑</text></svg>'"><div class="edm-meta"><div class="t">本週主題簡報・${f.name}</div><div class="s">${f.industry}</div></div></div>`).join('');
   const chains={};
   (DATA['會員簡報']||[]).forEach(m=>{const k=m['產業鏈']||'其他';(chains[k]=chains[k]||[]).push(m)});
   const keys=Object.keys(chains).sort((a,b)=>{const na=parseInt((a.match(/第(\d+)/)||[])[1]||99);const nb=parseInt((b.match(/第(\d+)/)||[])[1]||99);return na-nb});
   document.getElementById('chains').innerHTML=keys.map(k=>{
     const mt=k.match(/第(\d+)產業鏈\s*(.+)/);const no=mt?mt[1]:'';const nm=mt?mt[2]:k;
-    return `<div class="chain"><div class="chain-head"><span class="chain-no">${no.padStart(2,'0')}</span><h3>${nm}</h3></div><div class="scroller">${chains[k].map(renderCard).join('')}</div></div>`;
+    return `<div class="chain"><div class="chain-head"><span class="chain-no">${no.padStart(2,'0')}</span><h3>${nm}</h3>${chains[k].length>1?'<span class="swipe-hint">左右滑動 <span class="arrow">→</span></span>':''}</div><div class="scroller-wrap"><div class="scroller">${chains[k].map(renderCard).join('')}</div></div></div>`;
   }).join('');
 }
 
