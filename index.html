@@ -21,7 +21,14 @@ h1,h2,h3,h4{font-family:"Noto Serif TC",serif;font-weight:900;letter-spacing:.02
 .hero-top{position:relative;z-index:2;width:100%;flex:0 0 auto;min-height:72vh;display:flex;align-items:center;justify-content:center;padding:48px 24px 32px}
 .hero-next{position:relative;z-index:2;width:100%;padding:28px 24px 60px;background:linear-gradient(180deg,rgba(0,0,0,.15),rgba(0,0,0,.4));border-top:1px solid rgba(212,171,93,.25)}
 .next-inner{max-width:95vw;margin:0 auto;text-align:center}
-.next-label{font-family:"Bodoni Moda",serif;font-style:italic;color:var(--gold);font-size:clamp(.85rem,1.6vw,1.05rem);letter-spacing:.35em;opacity:.75;margin-bottom:16px}
+.next-label{font-family:"Bodoni Moda",serif;font-style:italic;color:var(--gold);font-size:clamp(.85rem,1.6vw,1.05rem);letter-spacing:.25em;opacity:.75;margin-bottom:12px}
+.tri{display:flex;gap:32px;justify-content:center;flex-wrap:wrap;max-width:95vw;margin:0 auto}
+.tri-col{flex:1 1 300px;text-align:center}
+.tri-col.past .next-item{opacity:.6}
+.tri-col.past .next-item:hover{opacity:.95}
+.tri-col.past .next-label{color:rgba(212,171,93,.6)}
+.tri-col.next .next-label{color:var(--gold)}
+@media(max-width:640px){.tri{flex-direction:column;gap:20px}}
 .next-label::before,.next-label::after{content:"—";margin:0 14px;opacity:.5}
 .next-grid{display:flex;gap:20px;justify-content:center;flex-wrap:wrap}
 .next-item{flex:1 1 380px;max-width:520px;opacity:.7;transition:all .4s ease;cursor:pointer}
@@ -216,6 +223,20 @@ const CHAIN_NICK={1:"設計",2:"團購",3:"兒童",4:"幸福",5:"高端",6:"中�
 const CHAIN_LINKS=[[1,9],[1,15],[6,11],[6,17],[11,7],[2,5],[3,4],[13,5],[14,12],[12,8],[10,16],[16,15],[18,3],[19,5]];
 let WEEKS_INDEX=null,EDM_SCHEDULE=null,CURRENT_WEEK=null;
 
+// 今天以後（含）的場次，由近到遠
+function getUpcomingEdms(){
+  if(!EDM_SCHEDULE||!EDM_SCHEDULE.schedule)return[];
+  const today=new Date().toISOString().split('T')[0];
+  return EDM_SCHEDULE.schedule.filter(x=>x.date>=today).sort((a,b)=>a.date.localeCompare(b.date));
+}
+// 今天以前（不含）的場次，取最後一個（上週）
+function getPastEdm(){
+  if(!EDM_SCHEDULE||!EDM_SCHEDULE.schedule)return null;
+  const today=new Date().toISOString().split('T')[0];
+  const past=EDM_SCHEDULE.schedule.filter(x=>x.date<today).sort((a,b)=>a.date.localeCompare(b.date));
+  return past.length?past[past.length-1]:null;
+}
+
 async function bootstrap(){
   try{
     [WEEKS_INDEX,EDM_SCHEDULE]=await Promise.all([
@@ -223,7 +244,7 @@ async function bootstrap(){
       fetch('data/edm-schedule.json').then(r=>r.json())
     ]);
     renderWeekPicker();
-    // 從 URL 取 week，或用最新一週
+    // 從 URL 取 week，或用最新一週（會員卡用）
     const params=new URLSearchParams(location.search);
     const wk=params.get('week')||WEEKS_INDEX.weeks[0].date;
     await loadWeek(wk);
@@ -278,41 +299,39 @@ document.addEventListener('click',e=>{if(!e.target.closest('.week-picker'))close
 bootstrap();
 
 function render(){
-  const wk=(DATA['會議日期']||'2026-04-10').replace(/-/g,'.');
-  document.getElementById('week').textContent='WEEK OF · '+wk;
-  document.getElementById('deckTitle').textContent=wk+' 本週專業卡牌';
-  // 計算 nextWeekData：從 EDM_SCHEDULE 找當週之後最近的一筆
-  let nextWeekData=null;
-  if(EDM_SCHEDULE&&EDM_SCHEDULE.schedule){
-    const future=EDM_SCHEDULE.schedule.filter(x=>x.date>CURRENT_WEEK).sort((a,b)=>a.date.localeCompare(b.date));
-    if(future.length)nextWeekData=future[0];
-  }
-  if(!nextWeekData&&DATA['下週預告']){
-    const nx=DATA['下週預告'];
-    if(nx&&nx.主秀)nextWeekData={date:nx.日期,speakers:nx.主秀};
-  }
-  // 計算本週主秀 EDM
-  let featured=[];
-  if(EDM_SCHEDULE&&EDM_SCHEDULE.schedule){
-    const cur=EDM_SCHEDULE.schedule.find(x=>x.date===CURRENT_WEEK);
-    if(cur)featured=cur.speakers;
-  }
-  if(!featured.length)featured=DATA['本週主秀']||DATA.featured||[{name:'酈瀅鵑',industry:'律師業',edm:'edm/2026-04-10-酈瀅鵑-律師業.jpg'}];
+  // 三組 EDM：上週（已過）/ 本週（即將）/ 下週（預告）
+  const upcoming=getUpcomingEdms();
+  const pastEdm=getPastEdm();
+  const thisWeekEdm=upcoming.length?upcoming[0]:null;
+  const nextWeekData=upcoming.length>1?upcoming[1]:null;
+  // WEEK OF 顯示本週（即將到來）場次日期
+  const wkDisplay=thisWeekEdm?thisWeekEdm.date.replace(/-/g,'.'):DATA['會議日期']?.replace(/-/g,'.')||'';
+  document.getElementById('week').textContent='WEEK OF · '+wkDisplay;
+  document.getElementById('deckTitle').textContent=(DATA['會議日期']||'').replace(/-/g,'.')+' 本週專業卡牌';
+  let featured=thisWeekEdm?thisWeekEdm.speakers:DATA['本週主秀']||DATA.featured||[];
   document.getElementById('feat').innerHTML=featured.map((f,i)=>`<div class="edm-card" onclick="openLbxWeek(${i})" style="cursor:pointer"><img src="${f.edm}" alt="${f.name} ${f.industry}" onerror="this.onerror=null;this.style.cssText='background:linear-gradient(135deg,#1a3458,#0a1f3d);min-height:280px;display:flex;align-items:center;justify-content:center;color:#d4ab5d;font-size:1.1rem;padding:40px;text-align:center';this.src='data:image/svg+xml;charset=utf-8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22420%22 height=%22280%22><rect width=%22420%22 height=%22280%22 fill=%22%230a1f3d%22/><text x=%2250%25%22 y=%2245%25%22 text-anchor=%22middle%22 fill=%22%23d4ab5d%22 font-size=%2220%22 font-family=%22serif%22>EDM 圖片未載入</text><text x=%2250%25%22 y=%2260%25%22 text-anchor=%22middle%22 fill=%22%23d4ab5d%22 font-size=%2214%22 opacity=%220.6%22>請確認 GitHub 路徑</text></svg>'"><div class="edm-meta"><div class="t">本週主題簡報・${f.name}</div><div class="s">${f.industry}</div></div></div>`).join('');
   window.__WEEK=featured;
-  // 下週預告（使用 EDM_SCHEDULE 算出的 nextWeekData）
+  // 下半屏：上週（左）+ 下週（右）
   const heroNext=document.getElementById('heroNext');
+  let nextHtml='<div class="next-inner tri">';
+  // 上週
+  if(pastEdm&&pastEdm.speakers&&pastEdm.speakers.length){
+    const dt=pastEdm.date.replace(/-/g,'.');
+    nextHtml+='<div class="tri-col past"><div class="tri-label">上週主題簡報 · '+dt+'</div><div class="tri-grid">'+
+      pastEdm.speakers.map((f,i)=>'<div class="next-item" onclick="openLbxPast('+i+')"><img src="'+f.edm+'" alt="'+f.name+'"><div class="cap"><b>'+f.name+'</b>'+f.industry+'</div></div>').join('')+
+      '</div></div>';
+    window.__PAST=pastEdm.speakers;
+  }
+  // 下週
   if(nextWeekData&&nextWeekData.speakers&&nextWeekData.speakers.length){
     const dt=(nextWeekData.date||'').replace(/-/g,'.');
-    const html='<div class="next-inner"><div class="next-label">NEXT FRIDAY · '+dt+'</div><div class="next-grid">'+
+    nextHtml+='<div class="tri-col next"><div class="tri-label">下週主題簡報 · '+dt+'</div><div class="tri-grid">'+
       nextWeekData.speakers.map((f,i)=>'<div class="next-item" onclick="openLbx('+i+')"><img src="'+f.edm+'" alt="'+f.name+'"><div class="cap"><b>'+f.name+'</b>'+f.industry+'</div></div>').join('')+
       '</div></div>';
-    heroNext.innerHTML=html;
     window.__NEXT=nextWeekData.speakers;
-  }else{
-    heroNext.innerHTML='';
-    window.__NEXT=null;
   }
+  nextHtml+='</div>';
+  heroNext.innerHTML=(pastEdm||nextWeekData)?nextHtml:'';
   const chains={};
   (DATA['會員簡報']||[]).forEach(m=>{const k=m['產業鏈']||'其他';(chains[k]=chains[k]||[]).push(m)});
   const keys=Object.keys(chains).sort((a,b)=>{const na=parseInt((a.match(/第(\d+)/)||[])[1]||99);const nb=parseInt((b.match(/第(\d+)/)||[])[1]||99);return na-nb});
@@ -406,6 +425,10 @@ function openDeck(){document.getElementById('deck').scrollIntoView({behavior:'sm
 <div class="lbx" id="lbx" onclick="if(event.target===this)closeLbx()"><button class="lbx-close" onclick="closeLbx()">✕</button><div class="lbx-in"><img id="lbxImg" src=""><div class="lbx-cap" id="lbxCap"></div><div class="lbx-btns"><button onclick="dlEdm()">📥 下載 EDM</button><button class="sec" onclick="shareEdm()">📤 更多分享</button></div></div></div>
 <script>
 let _LBX=null;
+function openLbxPast(i){
+  if(!window.__PAST)return;
+  showLbx(window.__PAST[i],'上週主題簡報・');
+}
 function openLbx(i){
   if(!window.__NEXT)return;
   showLbx(window.__NEXT[i],'下週主題簡報・');
