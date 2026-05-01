@@ -1,0 +1,31 @@
+{
+  "schedule": [
+    {
+      "date": "2026-04-10",
+      "speakers": [
+        {"name": "酈瀅鵑", "industry": "律師業", "edm": "edm/2026-04-10-酈瀅鵑-律師業.jpg"}
+      ]
+    },
+    {
+      "date": "2026-04-17",
+      "speakers": [
+        {"name": "林昱劭", "industry": "冷氣空調業", "edm": "edm/2026-04-17-林昱劭-冷氣空調業.jpg"},
+        {"name": "邱家秝", "industry": "財產保險業", "edm": "edm/2026-04-17-邱家秝-財產保險業.png"}
+      ]
+    },
+    {
+      "date": "2026-05-08",
+      "speakers": [
+        {"name": "陳恒丰", "industry": "資訊系統開發業", "edm": "edm/2026-05-08-陳恒丰-資訊系統開發.png"},
+        {"name": "陳靖紳", "industry": "油漆業", "edm": "edm/2026-05-08-陳靖紳-油漆業.png"}
+      ]
+    },
+    {
+      "date": "2026-05-15",
+      "speakers": [
+        {"name": "蔡阿達", "industry": "SEO 業", "edm": "edm/2026-05-15-蔡阿達-SEO業.png"},
+        {"name": "陳宗民", "industry": "品牌策略顧問業", "edm": "edm/2026-05-15-陳宗民-品牌策略顧問業.png"}
+      ]
+    }
+  ]
+}
