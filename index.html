@@ -43,7 +43,29 @@ h1,h2,h3,h4{font-family:"Noto Serif TC",serif;font-weight:900;letter-spacing:.02
 .lbx-close:hover{background:rgba(255,255,255,.15);border-color:#fff}
 .lbx-cap{color:var(--paper);text-align:center;font-size:1rem}
 .lbx-cap b{color:var(--gold);font-family:"Noto Serif TC",serif;margin-right:10px;font-size:1.1rem}
- /* hero-title */
+ /* === topnav === */
+.topnav{position:sticky;top:0;z-index:80;background:rgba(6,21,43,.92);backdrop-filter:blur(12px);border-bottom:1px solid rgba(212,171,93,.2)}
+.topnav-in{max-width:1280px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.topnav-brand{font-family:"Noto Serif TC",serif;font-weight:900;color:var(--gold);font-size:1.05rem;letter-spacing:.05em}
+.topnav-right{display:flex;align-items:center;gap:12px}
+.week-picker{position:relative}
+.wp-toggle{background:rgba(212,171,93,.1);border:1px solid rgba(212,171,93,.4);color:var(--gold);padding:8px 14px;border-radius:4px;cursor:pointer;font-family:inherit;font-size:.9rem;transition:all .2s}
+.wp-toggle:hover{background:rgba(212,171,93,.2);border-color:var(--gold)}
+.wp-menu{position:absolute;top:calc(100% + 8px);right:0;min-width:340px;background:#0a1f3d;border:1px solid rgba(212,171,93,.4);border-radius:5px;box-shadow:0 12px 40px rgba(0,0,0,.6);opacity:0;visibility:hidden;transform:translateY(-8px);transition:all .25s;overflow:hidden}
+.wp-menu.on{opacity:1;visibility:visible;transform:translateY(0)}
+.wp-item{display:block;padding:14px 18px;color:var(--paper);text-decoration:none;border-bottom:1px solid rgba(212,171,93,.1);cursor:pointer;transition:all .2s;font-size:.92rem}
+.wp-item:last-child{border-bottom:none}
+.wp-item:hover{background:rgba(212,171,93,.12)}
+.wp-item.current{background:rgba(212,171,93,.18);color:var(--gold)}
+.wp-item .d{font-family:"Bodoni Moda",serif;font-style:italic;font-weight:700;font-size:1rem;color:var(--gold);margin-right:8px}
+.wp-item .s{opacity:.85;font-size:.85rem;display:block;margin-top:4px}
+.wp-item .latest{display:inline-block;background:var(--gold);color:var(--deep);font-size:.7rem;padding:2px 8px;border-radius:10px;margin-left:8px;font-weight:700;letter-spacing:.05em}
+.snapshot-banner{display:none;background:linear-gradient(90deg,rgba(212,171,93,.18),rgba(255,107,91,.12));border-bottom:1px solid rgba(212,171,93,.3);padding:14px 24px;text-align:center;color:var(--paper);font-size:.95rem}
+.snapshot-banner.on{display:block}
+.snapshot-banner b{color:var(--gold);font-family:"Noto Serif TC",serif;margin-right:6px}
+.snapshot-banner a{color:var(--gold);text-decoration:underline;cursor:pointer;margin-left:12px}
+@media(max-width:640px){.topnav-in{padding:12px 16px}.wp-menu{min-width:280px;right:-8px}}
+/* hero-title */
 
 /* === 產業星系 === */
 .galaxy{position:relative;padding:80px 24px 60px;background:radial-gradient(ellipse at 30% 20%,rgba(212,171,93,.06),transparent 60%),radial-gradient(ellipse at 70% 80%,rgba(200,162,255,.04),transparent 60%),linear-gradient(180deg,#06152b,#0a1f3d);overflow:hidden;border-top:1px solid rgba(212,171,93,.15);border-bottom:1px solid rgba(212,171,93,.15)}
@@ -137,6 +159,18 @@ h1,h2,h3,h4{font-family:"Noto Serif TC",serif;font-weight:900;letter-spacing:.02
 </style></head>
 <body>
 
+<nav class="topnav" id="topnav">
+<div class="topnav-in">
+<span class="topnav-brand">BNI 富真分會</span>
+<div class="topnav-right">
+<div class="week-picker">
+<button class="wp-toggle" onclick="toggleWP()" id="wpToggle">📅 <span id="wpCurrent">2026-04-17</span> ▾</button>
+<div class="wp-menu" id="wpMenu"></div>
+</div>
+</div>
+</div>
+</nav>
+<div class="snapshot-banner" id="snapBanner"></div>
 <section class="hero">
 <div class="hero-bg"></div>
 <div class="hero-top">
@@ -180,9 +214,68 @@ let DATA=null;
 const CHAIN_NICK={1:"設計",2:"團購",3:"兒童",4:"幸福",5:"高端",6:"中小",7:"餐飲",8:"業務",9:"新居",10:"新車",11:"食品",12:"行銷",13:"質感",14:"活動",15:"建商",16:"工程",17:"資訊",18:"大健",19:"退休"};
 // 星座連線（暗示產業鏈生態交集）
 const CHAIN_LINKS=[[1,9],[1,15],[6,11],[6,17],[11,7],[2,5],[3,4],[13,5],[14,12],[12,8],[10,16],[16,15],[18,3],[19,5]];
-fetch('data/2026-04-10.json').then(r=>r.json()).then(d=>{DATA=d;render()}).catch(e=>{
-  document.getElementById('feat').innerHTML='<div style="color:#ff6b5b;padding:20px;max-width:500px">⚠️ 找不到 data/2026-04-10.json，請確認已上傳到 repo 的 data/ 資料夾</div>';
-});
+let WEEKS_INDEX=null,EDM_SCHEDULE=null,CURRENT_WEEK=null;
+
+async function bootstrap(){
+  try{
+    [WEEKS_INDEX,EDM_SCHEDULE]=await Promise.all([
+      fetch('data/weeks-index.json').then(r=>r.json()),
+      fetch('data/edm-schedule.json').then(r=>r.json())
+    ]);
+    renderWeekPicker();
+    // 從 URL 取 week，或用最新一週
+    const params=new URLSearchParams(location.search);
+    const wk=params.get('week')||WEEKS_INDEX.weeks[0].date;
+    await loadWeek(wk);
+  }catch(e){
+    console.error(e);
+    document.getElementById('feat').innerHTML='<div style="color:#ff6b5b;padding:20px;max-width:500px">⚠️ 載入失敗，請確認 data/ 下三個 JSON 都已上傳</div>';
+  }
+}
+
+async function loadWeek(date){
+  CURRENT_WEEK=date;
+  document.getElementById('wpCurrent').textContent=date;
+  // 更新 snapshot banner
+  const isLatest=WEEKS_INDEX.weeks[0].date===date;
+  const banner=document.getElementById('snapBanner');
+  if(!isLatest){
+    banner.innerHTML='<b>📅 你正在瀏覽 '+date+' 的歷史快照</b><a onclick="loadWeek(WEEKS_INDEX.weeks[0].date)">回到最新一週 →</a>';
+    banner.classList.add('on');
+  }else{
+    banner.classList.remove('on');
+  }
+  // 更新 URL 不重新整理
+  const u=new URL(location);
+  if(isLatest){u.searchParams.delete('week')}else{u.searchParams.set('week',date)}
+  history.replaceState({},'',u);
+  // 載入該週會員資料
+  try{
+    const r=await fetch('data/'+date+'.json');
+    DATA=await r.json();
+    render();
+    // 更新下拉選單 highlight
+    document.querySelectorAll('.wp-item').forEach(el=>el.classList.toggle('current',el.dataset.date===date));
+    closeWP();
+    window.scrollTo({top:0,behavior:'smooth'});
+  }catch(e){
+    document.getElementById('chains').innerHTML='<div style="color:#ff6b5b;padding:40px;text-align:center">⚠️ 找不到 data/'+date+'.json</div>';
+  }
+}
+
+function renderWeekPicker(){
+  const html=WEEKS_INDEX.weeks.map((w,i)=>{
+    const latest=i===0?'<span class="latest">最新</span>':'';
+    return `<div class="wp-item" data-date="${w.date}" onclick="loadWeek('${w.date}')"><span class="d">${w.date}</span>${latest}<span class="s">${w.speakers_label}</span></div>`;
+  }).join('');
+  document.getElementById('wpMenu').innerHTML=html;
+}
+
+function toggleWP(){document.getElementById('wpMenu').classList.toggle('on')}
+function closeWP(){document.getElementById('wpMenu').classList.remove('on')}
+document.addEventListener('click',e=>{if(!e.target.closest('.week-picker'))closeWP()});
+
+bootstrap();
 
 function render(){
   const wk=(DATA['會議日期']||'2026-04-10').replace(/-/g,'.');
@@ -191,15 +284,18 @@ function render(){
   const featured=DATA['本週主秀']||DATA.featured||[{name:'酈瀅鵑',industry:'律師業',edm:'edm/2026-04-10-酈瀅鵑-律師業.jpg'}];
   document.getElementById('feat').innerHTML=featured.map((f,i)=>`<div class="edm-card" onclick="openLbxWeek(${i})" style="cursor:pointer"><img src="${f.edm}" alt="${f.name} ${f.industry}" onerror="this.onerror=null;this.style.cssText='background:linear-gradient(135deg,#1a3458,#0a1f3d);min-height:280px;display:flex;align-items:center;justify-content:center;color:#d4ab5d;font-size:1.1rem;padding:40px;text-align:center';this.src='data:image/svg+xml;charset=utf-8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22420%22 height=%22280%22><rect width=%22420%22 height=%22280%22 fill=%22%230a1f3d%22/><text x=%2250%25%22 y=%2245%25%22 text-anchor=%22middle%22 fill=%22%23d4ab5d%22 font-size=%2220%22 font-family=%22serif%22>EDM 圖片未載入</text><text x=%2250%25%22 y=%2260%25%22 text-anchor=%22middle%22 fill=%22%23d4ab5d%22 font-size=%2214%22 opacity=%220.6%22>請確認 GitHub 路徑</text></svg>'"><div class="edm-meta"><div class="t">本週主題簡報・${f.name}</div><div class="s">${f.industry}</div></div></div>`).join('');
   window.__WEEK=featured;
-  // 下週預告
-  const nx=DATA['下週預告'];
-  if(nx&&nx.主秀&&nx.主秀.length){
-    const dt=(nx.日期||'').replace(/-/g,'.');
+  // 下週預告（使用 EDM_SCHEDULE 算出的 nextWeekData）
+  const heroNext=document.getElementById('heroNext');
+  if(nextWeekData&&nextWeekData.speakers&&nextWeekData.speakers.length){
+    const dt=(nextWeekData.date||'').replace(/-/g,'.');
     const html='<div class="next-inner"><div class="next-label">NEXT FRIDAY · '+dt+'</div><div class="next-grid">'+
-      nx.主秀.map((f,i)=>'<div class="next-item" onclick="openLbx('+i+')"><img src="'+f.edm+'" alt="'+f.name+'"><div class="cap"><b>'+f.name+'</b>'+f.industry+'</div></div>').join('')+
+      nextWeekData.speakers.map((f,i)=>'<div class="next-item" onclick="openLbx('+i+')"><img src="'+f.edm+'" alt="'+f.name+'"><div class="cap"><b>'+f.name+'</b>'+f.industry+'</div></div>').join('')+
       '</div></div>';
-    document.getElementById('heroNext').innerHTML=html;
-    window.__NEXT=nx.主秀;
+    heroNext.innerHTML=html;
+    window.__NEXT=nextWeekData.speakers;
+  }else{
+    heroNext.innerHTML='';
+    window.__NEXT=null;
   }
   const chains={};
   (DATA['會員簡報']||[]).forEach(m=>{const k=m['產業鏈']||'其他';(chains[k]=chains[k]||[]).push(m)});
