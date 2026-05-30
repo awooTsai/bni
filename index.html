@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="zh-Hant"><head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>BNI 富真分會・每週專業、引薦對話與成功見證更新</title>
+<title>BNI 富真分會・成功見證相簿</title>
 <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,700;1,700&family=Inter:wght@400;500;600;700&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@700;900&display=swap" rel="stylesheet">
 <style>
 :root{--deep:#06152b;--ink:#0a1f3d;--gold:#d4ab5d;--coral:#ff6b5b;--paper:#f6efe1;--line:#1a3458}
@@ -20,6 +20,23 @@ h1,h2,h3,h4{font-family:"Noto Serif TC",serif;font-weight:900;letter-spacing:.02
 .sheet-link:hover{background:var(--gold);color:var(--deep);box-shadow:0 6px 18px rgba(212,171,93,.45)}
 .sheet-link .arr{font-style:normal}
 @media(max-width:640px){.topnav-in{padding:12px 16px}.sheet-link{padding:8px 12px;font-size:.78rem;gap:5px}.sheet-link .full{display:none}}
+.wkpick{position:relative}
+.wk-toggle{display:inline-flex;align-items:center;gap:6px;background:rgba(212,171,93,.1);border:1px solid rgba(212,171,93,.4);color:var(--gold);padding:9px 14px;border-radius:30px;cursor:pointer;font-family:inherit;font-size:.9rem;transition:all .2s;white-space:nowrap}
+.wk-toggle:hover{background:rgba(212,171,93,.2);border-color:var(--gold)}
+.wk-menu{position:absolute;top:calc(100% + 8px);right:0;min-width:300px;max-height:62vh;overflow-y:auto;background:#0a1f3d;border:1px solid rgba(212,171,93,.4);border-radius:8px;box-shadow:0 12px 40px rgba(0,0,0,.6);opacity:0;visibility:hidden;transform:translateY(-8px);transition:all .25s;z-index:90}
+.wk-menu.on{opacity:1;visibility:visible;transform:translateY(0)}
+.wk-item{display:block;width:100%;text-align:left;padding:13px 18px;color:var(--paper);background:none;border:none;border-bottom:1px solid rgba(212,171,93,.1);cursor:pointer;transition:all .2s;font-family:inherit;font-size:.92rem}
+.wk-item:last-child{border-bottom:none}
+.wk-item:hover{background:rgba(212,171,93,.12)}
+.wk-item.current{background:rgba(212,171,93,.18)}
+.wk-item .d{font-family:"Bodoni Moda",serif;font-style:italic;font-weight:700;color:var(--gold);margin-right:8px}
+.wk-item .latest{display:inline-block;background:var(--gold);color:var(--deep);font-size:.68rem;padding:2px 8px;border-radius:10px;margin-left:6px;font-weight:700}
+.wk-item .s{display:block;opacity:.7;font-size:.82rem;margin-top:3px}
+.wk-banner{display:none;background:linear-gradient(90deg,rgba(212,171,93,.18),rgba(255,107,91,.1));border-bottom:1px solid rgba(212,171,93,.3);padding:12px 24px;text-align:center;color:var(--paper);font-size:.92rem}
+.wk-banner.on{display:block}
+.wk-banner b{color:var(--gold);font-family:"Noto Serif TC",serif;margin-right:6px}
+.wk-banner button{background:none;border:none;color:var(--gold);text-decoration:underline;cursor:pointer;margin-left:12px;font-family:inherit;font-size:.92rem}
+@media(max-width:640px){.wk-toggle{padding:8px 11px;font-size:.78rem}.wk-toggle .wk-txt{display:none}.wk-menu{min-width:230px}}
 
 /* === hero / EDM 三層 === */
 .hero{position:relative;min-height:100vh;display:flex;overflow:hidden;flex-direction:column;justify-content:flex-start;padding:0}
@@ -141,10 +158,15 @@ h1,h2,h3,h4{font-family:"Noto Serif TC",serif;font-weight:900;letter-spacing:.02
 <div class="topnav-in">
 <span class="topnav-brand">BNI 富真分會</span>
 <div class="topnav-right">
+<div class="wkpick">
+<button class="wk-toggle" onclick="toggleWeekPicker()" id="wkToggle">📅 <span class="wk-txt">切換週次</span> ▾</button>
+<div class="wk-menu" id="wkMenu"></div>
+</div>
 <a class="sheet-link" href="https://docs.google.com/spreadsheets/d/1HjaORwPAahieiA2uMeoxMzmcAY7VrIRfA_pdf3boTiQ/edit?usp=sharing" target="_blank" rel="noopener"><span class="full">本週會員專業 · 主題簡報 · </span>開啟引薦對話 <span class="arr">↗</span></a>
 </div>
 </div>
 </nav>
+<div class="wk-banner" id="wkBanner"></div>
 
 <section class="hero">
 <div class="hero-bg"></div>
@@ -197,7 +219,7 @@ h1,h2,h3,h4{font-family:"Noto Serif TC",serif;font-weight:900;letter-spacing:.02
 
 <script>
 /* ============ EDM 三層（沿用既有邏輯：依今天日期算上/本/下週）============ */
-let EDM_SCHEDULE=null;
+let EDM_SCHEDULE=null,VIEW_DATE=null;
 function getUpcomingEdmsFrom(refDate){
   if(!EDM_SCHEDULE||!EDM_SCHEDULE.schedule)return[];
   return EDM_SCHEDULE.schedule.filter(x=>x.date>=refDate).sort((a,b)=>a.date.localeCompare(b.date));
@@ -211,6 +233,7 @@ async function bootstrap(){
   try{
     EDM_SCHEDULE=await fetch('data/edm-schedule.json',{cache:'no-store'}).then(r=>r.json());
     renderEdm();
+    buildWeekPicker();
   }catch(e){
     console.error(e);
     document.getElementById('feat').innerHTML='<div style="color:#ff6b5b;padding:20px;max-width:700px;background:rgba(255,107,91,.1);border:1px solid #ff6b5b;border-radius:8px;font-family:monospace;line-height:1.8"><b style="font-size:1.1rem">⚠️ EDM 資料載入失敗</b><br><br>'+e.message+'<br><br>請確認 GitHub data/edm-schedule.json 存在</div>';
@@ -218,7 +241,9 @@ async function bootstrap(){
   initAlbum();
 }
 function renderEdm(){
-  const refDate=new Date().toISOString().split('T')[0];
+  const today=new Date().toISOString().split('T')[0];
+  const refDate=VIEW_DATE||today;
+  updateWkBanner();
   const upcoming=getUpcomingEdmsFrom(refDate);
   const pastEdm=getPastEdmBefore(refDate);
   const thisWeekEdm=upcoming.length?upcoming[0]:null;
@@ -246,6 +271,36 @@ function renderEdm(){
   }
   nextHtml+='</div>';
   heroNext.innerHTML=(pastEdm||nextWeekData)?nextHtml:'';
+}
+
+/* ---- 切換週次（讓訪客回看過去每一週的 EDM 狀態）---- */
+function buildWeekPicker(){
+  if(!EDM_SCHEDULE||!EDM_SCHEDULE.schedule)return;
+  const weeks=EDM_SCHEDULE.schedule.slice().sort((a,b)=>b.date.localeCompare(a.date));
+  let html='<button class="wk-item" data-reset="1" onclick="resetWeek()">📍 回到本週（依今天）</button>';
+  html+=weeks.map((w,i)=>{
+    const names=(w.speakers||[]).map(s=>s.name).join('、');
+    const latest=i===0?'<span class="latest">最新</span>':'';
+    return '<button class="wk-item" data-date="'+w.date+'" onclick="selectWeek(\''+w.date+'\')"><span class="d">'+w.date+'</span>'+latest+'<span class="s">'+names+'</span></button>';
+  }).join('');
+  document.getElementById('wkMenu').innerHTML=html;
+  highlightWk();
+}
+function highlightWk(){
+  document.querySelectorAll('.wk-item').forEach(el=>{
+    if(el.dataset.reset)el.classList.toggle('current',!VIEW_DATE);
+    else el.classList.toggle('current',el.dataset.date===VIEW_DATE);
+  });
+}
+function toggleWeekPicker(){document.getElementById('wkMenu').classList.toggle('on')}
+function closeWeekPicker(){document.getElementById('wkMenu').classList.remove('on')}
+document.addEventListener('click',e=>{if(!e.target.closest('.wkpick'))closeWeekPicker()});
+function selectWeek(date){VIEW_DATE=date;renderEdm();highlightWk();closeWeekPicker();window.scrollTo({top:0,behavior:'smooth'})}
+function resetWeek(){VIEW_DATE=null;renderEdm();highlightWk();closeWeekPicker();window.scrollTo({top:0,behavior:'smooth'})}
+function updateWkBanner(){
+  const b=document.getElementById('wkBanner');if(!b)return;
+  if(VIEW_DATE){b.innerHTML='<b>📅 你正在瀏覽 '+VIEW_DATE+' 的當週狀態</b><button onclick="resetWeek()">回到本週 →</button>';b.classList.add('on')}
+  else b.classList.remove('on');
 }
 
 /* ============ 成功見證相簿（讀 data/clips-order.txt）============ */
