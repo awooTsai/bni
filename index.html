@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="zh-Hant"><head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>BNI 富真分會・每週專業卡牌</title>
+<title>BNI 富真分會・成功見證相簿</title>
 <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,700;1,700&family=Inter:wght@400;500;600;700&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@700;900&display=swap" rel="stylesheet">
 <style>
 :root{--deep:#06152b;--ink:#0a1f3d;--gold:#d4ab5d;--coral:#ff6b5b;--paper:#f6efe1;--line:#1a3458}
@@ -10,36 +10,105 @@ html{font-size:17px;-webkit-font-smoothing:antialiased;scroll-behavior:smooth}
 body{font-family:"Inter","Noto Sans TC",-apple-system,BlinkMacSystemFont,sans-serif;background:var(--deep);color:var(--paper);line-height:1.75;overflow-x:hidden}
 h1,h2,h3,h4{font-family:"Noto Serif TC",serif;font-weight:900;letter-spacing:.02em}
 .en{font-family:"Bodoni Moda",serif;font-style:italic;font-weight:700}
-.hero{position:relative;min-height:100vh;display:flex;overflow:hidden}
+
+/* === topnav === */
+.topnav{position:sticky;top:0;z-index:80;background:rgba(6,21,43,.92);backdrop-filter:blur(12px);border-bottom:1px solid rgba(212,171,93,.2)}
+.topnav-in{max-width:1280px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.topnav-brand{font-family:"Noto Serif TC",serif;font-weight:900;color:var(--gold);font-size:1.05rem;letter-spacing:.05em}
+.topnav-right{display:flex;align-items:center;gap:12px}
+.sheet-link{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,rgba(212,171,93,.16),rgba(212,171,93,.06));border:1px solid rgba(212,171,93,.5);color:var(--gold);padding:9px 16px;border-radius:30px;text-decoration:none;font-size:.9rem;font-weight:600;letter-spacing:.02em;transition:all .2s;white-space:nowrap}
+.sheet-link:hover{background:var(--gold);color:var(--deep);box-shadow:0 6px 18px rgba(212,171,93,.45)}
+.sheet-link .arr{font-style:normal}
+@media(max-width:640px){.topnav-in{padding:12px 16px}.sheet-link{padding:8px 12px;font-size:.78rem;gap:5px}.sheet-link .full{display:none}}
+
+/* === hero / EDM 三層 === */
+.hero{position:relative;min-height:100vh;display:flex;overflow:hidden;flex-direction:column;justify-content:flex-start;padding:0}
 .hero-bg{position:absolute;inset:0;background:url('img/hero-bg.jpg') center/cover;filter:blur(3px) brightness(.55);transform:scale(1.08);z-index:0}
 .hero-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(6,21,43,.3),rgba(6,21,43,.65))}
-.hero-in{position:relative;z-index:2;text-align:center;padding:48px 24px;max-width:1100px;width:100%}
+.hero-in{position:relative;z-index:2;text-align:center;padding:48px 24px;max-width:1100px;width:100%;margin:0 auto}
 .week{color:var(--gold);font-size:clamp(1rem,2.2vw,1.4rem);letter-spacing:.4em;margin-bottom:28px;opacity:0;transform:translateY(20px);animation:fadeUp .8s .2s forwards}
 .week::before,.week::after{content:"—";margin:0 18px;opacity:.5}
-/* === hero C 方案 === */
-.hero{flex-direction:column;justify-content:flex-start;padding:0}
 .hero-top{position:relative;z-index:2;width:100%;flex:0 0 auto;min-height:72vh;display:flex;align-items:center;justify-content:center;padding:48px 24px 32px}
 .hero-next{position:relative;z-index:2;width:100%;padding:28px 24px 60px;background:linear-gradient(180deg,rgba(0,0,0,.15),rgba(0,0,0,.4));border-top:1px solid rgba(212,171,93,.25)}
 .next-inner{max-width:95vw;margin:0 auto;text-align:center}
-.next-label{font-family:"Bodoni Moda",serif;font-style:italic;color:var(--gold);font-size:clamp(.85rem,1.6vw,1.05rem);letter-spacing:.25em;opacity:.75;margin-bottom:12px}
 .tri{display:flex;gap:28px;justify-content:center;align-items:flex-start;max-width:95vw;margin:0 auto;flex-wrap:wrap}
 .tri-col{flex:1 1 0;min-width:240px;max-width:560px;text-align:center}
+.tri-col .tri-label{font-family:"Bodoni Moda",serif;font-style:italic;color:var(--gold);font-size:clamp(.85rem,1.6vw,1.05rem);letter-spacing:.18em;opacity:.8;margin-bottom:12px}
 .tri-col .tri-grid{display:flex;gap:12px;justify-content:center}
 .tri-col .tri-grid .next-item{flex:1 1 0;min-width:0}
 .tri-col.past .next-item{opacity:.65}
 .tri-col.past .next-item:hover{opacity:1;transform:scale(1.03)}
-.tri-col.past .next-label{color:rgba(212,171,93,.65)}
-.tri-col.next .next-label{color:var(--gold)}
+.tri-col.past .tri-label{color:rgba(212,171,93,.65)}
+.tri-col.next .tri-label{color:var(--gold)}
 @media(max-width:640px){.tri{flex-direction:column;gap:24px}.tri-col{max-width:100%}.tri-col .tri-grid{flex-wrap:wrap}}
-.next-label::before,.next-label::after{content:"—";margin:0 14px;opacity:.5}
-.next-grid{display:flex;gap:20px;justify-content:center;flex-wrap:wrap}
 .next-item{flex:1 1 380px;max-width:520px;opacity:.7;transition:all .4s ease;cursor:pointer}
 .next-item:hover{opacity:1;transform:scale(1.03)}
 .next-item img{width:100%;display:block;border-radius:5px;box-shadow:0 12px 32px rgba(0,0,0,.5);border:1px solid rgba(212,171,93,.2)}
 .next-item .cap{margin-top:10px;color:var(--paper);opacity:.85;font-size:.92rem;letter-spacing:.02em}
 .next-item .cap b{color:var(--gold);font-family:"Noto Serif TC",serif;font-size:1.02rem;margin-right:8px}
 @media(max-width:640px){.hero-top{min-height:80vh;padding:32px 20px 24px}.next-item{flex:1 1 100%}}
-/* Lightbox */
+.hero-title{font-family:"Noto Serif TC",serif;font-size:clamp(1.4rem,3.2vw,2.2rem);font-weight:900;color:var(--paper);margin-bottom:36px;line-height:1.5;opacity:0;transform:translateY(20px);animation:fadeUp .9s .35s forwards;text-shadow:0 2px 20px rgba(0,0,0,.5)}
+.feat{display:flex;gap:24px;justify-content:center;flex-wrap:wrap;margin-bottom:8px}
+.edm-card{position:relative;max-width:483px;width:100%;opacity:0;transform:translateY(20px);animation:fadeUp 1s .5s forwards;transition:transform .4s;cursor:pointer}
+.edm-card:hover{transform:translateY(-6px)} .edm-card:hover img{filter:brightness(1.1)}
+.edm-card img{width:100%;display:block;border-radius:6px;transition:filter .3s;box-shadow:0 24px 60px rgba(0,0,0,.5),0 0 0 1px rgba(212,171,93,.3);background:#1a3458;min-height:200px}
+.edm-meta{margin-top:16px}
+.edm-meta .t{font-family:"Noto Serif TC",serif;font-size:1.25rem;color:var(--gold)}
+.edm-meta .s{font-size:.95rem;opacity:.75;margin-top:4px}
+@keyframes fadeUp{to{opacity:1;transform:translateY(0)}}
+.scroll-hint{position:absolute;bottom:24px;left:50%;transform:translateX(-50%);color:var(--gold);font-size:.8rem;opacity:.6;letter-spacing:.3em;animation:bounce 2s infinite;z-index:2;cursor:pointer}
+@keyframes bounce{0%,100%{transform:translate(-50%,0)}50%{transform:translate(-50%,8px)}}
+
+/* === 成功見證相簿 === */
+.album{position:relative;padding:72px 24px 64px;background:radial-gradient(ellipse at 50% 0%,rgba(212,171,93,.08),transparent 55%),linear-gradient(180deg,#06152b,#0a1f3d);border-top:1px solid rgba(212,171,93,.15);animation:fadeIn .6s}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+.album-head{text-align:center;margin-bottom:34px}
+.album-head .en{color:var(--gold);font-size:.95rem;letter-spacing:.35em;opacity:.8}
+.album-head h2{font-size:clamp(1.8rem,4vw,2.6rem);margin-top:10px}
+.album-head .sub{margin-top:10px;font-size:.95rem;opacity:.7;letter-spacing:.05em}
+.viewer{max-width:1120px;margin:0 auto;position:relative}
+.stage{position:relative;width:100%;aspect-ratio:16/9;background:#04101f;border-radius:8px;overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,.55),0 0 0 1px rgba(212,171,93,.25);user-select:none}
+.stage img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;background:#04101f;transition:opacity .35s ease}
+.stage.fading img{opacity:.12}
+.cover-ov{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;gap:18px;padding:0 24px 7%;background:linear-gradient(180deg,rgba(4,16,31,0) 42%,rgba(4,16,31,.78));text-align:center;transition:opacity .35s;cursor:pointer}
+.cover-ov.hide{opacity:0;pointer-events:none}
+.cover-ov .meta{color:var(--gold);font-family:"Bodoni Moda",serif;font-style:italic;letter-spacing:.22em;font-size:clamp(.8rem,1.6vw,1rem);opacity:.92}
+.enter-btn{background:linear-gradient(135deg,#d4ab5d,#e8c478);color:var(--deep);border:none;padding:16px 42px;border-radius:40px;font-family:"Noto Serif TC",serif;font-weight:900;font-size:clamp(1rem,2vw,1.2rem);letter-spacing:.1em;cursor:pointer;box-shadow:0 10px 30px rgba(212,171,93,.45);animation:pulseGlow 2.4s ease-in-out infinite}
+@keyframes pulseGlow{0%,100%{box-shadow:0 10px 30px rgba(212,171,93,.4);transform:translateY(0)}50%{box-shadow:0 12px 44px rgba(212,171,93,.75);transform:translateY(-2px)}}
+.enter-btn:hover{filter:brightness(1.06)}
+.badge{position:absolute;top:16px;left:16px;display:flex;align-items:center;gap:9px;background:rgba(4,16,31,.72);backdrop-filter:blur(6px);border:1px solid var(--bdg,#d4ab5d);border-radius:30px;padding:8px 16px;z-index:4;transition:opacity .35s,transform .35s,border-color .5s;box-shadow:0 6px 18px rgba(0,0,0,.4)}
+.badge.hide{opacity:0;transform:translateY(-8px);pointer-events:none}
+.badge .dot{width:9px;height:9px;border-radius:50%;background:var(--bdg,#d4ab5d);box-shadow:0 0 10px var(--bdg,#d4ab5d);transition:background .5s,box-shadow .5s}
+.badge .cat{font-family:"Noto Serif TC",serif;font-weight:900;color:var(--bdg,#d4ab5d);font-size:1rem;letter-spacing:.04em;transition:color .5s}
+.badge .prog{font-family:"Bodoni Moda",serif;font-style:italic;color:var(--paper);opacity:.7;font-size:.9rem;margin-left:2px}
+.badge.flash{animation:bdgFlash .6s}
+@keyframes bdgFlash{0%{transform:scale(1)}40%{transform:scale(1.09)}100%{transform:scale(1)}}
+.counter{position:absolute;top:16px;right:16px;background:rgba(4,16,31,.72);backdrop-filter:blur(6px);border:1px solid rgba(212,171,93,.3);border-radius:30px;padding:8px 14px;z-index:4;font-family:"Bodoni Moda",serif;font-style:italic;color:var(--gold);font-size:.9rem;transition:opacity .35s}
+.counter.hide{opacity:0;pointer-events:none}
+.nav-arrow{position:absolute;top:50%;transform:translateY(-50%);width:54px;height:54px;border-radius:50%;background:rgba(4,16,31,.55);backdrop-filter:blur(6px);border:1px solid rgba(212,171,93,.4);color:var(--gold);font-size:1.7rem;line-height:1;cursor:pointer;z-index:5;display:flex;align-items:center;justify-content:center;transition:all .2s;opacity:.85}
+.nav-arrow:hover{background:var(--gold);color:var(--deep);opacity:1;box-shadow:0 0 24px rgba(212,171,93,.6)}
+.nav-arrow.prev{left:14px}.nav-arrow.next{right:14px}
+.nav-arrow.hide{opacity:0;pointer-events:none}
+.nav-arrow:disabled{opacity:.22;cursor:default;pointer-events:none}
+.flip-hint{position:absolute;bottom:14px;left:50%;transform:translateX(-50%);color:var(--paper);background:rgba(4,16,31,.62);border:1px solid rgba(212,171,93,.35);border-radius:20px;padding:7px 16px;font-size:.82rem;letter-spacing:.08em;z-index:4;opacity:.95;transition:opacity .6s;pointer-events:none}
+.flip-hint.gone{opacity:0}
+.dots{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;align-items:center;margin-top:22px}
+.dots .sep{width:14px}
+.dots button{width:10px;height:10px;border-radius:50%;border:none;background:rgba(212,171,93,.3);cursor:pointer;padding:0;transition:all .25s}
+.dots button:hover{transform:scale(1.35)}
+.dots button.active{width:26px;border-radius:6px;background:var(--dca,#d4ab5d);box-shadow:0 0 10px var(--dca,#d4ab5d)}
+.viewer-foot{display:flex;justify-content:center;gap:14px;margin-top:18px;flex-wrap:wrap}
+.viewer-foot button{background:transparent;border:1px solid rgba(212,171,93,.45);color:var(--gold);padding:10px 22px;border-radius:30px;cursor:pointer;font-family:inherit;font-size:.9rem;transition:all .2s}
+.viewer-foot button:hover{background:var(--gold);color:var(--deep)}
+@media(max-width:640px){.nav-arrow{width:42px;height:42px;font-size:1.3rem}.nav-arrow.prev{left:8px}.nav-arrow.next{right:8px}.badge{top:10px;left:10px;padding:6px 12px}.badge .cat{font-size:.85rem}.counter{top:10px;right:10px;padding:6px 10px;font-size:.8rem}}
+
+/* === 回頂浮動鈕 === */
+.back-top{position:fixed;left:24px;bottom:24px;width:52px;height:52px;border-radius:50%;background:linear-gradient(135deg,#d4ab5d,#b8933f);color:var(--deep);border:none;cursor:pointer;font-size:1.3rem;box-shadow:0 8px 24px rgba(0,0,0,.45),0 0 0 1px rgba(212,171,93,.3);opacity:0;transform:translateY(20px);pointer-events:none;transition:all .3s ease;z-index:90;display:flex;align-items:center;justify-content:center}
+.back-top.on{opacity:.95;transform:translateY(0);pointer-events:auto}
+.back-top:hover{transform:translateY(-4px) scale(1.08);box-shadow:0 12px 32px rgba(212,171,93,.5);opacity:1}
+@media(max-width:640px){.back-top{left:16px;bottom:16px;width:46px;height:46px;font-size:1.1rem}}
+
+/* === Lightbox（EDM 用）=== */
 .lbx{position:fixed;inset:0;background:rgba(0,0,0,.92);z-index:200;display:none;align-items:center;justify-content:center;padding:24px;backdrop-filter:blur(8px)}
 .lbx.on{display:flex;animation:fadeIn .3s}
 .lbx-in{max-width:95vw;max-height:95vh;display:flex;flex-direction:column;align-items:center;gap:20px}
@@ -52,119 +121,19 @@ h1,h2,h3,h4{font-family:"Noto Serif TC",serif;font-weight:900;letter-spacing:.02
 .lbx-close:hover{background:rgba(255,255,255,.15);border-color:#fff}
 .lbx-cap{color:var(--paper);text-align:center;font-size:1rem}
 .lbx-cap b{color:var(--gold);font-family:"Noto Serif TC",serif;margin-right:10px;font-size:1.1rem}
- /* === topnav === */
-.topnav{position:sticky;top:0;z-index:80;background:rgba(6,21,43,.92);backdrop-filter:blur(12px);border-bottom:1px solid rgba(212,171,93,.2)}
-.topnav-in{max-width:1280px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px}
-.topnav-brand{font-family:"Noto Serif TC",serif;font-weight:900;color:var(--gold);font-size:1.05rem;letter-spacing:.05em}
-.topnav-right{display:flex;align-items:center;gap:12px}
-.week-picker{position:relative}
-.wp-toggle{background:rgba(212,171,93,.1);border:1px solid rgba(212,171,93,.4);color:var(--gold);padding:8px 14px;border-radius:4px;cursor:pointer;font-family:inherit;font-size:.9rem;transition:all .2s}
-.wp-toggle:hover{background:rgba(212,171,93,.2);border-color:var(--gold)}
-.wp-menu{position:absolute;top:calc(100% + 8px);right:0;min-width:340px;background:#0a1f3d;border:1px solid rgba(212,171,93,.4);border-radius:5px;box-shadow:0 12px 40px rgba(0,0,0,.6);opacity:0;visibility:hidden;transform:translateY(-8px);transition:all .25s;overflow:hidden}
-.wp-menu.on{opacity:1;visibility:visible;transform:translateY(0)}
-.wp-item{display:block;padding:14px 18px;color:var(--paper);text-decoration:none;border-bottom:1px solid rgba(212,171,93,.1);cursor:pointer;transition:all .2s;font-size:.92rem}
-.wp-item:last-child{border-bottom:none}
-.wp-item:hover{background:rgba(212,171,93,.12)}
-.wp-item.current{background:rgba(212,171,93,.18);color:var(--gold)}
-.wp-item .d{font-family:"Bodoni Moda",serif;font-style:italic;font-weight:700;font-size:1rem;color:var(--gold);margin-right:8px}
-.wp-item .s{opacity:.85;font-size:.85rem;display:block;margin-top:4px}
-.wp-item .latest{display:inline-block;background:var(--gold);color:var(--deep);font-size:.7rem;padding:2px 8px;border-radius:10px;margin-left:8px;font-weight:700;letter-spacing:.05em}
-.snapshot-banner{display:none;background:linear-gradient(90deg,rgba(212,171,93,.18),rgba(255,107,91,.12));border-bottom:1px solid rgba(212,171,93,.3);padding:14px 24px;text-align:center;color:var(--paper);font-size:.95rem}
-.snapshot-banner.on{display:block}
-.snapshot-banner b{color:var(--gold);font-family:"Noto Serif TC",serif;margin-right:6px}
-.snapshot-banner a{color:var(--gold);text-decoration:underline;cursor:pointer;margin-left:12px}
-@media(max-width:640px){.topnav-in{padding:12px 16px}.wp-menu{min-width:280px;right:-8px}}
-/* hero-title */
 
-/* === 產業星系 === */
-.galaxy{position:relative;padding:80px 24px 60px;background:radial-gradient(ellipse at 30% 20%,rgba(212,171,93,.06),transparent 60%),radial-gradient(ellipse at 70% 80%,rgba(200,162,255,.04),transparent 60%),linear-gradient(180deg,#06152b,#0a1f3d);overflow:hidden;border-top:1px solid rgba(212,171,93,.15);border-bottom:1px solid rgba(212,171,93,.15)}
-.galaxy::before{content:"";position:absolute;inset:0;background-image:radial-gradient(1px 1px at 20% 30%,rgba(255,255,255,.35),transparent),radial-gradient(1px 1px at 60% 70%,rgba(255,255,255,.3),transparent),radial-gradient(1px 1px at 80% 15%,rgba(212,171,93,.4),transparent),radial-gradient(2px 2px at 45% 50%,rgba(255,255,255,.2),transparent),radial-gradient(1px 1px at 10% 80%,rgba(255,255,255,.3),transparent);pointer-events:none;animation:twinkle 5s ease-in-out infinite}
-@keyframes twinkle{0%,100%{opacity:.7}50%{opacity:1}}
-.galaxy-head{text-align:center;margin-bottom:42px;position:relative;z-index:2}
-.galaxy-en{color:var(--gold);font-size:.95rem;letter-spacing:.35em;opacity:.8}
-.galaxy-title{font-size:clamp(1.6rem,3.2vw,2.2rem);margin-top:10px;color:var(--paper)}
-.galaxy-sub{margin-top:10px;font-size:.95rem;opacity:.65;letter-spacing:.05em}
-.galaxy-stage{position:relative;max-width:1080px;margin:0 auto;min-height:520px}
-.galaxy-svg{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:1}
-.galaxy-grid{position:relative;z-index:2;display:grid;grid-template-columns:repeat(10,1fr);gap:22px 12px;padding:20px 0;max-width:900px;margin:0 auto}
-.star-btn{aspect-ratio:1;border-radius:50%;background:rgba(10,31,61,.75);border:1.5px solid rgba(212,171,93,.45);color:var(--gold);display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer;transition:all .35s cubic-bezier(.4,0,.2,1);font-family:inherit;position:relative;backdrop-filter:blur(4px);padding:4px}
-.star-btn .n{font-family:"Bodoni Moda",serif;font-style:italic;font-size:clamp(.95rem,1.3vw,1.2rem);font-weight:700;line-height:1}
-.star-btn .t{font-family:"Noto Serif TC",serif;font-size:clamp(.62rem,.78vw,.72rem);margin-top:2px;letter-spacing:.02em;line-height:1}
-.star-btn .cnt{font-family:"Inter",sans-serif;font-size:clamp(.55rem,.68vw,.62rem);margin-top:2px;opacity:.6;letter-spacing:.02em;line-height:1}
-.star-btn:hover{background:linear-gradient(135deg,#d4ab5d,#e8c478);color:var(--deep);border-color:var(--gold);transform:scale(1.18);box-shadow:0 0 32px rgba(212,171,93,.55),0 0 10px rgba(212,171,93,.8);z-index:5}
-.star-btn:hover .cnt{opacity:.9}
-/* 不規則排列：部份顆往上/下偏移，製造星座感 */
-.star-btn:nth-child(10n+2){transform:translateY(-6px)}
-.star-btn:nth-child(10n+5){transform:translateY(8px)}
-.star-btn:nth-child(10n+7){transform:translateY(-4px)}
-.star-btn:nth-child(10n+9){transform:translateY(6px)}
-.star-btn:nth-child(10n+2):hover,.star-btn:nth-child(10n+5):hover,.star-btn:nth-child(10n+7):hover,.star-btn:nth-child(10n+9):hover{transform:translateY(0) scale(1.18)}
-@media(max-width:900px){.galaxy-grid{grid-template-columns:repeat(7,1fr);max-width:680px}}
-@media(max-width:640px){.galaxy-grid{grid-template-columns:repeat(5,1fr);gap:16px 10px}.galaxy-stage{min-height:auto}.galaxy-svg{display:none}}
-@media(max-width:420px){.galaxy-grid{grid-template-columns:repeat(4,1fr)}}
-
-/* === 回頂浮動鈕 === */
-.back-top{position:fixed;left:24px;bottom:24px;width:52px;height:52px;border-radius:50%;background:linear-gradient(135deg,#d4ab5d,#b8933f);color:var(--deep);border:none;cursor:pointer;font-size:1.3rem;box-shadow:0 8px 24px rgba(0,0,0,.45),0 0 0 1px rgba(212,171,93,.3);opacity:0;transform:translateY(20px);pointer-events:none;transition:all .3s ease;z-index:90;display:flex;align-items:center;justify-content:center}
-.back-top.on{opacity:.95;transform:translateY(0);pointer-events:auto}
-.back-top:hover{transform:translateY(-4px) scale(1.08);box-shadow:0 12px 32px rgba(212,171,93,.5);opacity:1}
-.back-top::before{content:"✦";position:absolute;font-size:.6rem;top:8px;right:8px;opacity:.4}
-@media(max-width:640px){.back-top{left:16px;bottom:16px;width:46px;height:46px;font-size:1.1rem}}
-
- .hero-title{font-family:"Noto Serif TC",serif;font-size:clamp(1.4rem,3.2vw,2.2rem);font-weight:900;color:var(--paper);margin-bottom:36px;line-height:1.5;opacity:0;transform:translateY(20px);animation:fadeUp .9s .35s forwards;text-shadow:0 2px 20px rgba(0,0,0,.5)} .feat{display:flex;gap:24px;justify-content:center;flex-wrap:wrap;margin-bottom:32px}
-.edm-card{position:relative;max-width:483px;width:100%;opacity:0;transform:translateY(20px);animation:fadeUp 1s .5s forwards;transition:transform .4s}
-.edm-card:hover{transform:translateY(-6px)} .edm-card:hover img{filter:brightness(1.1)}
-.edm-card img{width:100%;display:block;border-radius:6px;transition:filter .3s;box-shadow:0 24px 60px rgba(0,0,0,.5),0 0 0 1px rgba(212,171,93,.3);background:#1a3458;min-height:200px}
-.edm-meta{margin-top:16px}
-.edm-meta .t{font-family:"Noto Serif TC",serif;font-size:1.25rem;color:var(--gold)}
-.edm-meta .s{font-size:.95rem;opacity:.75;margin-top:4px}
-.open-btn{margin-top:16px;background:var(--gold);color:var(--deep);border:none;padding:18px 44px;border-radius:4px;font-family:"Noto Serif TC",serif;font-weight:700;font-size:1.15rem;cursor:pointer;letter-spacing:.1em;opacity:0;transform:translateY(20px);animation:fadeUp 1s .9s forwards;position:relative;overflow:hidden}
-.open-btn::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,transparent,rgba(255,255,255,.35),transparent);transform:translateX(-100%);animation:shine 3s 2s infinite}
-.open-btn:hover{box-shadow:0 12px 28px rgba(212,171,93,.4)}
-@keyframes fadeUp{to{opacity:1;transform:translateY(0)}}
-@keyframes shine{0%{transform:translateX(-100%)}60%,100%{transform:translateX(100%)}}
-.scroll-hint{position:absolute;bottom:24px;left:50%;transform:translateX(-50%);color:var(--gold);font-size:.8rem;opacity:.6;letter-spacing:.3em;animation:bounce 2s infinite;z-index:2}
-@keyframes bounce{0%,100%{transform:translate(-50%,0)}50%{transform:translate(-50%,8px)}}
-.deck{padding:80px 0}
-.deck{animation:fadeIn .6s}
-@keyframes fadeIn{from{opacity:0}to{opacity:1}}
-.wrap{max-width:1280px;margin:0 auto;padding:0 24px}
-.deck-head{text-align:center;margin-bottom:48px}
-.deck-head .en{color:var(--gold);font-size:1rem;letter-spacing:.3em}
-.deck-head h2{font-size:clamp(1.8rem,4vw,2.6rem);margin-top:10px}
-.chain{margin-bottom:56px;transition:background .3s} .chain.flash{background:radial-gradient(ellipse at center,rgba(212,171,93,.12),transparent 70%);border-radius:8px}
-.chain-head{display:flex;align-items:baseline;gap:14px;margin-bottom:18px;padding-bottom:12px;border-bottom:1px solid var(--line);flex-wrap:wrap}
-.chain-no{font-family:"Bodoni Moda",serif;font-style:italic;color:var(--gold);font-size:2.2rem;line-height:1}
-.chain-head h3{font-size:1.5rem} .swipe-hint{margin-left:auto;color:var(--gold);font-size:.85rem;opacity:.6;display:flex;align-items:center;gap:6px;animation:swipe 2s ease-in-out infinite} .swipe-hint .arrow{display:inline-block;animation:arrow 1.5s ease-in-out infinite} @keyframes arrow{0%,100%{transform:translateX(0)}50%{transform:translateX(6px)}} @keyframes swipe{0%,100%{opacity:.4}50%{opacity:.9}} .scroller-wrap{position:relative} .scroller-wrap::after{content:"";position:absolute;top:0;right:0;width:50px;height:calc(100% - 20px);background:linear-gradient(90deg,transparent,rgba(6,21,43,.8));pointer-events:none;z-index:1} @media(min-width:900px){.swipe-hint{display:none} .scroller-wrap::after{display:none}}
-.scroller{display:flex;gap:18px;overflow-x:auto;scroll-snap-type:x mandatory;padding:4px 4px 20px}
-.scroller::-webkit-scrollbar{height:6px}
-.scroller::-webkit-scrollbar-thumb{background:var(--gold);border-radius:3px}
-.card{flex:0 0 360px;scroll-snap-align:start;background:linear-gradient(160deg,rgba(26,52,88,.5),rgba(10,31,61,.8));border:1px solid var(--line);border-radius:6px;padding:24px;transition:all .3s}
-.card:hover{transform:translateY(-4px);border-color:var(--gold);box-shadow:0 16px 40px rgba(0,0,0,.3)}
-.card .name{font-family:"Noto Serif TC",serif;font-size:1.35rem;font-weight:900;margin-bottom:4px}
-.card .biz{font-size:.95rem;color:var(--gold);margin-bottom:14px;padding-bottom:12px;border-bottom:1px dashed rgba(212,171,93,.25)}
-.row{margin-bottom:12px;font-size:1rem;line-height:1.65}
-.row .k{display:inline-block;font-weight:700;color:var(--gold);font-size:.85rem;letter-spacing:.05em;margin-right:6px}
-.row.need{padding:10px 12px;background:rgba(255,107,91,.08);border-left:3px solid var(--coral);border-radius:2px;margin:12px 0}
-.row.need .k{color:var(--coral)}
-.dlg{margin-top:14px;padding:14px;background:linear-gradient(135deg,rgba(212,171,93,.12),rgba(255,107,91,.06));border:1px solid rgba(212,171,93,.35);border-radius:4px}
-.dlg-h{font-family:"Noto Serif TC",serif;color:var(--gold);font-size:1.05rem;font-weight:700;margin-bottom:8px}
-.dlg p{font-size:.98rem;line-height:1.85;color:#f0e8d0}
-.sp{margin-top:10px;font-size:.85rem}
-.sp summary{cursor:pointer;color:var(--gold);opacity:.75;padding:4px 0}
-.sp p{padding:10px 12px;background:rgba(0,0,0,.25);border-radius:2px;margin-top:6px;line-height:1.75;font-size:.95rem;opacity:.9}
-.btns{display:flex;gap:8px;margin-top:14px}
-.btns button{flex:1;background:transparent;border:1px solid var(--gold);color:var(--gold);padding:11px 6px;border-radius:3px;cursor:pointer;font-size:.9rem;font-family:inherit;transition:all .2s;white-space:nowrap} .btns button.more{border-color:rgba(212,171,93,.5);color:rgba(212,171,93,.85)}
-.btns button:hover{background:var(--gold);color:var(--deep)}
-.toast{position:fixed;bottom:32px;left:50%;transform:translateX(-50%);background:var(--gold);color:var(--deep);padding:14px 28px;border-radius:4px;font-weight:700;box-shadow:0 12px 32px rgba(0,0,0,.4);opacity:0;transition:opacity .3s;pointer-events:none;z-index:100}
-.toast.on{opacity:1}
-.foot{text-align:center;padding:60px 24px;border-top:1px solid var(--line);opacity:.6;font-size:.9rem}
-.foot a{color:var(--gold);text-decoration:none} .signature{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:10px;font-family:"Inter","Noto Sans TC",sans-serif;font-size:.9rem;opacity:.85;margin-top:8px}
+/* === footer === */
+.foot{text-align:center;padding:60px 24px;border-top:1px solid var(--line);opacity:.7;font-size:.9rem}
+.foot a{color:var(--gold);text-decoration:none}
+.signature{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:10px;font-family:"Inter","Noto Sans TC",sans-serif;font-size:.9rem;opacity:.85;margin-top:8px}
 .signature .awoo-logo img{height:26px;vertical-align:middle;filter:brightness(1.1);transition:filter .3s}
 .signature .awoo-logo:hover img{filter:brightness(1.3) drop-shadow(0 0 8px rgba(212,171,93,.5))}
 .ada-link{font-family:"Noto Sans TC",sans-serif;font-size:1.1rem;font-weight:700;color:#c8f5ff;text-decoration:none;letter-spacing:1px;padding:5px 6px 3px;border-bottom:2px solid rgba(0,255,255,.4);transition:all .3s ease;display:inline-block;cursor:pointer}
 .ada-link:hover{color:#fff;text-shadow:0 0 8px rgba(0,255,255,.9),0 0 20px rgba(0,255,255,.7);border-bottom-color:rgba(0,255,255,.9)}
 .sig-tail{opacity:.7;font-size:.85rem}
-@media(max-width:640px){.card{flex:0 0 88vw}.week{letter-spacing:.2em}}
+
+.toast{position:fixed;bottom:32px;left:50%;transform:translateX(-50%);background:var(--gold);color:var(--deep);padding:14px 28px;border-radius:4px;font-weight:700;box-shadow:0 12px 32px rgba(0,0,0,.4);opacity:0;transition:opacity .3s;pointer-events:none;z-index:100}
+.toast.on{opacity:1}
 </style></head>
 <body>
 
@@ -172,161 +141,95 @@ h1,h2,h3,h4{font-family:"Noto Serif TC",serif;font-weight:900;letter-spacing:.02
 <div class="topnav-in">
 <span class="topnav-brand">BNI 富真分會</span>
 <div class="topnav-right">
-<div class="week-picker">
-<button class="wp-toggle" onclick="toggleWP()" id="wpToggle">📅 <span id="wpCurrent">2026-04-17</span> ▾</button>
-<div class="wp-menu" id="wpMenu"></div>
-</div>
+<a class="sheet-link" href="https://docs.google.com/spreadsheets/d/1HjaORwPAahieiA2uMeoxMzmcAY7VrIRfA_pdf3boTiQ/edit?usp=sharing" target="_blank" rel="noopener"><span class="full">本週會員專業 · 主題簡報 · </span>開啟引薦對話 <span class="arr">↗</span></a>
 </div>
 </div>
 </nav>
-<div class="snapshot-banner" id="snapBanner"></div>
+
 <section class="hero">
 <div class="hero-bg"></div>
 <div class="hero-top">
 <div class="hero-in">
-<div class="week en" id="week">WEEK OF · 2026.04.10</div>
+<div class="week en" id="week">WEEK OF</div>
 <h1 class="hero-title">每週超過 50 位高雄在地業者的<br>專業交流・商機引薦</h1>
 <div class="feat" id="feat"></div>
-
 </div>
 </div>
 <div class="hero-next" id="heroNext"></div>
-<div class="scroll-hint" onclick="openDeck()" style="cursor:pointer">SCROLL ↓</div>
+<div class="scroll-hint" onclick="goAlbum()">SCROLL ↓</div>
 </section>
 
-
-<section class="galaxy" id="galaxy">
-<div class="galaxy-head">
-<div class="en galaxy-en">19 INDUSTRY CHAINS</div>
-<h2 class="galaxy-title">產業星系・生態節點</h2>
-<p class="galaxy-sub">每一顆都是高雄的一個專業節點・點擊直接前往</p>
+<section class="album" id="album">
+<div class="album-head">
+<div class="en">SUCCESS STORIES</div>
+<h2>成功見證</h2>
+<p class="sub" id="albumSub">高雄 BNI 富真分會 · 真實成交見證</p>
 </div>
-<div class="galaxy-stage" id="galaxyStage">
-<svg class="galaxy-svg" id="galaxySvg" xmlns="http://www.w3.org/2000/svg"></svg>
-<div class="galaxy-grid" id="galaxyGrid"></div>
+<div class="viewer">
+<div class="stage" id="stage">
+<img id="albumImg" src="" alt="成功見證">
+<div class="badge hide" id="badge"><span class="dot"></span><span class="cat" id="bdgCat"></span><span class="prog" id="bdgProg"></span></div>
+<div class="counter hide" id="counter"></div>
+<button class="nav-arrow prev hide" id="arrPrev" onclick="albPrev()" aria-label="上一頁">‹</button>
+<button class="nav-arrow next hide" id="arrNext" onclick="albNext()" aria-label="下一頁">›</button>
+<div class="cover-ov" id="coverOv" onclick="albStart()">
+<div class="meta" id="coverMeta"></div>
+<button class="enter-btn" onclick="event.stopPropagation();albStart()">開始翻閱 →</button>
+</div>
+<div class="flip-hint gone" id="flipHint">← → 翻頁，或點兩側箭頭</div>
+</div>
+<div class="dots" id="dots"></div>
+<div class="viewer-foot" id="viewerFoot" style="display:none">
+<button onclick="albCover()">↺ 回封面</button>
+</div>
 </div>
 </section>
 
-<section class="deck" id="deck">
-<div class="wrap">
-<div class="deck-head"><div class="en">BNI FUZHEN · WEEKLY DECK</div><h2 id="deckTitle">本週專業卡牌</h2></div>
-<div id="chains"></div>
-</div>
-<div class="foot"><div style="margin-bottom:14px;font-size:.95rem">BNI 富真分會・高雄・每週五清晨 ｜ <a href="https://line.me/ti/p/8bgrVHyVXQ" target="_blank">加入招集人 LINE</a></div>
-<div class="signature">Powered by <a href="https://awoo.ai" target="_blank" class="awoo-logo"><img src="https://lh3.googleusercontent.com/pw/AP1GczMZZWr30_dY1Ke-Bi8Y5xkmHCR6LbpulIszDS4CBY-83hv8qlFlMUYq0BIpRHWnb-ECK73QEhMme3wZrk8MBJFjJ2AYBa13o6MtY0i6yliFbayXMCTZZ5f0kLXkpqh1nv0HMPKvDTGyUN8a_OQhNpkh6A=w451-h159-s-no-gm?authuser=0" alt="awoo 阿物科技官網"></a><a href="https://www.triplew.tw/tsai" target="_blank" data-text="蔡阿達" class="ada-link" onmouseover="adaGlitch(this,true)" onmouseout="adaGlitch(this,false)">蔡阿達</a><span class="sig-tail">| Crafted with Precision and Innovation</span></div></div>
-</section>
+<footer class="foot">
+<div style="margin-bottom:14px;font-size:.95rem">BNI 富真分會・高雄・每週五清晨 ｜ <a href="https://line.me/ti/p/8bgrVHyVXQ" target="_blank">加入招集人 LINE</a></div>
+<div class="signature">Powered by <a href="https://awoo.ai" target="_blank" class="awoo-logo"><img src="https://lh3.googleusercontent.com/pw/AP1GczMZZWr30_dY1Ke-Bi8Y5xkmHCR6LbpulIszDS4CBY-83hv8qlFlMUYq0BIpRHWnb-ECK73QEhMme3wZrk8MBJFjJ2AYBa13o6MtY0i6yliFbayXMCTZZ5f0kLXkpqh1nv0HMPKvDTGyUN8a_OQhNpkh6A=w451-h159-s-no-gm?authuser=0" alt="awoo 阿物科技官網"></a><a href="https://www.triplew.tw/tsai" target="_blank" data-text="蔡阿達" class="ada-link" onmouseover="adaGlitch(this,true)" onmouseout="adaGlitch(this,false)">蔡阿達</a><span class="sig-tail">| Crafted with Precision and Innovation</span></div>
+</footer>
 
 <div class="toast" id="toast">已複製到剪貼簿 ✓</div>
+<button class="back-top" id="backTop" onclick="toTop()" title="回到頁首" aria-label="回到頁首">↑</button>
+
+<div class="lbx" id="lbx" onclick="if(event.target===this)closeLbx()"><button class="lbx-close" onclick="closeLbx()">✕</button><div class="lbx-in"><img id="lbxImg" src=""><div class="lbx-cap" id="lbxCap"></div><div class="lbx-btns"><button onclick="dlEdm()">📥 下載 EDM</button><button class="sec" onclick="shareEdm()">📤 更多分享</button></div></div></div>
 
 <script>
-let DATA=null;
-const CHAIN_NICK={1:"設計",2:"團購",3:"兒童",4:"幸福",5:"高端",6:"中小",7:"餐飲",8:"業務",9:"新居",10:"新車",11:"食品",12:"行銷",13:"質感",14:"活動",15:"建商",16:"工程",17:"資訊",18:"大健",19:"退休"};
-// 星座連線（暗示產業鏈生態交集）
-const CHAIN_LINKS=[[1,9],[1,15],[6,11],[6,17],[11,7],[2,5],[3,4],[13,5],[14,12],[12,8],[10,16],[16,15],[18,3],[19,5]];
-let WEEKS_INDEX=null,EDM_SCHEDULE=null,CURRENT_WEEK=null;
-
-// refDate 以後（含）的場次，由近到遠
+/* ============ EDM 三層（沿用既有邏輯：依今天日期算上/本/下週）============ */
+let EDM_SCHEDULE=null;
 function getUpcomingEdmsFrom(refDate){
   if(!EDM_SCHEDULE||!EDM_SCHEDULE.schedule)return[];
   return EDM_SCHEDULE.schedule.filter(x=>x.date>=refDate).sort((a,b)=>a.date.localeCompare(b.date));
 }
-// refDate 以前（不含）的最後一個場次（上週）
 function getPastEdmBefore(refDate){
   if(!EDM_SCHEDULE||!EDM_SCHEDULE.schedule)return null;
   const past=EDM_SCHEDULE.schedule.filter(x=>x.date<refDate).sort((a,b)=>a.date.localeCompare(b.date));
   return past.length?past[past.length-1]:null;
 }
-// 保留舊名（bootstrap 沒用到，以防萬一）
-function getUpcomingEdms(){return getUpcomingEdmsFrom(new Date().toISOString().split('T')[0]);}
-function getPastEdm(){return getPastEdmBefore(new Date().toISOString().split('T')[0]);}
-
 async function bootstrap(){
   try{
-    [WEEKS_INDEX,EDM_SCHEDULE]=await Promise.all([
-      fetch('data/weeks-index.json').then(r=>r.json()),
-      fetch('data/edm-schedule.json').then(r=>r.json())
-    ]);
-    renderWeekPicker();
-    // 從 URL 取 week，或用最新一週（會員卡用）
-    const params=new URLSearchParams(location.search);
-    const wk=params.get('week')||WEEKS_INDEX.weeks[0].date;
-    await loadWeek(wk);
+    EDM_SCHEDULE=await fetch('data/edm-schedule.json',{cache:'no-store'}).then(r=>r.json());
+    renderEdm();
   }catch(e){
     console.error(e);
-    document.getElementById('feat').innerHTML=`<div style="color:#ff6b5b;padding:20px;max-width:700px;background:rgba(255,107,91,.1);border:1px solid #ff6b5b;border-radius:8px;font-family:monospace;line-height:1.8"><b style="font-size:1.1rem">⚠️ 資料載入失敗</b><br><br>錯誤訊息：<br><code style="color:#ffb3aa">${e.message}</code><br><br>請確認這三個 JSON 在 GitHub data/ 資料夾內：<br>• data/weeks-index.json<br>• data/edm-schedule.json<br>• data/2026-04-17.json (或選定週次的 JSON)</div>`;
+    document.getElementById('feat').innerHTML='<div style="color:#ff6b5b;padding:20px;max-width:700px;background:rgba(255,107,91,.1);border:1px solid #ff6b5b;border-radius:8px;font-family:monospace;line-height:1.8"><b style="font-size:1.1rem">⚠️ EDM 資料載入失敗</b><br><br>'+e.message+'<br><br>請確認 GitHub data/edm-schedule.json 存在</div>';
   }
+  initAlbum();
 }
-
-async function loadWeek(date){
-  CURRENT_WEEK=date;
-  document.getElementById('wpCurrent').textContent=date;
-  // 更新 snapshot banner
-  const isLatest=WEEKS_INDEX.weeks[0].date===date;
-  const banner=document.getElementById('snapBanner');
-  if(!isLatest){
-    banner.innerHTML='<b>📅 你正在瀏覽 '+date+' 的歷史快照</b><a onclick="loadWeek(WEEKS_INDEX.weeks[0].date)">回到最新一週 →</a>';
-    banner.classList.add('on');
-  }else{
-    banner.classList.remove('on');
-  }
-  // 更新 URL 不重新整理
-  const u=new URL(location);
-  if(isLatest){u.searchParams.delete('week')}else{u.searchParams.set('week',date)}
-  history.replaceState({},'',u);
-  // 載入該週會員資料
-  try{
-    const r=await fetch('data/'+date+'.json');
-    DATA=await r.json();
-    render();
-    // 更新下拉選單 highlight
-    document.querySelectorAll('.wp-item').forEach(el=>el.classList.toggle('current',el.dataset.date===date));
-    closeWP();
-    window.scrollTo({top:0,behavior:'smooth'});
-  }catch(e){
-    document.getElementById('chains').innerHTML=`<div style="color:#ff6b5b;padding:40px;text-align:center;font-family:monospace"><b>⚠️ 找不到 data/${date}.json</b><br><br>錯誤：${e.message}<br><br>請確認 GitHub data/ 資料夾有這個檔案</div>`;
-  }
-}
-
-function renderWeekPicker(){
-  const html=WEEKS_INDEX.weeks.map((w,i)=>{
-    const latest=i===0?'<span class="latest">最新</span>':'';
-    return `<div class="wp-item" data-date="${w.date}" onclick="loadWeek('${w.date}')"><span class="d">${w.date}</span>${latest}<span class="s">${w.speakers_label}</span></div>`;
-  }).join('');
-  document.getElementById('wpMenu').innerHTML=html;
-}
-
-function toggleWP(){document.getElementById('wpMenu').classList.toggle('on')}
-function closeWP(){document.getElementById('wpMenu').classList.remove('on')}
-document.addEventListener('click',e=>{if(!e.target.closest('.week-picker'))closeWP()});
-
-bootstrap();
-
-function render(){
-  // 判斷是否在歷史模式：若選的不是最新週，用 CURRENT_WEEK 隔天當參考基準
-  const isHistorical=WEEKS_INDEX&&CURRENT_WEEK!==WEEKS_INDEX.weeks[0].date;
-  let refDate;
-  if(isHistorical){
-    const d=new Date(CURRENT_WEEK);d.setDate(d.getDate()+1);
-    refDate=d.toISOString().split('T')[0];
-  }else{
-    refDate=new Date().toISOString().split('T')[0];
-  }
-  // 三組 EDM 依 refDate 計算
+function renderEdm(){
+  const refDate=new Date().toISOString().split('T')[0];
   const upcoming=getUpcomingEdmsFrom(refDate);
   const pastEdm=getPastEdmBefore(refDate);
   const thisWeekEdm=upcoming.length?upcoming[0]:null;
   const nextWeekData=upcoming.length>1?upcoming[1]:null;
-  // WEEK OF 顯示本週場次日期
-  const wkDisplay=thisWeekEdm?thisWeekEdm.date.replace(/-/g,'.'):DATA['會議日期']?.replace(/-/g,'.')||'';
-  document.getElementById('week').textContent='WEEK OF · '+wkDisplay;
-  document.getElementById('deckTitle').textContent=(DATA['會議日期']||'').replace(/-/g,'.')+' 本週專業卡牌';
-  let featured=thisWeekEdm?thisWeekEdm.speakers:DATA['本週主秀']||DATA.featured||[];
-  document.getElementById('feat').innerHTML=featured.map((f,i)=>`<div class="edm-card" onclick="openLbxWeek(${i})" style="cursor:pointer"><img src="${f.edm}" alt="${f.name} ${f.industry}" onerror="this.onerror=null;this.style.cssText='background:linear-gradient(135deg,#1a3458,#0a1f3d);min-height:280px;display:flex;align-items:center;justify-content:center;color:#d4ab5d;font-size:1.1rem;padding:40px;text-align:center';this.src='data:image/svg+xml;charset=utf-8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22420%22 height=%22280%22><rect width=%22420%22 height=%22280%22 fill=%22%230a1f3d%22/><text x=%2250%25%22 y=%2245%25%22 text-anchor=%22middle%22 fill=%22%23d4ab5d%22 font-size=%2220%22 font-family=%22serif%22>EDM 圖片未載入</text><text x=%2250%25%22 y=%2260%25%22 text-anchor=%22middle%22 fill=%22%23d4ab5d%22 font-size=%2214%22 opacity=%220.6%22>請確認 GitHub 路徑</text></svg>'"><div class="edm-meta"><div class="t">本週主題簡報・${f.name}</div><div class="s">${f.industry}</div></div></div>`).join('');
+  const wkDisplay=thisWeekEdm?thisWeekEdm.date.replace(/-/g,'.'):(pastEdm?pastEdm.date.replace(/-/g,'.'):'');
+  document.getElementById('week').textContent=wkDisplay?('WEEK OF · '+wkDisplay):'WEEK OF';
+  const featured=thisWeekEdm?thisWeekEdm.speakers:[];
+  document.getElementById('feat').innerHTML=featured.map((f,i)=>`<div class="edm-card" onclick="openLbxWeek(${i})"><img src="${f.edm}" alt="${f.name} ${f.industry}" onerror="this.onerror=null;this.src='data:image/svg+xml;charset=utf-8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22420%22 height=%22280%22><rect width=%22420%22 height=%22280%22 fill=%22%230a1f3d%22/><text x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22 fill=%22%23d4ab5d%22 font-size=%2218%22 font-family=%22serif%22>EDM 圖片未載入</text></svg>'"><div class="edm-meta"><div class="t">本週主題簡報・${f.name}</div><div class="s">${f.industry}</div></div></div>`).join('');
   window.__WEEK=featured;
-  // 下半屏：上週（左）+ 下週（右）
   const heroNext=document.getElementById('heroNext');
   let nextHtml='<div class="next-inner tri">';
-  // 上週
   if(pastEdm&&pastEdm.speakers&&pastEdm.speakers.length){
     const dt=pastEdm.date.replace(/-/g,'.');
     nextHtml+='<div class="tri-col past"><div class="tri-label">上週主題簡報 · '+dt+'</div><div class="tri-grid">'+
@@ -334,7 +237,6 @@ function render(){
       '</div></div>';
     window.__PAST=pastEdm.speakers;
   }
-  // 下週
   if(nextWeekData&&nextWeekData.speakers&&nextWeekData.speakers.length){
     const dt=(nextWeekData.date||'').replace(/-/g,'.');
     nextHtml+='<div class="tri-col next"><div class="tri-label">下週主題簡報 · '+dt+'</div><div class="tri-grid">'+
@@ -344,117 +246,120 @@ function render(){
   }
   nextHtml+='</div>';
   heroNext.innerHTML=(pastEdm||nextWeekData)?nextHtml:'';
-  const chains={};
-  (DATA['會員簡報']||[]).forEach(m=>{const k=m['產業鏈']||'其他';(chains[k]=chains[k]||[]).push(m)});
-  const keys=Object.keys(chains).sort((a,b)=>{const na=parseInt((a.match(/第(\d+)/)||[])[1]||99);const nb=parseInt((b.match(/第(\d+)/)||[])[1]||99);return na-nb});
-  document.getElementById('chains').innerHTML=keys.map(k=>{
-    const mt=k.match(/第(\d+)產業鏈\s*(.+)/);const no=mt?mt[1]:'';const nm=mt?mt[2]:k;
-    return `<div class="chain"><div class="chain-head"><span class="chain-no">${no.padStart(2,'0')}</span><h3>${nm}</h3>${chains[k].length>1?'<span class="swipe-hint">左右滑動 <span class="arrow">→</span></span>':''}</div><div class="scroller-wrap"><div class="scroller">${chains[k].map(renderCard).join('')}</div></div></div>`;
-  }).join('');
-  renderGalaxy(chains);
 }
 
-function renderGalaxy(chains){
-  const keys=Object.keys(chains).sort((a,b)=>{const na=parseInt((a.match(/第(\d+)/)||[])[1]||99);const nb=parseInt((b.match(/第(\d+)/)||[])[1]||99);return na-nb});
-  const cells=keys.map(k=>{const mt=k.match(/第(\d+)/);const no=mt?parseInt(mt[1]):0;const nick=CHAIN_NICK[no]||'';const cnt=chains[k].length;return `<button class="star-btn" data-no="${no}" onclick="jumpChain(${no})"><span class="n">${String(no).padStart(2,'0')}</span><span class="t">${nick}</span><span class="cnt">${cnt} 位</span></button>`}).join('');
-  document.getElementById('galaxyGrid').innerHTML=cells;
-  // 等 DOM layout 完再畫 SVG 連線
-  setTimeout(drawLinks,100);
-  window.addEventListener('resize',()=>{clearTimeout(window._rs);window._rs=setTimeout(drawLinks,200)});
+/* ============ 成功見證相簿（讀 data/clips-order.txt）============ */
+const CAT_ACCENT={'個人收穫':'#d4ab5d','引薦成交':'#e0954e','一對一商務連結':'#6fb7c9','新會員見證':'#8fbf8a','培訓成長':'#a892d6'};
+let ALBUM=[],CUR=0,_hinted=false;
+async function initAlbum(){
+  let txt='';
+  try{txt=await fetch('data/clips-order.txt',{cache:'no-store'}).then(r=>r.text());}
+  catch(e){document.getElementById('albumSub').textContent='見證相簿載入失敗，請確認 data/clips-order.txt';return;}
+  let curCat=null;
+  txt.split(/\r?\n/).forEach(raw=>{
+    const line=raw.trim();
+    if(!line||line[0]==='#')return;
+    const m=line.match(/^【(.+)】$/);
+    if(m){curCat=m[1];return;}
+    ALBUM.push({file:line,cat:curCat});
+  });
+  if(!ALBUM.length){document.getElementById('albumSub').textContent='相簿尚無圖片';return;}
+  ALBUM[0].cover=true;
+  const cats={};
+  ALBUM.forEach((p,i)=>{if(i===0)return;(cats[p.cat]=cats[p.cat]||[]).push(p)});
+  Object.values(cats).forEach(arr=>arr.forEach((p,j)=>{p.idx=j+1;p.total=arr.length}));
+  const stories=ALBUM.length-1,catCount=Object.keys(cats).length;
+  const subTxt='高雄 BNI 富真分會 · '+stories+' 個成功見證 · '+catCount+' 大面向';
+  document.getElementById('albumSub').textContent=subTxt;
+  document.getElementById('coverMeta').textContent=stories+' 個成功見證 · '+catCount+' 大面向';
+  buildDots();bindSwipe();
+  ALBUM.forEach(p=>{const im=new Image();im.src='clips/'+encodeURIComponent(p.file)});
+  showAlbum(0);
 }
-
-function drawLinks(){
-  const svg=document.getElementById('galaxySvg');if(!svg)return;
-  const stage=document.getElementById('galaxyStage');
-  const r=stage.getBoundingClientRect();
-  svg.setAttribute('viewBox',`0 0 ${r.width} ${r.height}`);
-  const pts={};
-  document.querySelectorAll('.star-btn').forEach(b=>{const no=b.dataset.no;const br=b.getBoundingClientRect();pts[no]={x:br.left-r.left+br.width/2,y:br.top-r.top+br.height/2}});
-  const lines=CHAIN_LINKS.map(([a,b])=>{if(!pts[a]||!pts[b])return '';return `<line x1="${pts[a].x}" y1="${pts[a].y}" x2="${pts[b].x}" y2="${pts[b].y}" stroke="rgba(212,171,93,0.25)" stroke-width="1" stroke-dasharray="3 4"/>`}).join('');
-  svg.innerHTML=lines;
+function buildDots(){
+  let html='',prev=null;
+  ALBUM.forEach((p,i)=>{
+    if(i>0&&prev!==null&&p.cat!==prev)html+='<span class="sep"></span>';
+    const ac=p.cover?'#d4ab5d':(CAT_ACCENT[p.cat]||'#d4ab5d');
+    html+='<button data-i="'+i+'" style="--dca:'+ac+'" onclick="showAlbum('+i+')" title="'+(p.cover?'封面':p.cat)+'"></button>';
+    if(i>0)prev=p.cat;
+  });
+  document.getElementById('dots').innerHTML=html;
 }
-
-function jumpChain(no){
-  const chains=document.querySelectorAll('.chain');
-  chains.forEach(c=>{const h=c.querySelector('.chain-no');if(h&&parseInt(h.textContent)===no){c.scrollIntoView({behavior:'smooth',block:'start'});c.classList.add('flash');setTimeout(()=>c.classList.remove('flash'),1600)}});
+function showAlbum(i){
+  if(i<0||i>=ALBUM.length)return;
+  CUR=i;const p=ALBUM[i];
+  const stage=document.getElementById('stage'),img=document.getElementById('albumImg');
+  const src='clips/'+encodeURIComponent(p.file);
+  stage.classList.add('fading');
+  const tmp=new Image();
+  const done=()=>{img.src=src;stage.classList.remove('fading')};
+  tmp.onload=done;tmp.onerror=done;tmp.src=src;
+  const isCover=!!p.cover;
+  document.getElementById('coverOv').classList.toggle('hide',!isCover);
+  document.getElementById('badge').classList.toggle('hide',isCover);
+  document.getElementById('counter').classList.toggle('hide',isCover);
+  document.getElementById('arrPrev').classList.toggle('hide',isCover);
+  document.getElementById('arrNext').classList.toggle('hide',isCover);
+  document.getElementById('viewerFoot').style.display=isCover?'none':'flex';
+  if(!isCover){
+    const ac=CAT_ACCENT[p.cat]||'#d4ab5d';
+    const badge=document.getElementById('badge');
+    badge.style.setProperty('--bdg',ac);
+    document.getElementById('bdgCat').textContent=p.cat||'';
+    document.getElementById('bdgProg').textContent=(p.total>1)?(p.idx+' / '+p.total):'';
+    badge.classList.remove('flash');void badge.offsetWidth;badge.classList.add('flash');
+    document.getElementById('counter').textContent=i+' / '+(ALBUM.length-1);
+    document.getElementById('arrPrev').disabled=false;
+    document.getElementById('arrNext').disabled=(i>=ALBUM.length-1);
+    if(i===1&&!_hinted){_hinted=true;const h=document.getElementById('flipHint');h.classList.remove('gone');setTimeout(()=>h.classList.add('gone'),2800)}
+  }
+  document.querySelectorAll('.dots button').forEach(b=>b.classList.toggle('active',+b.dataset.i===i));
 }
-
-function backToGalaxy(){document.getElementById('galaxy').scrollIntoView({behavior:'smooth'})}
-
-// 滾動監聽顯示回頂鈕
-window.addEventListener('scroll',()=>{const bt=document.getElementById('backTop');if(!bt)return;const galaxy=document.getElementById('galaxy');if(!galaxy){bt.classList.remove('on');return}const top=galaxy.getBoundingClientRect().bottom;if(top<0)bt.classList.add('on');else bt.classList.remove('on')});
-
-function renderCard(m){
-  const dlg=buildDlg(m);
-  const rows=[];
-  if(m['會員專業'])rows.push(`<div class="row"><span class="k">專業</span>${esc(m['會員專業'])}</div>`);
-  if(m['本週亮點'])rows.push(`<div class="row"><span class="k">亮點</span>${esc(m['本週亮點'])}</div>`);
-  if(m['代表性客戶'])rows.push(`<div class="row"><span class="k">代表客戶</span>${esc(m['代表性客戶'])}</div>`);
-  if(m['引薦需求'])rows.push(`<div class="row need"><span class="k">引薦需求</span>${esc(m['引薦需求'])}</div>`);
-  const dlgHtml=dlg?`<div class="dlg"><div class="dlg-h">💬 開啟引薦對話</div><p>${esc(dlg)}</p></div>`:'';
-  const spHtml=m['簡報原文']?`<details class="sp"><summary>📜 簡報原文</summary><p>${esc(m['簡報原文'])}</p></details>`:'';
-  const enc=encodeURIComponent(dlg||'');
-  return `<div class="card"><div class="name">${esc(m['姓名']||'')}</div><div class="biz">${esc(m['行業別']||'')}</div>${rows.join('')}${dlgHtml}${spHtml}<div class="btns"><button onclick="cpDlg('${enc}')">📋 複製對話</button><button onclick="shareMore('${enc}','${esc(m['姓名']||'')}')" class="more">📤 更多</button></div></div>`;
+function albStart(){showAlbum(1)}
+function albCover(){showAlbum(0)}
+function albPrev(){showAlbum(CUR-1)}
+function albNext(){showAlbum(CUR+1)}
+function goAlbum(){document.getElementById('album').scrollIntoView({behavior:'smooth'})}
+let _tsx=null;
+function bindSwipe(){
+  const s=document.getElementById('stage');
+  s.addEventListener('touchstart',e=>{_tsx=e.changedTouches[0].clientX},{passive:true});
+  s.addEventListener('touchend',e=>{
+    if(_tsx===null)return;const dx=e.changedTouches[0].clientX-_tsx;_tsx=null;
+    if(Math.abs(dx)<40)return;
+    if(dx<0){if(CUR===0)albStart();else albNext()}else{albPrev()}
+  },{passive:true});
 }
+document.addEventListener('keydown',e=>{
+  if(document.getElementById('lbx').classList.contains('on'))return;
+  const a=document.getElementById('album');if(!a)return;
+  const r=a.getBoundingClientRect();
+  if(!(r.top<window.innerHeight*0.6&&r.bottom>0))return;
+  if(e.key==='ArrowRight'){if(CUR===0)albStart();else albNext()}
+  else if(e.key==='ArrowLeft'){albPrev()}
+});
 
-function buildDlg(m){
-  const d=m['黃金開啟引薦對話'];if(!d)return '';
-  if(typeof d==='string')return d;
-  return [d['痛點梗開場'],d['一句話專業'],d['戰績'],d['對應情境']].filter(Boolean).join('');
-}
-function esc(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'})[c])}
-function cpDlg(enc){const t=decodeURIComponent(enc);navigator.clipboard.writeText(t).then(()=>toast('已複製引薦對話 ✓')).catch(()=>{const ta=document.createElement('textarea');ta.value=t;document.body.appendChild(ta);ta.select();document.execCommand('copy');document.body.removeChild(ta);toast('已複製引薦對話 ✓')})}
-
+/* ============ 共用：回頂、toast、簽名特效 ============ */
+function toTop(){window.scrollTo({top:0,behavior:'smooth'})}
+window.addEventListener('scroll',()=>{const bt=document.getElementById('backTop');if(!bt)return;if(window.scrollY>window.innerHeight*0.8)bt.classList.add('on');else bt.classList.remove('on')});
 function toast(msg){const el=document.getElementById('toast');el.textContent=msg;el.classList.add('on');setTimeout(()=>el.classList.remove('on'),2000)}
-
 function adaGlitch(el,on){
-  if(on){
-    const txt=el.getAttribute('data-text');const chars='█▓▒░_';
-    el.glitchInterval=setInterval(()=>{
-      let s='';for(let i=0;i<txt.length;i++){s+=Math.random()>0.9?chars[Math.floor(Math.random()*chars.length)]:txt[i]}
-      el.innerText=s;
-    },80);
-  }else{
-    clearInterval(el.glitchInterval);el.glitchInterval=null;
-    el.innerText=el.getAttribute('data-text');
-  }
+  if(on){const txt=el.getAttribute('data-text');const chars='█▓▒░_';
+    el.glitchInterval=setInterval(()=>{let s='';for(let i=0;i<txt.length;i++){s+=Math.random()>0.9?chars[Math.floor(Math.random()*chars.length)]:txt[i]}el.innerText=s},80);
+  }else{clearInterval(el.glitchInterval);el.glitchInterval=null;el.innerText=el.getAttribute('data-text')}
 }
 
-
-function shareMore(enc,name){
-  const t=decodeURIComponent(enc);
-  if(navigator.share){
-    navigator.share({title:'BNI 富真分會・'+name+' 引薦對話',text:t}).catch(()=>{});
-  }else{
-    // 桌機沒有 Web Share API：退回複製 + 提示
-    navigator.clipboard.writeText(t).then(()=>toast('已複製！請手動貼到 FB/IG/其他 ✓')).catch(()=>toast('請長按複製後分享'));
-  }
-}
-
-function openDeck(){document.getElementById('deck').scrollIntoView({behavior:'smooth'})}
-</script>
-<button class="back-top" id="backTop" onclick="backToGalaxy()" title="回到產業星系" aria-label="回到產業星系">↑</button>
-<div class="lbx" id="lbx" onclick="if(event.target===this)closeLbx()"><button class="lbx-close" onclick="closeLbx()">✕</button><div class="lbx-in"><img id="lbxImg" src=""><div class="lbx-cap" id="lbxCap"></div><div class="lbx-btns"><button onclick="dlEdm()">📥 下載 EDM</button><button class="sec" onclick="shareEdm()">📤 更多分享</button></div></div></div>
-<script>
+/* ============ EDM 燈箱 ============ */
 let _LBX=null;
-function openLbxPast(i){
-  if(!window.__PAST)return;
-  showLbx(window.__PAST[i],'上週主題簡報・');
-}
-function openLbx(i){
-  if(!window.__NEXT)return;
-  showLbx(window.__NEXT[i],'下週主題簡報・');
-}
-function openLbxWeek(i){
-  if(!window.__WEEK)return;
-  showLbx(window.__WEEK[i],'本週主題簡報・');
-}
+function openLbxPast(i){if(window.__PAST)showLbx(window.__PAST[i],'上週主題簡報・')}
+function openLbx(i){if(window.__NEXT)showLbx(window.__NEXT[i],'下週主題簡報・')}
+function openLbxWeek(i){if(window.__WEEK)showLbx(window.__WEEK[i],'本週主題簡報・')}
 function showLbx(f,prefix){
-  _LBX=f;
+  if(!f)return;_LBX=f;
   document.getElementById('lbxImg').src=f.edm;
   document.getElementById('lbxCap').innerHTML='<b>'+(prefix||'')+f.name+'</b>'+f.industry;
-  document.getElementById('lbx').classList.add('on');
-  document.body.style.overflow='hidden';
+  document.getElementById('lbx').classList.add('on');document.body.style.overflow='hidden';
 }
 function closeLbx(){document.getElementById('lbx').classList.remove('on');document.body.style.overflow='';_LBX=null}
 document.addEventListener('keydown',e=>{if(e.key==='Escape')closeLbx()});
@@ -462,24 +367,14 @@ function dlEdm(){if(!_LBX)return;const a=document.createElement('a');a.href=_LBX
 async function shareEdm(){
   if(!_LBX)return;
   const txt='📅 BNI 富真分會・'+_LBX.name+'｜'+_LBX.industry+'\n'+window.location.href;
-  // Tier 1: 嘗試 files
   if(navigator.share&&navigator.canShare){
-    try{
-      const r=await fetch(_LBX.edm);const b=await r.blob();
-      const fn=_LBX.edm.split('/').pop();
-      const file=new File([b],fn,{type:b.type});
-      if(navigator.canShare({files:[file]})){
-        await navigator.share({files:[file],text:txt});return;
-      }
-    }catch(e){}
+    try{const r=await fetch(_LBX.edm);const b=await r.blob();const fn=_LBX.edm.split('/').pop();const file=new File([b],fn,{type:b.type});
+      if(navigator.canShare({files:[file]})){await navigator.share({files:[file],text:txt});return}}catch(e){}
   }
-  // Tier 2: text 分享
-  if(navigator.share){
-    try{await navigator.share({text:txt});return}catch(e){if(e.name==='AbortError')return}
-  }
-  // Tier 3: 複製
-  try{await navigator.clipboard.writeText(txt);toast('圖片網址已複製，可貼到任何 App ✓')}
-  catch(e){toast('請長按圖片另存或複製網址')}
+  if(navigator.share){try{await navigator.share({text:txt});return}catch(e){if(e.name==='AbortError')return}}
+  try{await navigator.clipboard.writeText(txt);toast('圖片網址已複製，可貼到任何 App ✓')}catch(e){toast('請長按圖片另存或複製網址')}
 }
+
+bootstrap();
 </script>
 </body></html>
