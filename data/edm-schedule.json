@@ -30,7 +30,7 @@
       "speakers": [
         {
           "name": "陳恒丰",
-          "industry": "資訊系統開發業",
+          "industry": "資訊系統開發",
           "edm": "edm/2026-05-08-陳恒丰-資訊系統開發.png"
         },
         {
@@ -45,7 +45,7 @@
       "speakers": [
         {
           "name": "蔡阿達",
-          "industry": "SEO 業",
+          "industry": "SEO業",
           "edm": "edm/2026-05-15-蔡阿達-SEO業.png"
         },
         {
@@ -60,7 +60,7 @@
       "speakers": [
         {
           "name": "任昌明",
-          "industry": "標籤印刷業",
+          "industry": "標籤印刷",
           "edm": "edm/2026-05-22-任昌明-標籤印刷.jpg"
         },
         {
@@ -74,14 +74,14 @@
       "date": "2026-05-29",
       "speakers": [
         {
-          "name": "葉映廷",
-          "industry": "整復推拿業",
-          "edm": "edm/2026-05-29-葉映廷-整復推拿.jpg"
+          "name": "張簡承恩",
+          "industry": "活動平面攝影",
+          "edm": "edm/2026-05-29-張簡承恩-活動平面攝影.jpg"
         },
         {
-          "name": "張簡承恩",
-          "industry": "活動平面攝影業",
-          "edm": "edm/2026-05-29-張簡承恩-活動平面攝影.jpg"
+          "name": "葉映廷",
+          "industry": "整復推拿",
+          "edm": "edm/2026-05-29-葉映廷-整復推拿.jpg"
         }
       ]
     },
@@ -90,12 +90,12 @@
       "speakers": [
         {
           "name": "陳誫昕",
-          "industry": "住宅房仲業",
+          "industry": "房屋仲介",
           "edm": "edm/2026-06-05-陳誫昕-房屋仲介.jpg"
         },
         {
           "name": "黃靖傑",
-          "industry": "車體鍍膜業",
+          "industry": "車體鍍膜",
           "edm": "edm/2026-06-05-黃靖傑-車體鍍膜.jpg"
         }
       ]
@@ -104,14 +104,29 @@
       "date": "2026-06-12",
       "speakers": [
         {
-          "name": "徐湘榆",
-          "industry": "美甲業",
-          "edm": "edm/2026-06-12-湘湘_Vita-美甲業.jpg"
-        },
-        {
-          "name": "鄭景隆",
+          "name": "Mario",
           "industry": "咖啡批發零售",
           "edm": "edm/2026-06-12-Mario-咖啡批發零售.jpg"
+        },
+        {
+          "name": "湘湘_Vita",
+          "industry": "美甲業",
+          "edm": "edm/2026-06-12-湘湘_Vita-美甲業.jpg"
+        }
+      ]
+    },
+    {
+      "date": "2026-06-26",
+      "speakers": [
+        {
+          "name": "柯子侃",
+          "industry": "日式居酒屋",
+          "edm": "edm/2026-06-26-柯子侃-日式居酒屋.jpg"
+        },
+        {
+          "name": "黃瑞仁",
+          "industry": "堅果業",
+          "edm": "edm/2026-06-26-黃瑞仁-堅果業.jpg"
         }
       ]
     }
