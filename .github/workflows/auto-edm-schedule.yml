@@ -1,0 +1,74 @@
+name: 自動產生 EDM 排程
+
+# 觸發時機：只要 edm/ 資料夾有任何變動（上傳/刪除圖片）就跑
+on:
+  push:
+    paths:
+      - 'edm/**'
+  workflow_dispatch:   # 也允許你在 GitHub Actions 頁面手動按按鈕觸發
+
+permissions:
+  contents: write       # 允許機器人把產生好的 json 寫回 repo
+
+jobs:
+  build-schedule:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 取出 repo
+        uses: actions/checkout@v4
+
+      - name: 掃描 edm/ 資料夾，產生 data/edm-schedule.json
+        run: |
+          python3 - <<'PY'
+          import os, json, re
+
+          EDM_DIR = 'edm'
+          schedule = {}
+
+          for fn in sorted(os.listdir(EDM_DIR)):
+              # 只認 jpg / jpeg / png
+              if not re.search(r'\.(jpg|jpeg|png)$', fn, re.I):
+                  continue
+              base = re.sub(r'\.(jpg|jpeg|png)$', '', fn, flags=re.I)
+              parts = base.split('-')
+              # 檔名格式必須是 YYYY-MM-DD-姓名-專業別，至少 5 段
+              if len(parts) < 5:
+                  print('略過（檔名格式不符）:', fn)
+                  continue
+              date = '-'.join(parts[0:3])
+              if not re.match(r'^\d{4}-\d{2}-\d{2}$', date):
+                  print('略過（日期不符）:', fn)
+                  continue
+              name = parts[3]
+              industry = '-'.join(parts[4:])   # 專業別（保留檔名裡的原樣）
+              schedule.setdefault(date, []).append({
+                  'name': name,
+                  'industry': industry,
+                  'edm': f'{EDM_DIR}/{fn}'
+              })
+
+          out = {
+              'schedule': [
+                  {'date': d, 'speakers': schedule[d]}
+                  for d in sorted(schedule)
+              ]
+          }
+
+          os.makedirs('data', exist_ok=True)
+          with open('data/edm-schedule.json', 'w', encoding='utf-8') as f:
+              json.dump(out, f, ensure_ascii=False, indent=2)
+
+          print(f'✅ 完成，共 {len(out["schedule"])} 個場次')
+          for s in out['schedule']:
+              who = '、'.join(sp['name'] for sp in s['speakers'])
+              print(f'  {s["date"]}: {who}')
+          PY
+
+      - name: 把產生好的 json 提交回 repo
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/edm-schedule.json
+          # 沒有變動就不 commit（避免空提交）
+          git diff --staged --quiet || git commit -m "🤖 自動更新 edm-schedule.json"
+          git push
