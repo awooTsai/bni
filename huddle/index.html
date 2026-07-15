@@ -34,11 +34,26 @@ h1 { font-size:clamp(24px,6vw,32px); font-weight:900; line-height:1.35; text-wra
   font-size:14px; color:var(--sub); }
 .howto b { color:var(--ink); }
 
-.weekbar { display:flex; align-items:center; gap:12px; flex-wrap:wrap; padding:20px 0 4px; }
-.weekbar label { font-size:12.5px; font-weight:700; letter-spacing:.1em; color:var(--red); }
-.weekbar select { font:inherit; font-size:15px; padding:8px 12px; color:var(--ink);
-  background:var(--card); border:1px solid var(--ink); border-radius:0; max-width:100%; }
-.weekmeta { font-size:13px; color:var(--sub); }
+.weekbar { display:flex; align-items:center; gap:12px; flex-wrap:wrap; padding:20px 0 0; }
+.weekbar .wlabel { font-size:12.5px; font-weight:700; letter-spacing:.1em; color:var(--red); }
+.wtabs { display:flex; gap:8px; flex-wrap:wrap; }
+.wtab { font:inherit; font-size:15px; font-weight:700; padding:9px 16px; color:var(--ink);
+  background:var(--card); border:1px solid var(--ink); border-radius:0; cursor:pointer;
+  -webkit-tap-highlight-color:transparent; }
+.wtab small { font-weight:400; margin-left:5px; font-size:11px; color:var(--sub); }
+.wtab.active { background:var(--ink); color:var(--paper); }
+.wtab.active small { color:var(--paper); opacity:.75; }
+.weekmeta { font-size:13px; color:var(--sub); padding:8px 0 2px; }
+
+/* 逐字稿 */
+.txd { border:1px solid var(--line); background:var(--card); }
+.txd summary { cursor:pointer; padding:13px 16px; font-size:14.5px; font-weight:700; list-style:none; }
+.txd summary::-webkit-details-marker { display:none; }
+.txd summary::before { content:"▸ "; color:var(--red); }
+.txd[open] summary::before { content:"▾ "; }
+.txd .txnote { padding:0 16px 8px; font-size:12.5px; color:var(--sub); }
+.txd pre { white-space:pre-wrap; word-break:break-word; font:inherit; font-size:14px; line-height:1.75;
+  color:var(--sub); padding:4px 16px 16px; max-height:70vh; overflow-y:auto; }
 
 section { padding:26px 0 22px; border-bottom:1px dashed var(--dash); }
 section:last-of-type { border-bottom:none; }
@@ -111,10 +126,10 @@ footer b { color:var(--red); }
   </header>
 
   <div class="weekbar">
-    <label for="weekSel">週次</label>
-    <select id="weekSel"></select>
-    <span class="weekmeta" id="weekMeta"></span>
+    <span class="wlabel">週次</span>
+    <div class="wtabs" id="weekTabs"></div>
   </div>
+  <div class="weekmeta" id="weekMeta"></div>
 
   <section>
     <div class="sec-head"><span class="sec-num mono">01</span><h2>本週媒合快報</h2></div>
@@ -133,7 +148,16 @@ footer b { color:var(--red); }
   </section>
 
   <section>
-    <div class="sec-head"><span class="sec-num mono">04</span><h2>行銷產業鏈地圖</h2></div>
+    <div class="sec-head"><span class="sec-num mono">04</span><h2>本週逐字稿</h2></div>
+    <details class="txd" id="txDetails">
+      <summary>展開本週小聚逐字稿</summary>
+      <div class="txnote">原始 SeaMeet 自動轉寫、未經人工校對；內文人名可能誤辨，正確姓名與專業別以上方整理及會員名冊為準。</div>
+      <pre id="txBox">載入中⋯</pre>
+    </details>
+  </section>
+
+  <section>
+    <div class="sec-head"><span class="sec-num mono">05</span><h2>行銷產業鏈地圖</h2></div>
     <p class="sec-note">小聚成員在客戶旅程上的位置——共同面對客戶時，任何一站都能把整條鏈帶進去。</p>
     <div class="chain">
       <div class="node"><span class="step mono">STEP 1</span><div class="what">產品與包裝</div><div class="whom">許珈愷（貳捌行銷）</div></div>
@@ -147,7 +171,7 @@ footer b { color:var(--red); }
   </section>
 
   <section>
-    <div class="sec-head"><span class="sec-num mono">05</span><h2>成員名片牆</h2></div>
+    <div class="sec-head"><span class="sec-num mono">06</span><h2>成員名片牆</h2></div>
     <p class="sec-note">跨週累積的固定檔案；新夥伴加入小聚後於此新增。</p>
     <div class="member">
       <div class="top"><span class="nm">蔡俊達（阿達）｜awoo 阿物科技</span><span class="fld">SEO / GEO</span></div>
@@ -184,21 +208,51 @@ footer b { color:var(--red); }
 <script src="weeks.js"></script>
 <script>
 (function(){
-  var sel = document.getElementById('weekSel');
+  var tabs = document.getElementById('weekTabs');
   var meta = document.getElementById('weekMeta');
+  var txD = document.getElementById('txDetails');
+  var txBox = document.getElementById('txBox');
+  var txCache = {};
+  var cur = 0;
 
   function esc(s){ var d=document.createElement('div'); d.textContent=s; return d.innerHTML; }
 
   HUDDLE_WEEKS.forEach(function(w, i){
-    var opt = document.createElement('option');
-    opt.value = i;
-    opt.textContent = w.date.replace(/-/g,'/') + (i===0 ? '（最新）' : '');
-    sel.appendChild(opt);
+    var b = document.createElement('button');
+    b.type = 'button';
+    b.className = 'wtab';
+    b.innerHTML = esc(w.date.slice(5).replace('-','/')) + (i===0 ? '<small>最新</small>' : '');
+    b.addEventListener('click', function(){ render(i); });
+    tabs.appendChild(b);
   });
 
-  function render(i){
+  function loadTx(i){
     var w = HUDDLE_WEEKS[i];
-    meta.textContent = '出席：' + w.participants.join('、');
+    if (!w.tx){ txBox.textContent = '本週無逐字稿。'; return; }
+    if (txCache[w.tx]){ txBox.textContent = txCache[w.tx]; return; }
+    txBox.textContent = '載入中⋯';
+    fetch(w.tx).then(function(r){
+      if(!r.ok) throw new Error(r.status);
+      return r.text();
+    }).then(function(t){
+      txCache[w.tx] = t;
+      if (cur === i) txBox.textContent = t;
+    }).catch(function(){
+      if (cur === i) txBox.textContent = '逐字稿載入失敗，請重新整理後再試。';
+    });
+  }
+
+  txD.addEventListener('toggle', function(){ if (txD.open) loadTx(cur); });
+
+  function render(i){
+    cur = i;
+    var w = HUDDLE_WEEKS[i];
+    Array.prototype.forEach.call(tabs.children, function(el, j){
+      el.className = 'wtab' + (j === i ? ' active' : '');
+    });
+    meta.textContent = w.date.replace(/-/g,'/') + ' 出席：' + w.participants.join('、');
+    txD.open = false;
+    txBox.textContent = '載入中⋯';
 
     document.getElementById('matches').innerHTML = w.matches.map(function(m){
       return '<div class="match"><span class="who">'+esc(m.who)+'</span>' +
@@ -220,7 +274,6 @@ footer b { color:var(--red); }
     }).join('');
   }
 
-  sel.addEventListener('change', function(){ render(parseInt(sel.value,10)); });
   render(0);
 })();
 </script>

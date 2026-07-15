@@ -6,6 +6,7 @@
 const HUDDLE_WEEKS = [
   {
     date: "2026-07-15",
+    tx: "transcripts/2026-07-15.txt",
     participants: ["蔡俊達 阿達（awoo）", "陳恒丰 恆峰（數位巴克斯）", "楊景允（遙空映畫・實習生）", "BOX（同席夥伴）"],
     stalls: [
       {
@@ -72,6 +73,7 @@ const HUDDLE_WEEKS = [
   },
   {
     date: "2026-07-08",
+    tx: "transcripts/2026-07-08.txt",
     participants: ["蔡俊達 阿達（awoo）", "MarsZ Chen（多語系網站建置）", "許珈愷 Karen（貳捌行銷）"],
     stalls: [
       {
