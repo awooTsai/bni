@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🤝</text></svg>">
+<title>FUZEN 行銷小聚 HUDDLE｜專業推廣 × 尋求引薦 × 資源共享</title>
+<style>
+:root {
+  --paper:#faf7f2; --ink:#1c1a17; --sub:#6b645a; --line:#e5dfd5; --dash:#d8d0c3;
+  --red:#C80A14; --red-soft:#fdf0ee; --card:#ffffff;
+}
+@media (prefers-color-scheme: dark) {
+  :root { --paper:#171511; --ink:#ece7de; --sub:#a39b8e; --line:#35302a; --dash:#3e3830;
+          --red:#e5695c; --red-soft:#2f1c19; --card:#1e1b17; }
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body { background:var(--paper); color:var(--ink); font-size:16.5px; line-height:1.8;
+  font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",-apple-system,sans-serif; }
+.mono { font-family:ui-monospace,"SF Mono",Menlo,monospace; }
+.wrap { max-width:820px; margin:0 auto; padding:36px 18px 80px; }
+
+.topline { display:flex; justify-content:space-between; align-items:baseline; gap:10px;
+  padding-bottom:14px; border-bottom:2px solid var(--ink); }
+.topline .brand { font-size:13px; font-weight:700; letter-spacing:.12em; }
+.topline .brand b { color:var(--red); }
+.topline .tag { font-size:11px; letter-spacing:.14em; color:var(--sub); white-space:nowrap; }
+
+header.hero { padding:28px 0 22px; border-bottom:1px dashed var(--dash); }
+h1 { font-size:clamp(24px,6vw,32px); font-weight:900; line-height:1.35; text-wrap:balance; }
+.hero .sub { margin-top:8px; font-size:15px; color:var(--sub); max-width:36em; }
+.howto { margin-top:14px; border-left:3px solid var(--red); padding:4px 0 4px 14px;
+  font-size:14px; color:var(--sub); }
+.howto b { color:var(--ink); }
+
+.weekbar { display:flex; align-items:center; gap:12px; flex-wrap:wrap; padding:20px 0 4px; }
+.weekbar label { font-size:12.5px; font-weight:700; letter-spacing:.1em; color:var(--red); }
+.weekbar select { font:inherit; font-size:15px; padding:8px 12px; color:var(--ink);
+  background:var(--card); border:1px solid var(--ink); border-radius:0; max-width:100%; }
+.weekmeta { font-size:13px; color:var(--sub); }
+
+section { padding:26px 0 22px; border-bottom:1px dashed var(--dash); }
+section:last-of-type { border-bottom:none; }
+.sec-head { display:flex; align-items:baseline; gap:10px; margin-bottom:14px; }
+.sec-num { font-size:12px; font-weight:700; color:var(--red); letter-spacing:.06em; white-space:nowrap; }
+h2 { font-size:20px; font-weight:900; }
+.sec-note { font-size:13px; color:var(--sub); margin:-8px 0 14px; }
+
+/* 媒合快報 */
+.match { border:1px solid var(--ink); background:var(--card); padding:16px 18px; margin-bottom:12px; }
+.match .who { display:inline-block; font-size:12.5px; font-weight:700; color:var(--red);
+  border:1px solid var(--red); padding:2px 9px; margin-bottom:8px; }
+.match .idea { font-size:15px; }
+.match .next { margin-top:8px; font-size:13.5px; color:var(--sub); border-top:1px dashed var(--dash); padding-top:8px; }
+.match .next b { color:var(--ink); }
+
+/* 各攤主打 */
+.stall { border:1px solid var(--line); background:var(--card); padding:18px 18px 14px; margin-bottom:14px; }
+.stall .head { display:flex; align-items:baseline; gap:10px; flex-wrap:wrap; margin-bottom:8px; }
+.stall .name { font-size:17px; font-weight:900; }
+.stall .biz { font-size:12.5px; color:var(--sub); }
+.stall ul { list-style:none; margin-bottom:10px; }
+.stall li { font-size:14.5px; color:var(--sub); padding:5px 0 5px 16px; position:relative; }
+.stall li::before { content:"—"; position:absolute; left:0; color:var(--red); }
+.askrow { border-top:1px dashed var(--dash); padding-top:10px; font-size:14.5px; }
+.askrow .lbl { display:inline-block; font-size:11.5px; font-weight:700; letter-spacing:.08em;
+  color:var(--red); border:1px solid var(--red); padding:1px 7px; margin-right:8px; vertical-align:1px; }
+.opener { margin-top:8px; background:var(--red-soft); padding:10px 14px; font-size:14.5px; }
+.opener .lbl { font-size:11.5px; font-weight:700; letter-spacing:.08em; color:var(--red); display:block; margin-bottom:2px; }
+
+/* 待辦 */
+.todo { display:grid; grid-template-columns:96px 1fr; gap:10px; padding:9px 0;
+  border-top:1px dashed var(--dash); font-size:14.5px; }
+.todo:first-of-type { border-top:none; }
+.todo .owner { font-weight:700; }
+
+/* 產業鏈地圖 */
+.chain { display:flex; flex-wrap:wrap; gap:8px; align-items:stretch; }
+.chain .node { flex:1 1 118px; border:1px solid var(--ink); background:var(--card); padding:12px 12px 10px; position:relative; }
+.chain .step { font-size:10.5px; font-weight:700; letter-spacing:.1em; color:var(--red); display:block; }
+.chain .what { font-size:14.5px; font-weight:900; margin:2px 0; }
+.chain .whom { font-size:12.5px; color:var(--sub); }
+.chain-note { margin-top:12px; font-size:13.5px; color:var(--sub); max-width:40em; }
+
+/* 名片牆 */
+.member { border:1px solid var(--line); background:var(--card); padding:14px 16px; margin-bottom:10px; }
+.member .top { display:flex; justify-content:space-between; align-items:baseline; gap:8px; flex-wrap:wrap; }
+.member .nm { font-size:15.5px; font-weight:900; }
+.member .fld { font-size:12.5px; color:var(--sub); }
+.member .svc { font-size:13.5px; color:var(--sub); margin-top:4px; }
+.member .best { margin-top:6px; font-size:13.5px; }
+.member .best .lbl { color:var(--red); font-weight:700; font-size:11.5px; letter-spacing:.06em; margin-right:6px; }
+
+footer { margin-top:26px; padding-top:14px; border-top:2px solid var(--ink);
+  font-size:12px; color:var(--sub); letter-spacing:.04em; }
+footer b { color:var(--red); }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="topline">
+    <span class="brand"><b>FUZEN</b> 行銷小聚 · HUDDLE</span>
+    <span class="tag mono">WEEKLY MATCHMAKING</span>
+  </div>
+
+  <header class="hero">
+    <h1>專業推廣 × 尋求引薦 × 資源共享</h1>
+    <p class="sub">每週小聚後更新：這一頁幫你記住「誰在推什麼、誰需要誰、誰跟誰該合作」——讓小聚講過的話，變成帶得走的生意。</p>
+    <div class="howto"><b>怎麼用：</b>看到適合的引薦對象，直接抄各攤位的「幫他開場」那句話去說；每週的「媒合快報」是本週最值得跟進的合作火花。</div>
+  </header>
+
+  <div class="weekbar">
+    <label for="weekSel">週次</label>
+    <select id="weekSel"></select>
+    <span class="weekmeta" id="weekMeta"></span>
+  </div>
+
+  <section>
+    <div class="sec-head"><span class="sec-num mono">01</span><h2>本週媒合快報</h2></div>
+    <div id="matches"></div>
+  </section>
+
+  <section>
+    <div class="sec-head"><span class="sec-num mono">02</span><h2>本週各攤主打</h2></div>
+    <p class="sec-note">每位夥伴這週推什麼、要找誰，以及一句可以直接說出口的開場白。</p>
+    <div id="stalls"></div>
+  </section>
+
+  <section>
+    <div class="sec-head"><span class="sec-num mono">03</span><h2>決議與待辦</h2></div>
+    <div id="todos"></div>
+  </section>
+
+  <section>
+    <div class="sec-head"><span class="sec-num mono">04</span><h2>行銷產業鏈地圖</h2></div>
+    <p class="sec-note">小聚成員在客戶旅程上的位置——共同面對客戶時，任何一站都能把整條鏈帶進去。</p>
+    <div class="chain">
+      <div class="node"><span class="step mono">STEP 1</span><div class="what">產品與包裝</div><div class="whom">Karen Hsu</div></div>
+      <div class="node"><span class="step mono">STEP 2</span><div class="what">官網建置</div><div class="whom">MarsZ Chen</div></div>
+      <div class="node"><span class="step mono">STEP 3</span><div class="what">內容與 AI 搜尋</div><div class="whom">蔡阿達（awoo）</div></div>
+      <div class="node"><span class="step mono">STEP 4</span><div class="what">品牌影像</div><div class="whom">遙控工作室</div></div>
+      <div class="node"><span class="step mono">STEP 5</span><div class="what">會員經營 CRM</div><div class="whom">恆峰（數位巴克斯）</div></div>
+      <div class="node"><span class="step mono">STEP 6</span><div class="what">線下活動導流</div><div class="whom">Karen Hsu</div></div>
+    </div>
+    <p class="chain-note">一句話版本：「客戶只要有產品，我們這條鏈可以從包裝、官網、內容、影像、會員經營一路做到線下活動。」——對外聯合提案就從這裡開口。</p>
+  </section>
+
+  <section>
+    <div class="sec-head"><span class="sec-num mono">05</span><h2>成員名片牆</h2></div>
+    <p class="sec-note">跨週累積的固定檔案；新夥伴加入小聚後於此新增。</p>
+    <div class="member">
+      <div class="top"><span class="nm">蔡阿達｜awoo 阿物科技</span><span class="fld">GEO／AI 搜尋 × 內容經營</span></div>
+      <div class="svc">品牌價值主張與關鍵字策略、GEO 健檢、AI 搜尋能見度、品牌內容生成工具</div>
+      <div class="best"><span class="lbl">最想認識</span>有官網、有心經營品牌內容的業主</div>
+    </div>
+    <div class="member">
+      <div class="top"><span class="nm">MarsZ Chen</span><span class="fld">網站設計 × AI 提案</span></div>
+      <div class="svc">官網設計建置、AI 快速提案（簡報＋報價＋首頁預覽＋CIS）、上線後低門檻維護</div>
+      <div class="best"><span class="lbl">最想認識</span>要做／改官網的業主；能承接投放需求的廣告夥伴</div>
+    </div>
+    <div class="member">
+      <div class="top"><span class="nm">Karen Hsu</span><span class="fld">包裝設計 × 線上線下整合行銷</span></div>
+      <div class="svc">產品包裝全流程（視覺、國際條碼、印刷落地）、展場輸出、LINE 分眾導流與裂變活動</div>
+      <div class="best"><span class="lbl">最想認識</span>新品上市或包裝想升級的品牌主</div>
+    </div>
+    <div class="member">
+      <div class="top"><span class="nm">恆峰｜數位巴克斯</span><span class="fld">客製化軟體開發</span></div>
+      <div class="svc">輕量 CRM（官方 LINE 分群推播）、AI 商業媒合、客製系統開發</div>
+      <div class="best"><span class="lbl">最想認識</span>有官方 LINE、想有系統經營會員的業者</div>
+    </div>
+    <div class="member">
+      <div class="top"><span class="nm">遙控工作室（窗口：偉漢）</span><span class="fld">影像製作</span></div>
+      <div class="svc">形象影片、空間與產品攝影；1 萬 5 入門形象影片方案（重畫面質感、非口播短影音）</div>
+      <div class="best"><span class="lbl">最想認識</span>室內設計業者、需要質感影像的品牌</div>
+    </div>
+  </section>
+
+  <footer>
+    <b>FUZEN</b> 行銷小聚 · 每週二 13:00 線上舉行 · 本頁由蔡阿達的 AI 助手於每週小聚後更新
+  </footer>
+</div>
+
+<script src="weeks.js"></script>
+<script>
+(function(){
+  var sel = document.getElementById('weekSel');
+  var meta = document.getElementById('weekMeta');
+
+  function esc(s){ var d=document.createElement('div'); d.textContent=s; return d.innerHTML; }
+
+  HUDDLE_WEEKS.forEach(function(w, i){
+    var opt = document.createElement('option');
+    opt.value = i;
+    opt.textContent = w.date.replace(/-/g,'/') + (i===0 ? '（最新）' : '');
+    sel.appendChild(opt);
+  });
+
+  function render(i){
+    var w = HUDDLE_WEEKS[i];
+    meta.textContent = '出席：' + w.participants.join('、');
+
+    document.getElementById('matches').innerHTML = w.matches.map(function(m){
+      return '<div class="match"><span class="who">'+esc(m.who)+'</span>' +
+        '<div class="idea">'+esc(m.idea)+'</div>' +
+        '<div class="next"><b>下一步：</b>'+esc(m.next)+'</div></div>';
+    }).join('');
+
+    document.getElementById('stalls').innerHTML = w.stalls.map(function(s){
+      return '<div class="stall">' +
+        '<div class="head"><span class="name">'+esc(s.name)+'</span><span class="biz">'+esc(s.biz)+'</span></div>' +
+        '<ul>' + s.pitch.map(function(p){ return '<li>'+esc(p)+'</li>'; }).join('') + '</ul>' +
+        '<div class="askrow"><span class="lbl">要找的人</span>'+esc(s.ask)+'</div>' +
+        '<div class="opener"><span class="lbl">幫他開場</span>'+esc(s.opener)+'</div>' +
+        '</div>';
+    }).join('');
+
+    document.getElementById('todos').innerHTML = w.todos.map(function(t){
+      return '<div class="todo"><span class="owner">'+esc(t.owner)+'</span><span>'+esc(t.task)+'</span></div>';
+    }).join('');
+  }
+
+  sel.addEventListener('change', function(){ render(parseInt(sel.value,10)); });
+  render(0);
+})();
+</script>
+</body>
+</html>
