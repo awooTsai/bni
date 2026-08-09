@@ -124,6 +124,30 @@
   .g-lede + .g-lede { margin-top: 9px; }
   .g-rule { height: 3px; width: 46px; background: #16181D; margin: 22px 0 8px; }
 
+  .tool {
+    background: #16181D; color: #fff; padding: 22px 24px; margin: 28px 0 40px;
+  }
+  .tool-tag {
+    font-size: 15px; font-weight: 700; color: #FF8A90;
+    letter-spacing: .1em; margin-bottom: 9px;
+  }
+  .tool-t { font-size: 20px; font-weight: 900; line-height: 1.45; margin-bottom: 10px; }
+  .tool-d { font-size: 16px; color: #C6C8CD; line-height: 1.72; }
+  .tool-d b { color: #fff; font-weight: 700; }
+  .tool-list { list-style: none; margin: 13px 0 17px; }
+  .tool-list li {
+    font-size: 15px; color: #C6C8CD; padding: 6px 0;
+    border-bottom: 1px dashed #33363D; display: flex; gap: 9px; line-height: 1.55;
+  }
+  .tool-list li:last-child { border-bottom: none; }
+  .tool-list li::before { content: '→'; color: #FF8A90; flex-shrink: 0; }
+  .tool-a {
+    display: inline-block; background: #C80A14; color: #fff; text-decoration: none;
+    font-size: 16px; font-weight: 700; padding: 13px 22px; transition: opacity .15s;
+  }
+  .tool-a:hover { opacity: .88; }
+  .tool-note { font-size: 15px; color: #8A8D94; margin-top: 13px; line-height: 1.6; }
+
   .toc {
     background: #fff; border: 1px solid #E8E7E4; padding: 16px 18px; margin: 26px 0 42px;
   }
@@ -376,6 +400,20 @@
     <p class="g-lede">下面這份整理自 BNI 官方培訓教材，把「上台前六週要做什麼」和「上台那 5 分鐘怎麼講」拆成可以照著跑的步驟。<strong>建議你在填上面表單的同時，一邊往下看</strong>——尤其是第 3 段，它會直接影響你表單裡「標語」和「誠摯邀請」要怎麼寫。</p>
     <div class="g-rule"></div>
 
+    <div class="tool">
+      <div class="tool-tag">選用工具</div>
+      <div class="tool-t">不想從零開始想？讓阿達幫你打一份草稿</div>
+      <p class="tool-d">上傳你的 <b>1對1 表格</b>，我會親自幫你做一份客製化的簡報架構，包含：</p>
+      <ul class="tool-list">
+        <li>封面、摘要與開場</li>
+        <li>5 個 LCD 選項，讓你挑最適合的三個</li>
+        <li>每一頁的標題與內文文案</li>
+        <li>開啟引薦對話的劇本、三級引薦對照</li>
+      </ul>
+      <a class="tool-a" href="https://bni-fujen.vercel.app/brief" target="_blank" rel="noopener">開啟主題簡報架構生成器 ↗</a>
+      <p class="tool-note">產出的是草稿，不是成品——下面這份指南會告訴你為什麼架構要這樣排，你才改得動它。</p>
+    </div>
+
     <nav class="toc">
       <div class="toc-h">這份指南包含</div>
       <ol>
@@ -514,6 +552,7 @@
       <div class="quote">
         寫完 ABCD，再幫每個 LCD 準備<b>協助素材</b>：DM、產品手冊、樣品、照片、見證、成功案例⋯等。這批東西就是投影片上要放的內容。
       </div>
+      <p class="sec-sub" style="margin-top:16px">卡在這一段想不出來，是最常見的狀況。把你的 1對1 表格丟進 <a href="https://bni-fujen.vercel.app/brief" target="_blank" rel="noopener" style="color:#C80A14;font-weight:700;text-decoration:none;border-bottom:1px solid #C80A14">主題簡報架構生成器</a>，我會幫你先生出 5 個 LCD 選項和對應的 ABCD，你再挑、再改。</p>
     </div>
 
     <div class="sec" id="g4">
