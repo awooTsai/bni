@@ -230,6 +230,13 @@ function getPastEdmBefore(refDate){
   return past.length?past[past.length-1]:null;
 }
 async function bootstrap(){
+  const urlWeek=new URLSearchParams(location.search).get('week');
+  if(urlWeek&&/^\d{4}-\d{2}-\d{2}$/.test(urlWeek))VIEW_DATE=urlWeek;
+  window.addEventListener('popstate',function(){
+    const w=new URLSearchParams(location.search).get('week');
+    VIEW_DATE=(w&&/^\d{4}-\d{2}-\d{2}$/.test(w))?w:null;
+    renderEdm();highlightWk();
+  });
   try{
     EDM_SCHEDULE=await fetch('data/edm-schedule.json',{cache:'no-store'}).then(r=>r.json());
     renderEdm();
@@ -295,8 +302,8 @@ function highlightWk(){
 function toggleWeekPicker(){document.getElementById('wkMenu').classList.toggle('on')}
 function closeWeekPicker(){document.getElementById('wkMenu').classList.remove('on')}
 document.addEventListener('click',e=>{if(!e.target.closest('.wkpick'))closeWeekPicker()});
-function selectWeek(date){VIEW_DATE=date;renderEdm();highlightWk();closeWeekPicker();window.scrollTo({top:0,behavior:'smooth'})}
-function resetWeek(){VIEW_DATE=null;renderEdm();highlightWk();closeWeekPicker();window.scrollTo({top:0,behavior:'smooth'})}
+function selectWeek(date){VIEW_DATE=date;history.pushState(null,'','?week='+date);renderEdm();highlightWk();closeWeekPicker();window.scrollTo({top:0,behavior:'smooth'})}
+function resetWeek(){VIEW_DATE=null;history.pushState(null,'',location.pathname);renderEdm();highlightWk();closeWeekPicker();window.scrollTo({top:0,behavior:'smooth'})}
 function updateWkBanner(){
   const b=document.getElementById('wkBanner');if(!b)return;
   if(VIEW_DATE){b.innerHTML='<b>📅 你正在瀏覽 '+VIEW_DATE+' 的當週狀態</b><button onclick="resetWeek()">回到本週 →</button>';b.classList.add('on')}
