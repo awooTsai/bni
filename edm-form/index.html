@@ -109,6 +109,196 @@
     h1 { font-size: 25px; }
     header img { height: 50px; }
   }
+
+  /* ===== 準備指南（表單下方）===== */
+  .guide {
+    background: #FAF9F7; border-top: 1px solid #E8E7E4;
+    margin: 46px -24px 0; padding: 44px 24px 10px;
+  }
+  .g-eyebrow {
+    font-size: 13px; font-weight: 700; color: #C80A14;
+    letter-spacing: .14em; margin-bottom: 11px;
+  }
+  .g-title { font-size: 27px; font-weight: 900; line-height: 1.4; margin-bottom: 13px; }
+  .g-lede { font-size: 16px; color: #34363C; }
+  .g-lede + .g-lede { margin-top: 9px; }
+  .g-rule { height: 3px; width: 46px; background: #16181D; margin: 22px 0 8px; }
+
+  .toc {
+    background: #fff; border: 1px solid #E8E7E4; padding: 16px 18px; margin: 26px 0 42px;
+  }
+  .toc-h { font-size: 15px; font-weight: 700; color: #7B7D84; letter-spacing: .06em; margin-bottom: 10px; }
+  .toc ol { list-style: none; counter-reset: toc; }
+  .toc li {
+    counter-increment: toc; font-size: 16px; padding: 7px 0;
+    border-bottom: 1px dashed #E8E7E4; display: flex; gap: 11px;
+  }
+  .toc li:last-child { border-bottom: none; padding-bottom: 0; }
+  .toc li::before {
+    content: counter(toc); font-weight: 900; color: #C80A14;
+    font-variant-numeric: tabular-nums; min-width: 15px;
+  }
+  .toc a { color: #16181D; text-decoration: none; }
+  .toc a:hover { color: #C80A14; }
+
+  .sec { margin-bottom: 48px; scroll-margin-top: 16px; }
+  .sec-h {
+    font-size: 21px; font-weight: 900; padding-bottom: 11px;
+    border-bottom: 2px solid #16181D; margin-bottom: 7px;
+    display: flex; align-items: baseline; gap: 10px;
+  }
+  .sec-h .sn {
+    font-size: 13px; font-weight: 700; color: #C80A14;
+    font-variant-numeric: tabular-nums; letter-spacing: .06em;
+  }
+  .sec-sub { font-size: 15px; color: #7B7D84; margin: 13px 0 22px; }
+
+  /* 六週時間軸 */
+  .tl { list-style: none; border-left: 2px solid #E0DED9; margin: 0 0 0 5px; }
+  .tl > li { position: relative; padding: 0 0 24px 21px; }
+  .tl > li::before {
+    content: ''; position: absolute; left: -6px; top: 7px;
+    width: 10px; height: 10px; background: #16181D;
+  }
+  .tl > li:last-child { padding-bottom: 2px; }
+  .tl-wk { font-size: 17px; font-weight: 900; }
+  .tl-tag {
+    font-size: 15px; font-weight: 700; color: #C80A14;
+    background: #FDECEC; padding: 2px 9px; margin-left: 9px; white-space: nowrap;
+  }
+  .tl-body { list-style: none; margin-top: 9px; background: #fff; border: 1px solid #E8E7E4; }
+  .tl-body li {
+    font-size: 16px; color: #34363C; padding: 10px 14px;
+    border-bottom: 1px dashed #E8E7E4; line-height: 1.62;
+  }
+  .tl-body li:last-child { border-bottom: none; }
+
+  .thread {
+    background: #16181D; color: #fff; padding: 15px 18px; margin: 4px 0 0;
+    font-size: 16px; line-height: 1.65;
+  }
+  .thread b { color: #FFD9DB; }
+
+  /* 5 分鐘結構 */
+  .st-box {
+    border: 1px solid #E8E7E4; background: #fff; padding: 13px 15px; margin-bottom: 9px;
+  }
+  .st-hd { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; }
+  .st-t { font-size: 16px; font-weight: 900; }
+  .st-s { font-size: 15px; color: #7B7D84; line-height: 1.6; margin-top: 5px; }
+  .st-min {
+    font-size: 13px; font-weight: 700; color: #C80A14;
+    white-space: nowrap; font-variant-numeric: tabular-nums;
+  }
+  .st-three { display: grid; grid-template-columns: repeat(3, 1fr); gap: 9px; }
+  .st-three .st-box { padding: 12px 13px; margin-bottom: 9px; }
+  .st-steps { list-style: none; counter-reset: sp; margin-top: 8px; }
+  .st-steps li {
+    counter-increment: sp; font-size: 15px; color: #34363C;
+    padding: 6px 0; border-bottom: 1px dashed #EEEEEC; display: flex; gap: 8px; line-height: 1.5;
+  }
+  .st-steps li:last-child { border-bottom: none; padding-bottom: 0; }
+  .st-steps li::before {
+    content: counter(sp); font-size: 12px; font-weight: 700; color: #A9ABB0;
+    font-variant-numeric: tabular-nums; min-width: 11px;
+  }
+  .st-steps li.hl { font-weight: 700; color: #16181D; }
+
+  /* ABCD */
+  .abcd { border: 1px solid #E8E7E4; background: #fff; list-style: none; }
+  .abcd li {
+    display: flex; gap: 13px; padding: 13px 15px;
+    border-bottom: 1px dashed #E8E7E4; font-size: 16px; line-height: 1.6;
+  }
+  .abcd li:last-child { border-bottom: none; }
+  .abcd .k {
+    font-weight: 900; color: #C80A14; min-width: 17px; flex-shrink: 0;
+  }
+  .abcd .sub { display: block; font-size: 15px; color: #7B7D84; margin-top: 2px; }
+
+  /* 範例表 */
+  .ex-wrap { overflow-x: auto; }
+  .ex {
+    width: 100%; border-collapse: collapse; background: #fff;
+    border: 1px solid #E8E7E4; font-size: 15px; min-width: 420px;
+  }
+  .ex caption {
+    text-align: left; font-size: 15px; font-weight: 700;
+    padding: 0 0 8px; color: #34363C;
+  }
+  .ex th {
+    background: #FCFCFB; text-align: left; padding: 10px 13px;
+    border-bottom: 1px solid #E8E7E4; font-size: 15px; font-weight: 700; color: #7B7D84;
+  }
+  .ex td { padding: 10px 13px; border-bottom: 1px dashed #E8E7E4; vertical-align: top; line-height: 1.6; }
+  .ex tr:last-child td { border-bottom: none; }
+  .ex .kk { font-weight: 900; color: #C80A14; width: 26px; }
+
+  /* 頁數配置 */
+  .pages { list-style: none; background: #fff; border: 1px solid #E8E7E4; }
+  .pages li {
+    display: flex; justify-content: space-between; gap: 14px; align-items: baseline;
+    padding: 11px 15px; border-bottom: 1px dashed #E8E7E4; font-size: 16px; line-height: 1.55;
+  }
+  .pages li:last-child { border-bottom: none; }
+  .pages .p {
+    font-weight: 700; white-space: nowrap; font-variant-numeric: tabular-nums;
+    color: #C80A14; font-size: 15px;
+  }
+  .pages .sub { display: block; font-size: 15px; color: #7B7D84; margin-top: 2px; }
+
+  /* 硬規則 */
+  .nums { display: grid; grid-template-columns: repeat(3, 1fr); gap: 9px; margin-bottom: 14px; }
+  .num-box { border: 1px solid #E8E7E4; background: #fff; padding: 15px 10px; text-align: center; }
+  .num-box .v {
+    font-size: 29px; font-weight: 900; line-height: 1.15;
+    font-variant-numeric: tabular-nums; letter-spacing: -.02em;
+  }
+  .num-box .l { font-size: 15px; color: #7B7D84; margin-top: 5px; line-height: 1.45; }
+  .rules { display: grid; grid-template-columns: 1fr 1fr; gap: 9px; }
+  .rule-box { border: 1px solid #E8E7E4; background: #fff; padding: 14px 15px; }
+  .rule-box.no { border-color: #F0D8D8; }
+  .rule-h { font-size: 15px; font-weight: 700; margin-bottom: 9px; letter-spacing: .04em; }
+  .rule-box.no .rule-h { color: #C80A14; }
+  .rule-box.yes .rule-h { color: #1F7A4D; }
+  .rule-box ul { list-style: none; }
+  .rule-box li {
+    font-size: 15px; color: #34363C; padding: 5px 0;
+    border-bottom: 1px dashed #EEEEEC; line-height: 1.55;
+  }
+  .rule-box li:last-child { border-bottom: none; }
+
+  /* 金句 */
+  .quote {
+    background: #fff; border-left: 3px solid #C80A14;
+    padding: 15px 18px; font-size: 16px; color: #34363C; line-height: 1.7; margin: 18px 0;
+  }
+  .quote b { color: #16181D; }
+
+  /* 兩條共識 */
+  .creed { display: grid; gap: 9px; }
+  .creed-box { border: 1px solid #E8E7E4; background: #fff; padding: 15px 17px; }
+  .creed-t { font-size: 18px; font-weight: 900; margin-bottom: 6px; }
+  .creed-d { font-size: 15px; color: #34363C; line-height: 1.65; }
+  .creed-chain {
+    display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px;
+    font-size: 15px; font-weight: 700;
+  }
+  .creed-chain span { background: #FDECEC; color: #C80A14; padding: 3px 9px; }
+
+  .g-foot {
+    font-size: 15px; color: #7B7D84; line-height: 1.7;
+    border-top: 1px dashed #D8D6D1; padding-top: 18px; margin-top: 6px;
+  }
+
+  @media (max-width: 560px) {
+    .guide { margin: 40px -20px 0; padding: 38px 20px 10px; }
+    .g-title { font-size: 23px; }
+    .sec-h { font-size: 19px; }
+    .st-three, .rules, .nums { grid-template-columns: 1fr; }
+    .num-box { display: flex; align-items: baseline; gap: 12px; text-align: left; }
+    .num-box .l { margin-top: 0; }
+  }
 </style>
 </head>
 <body>
@@ -178,6 +368,264 @@
     <h2>收到了，謝謝你！</h2>
     <p>資料與照片都已經收到。<br>EDM 完成後會發到主題簡報群，再麻煩你留意。</p>
   </div>
+
+  <section class="guide">
+    <div class="g-eyebrow">PREPARATION GUIDE</div>
+    <div class="g-title">主題簡報，八成決定在上台前</div>
+    <p class="g-lede">很多人以為主題簡報是「那 5 分鐘的事」，所以前面五週都在忙別的，最後一週才熬夜做投影片。結果台下坐滿人，卻沒有人知道該怎麼幫你。</p>
+    <p class="g-lede">下面這份整理自 BNI 官方培訓教材，把「上台前六週要做什麼」和「上台那 5 分鐘怎麼講」拆成可以照著跑的步驟。<strong>建議你在填上面表單的同時，一邊往下看</strong>——尤其是第 3 段，它會直接影響你表單裡「標語」和「誠摯邀請」要怎麼寫。</p>
+    <div class="g-rule"></div>
+
+    <nav class="toc">
+      <div class="toc-h">這份指南包含</div>
+      <ol>
+        <li><a href="#g1">六週倒數：每一週該做的事</a></li>
+        <li><a href="#g2">上台 5 分鐘：時間怎麼分配</a></li>
+        <li><a href="#g3">內容怎麼想：ABCD 倒推法</a></li>
+        <li><a href="#g4">兩個真實範例</a></li>
+        <li><a href="#g5">投影片怎麼排：頁數配置</a></li>
+        <li><a href="#g6">製作硬規則</a></li>
+        <li><a href="#g7">兩條共識</a></li>
+      </ol>
+    </nav>
+
+    <div class="sec" id="g1">
+      <div class="sec-h"><span class="sn">01</span>六週倒數：每一週該做的事</div>
+      <p class="sec-sub">重點不是「什麼時候開始做投影片」，而是<strong>題目根本不該自己想</strong>——它要從會員的疑問裡長出來。</p>
+
+      <ol class="tl">
+        <li>
+          <span class="tl-wk">六週前</span><span class="tl-tag">決定題目</span>
+          <ul class="tl-body">
+            <li>大量向會員蒐集，他們對你的行業有疑問、有興趣的問題</li>
+            <li>綜合這些問題，決定你專講的題目及內容</li>
+            <li>和這些提出問題的會員進行一對一</li>
+          </ul>
+        </li>
+        <li>
+          <span class="tl-wk">五週前</span><span class="tl-tag">學習與鋪梗</span>
+          <ul class="tl-body">
+            <li>每一週會員的 30 秒及專講，都是你非常好的學習教材</li>
+            <li>如果可以，開始鋪「梗」</li>
+            <li>讓會員願意討論你；沒人會在乎你多厲害，直到你願意關心他們多少</li>
+          </ul>
+        </li>
+        <li>
+          <span class="tl-wk">四週前</span><span class="tl-tag">講清楚你要誰</span>
+          <ul class="tl-body">
+            <li>持續的做一對一</li>
+            <li>告訴會員，你想要合作的對象；B2B2C、B2B2B</li>
+            <li>經營業務人脈圈</li>
+          </ul>
+        </li>
+        <li>
+          <span class="tl-wk">三週前</span><span class="tl-tag">開始邀來賓</span>
+          <ul class="tl-body">
+            <li>持續的做一對一</li>
+            <li>邀請 <strong>10～15 位</strong>，你的客戶、你的供應商、你的家人、你的朋友</li>
+            <li>告訴他們，你需要他們的幫忙、見證，以獲取更多的生意機會</li>
+          </ul>
+        </li>
+        <li>
+          <span class="tl-wk">二週前</span><span class="tl-tag">確認出席</span>
+          <ul class="tl-body">
+            <li>持續的做一對一</li>
+            <li>跟進你邀請的來賓，請會員提醒他們的嘉賓</li>
+            <li>邀請函：將來賓登入 Connect，如果你有他們的 mail，他們將會收到電子邀請函；分會提供的紙本邀請函，也在這週寄出</li>
+          </ul>
+        </li>
+        <li>
+          <span class="tl-wk">一週前</span><span class="tl-tag">補人＋練習</span>
+          <ul class="tl-body">
+            <li>持續的一對一</li>
+            <li>確保有來賓到場</li>
+            <li>練習、練習、再練習</li>
+          </ul>
+        </li>
+      </ol>
+
+      <div class="thread">
+        六格看下來，<b>唯一每一週都出現的動作是「一對一」</b>。題目從一對一來、來賓從一對一來、上台那天願意幫你轉介的人也從一對一來。
+      </div>
+
+      <div class="quote">
+        「一場沒有來賓的例會、專講，就像<b>產品發表會只有工作人員，沒有任何顧客</b>。」
+      </div>
+    </div>
+
+    <div class="sec" id="g2">
+      <div class="sec-h"><span class="sn">02</span>上台 5 分鐘：時間怎麼分配</div>
+      <p class="sec-sub">整份簡報拆成 5 個各 1 分鐘的積木。中間三塊叫 LCD，是你要主打的三個方向，三塊的內部結構完全一樣——想好一塊，另外兩塊照套。</p>
+
+      <div class="st-box">
+        <div class="st-hd"><span class="st-t">開場 ＋ 標題</span><span class="st-min">1 min</span></div>
+        <div class="st-s">公司優勢 · 個人優勢 · 一次點出你的三個 LCD</div>
+      </div>
+
+      <div class="st-three">
+        <div class="st-box">
+          <div class="st-hd"><span class="st-t">LCD 1</span><span class="st-min">1 min</span></div>
+          <ol class="st-steps">
+            <li>細節</li>
+            <li class="hl">成功案例</li>
+            <li>要求引薦</li>
+            <li>小總結</li>
+          </ol>
+        </div>
+        <div class="st-box">
+          <div class="st-hd"><span class="st-t">LCD 2</span><span class="st-min">1 min</span></div>
+          <ol class="st-steps">
+            <li>細節</li>
+            <li class="hl">成功案例</li>
+            <li>要求引薦</li>
+            <li>小總結</li>
+          </ol>
+        </div>
+        <div class="st-box">
+          <div class="st-hd"><span class="st-t">LCD 3</span><span class="st-min">1 min</span></div>
+          <ol class="st-steps">
+            <li>細節</li>
+            <li class="hl">成功案例</li>
+            <li>要求引薦</li>
+            <li>小總結</li>
+          </ol>
+        </div>
+      </div>
+
+      <div class="st-box">
+        <div class="st-hd"><span class="st-t">總結</span><span class="st-min">1 min</span></div>
+        <div class="st-s">開啟對話 · 三級引薦</div>
+      </div>
+
+      <p class="sec-sub" style="margin-top:20px">教材裡把「成功案例」那一格特別框起來——它是「要求引薦」前面的鋪陳，<strong>沒有案例，後面那句要求就只是推銷</strong>。每個 LCD 的小總結要複述一次「特色」和「案例」，讓聽的人記得住。</p>
+    </div>
+
+    <div class="sec" id="g3">
+      <div class="sec-h"><span class="sn">03</span>內容怎麼想：ABCD 倒推法</div>
+      <p class="sec-sub">教材的原話是「<strong>從結果面開始來做規劃</strong>」——不要先想我要講什麼，而是先寫下你希望聽完之後拿到什麼引薦，再回推內容。每一個 LCD 都各寫一份。</p>
+
+      <ol class="abcd">
+        <li><span class="k">A</span><span>特定的產品或服務</span></li>
+        <li><span class="k">B</span><span>對客戶的效益</span></li>
+        <li><span class="k">C</span><span>特定的客戶<span class="sub">＝ 交易引薦。直接會買的人。</span></span></li>
+        <li><span class="k">D</span><span>能固定給你客戶的產業<span class="sub">＝ 關係引薦。他自己不買，但他手上一直有你要的客戶。</span></span></li>
+      </ol>
+
+      <div class="quote">
+        寫完 ABCD，再幫每個 LCD 準備<b>協助素材</b>：DM、產品手冊、樣品、照片、見證、成功案例⋯等。這批東西就是投影片上要放的內容。
+      </div>
+    </div>
+
+    <div class="sec" id="g4">
+      <div class="sec-h"><span class="sn">04</span>兩個真實範例</div>
+      <p class="sec-sub">特別注意 <strong>D 欄</strong>——填的都不是客戶本人，而是「手上一直有這種客戶的人」。這是關係引薦最容易寫錯的一格。</p>
+
+      <div class="ex-wrap">
+        <table class="ex">
+          <caption>範例一 · 長期看護險</caption>
+          <tbody>
+            <tr><td class="kk">A</td><td>長期看護險</td><td>DM 或服務清單</td></tr>
+            <tr><td class="kk">B</td><td>失能時不用擔心生活支出</td><td>照片</td></tr>
+            <tr><td class="kk">C</td><td>單身或結婚無子女者</td><td>成功案例</td></tr>
+            <tr><td class="kk">D</td><td>婚友社、愛情顧問</td><td>—</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="ex-wrap" style="margin-top:20px">
+        <table class="ex">
+          <caption>範例二 · 商業法律顧問</caption>
+          <tbody>
+            <tr><td class="kk">A</td><td>商業法律顧問</td><td>顧問證書</td></tr>
+            <tr><td class="kk">B</td><td>事先預防法律問題發生</td><td>成功案例</td></tr>
+            <tr><td class="kk">C</td><td>中小型診所（醫美）</td><td>知名客戶</td></tr>
+            <tr><td class="kk">D</td><td>保養品或醫材廠商</td><td>—</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="sec-sub" style="margin-top:14px">右欄是協助素材，會依行業不同而換。兩個範例的 D 欄邏輯一致：往<strong>客戶的上游或周邊</strong>找，那裡的人能穩定替你帶客戶。</p>
+    </div>
+
+    <div class="sec" id="g5">
+      <div class="sec-h"><span class="sn">05</span>投影片怎麼排：頁數配置</div>
+      <p class="sec-sub">把架構直接翻譯成「哪一段做幾頁」，照著排就不會漏段落，也不會頭重腳輕。</p>
+
+      <ol class="pages">
+        <li><span>標題</span><span class="p">1 頁</span></li>
+        <li><span>個人簡介</span><span class="p">1 頁</span></li>
+        <li><span>公司簡介</span><span class="p">1 頁</span></li>
+        <li><span>獨特銷售主張<span class="sub">寫 3～5 點</span></span><span class="p">1–2 頁</span></li>
+        <li><span>目標市場 ＋ 成功案例<span class="sub">三個市場各 1 頁；說明時要帶出前面講過的獨特銷售主張</span></span><span class="p">各 1 頁 ×3</span></li>
+        <li><span>開啟引薦對話<span class="sub">針對目標市場的總結。其中「看到目標市場」1 頁、「設定 Q&amp;A」1 頁</span></span><span class="p">3–6 頁</span></li>
+        <li><span>三級引薦</span><span class="p">1 頁</span></li>
+      </ol>
+    </div>
+
+    <div class="sec" id="g6">
+      <div class="sec-h"><span class="sn">06</span>製作硬規則</div>
+      <p class="sec-sub">這些是教材直接給的數字，不是建議，是規格。</p>
+
+      <div class="nums">
+        <div class="num-box">
+          <div class="v">30<span style="font-size:19px">+</span></div>
+          <div class="l">字體級數<br>再小台下看不到</div>
+        </div>
+        <div class="num-box">
+          <div class="v">12<span style="font-size:19px">↓</span></div>
+          <div class="l">總頁數上限<br>頁數多不等於講得好</div>
+        </div>
+        <div class="num-box">
+          <div class="v">10–15</div>
+          <div class="l">要邀的來賓數<br>三週前就要開始</div>
+        </div>
+      </div>
+
+      <div class="rules">
+        <div class="rule-box no">
+          <div class="rule-h">✕ 不要出現</div>
+          <ul>
+            <li>影片</li>
+            <li>動畫效果</li>
+            <li>大量圖片</li>
+            <li>整段網站、PDF 資料</li>
+          </ul>
+        </div>
+        <div class="rule-box yes">
+          <div class="rule-h">✓ 要這樣做</div>
+          <ul>
+            <li>條列式呈現</li>
+            <li>左邊文字、右邊圖</li>
+            <li>用故事舉例</li>
+            <li>字大、頁少、講清楚</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="sec" id="g7">
+      <div class="sec-h"><span class="sn">07</span>兩條共識</div>
+      <p class="sec-sub">整份簡報最容易犯的兩個錯，都在這兩句話裡。</p>
+
+      <div class="creed">
+        <div class="creed-box">
+          <div class="creed-t">聚焦，非放大</div>
+          <div class="creed-d">不是把服務範圍講得越大越好。你什麼都做，別人就記不住你做什麼，也就無從幫你介紹。</div>
+        </div>
+        <div class="creed-box">
+          <div class="creed-t">一氣呵成</div>
+          <div class="creed-d">下面這四塊必須彼此呼應、串成一條線，不能各講各的：</div>
+          <div class="creed-chain">
+            <span>獨特銷售主張</span><span>三個目標市場</span><span>成功案例</span><span>引薦對話</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="g-foot">
+      內容整理自 BNI 官方主題簡報培訓教材（高屏區 · 高雄市中心區／屏東區）。<br>
+      填完上面的表單後，分會會安排夥伴陪你走三個階段：<strong>先一對一抓出架構 → 做出簡報並調整內容 → 練稿微調</strong>。有任何一段卡住，直接在主題簡報群裡問。
+    </div>
+  </section>
 
   <div class="sig">
     <div class="who">蔡阿達 · BNI 富真分會 行銷開店產業鏈召集人</div>
