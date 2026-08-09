@@ -61,6 +61,24 @@
   textarea { resize: vertical; min-height: 76px; line-height: 1.65; }
   input:focus, textarea:focus { outline: none; border-color: #C80A14; }
 
+  .drop {
+    border: 2px dashed #E8E7E4; border-radius: 8px; background: #FCFCFB;
+    padding: 26px 18px; text-align: center; cursor: pointer; transition: border-color .15s, background .15s;
+  }
+  .drop:hover, .drop.over { border-color: #C80A14; background: #FDECEC; }
+  .drop .big { font-size: 17px; font-weight: 700; color: #16181D; margin-bottom: 4px; }
+  .drop .small { font-size: 15px; color: #7B7D84; }
+  .drop input[type=file] { display: none; }
+  .preview { display: none; align-items: center; gap: 14px; margin-top: 14px; }
+  .preview.show { display: flex; }
+  .preview img {
+    width: 82px; height: 82px; object-fit: cover; border-radius: 8px; border: 1px solid #E8E7E4;
+  }
+  .preview .meta { font-size: 15px; color: #34363C; line-height: 1.6; }
+  .preview .meta b { color: #16181D; word-break: break-all; }
+  .preview .redo { font-size: 15px; color: #C80A14; font-weight: 600; cursor: pointer; }
+  .preview .redo:hover { text-decoration: underline; }
+
   button {
     width: 100%; font-family: inherit; font-size: 18px; font-weight: 700;
     color: #fff; background: #C80A14; border: none; border-radius: 8px;
@@ -102,15 +120,15 @@
   <div id="formView">
     <div class="tag">BNI 富真分會 · 主題簡報</div>
     <h1>主題簡報 EDM 需求單</h1>
-    <p class="lede">請填下面 <strong>5 個欄位</strong>，我會依此為你製作分會官網與群組要用的主題簡報 EDM。</p>
+    <p class="lede">請填下面 <strong>5 個欄位＋上傳一張形象照</strong>，我會依此為你製作分會官網與群組要用的主題簡報 EDM。</p>
     <div class="note">
-      個人專業形象照請<strong>直接上傳到主題簡報群</strong>，這張表單只收文字資料。<br>
-      填完後你的關主也會收到通知，可以直接跟你討論簡報內容。
+      <strong>不需要登入</strong>，手機直接填、照片也在這裡一起上傳就好。<br>
+      填完後你的關主會收到通知，可以直接跟你討論簡報內容。
     </div>
 
     <div class="field">
       <label><span class="num">1</span>專業別／公司名</label>
-      <div class="hint">例：<em>私人健身教練／輕生活有限公司</em></div>
+      <div class="hint">例：<em>SEO / GEO ／ awoo 阿物科技</em></div>
       <input type="text" id="f_biz" placeholder="專業別／公司名" autocomplete="off">
     </div>
 
@@ -122,13 +140,13 @@
 
     <div class="field">
       <label><span class="num">3</span>標語</label>
-      <div class="hint">一句話讓人記住你。例：<em>運動空間很難找？來輕生活沒煩惱</em></div>
+      <div class="hint">一句話讓人記住你。例：<em>想被 AI 指名推薦？先讓 AI 讀得懂你</em></div>
       <input type="text" id="f_slogan" placeholder="標語" autocomplete="off">
     </div>
 
     <div class="field">
       <label><span class="num">4</span>誠摯邀請（想被引薦的對象）</label>
-      <div class="hint">你希望夥伴幫你找誰。例：<em>團課老師／自由教練</em></div>
+      <div class="hint">你希望夥伴幫你找誰。例：<em>想被 AI 指名推薦的品牌主</em></div>
       <input type="text" id="f_invite" placeholder="想被引薦的對象" autocomplete="off">
     </div>
 
@@ -138,17 +156,31 @@
       <input type="date" id="f_date">
     </div>
 
+    <div class="field">
+      <label><span class="num">6</span>個人專業形象照</label>
+      <div class="hint">直接用手機拍或從相簿選都可以，會自動幫你壓縮，<em>不需要登入任何帳號</em></div>
+      <div class="drop" id="drop">
+        <div class="big">點這裡選照片</div>
+        <div class="small">JPG／PNG，也可以直接把檔案拖進來</div>
+        <input type="file" id="f_photo" accept="image/*">
+      </div>
+      <div class="preview" id="preview">
+        <img id="pvImg" alt="預覽">
+        <div class="meta"><b id="pvName"></b><br><span id="pvSize"></span> ・ <span class="redo" id="pvRedo">重新選一張</span></div>
+      </div>
+    </div>
+
     <button id="submitBtn">送出需求單</button>
   </div>
 
   <div class="success" id="successBox">
     <div class="ico">✅</div>
     <h2>收到了，謝謝你！</h2>
-    <p>資料已經送出。EDM 完成後會發到主題簡報群，<br>別忘了把個人專業形象照也上傳到群裡。</p>
+    <p>資料與照片都已經收到。<br>EDM 完成後會發到主題簡報群，再麻煩你留意。</p>
   </div>
 
   <div class="sig">
-    <div class="who">蔡阿達（蔡俊達）· BNI 富真分會 行銷開店產業鏈召集人</div>
+    <div class="who">蔡阿達 · BNI 富真分會 行銷開店產業鏈召集人</div>
     <div class="row">awoo 阿物科技 共同創辦人暨業務開發部資深總監</div>
     <div class="row"><a href="https://awoo.ai/zh-hant/" target="_blank" rel="noopener noreferrer">awoo 阿物科技官網</a> ・ <a href="https://www.triplew.tw/tsai" target="_blank" rel="noopener noreferrer">認識蔡阿達</a> ・ <a href="https://bni-fuzen.vercel.app" target="_blank" rel="noopener noreferrer">富真分會官網</a></div>
   </div>
@@ -167,6 +199,62 @@
   const LABEL = { biz:'專業別／公司名', name:'姓名', slogan:'標語', invite:'誠摯邀請', date:'簡報日期' };
   const btn = document.getElementById('submitBtn');
 
+  /* ── 照片：選檔 → 前端縮圖壓縮 → base64（不需登入，隨表單一起 POST） ── */
+  const drop = document.getElementById('drop');
+  const fileInput = document.getElementById('f_photo');
+  const preview = document.getElementById('preview');
+  const MAX_EDGE = 1600;      // 長邊上限，避免手機原圖 8MB 撐爆 Apps Script
+  const JPEG_QUALITY = 0.86;
+  let photo = null;           // { name, mime, b64 }
+
+  drop.addEventListener('click', () => fileInput.click());
+  ['dragenter','dragover'].forEach(ev =>
+    drop.addEventListener(ev, e => { e.preventDefault(); drop.classList.add('over'); }));
+  ['dragleave','drop'].forEach(ev =>
+    drop.addEventListener(ev, e => { e.preventDefault(); drop.classList.remove('over'); }));
+  drop.addEventListener('drop', e => {
+    if (e.dataTransfer.files && e.dataTransfer.files[0]) handleFile(e.dataTransfer.files[0]);
+  });
+  fileInput.addEventListener('change', () => {
+    if (fileInput.files && fileInput.files[0]) handleFile(fileInput.files[0]);
+  });
+  document.getElementById('pvRedo').addEventListener('click', e => {
+    e.stopPropagation(); photo = null; fileInput.value = '';
+    preview.classList.remove('show'); drop.style.display = '';
+  });
+
+  function handleFile(file) {
+    if (!file.type.match(/^image\//)) { alert('請選擇圖片檔（JPG／PNG）'); return; }
+    const reader = new FileReader();
+    reader.onload = () => {
+      const img = new Image();
+      img.onload = () => {
+        let { width: w, height: h } = img;
+        const scale = Math.min(1, MAX_EDGE / Math.max(w, h));
+        w = Math.round(w * scale); h = Math.round(h * scale);
+        const cv = document.createElement('canvas');
+        cv.width = w; cv.height = h;
+        cv.getContext('2d').drawImage(img, 0, 0, w, h);
+        const dataUrl = cv.toDataURL('image/jpeg', JPEG_QUALITY);
+        photo = {
+          name: file.name.replace(/\.[^.]+$/, '') + '.jpg',
+          mime: 'image/jpeg',
+          b64: dataUrl.split(',')[1]
+        };
+        document.getElementById('pvImg').src = dataUrl;
+        document.getElementById('pvName').textContent = photo.name;
+        document.getElementById('pvSize').textContent =
+          (photo.b64.length * 0.75 / 1024).toFixed(0) + ' KB（已壓縮）';
+        preview.classList.add('show');
+        drop.style.display = 'none';
+      };
+      img.onerror = () => alert('這張圖讀不起來，換一張試試');
+      img.src = reader.result;
+    };
+    reader.onerror = () => alert('讀取檔案失敗，請再試一次');
+    reader.readAsDataURL(file);
+  }
+
   btn.addEventListener('click', () => {
     const v = {};
     for (const k in F) v[k] = F[k].value.trim();
@@ -174,6 +262,11 @@
     for (const k in v) {
       if (!v[k]) { alert('請填寫「' + LABEL[k] + '」'); F[k].focus(); return; }
     }
+    if (!photo) { alert('請上傳一張個人專業形象照'); drop.scrollIntoView({ behavior:'smooth', block:'center' }); return; }
+
+    v.photoName = photo.name;
+    v.photoMime = photo.mime;
+    v.photoB64  = photo.b64;
 
     btn.disabled = true;
     btn.textContent = '送出中…';
