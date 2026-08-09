@@ -264,6 +264,7 @@
     }
     if (!photo) { alert('請上傳一張個人專業形象照'); drop.scrollIntoView({ behavior:'smooth', block:'center' }); return; }
 
+    v.formType  = 'bni-edm';
     v.photoName = photo.name;
     v.photoMime = photo.mime;
     v.photoB64  = photo.b64;
