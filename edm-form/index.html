@@ -127,9 +127,9 @@
     </div>
 
     <div class="field">
-      <label><span class="num">1</span>專業別／公司名</label>
-      <div class="hint">例：<em>SEO / GEO ／ awoo 阿物科技</em></div>
-      <input type="text" id="f_biz" placeholder="專業別／公司名" autocomplete="off">
+      <label><span class="num">1</span>專業別／公司（品牌）名</label>
+      <div class="hint">例：<em>SEO/awoo 阿物科技</em></div>
+      <input type="text" id="f_biz" placeholder="專業別／公司（品牌）名" autocomplete="off">
     </div>
 
     <div class="field">
@@ -140,19 +140,19 @@
 
     <div class="field">
       <label><span class="num">3</span>標語</label>
-      <div class="hint">一句話讓人記住你。例：<em>想被 AI 指名推薦？先讓 AI 讀得懂你</em></div>
+      <div class="hint">一句話讓人記住你。例：<em>為什麼AI都不是推薦自家的產品/服務？</em></div>
       <input type="text" id="f_slogan" placeholder="標語" autocomplete="off">
     </div>
 
     <div class="field">
       <label><span class="num">4</span>誠摯邀請（想被引薦的對象）</label>
-      <div class="hint">你希望夥伴幫你找誰。例：<em>想被 AI 指名推薦的品牌主</em></div>
+      <div class="hint">你希望夥伴幫你找誰。例：<em>有自己品牌官網且想被AI指名道姓推薦的企業主、創辦人</em></div>
       <input type="text" id="f_invite" placeholder="想被引薦的對象" autocomplete="off">
     </div>
 
     <div class="field">
       <label><span class="num">5</span>簡報日期</label>
-      <div class="hint">你上台的那一週例會日期</div>
+      <div class="hint">你上台的那一週例會日期。例：<em>8/28</em></div>
       <input type="date" id="f_date">
     </div>
 
@@ -196,7 +196,7 @@
     invite: document.getElementById('f_invite'),
     date:   document.getElementById('f_date')
   };
-  const LABEL = { biz:'專業別／公司名', name:'姓名', slogan:'標語', invite:'誠摯邀請', date:'簡報日期' };
+  const LABEL = { biz:'專業別／公司（品牌）名', name:'姓名', slogan:'標語', invite:'誠摯邀請', date:'簡報日期' };
   const btn = document.getElementById('submitBtn');
 
   /* ── 照片：選檔 → 前端縮圖壓縮 → base64（不需登入，隨表單一起 POST） ── */
