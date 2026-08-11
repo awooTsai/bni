@@ -31,7 +31,7 @@
 
   .tag {
     display: inline-flex; align-items: center; gap: 8px;
-    font-size: 15px; font-weight: 600; color: #C80A14;
+    font-size: 16px; font-weight: 600; color: #C80A14;
     background: #FDECEC; padding: 6px 14px; border-radius: 999px;
     margin-bottom: 18px;
   }
@@ -39,7 +39,7 @@
   .lede { font-size: 17px; color: #34363C; margin-bottom: 8px; }
   .lede strong { color: #16181D; }
   .note {
-    font-size: 15px; color: #7B7D84; background: #FCFCFB;
+    font-size: 16px; color: #7B7D84; background: #FCFCFB;
     border: 1px solid #EEEEEC; border-left: 3px solid #C80A14;
     padding: 14px 16px; border-radius: 6px; margin: 22px 0 34px;
   }
@@ -51,7 +51,12 @@
     text-align: center; background: #16181D; color: #fff;
     font-size: 13px; font-weight: 700; border-radius: 5px; margin-right: 8px;
   }
-  .hint { font-size: 15px; color: #7B7D84; margin-bottom: 9px; }
+  label .opt {
+    display: inline-block; margin-left: 8px; padding: 2px 8px;
+    background: #F3F2F0; color: #7B7D84; border-radius: 4px;
+    font-size: 16px; font-weight: 600; vertical-align: 1px;
+  }
+  .hint { font-size: 16px; color: #7B7D84; margin-bottom: 9px; }
   .hint em { font-style: normal; color: #C80A14; font-weight: 600; }
   input[type=text], input[type=date], textarea {
     width: 100%; font-family: inherit; font-size: 17px; color: #16181D;
@@ -67,16 +72,16 @@
   }
   .drop:hover, .drop.over { border-color: #C80A14; background: #FDECEC; }
   .drop .big { font-size: 17px; font-weight: 700; color: #16181D; margin-bottom: 4px; }
-  .drop .small { font-size: 15px; color: #7B7D84; }
+  .drop .small { font-size: 16px; color: #7B7D84; }
   .drop input[type=file] { display: none; }
   .preview { display: none; align-items: center; gap: 14px; margin-top: 14px; }
   .preview.show { display: flex; }
   .preview img {
     width: 82px; height: 82px; object-fit: cover; border-radius: 8px; border: 1px solid #E8E7E4;
   }
-  .preview .meta { font-size: 15px; color: #34363C; line-height: 1.6; }
+  .preview .meta { font-size: 16px; color: #34363C; line-height: 1.6; }
   .preview .meta b { color: #16181D; word-break: break-all; }
-  .preview .redo { font-size: 15px; color: #C80A14; font-weight: 600; cursor: pointer; }
+  .preview .redo { font-size: 16px; color: #C80A14; font-weight: 600; cursor: pointer; }
   .preview .redo:hover { text-decoration: underline; }
 
   button {
@@ -97,7 +102,7 @@
 
   .sig {
     margin-top: 52px; padding-top: 28px; border-top: 1px solid #EEEEEC;
-    font-size: 15px; color: #7B7D84; line-height: 1.85;
+    font-size: 16px; color: #7B7D84; line-height: 1.85;
   }
   .sig .who { font-size: 16px; font-weight: 700; color: #16181D; margin-bottom: 6px; }
   .sig a { color: #C80A14; text-decoration: none; font-weight: 600; }
@@ -128,7 +133,7 @@
     background: #16181D; color: #fff; padding: 22px 24px; margin: 28px 0 40px;
   }
   .tool-tag {
-    font-size: 15px; font-weight: 700; color: #FF8A90;
+    font-size: 16px; font-weight: 700; color: #FF8A90;
     letter-spacing: .1em; margin-bottom: 9px;
   }
   .tool-t { font-size: 20px; font-weight: 900; line-height: 1.45; margin-bottom: 10px; }
@@ -136,7 +141,7 @@
   .tool-d b { color: #fff; font-weight: 700; }
   .tool-list { list-style: none; margin: 13px 0 17px; }
   .tool-list li {
-    font-size: 15px; color: #C6C8CD; padding: 6px 0;
+    font-size: 16px; color: #C6C8CD; padding: 6px 0;
     border-bottom: 1px dashed #33363D; display: flex; gap: 9px; line-height: 1.55;
   }
   .tool-list li:last-child { border-bottom: none; }
@@ -146,12 +151,12 @@
     font-size: 16px; font-weight: 700; padding: 13px 22px; transition: opacity .15s;
   }
   .tool-a:hover { opacity: .88; }
-  .tool-note { font-size: 15px; color: #8A8D94; margin-top: 13px; line-height: 1.6; }
+  .tool-note { font-size: 16px; color: #8A8D94; margin-top: 13px; line-height: 1.6; }
 
   .toc {
     background: #fff; border: 1px solid #E8E7E4; padding: 16px 18px; margin: 26px 0 42px;
   }
-  .toc-h { font-size: 15px; font-weight: 700; color: #7B7D84; letter-spacing: .06em; margin-bottom: 10px; }
+  .toc-h { font-size: 16px; font-weight: 700; color: #7B7D84; letter-spacing: .06em; margin-bottom: 10px; }
   .toc ol { list-style: none; counter-reset: toc; }
   .toc li {
     counter-increment: toc; font-size: 16px; padding: 7px 0;
@@ -175,7 +180,7 @@
     font-size: 13px; font-weight: 700; color: #C80A14;
     font-variant-numeric: tabular-nums; letter-spacing: .06em;
   }
-  .sec-sub { font-size: 15px; color: #7B7D84; margin: 13px 0 22px; }
+  .sec-sub { font-size: 16px; color: #7B7D84; margin: 13px 0 22px; }
 
   /* 六週時間軸 */
   .tl { list-style: none; border-left: 2px solid #E0DED9; margin: 0 0 0 5px; }
@@ -187,7 +192,7 @@
   .tl > li:last-child { padding-bottom: 2px; }
   .tl-wk { font-size: 17px; font-weight: 900; }
   .tl-tag {
-    font-size: 15px; font-weight: 700; color: #C80A14;
+    font-size: 16px; font-weight: 700; color: #C80A14;
     background: #FDECEC; padding: 2px 9px; margin-left: 9px; white-space: nowrap;
   }
   .tl-body { list-style: none; margin-top: 9px; background: #fff; border: 1px solid #E8E7E4; }
@@ -209,7 +214,7 @@
   }
   .st-hd { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; }
   .st-t { font-size: 16px; font-weight: 900; }
-  .st-s { font-size: 15px; color: #7B7D84; line-height: 1.6; margin-top: 5px; }
+  .st-s { font-size: 16px; color: #7B7D84; line-height: 1.6; margin-top: 5px; }
   .st-min {
     font-size: 13px; font-weight: 700; color: #C80A14;
     white-space: nowrap; font-variant-numeric: tabular-nums;
@@ -218,7 +223,7 @@
   .st-three .st-box { padding: 12px 13px; margin-bottom: 9px; }
   .st-steps { list-style: none; counter-reset: sp; margin-top: 8px; }
   .st-steps li {
-    counter-increment: sp; font-size: 15px; color: #34363C;
+    counter-increment: sp; font-size: 16px; color: #34363C;
     padding: 6px 0; border-bottom: 1px dashed #EEEEEC; display: flex; gap: 8px; line-height: 1.5;
   }
   .st-steps li:last-child { border-bottom: none; padding-bottom: 0; }
@@ -238,21 +243,21 @@
   .abcd .k {
     font-weight: 900; color: #C80A14; min-width: 17px; flex-shrink: 0;
   }
-  .abcd .sub { display: block; font-size: 15px; color: #7B7D84; margin-top: 2px; }
+  .abcd .sub { display: block; font-size: 16px; color: #7B7D84; margin-top: 2px; }
 
   /* 範例表 */
   .ex-wrap { overflow-x: auto; }
   .ex {
     width: 100%; border-collapse: collapse; background: #fff;
-    border: 1px solid #E8E7E4; font-size: 15px; min-width: 420px;
+    border: 1px solid #E8E7E4; font-size: 16px; min-width: 420px;
   }
   .ex caption {
-    text-align: left; font-size: 15px; font-weight: 700;
+    text-align: left; font-size: 16px; font-weight: 700;
     padding: 0 0 8px; color: #34363C;
   }
   .ex th {
     background: #FCFCFB; text-align: left; padding: 10px 13px;
-    border-bottom: 1px solid #E8E7E4; font-size: 15px; font-weight: 700; color: #7B7D84;
+    border-bottom: 1px solid #E8E7E4; font-size: 16px; font-weight: 700; color: #7B7D84;
   }
   .ex td { padding: 10px 13px; border-bottom: 1px dashed #E8E7E4; vertical-align: top; line-height: 1.6; }
   .ex tr:last-child td { border-bottom: none; }
@@ -267,9 +272,9 @@
   .pages li:last-child { border-bottom: none; }
   .pages .p {
     font-weight: 700; white-space: nowrap; font-variant-numeric: tabular-nums;
-    color: #C80A14; font-size: 15px;
+    color: #C80A14; font-size: 16px;
   }
-  .pages .sub { display: block; font-size: 15px; color: #7B7D84; margin-top: 2px; }
+  .pages .sub { display: block; font-size: 16px; color: #7B7D84; margin-top: 2px; }
 
   /* 硬規則 */
   .nums { display: grid; grid-template-columns: repeat(3, 1fr); gap: 9px; margin-bottom: 14px; }
@@ -278,16 +283,16 @@
     font-size: 29px; font-weight: 900; line-height: 1.15;
     font-variant-numeric: tabular-nums; letter-spacing: -.02em;
   }
-  .num-box .l { font-size: 15px; color: #7B7D84; margin-top: 5px; line-height: 1.45; }
+  .num-box .l { font-size: 16px; color: #7B7D84; margin-top: 5px; line-height: 1.45; }
   .rules { display: grid; grid-template-columns: 1fr 1fr; gap: 9px; }
   .rule-box { border: 1px solid #E8E7E4; background: #fff; padding: 14px 15px; }
   .rule-box.no { border-color: #F0D8D8; }
-  .rule-h { font-size: 15px; font-weight: 700; margin-bottom: 9px; letter-spacing: .04em; }
+  .rule-h { font-size: 16px; font-weight: 700; margin-bottom: 9px; letter-spacing: .04em; }
   .rule-box.no .rule-h { color: #C80A14; }
   .rule-box.yes .rule-h { color: #1F7A4D; }
   .rule-box ul { list-style: none; }
   .rule-box li {
-    font-size: 15px; color: #34363C; padding: 5px 0;
+    font-size: 16px; color: #34363C; padding: 5px 0;
     border-bottom: 1px dashed #EEEEEC; line-height: 1.55;
   }
   .rule-box li:last-child { border-bottom: none; }
@@ -303,15 +308,15 @@
   .creed { display: grid; gap: 9px; }
   .creed-box { border: 1px solid #E8E7E4; background: #fff; padding: 15px 17px; }
   .creed-t { font-size: 18px; font-weight: 900; margin-bottom: 6px; }
-  .creed-d { font-size: 15px; color: #34363C; line-height: 1.65; }
+  .creed-d { font-size: 16px; color: #34363C; line-height: 1.65; }
   .creed-chain {
     display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px;
-    font-size: 15px; font-weight: 700;
+    font-size: 16px; font-weight: 700;
   }
   .creed-chain span { background: #FDECEC; color: #C80A14; padding: 3px 9px; }
 
   .g-foot {
-    font-size: 15px; color: #7B7D84; line-height: 1.7;
+    font-size: 16px; color: #7B7D84; line-height: 1.7;
     border-top: 1px dashed #D8D6D1; padding-top: 18px; margin-top: 6px;
   }
 
@@ -382,6 +387,12 @@
         <img id="pvImg" alt="預覽">
         <div class="meta"><b id="pvName"></b><br><span id="pvSize"></span> ・ <span class="redo" id="pvRedo">重新選一張</span></div>
       </div>
+    </div>
+
+    <div class="field">
+      <label><span class="num">7</span>EDM 風格期待<span class="opt">選填</span></label>
+      <div class="hint">想要什麼調性、想傳達什麼感覺就好，不用很具體。例：<em>工業風</em>、<em>食品生技風格</em>、<em>誇張趣味</em>、<em>正派誠懇</em></div>
+      <input type="text" id="f_style" placeholder="想呈現的氛圍或風格（沒有想法就留白）" autocomplete="off">
     </div>
 
     <button id="submitBtn">送出需求單</button>
@@ -684,9 +695,11 @@
     name:   document.getElementById('f_name'),
     slogan: document.getElementById('f_slogan'),
     invite: document.getElementById('f_invite'),
-    date:   document.getElementById('f_date')
+    date:   document.getElementById('f_date'),
+    style:  document.getElementById('f_style')
   };
-  const LABEL = { biz:'專業別／公司（品牌）名', name:'姓名', slogan:'標語', invite:'誠摯邀請', date:'簡報日期' };
+  const LABEL = { biz:'專業別／公司（品牌）名', name:'姓名', slogan:'標語', invite:'誠摯邀請', date:'簡報日期', style:'EDM 風格期待' };
+  const OPTIONAL = ['style'];   // 沒填也能送出，其餘都必填
   const btn = document.getElementById('submitBtn');
 
   /* ── 照片：選檔 → 前端縮圖壓縮 → base64（不需登入，隨表單一起 POST） ── */
@@ -750,6 +763,7 @@
     for (const k in F) v[k] = F[k].value.trim();
 
     for (const k in v) {
+      if (OPTIONAL.includes(k)) continue;
       if (!v[k]) { alert('請填寫「' + LABEL[k] + '」'); F[k].focus(); return; }
     }
     if (!photo) { alert('請上傳一張個人專業形象照'); drop.scrollIntoView({ behavior:'smooth', block:'center' }); return; }
