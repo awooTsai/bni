@@ -72,6 +72,9 @@ h1,h2,h3,h4{font-family:"Noto Serif TC",serif;font-weight:900;letter-spacing:.02
 .edm-meta{margin-top:16px}
 .edm-meta .t{font-family:"Noto Serif TC",serif;font-size:1.25rem;color:var(--gold)}
 .edm-meta .s{font-size:.95rem;opacity:.75;margin-top:4px}
+.edm-art{display:inline-block;margin-top:10px;font-size:.95rem;color:var(--gold);text-decoration:none;border-bottom:1px solid rgba(212,171,93,.45);padding-bottom:2px;transition:opacity .2s}
+.edm-art:hover{opacity:.7}
+.next-item .edm-art{font-size:.85rem;margin-top:6px}
 @keyframes fadeUp{to{opacity:1;transform:translateY(0)}}
 .scroll-hint{position:absolute;bottom:24px;left:50%;transform:translateX(-50%);color:var(--gold);font-size:.8rem;opacity:.6;letter-spacing:.3em;animation:bounce 2s infinite;z-index:2;cursor:pointer}
 @keyframes bounce{0%,100%{transform:translate(-50%,0)}50%{transform:translate(-50%,8px)}}
@@ -221,6 +224,49 @@ h1,h2,h3,h4{font-family:"Noto Serif TC",serif;font-weight:900;letter-spacing:.02
 <script>
 /* ============ EDM 三層（沿用既有邏輯：依今天日期算上/本/下週）============ */
 let EDM_SCHEDULE=null,VIEW_DATE=null;
+/* === 主題簡報專文連結：自動向咖啡鄉查詢，不需要手動維護 ===
+   來源＝咖啡鄉「BNI 主題簡報」分類（id 380）；用文章上的「講者姓名」標籤對應。
+   任何一步失敗就靜默略過，官網維持原樣。 */
+const KFX_FEED='https://www.triplew.tw/wp-json/wp/v2/posts?categories=380&per_page=100&_embed=wp:term&_fields=link,title,date,_links,_embedded';
+const KFX_ALIAS={'湘湘_Vita':'徐湘榆','簡湘怡 Ivy':'簡湘怡','Mario':'鄭景隆','蔡阿達':'蔡俊達'};
+let ARTICLE_IDX=null;
+async function loadArticleIndex(){
+  if(ARTICLE_IDX) return ARTICLE_IDX;
+  try{const c=sessionStorage.getItem('bniArtIdx'); if(c){ARTICLE_IDX=JSON.parse(c); return ARTICLE_IDX;}}catch(e){}
+  try{
+    const r=await fetch(KFX_FEED,{cache:'no-store'});
+    if(!r.ok) throw new Error(r.status);
+    const idx={};
+    (await r.json()).forEach(p=>{
+      const groups=(p._embedded&&p._embedded['wp:term'])||[];
+      groups.forEach(g=>g.forEach(t=>{
+        if(t.taxonomy==='post_tag'&&!idx[t.name])
+          idx[t.name]={u:p.link,t:(p.title&&p.title.rendered||'').replace(/<[^>]+>/g,'')};
+      }));
+    });
+    ARTICLE_IDX=idx;
+    try{sessionStorage.setItem('bniArtIdx',JSON.stringify(idx));}catch(e){}
+  }catch(e){ ARTICLE_IDX={}; }
+  return ARTICLE_IDX;
+}
+function findArticle(name){
+  const i=ARTICLE_IDX||{};
+  for(const k of [name, KFX_ALIAS[name], String(name||'').split(/[ _]/)[0]])
+    if(k&&i[k]) return i[k];
+  return null;
+}
+async function fillArticleLinks(){
+  await loadArticleIndex();
+  document.querySelectorAll('[data-speaker]').forEach(el=>{
+    if(el.querySelector('.edm-art')) return;
+    const a=findArticle(el.dataset.speaker); if(!a) return;
+    const link=document.createElement('a');
+    link.className='edm-art'; link.href=a.u; link.target='_blank'; link.rel='noopener';
+    link.title=a.t; link.textContent='\u{1F4C4} 這場的專文介紹 \u2197';
+    link.addEventListener('click',e=>e.stopPropagation());
+    el.appendChild(link);
+  });
+}
 function getUpcomingEdmsFrom(refDate){
   if(!EDM_SCHEDULE||!EDM_SCHEDULE.schedule)return[];
   return EDM_SCHEDULE.schedule.filter(x=>x.date>=refDate).sort((a,b)=>a.date.localeCompare(b.date));
@@ -259,26 +305,27 @@ function renderEdm(){
   const wkDisplay=thisWeekEdm?thisWeekEdm.date.replace(/-/g,'.'):(pastEdm?pastEdm.date.replace(/-/g,'.'):'');
   document.getElementById('week').textContent=wkDisplay?('WEEK OF · '+wkDisplay):'WEEK OF';
   const featured=thisWeekEdm?thisWeekEdm.speakers:[];
-  document.getElementById('feat').innerHTML=featured.map((f,i)=>`<div class="edm-card" onclick="openLbxWeek(${i})"><img src="${f.edm}" alt="${f.name} ${f.industry}" onerror="this.onerror=null;this.src='data:image/svg+xml;charset=utf-8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22420%22 height=%22280%22><rect width=%22420%22 height=%22280%22 fill=%22%230a1f3d%22/><text x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22 fill=%22%23d4ab5d%22 font-size=%2218%22 font-family=%22serif%22>EDM 圖片未載入</text></svg>'"><div class="edm-meta"><div class="t">本週主題簡報・${f.name}</div><div class="s">${f.industry}</div></div></div>`).join('');
+  document.getElementById('feat').innerHTML=featured.map((f,i)=>`<div class="edm-card" onclick="openLbxWeek(${i})"><img src="${f.edm}" alt="${f.name} ${f.industry}" onerror="this.onerror=null;this.src='data:image/svg+xml;charset=utf-8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22420%22 height=%22280%22><rect width=%22420%22 height=%22280%22 fill=%22%230a1f3d%22/><text x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22 fill=%22%23d4ab5d%22 font-size=%2218%22 font-family=%22serif%22>EDM 圖片未載入</text></svg>'"><div class="edm-meta" data-speaker="${f.name}"><div class="t">本週主題簡報・${f.name}</div><div class="s">${f.industry}</div></div></div>`).join('');
   window.__WEEK=featured;
   const heroNext=document.getElementById('heroNext');
   let nextHtml='<div class="next-inner tri">';
   if(pastEdm&&pastEdm.speakers&&pastEdm.speakers.length){
     const dt=pastEdm.date.replace(/-/g,'.');
     nextHtml+='<div class="tri-col past"><div class="tri-label">上週主題簡報 · '+dt+'</div><div class="tri-grid">'+
-      pastEdm.speakers.map((f,i)=>'<div class="next-item" onclick="openLbxPast('+i+')"><img src="'+f.edm+'" alt="'+f.name+'"><div class="cap"><b>'+f.name+'</b>'+f.industry+'</div></div>').join('')+
+      pastEdm.speakers.map((f,i)=>'<div class="next-item" onclick="openLbxPast('+i+')"><img src="'+f.edm+'" alt="'+f.name+'"><div class="cap" data-speaker="'+f.name+'"><b>'+f.name+'</b>'+f.industry+'</div></div>').join('')+
       '</div></div>';
     window.__PAST=pastEdm.speakers;
   }
   if(nextWeekData&&nextWeekData.speakers&&nextWeekData.speakers.length){
     const dt=(nextWeekData.date||'').replace(/-/g,'.');
     nextHtml+='<div class="tri-col next"><div class="tri-label">下週主題簡報 · '+dt+'</div><div class="tri-grid">'+
-      nextWeekData.speakers.map((f,i)=>'<div class="next-item" onclick="openLbx('+i+')"><img src="'+f.edm+'" alt="'+f.name+'"><div class="cap"><b>'+f.name+'</b>'+f.industry+'</div></div>').join('')+
+      nextWeekData.speakers.map((f,i)=>'<div class="next-item" onclick="openLbx('+i+')"><img src="'+f.edm+'" alt="'+f.name+'"><div class="cap" data-speaker="'+f.name+'"><b>'+f.name+'</b>'+f.industry+'</div></div>').join('')+
       '</div></div>';
     window.__NEXT=nextWeekData.speakers;
   }
   nextHtml+='</div>';
   heroNext.innerHTML=(pastEdm||nextWeekData)?nextHtml:'';
+  fillArticleLinks();
 }
 
 /* ---- 切換週次（讓訪客回看過去每一週的 EDM 狀態）---- */
