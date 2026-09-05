@@ -156,7 +156,7 @@ h1,h2,h3,h4{font-family:"Noto Serif TC",serif;font-weight:900;letter-spacing:.02
 
 <nav class="topnav" id="topnav">
 <div class="topnav-in">
-<span class="topnav-brand">BNI 富真分會</span>
+<span class="topnav-brand">BNI 富真白金分會</span>
 <div class="topnav-right">
 <div class="wkpick">
 <button class="wk-toggle" onclick="toggleWeekPicker()" id="wkToggle">📅 <span class="wk-txt">切換週次</span> ▾</button>
@@ -186,7 +186,7 @@ h1,h2,h3,h4{font-family:"Noto Serif TC",serif;font-weight:900;letter-spacing:.02
 <div class="album-head">
 <div class="en">SUCCESS STORIES</div>
 <h2>成功見證</h2>
-<p class="sub" id="albumSub">高雄 BNI 富真分會 · 真實成交見證</p>
+<p class="sub" id="albumSub">高雄 BNI 富真白金分會 · 真實成交見證</p>
 </div>
 <div class="viewer">
 <div class="stage" id="stage">
@@ -209,7 +209,7 @@ h1,h2,h3,h4{font-family:"Noto Serif TC",serif;font-weight:900;letter-spacing:.02
 </section>
 
 <footer class="foot">
-<div style="margin-bottom:14px;font-size:.95rem">BNI 富真分會・高雄・每週五清晨 ｜ <a href="https://line.me/ti/p/8bgrVHyVXQ" target="_blank">加入招集人 LINE</a></div>
+<div style="margin-bottom:14px;font-size:.95rem">BNI 富真白金分會・高雄・每週五清晨 ｜ <a href="https://line.me/ti/p/8bgrVHyVXQ" target="_blank">加入招集人 LINE</a></div>
 <div class="signature">Powered by <a href="https://awoo.ai" target="_blank" class="awoo-logo"><img src="https://lh3.googleusercontent.com/pw/AP1GczMZZWr30_dY1Ke-Bi8Y5xkmHCR6LbpulIszDS4CBY-83hv8qlFlMUYq0BIpRHWnb-ECK73QEhMme3wZrk8MBJFjJ2AYBa13o6MtY0i6yliFbayXMCTZZ5f0kLXkpqh1nv0HMPKvDTGyUN8a_OQhNpkh6A=w451-h159-s-no-gm?authuser=0" alt="awoo 阿物科技官網"></a><a href="https://www.triplew.tw/tsai" target="_blank" data-text="蔡阿達" class="ada-link" onmouseover="adaGlitch(this,true)" onmouseout="adaGlitch(this,false)">蔡阿達</a><span class="sig-tail">| Crafted with Precision and Innovation</span></div>
 </footer>
 
@@ -332,7 +332,7 @@ async function initAlbum(){
   ALBUM.forEach((p,i)=>{if(i===0)return;(cats[p.cat]=cats[p.cat]||[]).push(p)});
   Object.values(cats).forEach(arr=>arr.forEach((p,j)=>{p.idx=j+1;p.total=arr.length}));
   const stories=ALBUM.length-1,catCount=Object.keys(cats).length;
-  const subTxt='高雄 BNI 富真分會 · '+stories+' 個成功見證 · '+catCount+' 大面向';
+  const subTxt='高雄 BNI 富真白金分會 · '+stories+' 個成功見證 · '+catCount+' 大面向';
   document.getElementById('albumSub').textContent=subTxt;
   document.getElementById('coverMeta').textContent=stories+' 個成功見證 · '+catCount+' 大面向';
   buildDots();bindSwipe();
@@ -429,7 +429,7 @@ document.addEventListener('keydown',e=>{if(e.key==='Escape')closeLbx()});
 function dlEdm(){if(!_LBX)return;const a=document.createElement('a');a.href=_LBX.edm;a.download=_LBX.edm.split('/').pop();a.click()}
 async function shareEdm(){
   if(!_LBX)return;
-  const txt='📅 BNI 富真分會・'+_LBX.name+'｜'+_LBX.industry+'\n'+window.location.href;
+  const txt='📅 BNI 富真白金分會・'+_LBX.name+'｜'+_LBX.industry+'\n'+window.location.href;
   if(navigator.share&&navigator.canShare){
     try{const r=await fetch(_LBX.edm);const b=await r.blob();const fn=_LBX.edm.split('/').pop();const file=new File([b],fn,{type:b.type});
       if(navigator.canShare({files:[file]})){await navigator.share({files:[file],text:txt});return}}catch(e){}
