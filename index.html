@@ -329,29 +329,44 @@ function fmtDate(iso){
            short:md+'　週'+W[d.getDay()],
            full:p[0]+'.'+md };
 }
+/* 回傳該日期所屬那一週的星期日；用本地時間組字串，不走 toISOString（會有 UTC 時差） */
+function sundayOf(iso){
+  const p=String(iso||'').split('-'); if(p.length<3) return '';
+  const d=new Date(+p[0], +p[1]-1, +p[2]);
+  d.setDate(d.getDate()+((7-d.getDay())%7));
+  return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
+}
 function renderEdm(){
   const today=new Date().toISOString().split('T')[0];
   const refDate=VIEW_DATE||today;
   updateWkBanner();
   const upcoming=getUpcomingEdmsFrom(refDate);
-  const pastEdm=getPastEdmBefore(refDate);
-  const thisWeekEdm=upcoming.length?upcoming[0]:null;
+  const allWeeks=((EDM_SCHEDULE&&EDM_SCHEDULE.schedule)||[]).slice().sort((a,b)=>a.date.localeCompare(b.date));
+  /* 主位：優先顯示還沒到的那一場；若沒有（封閉會議、或新 EDM 還沒上傳），
+     就繼續顯示手上最新的一場，不要開天窗 */
+  const thisWeekEdm=upcoming.length?upcoming[0]:(allWeeks.length?allWeeks[allWeeks.length-1]:null);
   const nextWeekData=upcoming.length>1?upcoming[1]:null;
-  const wkDisplay=thisWeekEdm?thisWeekEdm.date.replace(/-/g,'.'):(pastEdm?pastEdm.date.replace(/-/g,'.'):'');
-  document.getElementById('week').textContent=wkDisplay?('WEEK OF · '+wkDisplay):'WEEK OF';
+  /* 「上一場」要抓比主位更早的那一場，不能用今天去抓，否則退回顯示時會跟主位重複 */
+  const pastEdm=thisWeekEdm?getPastEdmBefore(thisWeekEdm.date):getPastEdmBefore(refDate);
+  /* 主位那一場如果已經過完它所屬的那一週，就改稱「最新」而不是「本週」 */
+  const stillThisWeek=thisWeekEdm?(sundayOf(thisWeekEdm.date)>=refDate):false;
+  const mainWord=stillThisWeek?'本週':'最新';
+  const wkDisplay=thisWeekEdm?thisWeekEdm.date.replace(/-/g,'.'):'';
+  document.getElementById('week').textContent=wkDisplay?((stillThisWeek?'WEEK OF · ':'LATEST · ')+wkDisplay):'WEEK OF';
   const featured=thisWeekEdm?thisWeekEdm.speakers:[];
   const DW=fmtDate(thisWeekEdm?thisWeekEdm.date:'');
   window.__WEEK_D=thisWeekEdm?thisWeekEdm.date:'';
-  document.getElementById('feat').innerHTML=featured.map((f,i)=>`<div class="edm-card" onclick="openLbxWeek(${i})"><img src="${f.edm}" alt="${f.name} ${f.industry}" onerror="this.onerror=null;this.src='data:image/svg+xml;charset=utf-8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22420%22 height=%22280%22><rect width=%22420%22 height=%22280%22 fill=%22%230a1f3d%22/><text x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22 fill=%22%23d4ab5d%22 font-size=%2218%22 font-family=%22serif%22>EDM 圖片未載入</text></svg>'"><div class="edm-meta" data-speaker="${f.name}" data-article="${f.article||''}" data-date="${DW.iso}"><div class="edm-date"><span class="dd">${DW.md}</span><span class="wd">${DW.wd}</span><span class="en">${DW.en}</span></div><div class="t">本週主題簡報・${f.name}</div><div class="s">${f.industry}</div></div></div>`).join('');
+  window.__WEEK_W=mainWord;
+  document.getElementById('feat').innerHTML=featured.map((f,i)=>`<div class="edm-card" onclick="openLbxWeek(${i})"><img src="${f.edm}" alt="${f.name} ${f.industry}" onerror="this.onerror=null;this.src='data:image/svg+xml;charset=utf-8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22420%22 height=%22280%22><rect width=%22420%22 height=%22280%22 fill=%22%230a1f3d%22/><text x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22 fill=%22%23d4ab5d%22 font-size=%2218%22 font-family=%22serif%22>EDM 圖片未載入</text></svg>'"><div class="edm-meta" data-speaker="${f.name}" data-article="${f.article||''}" data-date="${DW.iso}"><div class="edm-date"><span class="dd">${DW.md}</span><span class="wd">${DW.wd}</span><span class="en">${DW.en}</span></div><div class="t">${mainWord}主題簡報・${f.name}</div><div class="s">${f.industry}</div></div></div>`).join('');
   window.__WEEK=featured;
   const heroNext=document.getElementById('heroNext');
   let nextHtml='<div class="next-inner tri">';
   if(pastEdm&&pastEdm.speakers&&pastEdm.speakers.length){
     const dt=pastEdm.date.replace(/-/g,'.');
-    nextHtml+='<div class="tri-col past"><div class="tri-label">上週主題簡報 · '+dt+'</div><div class="tri-grid">'+
+    nextHtml+='<div class="tri-col past"><div class="tri-label">'+(stillThisWeek?'上週':'上一場')+'主題簡報 · '+dt+'</div><div class="tri-grid">'+
       pastEdm.speakers.map((f,i)=>'<div class="next-item" onclick="openLbxPast('+i+')"><img src="'+f.edm+'" alt="'+f.name+'"><div class="cap" data-speaker="'+f.name+'" data-article="'+(f.article||'')+'" data-date="'+pastEdm.date+'"><span class="nd">'+fmtDate(pastEdm.date).short+'</span><b>'+f.name+'</b>'+f.industry+'</div></div>').join('')+
       '</div></div>';
-    window.__PAST=pastEdm.speakers;window.__PAST_D=pastEdm.date;
+    window.__PAST=pastEdm.speakers;window.__PAST_D=pastEdm.date;window.__PAST_W=stillThisWeek?'上週':'上一場';
   }
   if(nextWeekData&&nextWeekData.speakers&&nextWeekData.speakers.length){
     const dt=(nextWeekData.date||'').replace(/-/g,'.');
@@ -499,9 +514,9 @@ function adaGlitch(el,on){
 
 /* ============ EDM 燈箱 ============ */
 let _LBX=null;
-function openLbxPast(i){if(window.__PAST)showLbx(window.__PAST[i],'上週主題簡報・',window.__PAST_D)}
+function openLbxPast(i){if(window.__PAST)showLbx(window.__PAST[i],(window.__PAST_W||'上週')+'主題簡報・',window.__PAST_D)}
 function openLbx(i){if(window.__NEXT)showLbx(window.__NEXT[i],'下週主題簡報・',window.__NEXT_D)}
-function openLbxWeek(i){if(window.__WEEK)showLbx(window.__WEEK[i],'本週主題簡報・',window.__WEEK_D)}
+function openLbxWeek(i){if(window.__WEEK)showLbx(window.__WEEK[i],(window.__WEEK_W||'本週')+'主題簡報・',window.__WEEK_D)}
 function showLbx(f,prefix,iso){
   if(!f)return;_LBX=f;
   document.getElementById('lbxImg').src=f.edm;
