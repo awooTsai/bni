@@ -61,7 +61,7 @@ h1,h2,h3,h4{font-family:"Noto Serif TC",serif;font-weight:900;letter-spacing:.02
 .next-item{flex:1 1 380px;max-width:520px;opacity:.7;transition:all .4s ease;cursor:pointer}
 .next-item:hover{opacity:1;transform:scale(1.03)}
 .next-item img{width:100%;display:block;border-radius:5px;box-shadow:0 12px 32px rgba(0,0,0,.5);border:1px solid rgba(212,171,93,.2)}
-.next-item .cap{margin-top:10px;color:var(--paper);opacity:.85;font-size:.92rem;letter-spacing:.02em}
+.next-item .cap{margin-top:10px;color:var(--paper);opacity:.85;font-size:.92rem;letter-spacing:.02em;text-align:center}
 .next-item .cap b{color:var(--gold);font-family:"Noto Serif TC",serif;font-size:1.02rem;margin-right:8px}
 @media(max-width:640px){.hero-top{min-height:80vh;padding:32px 20px 24px}.next-item{flex:1 1 100%}}
 .hero-title{font-family:"Noto Serif TC",serif;font-size:clamp(1.4rem,3.2vw,2.2rem);font-weight:900;color:var(--paper);margin-bottom:36px;line-height:1.5;opacity:0;transform:translateY(20px);animation:fadeUp .9s .35s forwards;text-shadow:0 2px 20px rgba(0,0,0,.5)}
@@ -72,6 +72,12 @@ h1,h2,h3,h4{font-family:"Noto Serif TC",serif;font-weight:900;letter-spacing:.02
 .edm-meta{margin-top:16px}
 .edm-meta .t{font-family:"Noto Serif TC",serif;font-size:1.25rem;color:var(--gold)}
 .edm-meta .s{font-size:.95rem;opacity:.75;margin-top:4px}
+.edm-date{display:flex;align-items:baseline;justify-content:center;gap:12px;margin:0 0 12px;padding:8px 12px;background:linear-gradient(90deg,rgba(212,171,93,0),rgba(212,171,93,.15),rgba(212,171,93,0));border-top:1px solid rgba(212,171,93,.22);border-bottom:1px solid rgba(212,171,93,.22)}
+.edm-date .dd{font-family:'Noto Serif TC',serif;font-size:1.55rem;line-height:1;color:var(--gold);letter-spacing:.05em}
+.edm-date .wd{font-size:1rem;color:var(--paper);opacity:.92;letter-spacing:.14em}
+.edm-date .en{font-size:.82rem;color:var(--gold);opacity:.6;letter-spacing:.24em}
+.next-item .cap .nd{display:inline-block;margin-right:9px;padding:1px 8px;border:1px solid rgba(212,171,93,.5);border-radius:3px;color:var(--gold);font-size:1rem;letter-spacing:.05em}
+.lbx-cap .ld{display:block;margin-bottom:6px;color:var(--gold);font-size:1rem;letter-spacing:.1em}
 .edm-art{display:inline-block;margin-top:10px;font-size:.95rem;color:var(--gold);text-decoration:none;border-bottom:1px solid rgba(212,171,93,.45);padding-bottom:2px;transition:opacity .2s}
 .edm-art:hover{opacity:.7}
 .next-item .edm-art{font-size:.85rem;margin-top:6px}
@@ -295,6 +301,17 @@ async function bootstrap(){
   }
   initAlbum();
 }
+/* 把 2026-09-11 轉成中文星期；new Date(y,m,d) 走本地時區，不會有 UTC 位移 */
+function fmtDate(iso){
+  const W=['日','一','二','三','四','五','六'], E=['SUN','MON','TUE','WED','THU','FRI','SAT'];
+  const p=String(iso||'').split('-');
+  if(p.length<3) return {md:'',wd:'',en:'',short:'',full:''};
+  const d=new Date(+p[0], +p[1]-1, +p[2]);
+  const md=p[1]+'.'+p[2];
+  return { md:md, wd:'星期'+W[d.getDay()], en:E[d.getDay()],
+           short:md+'　週'+W[d.getDay()],
+           full:p[0]+'.'+md };
+}
 function renderEdm(){
   const today=new Date().toISOString().split('T')[0];
   const refDate=VIEW_DATE||today;
@@ -306,23 +323,25 @@ function renderEdm(){
   const wkDisplay=thisWeekEdm?thisWeekEdm.date.replace(/-/g,'.'):(pastEdm?pastEdm.date.replace(/-/g,'.'):'');
   document.getElementById('week').textContent=wkDisplay?('WEEK OF · '+wkDisplay):'WEEK OF';
   const featured=thisWeekEdm?thisWeekEdm.speakers:[];
-  document.getElementById('feat').innerHTML=featured.map((f,i)=>`<div class="edm-card" onclick="openLbxWeek(${i})"><img src="${f.edm}" alt="${f.name} ${f.industry}" onerror="this.onerror=null;this.src='data:image/svg+xml;charset=utf-8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22420%22 height=%22280%22><rect width=%22420%22 height=%22280%22 fill=%22%230a1f3d%22/><text x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22 fill=%22%23d4ab5d%22 font-size=%2218%22 font-family=%22serif%22>EDM 圖片未載入</text></svg>'"><div class="edm-meta" data-speaker="${f.name}" data-article="${f.article||''}"><div class="t">本週主題簡報・${f.name}</div><div class="s">${f.industry}</div></div></div>`).join('');
+  const DW=fmtDate(thisWeekEdm?thisWeekEdm.date:'');
+  window.__WEEK_D=thisWeekEdm?thisWeekEdm.date:'';
+  document.getElementById('feat').innerHTML=featured.map((f,i)=>`<div class="edm-card" onclick="openLbxWeek(${i})"><img src="${f.edm}" alt="${f.name} ${f.industry}" onerror="this.onerror=null;this.src='data:image/svg+xml;charset=utf-8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22420%22 height=%22280%22><rect width=%22420%22 height=%22280%22 fill=%22%230a1f3d%22/><text x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22 fill=%22%23d4ab5d%22 font-size=%2218%22 font-family=%22serif%22>EDM 圖片未載入</text></svg>'"><div class="edm-meta" data-speaker="${f.name}" data-article="${f.article||''}"><div class="edm-date"><span class="dd">${DW.md}</span><span class="wd">${DW.wd}</span><span class="en">${DW.en}</span></div><div class="t">本週主題簡報・${f.name}</div><div class="s">${f.industry}</div></div></div>`).join('');
   window.__WEEK=featured;
   const heroNext=document.getElementById('heroNext');
   let nextHtml='<div class="next-inner tri">';
   if(pastEdm&&pastEdm.speakers&&pastEdm.speakers.length){
     const dt=pastEdm.date.replace(/-/g,'.');
     nextHtml+='<div class="tri-col past"><div class="tri-label">上週主題簡報 · '+dt+'</div><div class="tri-grid">'+
-      pastEdm.speakers.map((f,i)=>'<div class="next-item" onclick="openLbxPast('+i+')"><img src="'+f.edm+'" alt="'+f.name+'"><div class="cap" data-speaker="'+f.name+'" data-article="'+(f.article||'')+'"><b>'+f.name+'</b>'+f.industry+'</div></div>').join('')+
+      pastEdm.speakers.map((f,i)=>'<div class="next-item" onclick="openLbxPast('+i+')"><img src="'+f.edm+'" alt="'+f.name+'"><div class="cap" data-speaker="'+f.name+'" data-article="'+(f.article||'')+'"><span class="nd">'+fmtDate(pastEdm.date).short+'</span><b>'+f.name+'</b>'+f.industry+'</div></div>').join('')+
       '</div></div>';
-    window.__PAST=pastEdm.speakers;
+    window.__PAST=pastEdm.speakers;window.__PAST_D=pastEdm.date;
   }
   if(nextWeekData&&nextWeekData.speakers&&nextWeekData.speakers.length){
     const dt=(nextWeekData.date||'').replace(/-/g,'.');
     nextHtml+='<div class="tri-col next"><div class="tri-label">下週主題簡報 · '+dt+'</div><div class="tri-grid">'+
-      nextWeekData.speakers.map((f,i)=>'<div class="next-item" onclick="openLbx('+i+')"><img src="'+f.edm+'" alt="'+f.name+'"><div class="cap" data-speaker="'+f.name+'" data-article="'+(f.article||'')+'"><b>'+f.name+'</b>'+f.industry+'</div></div>').join('')+
+      nextWeekData.speakers.map((f,i)=>'<div class="next-item" onclick="openLbx('+i+')"><img src="'+f.edm+'" alt="'+f.name+'"><div class="cap" data-speaker="'+f.name+'" data-article="'+(f.article||'')+'"><span class="nd">'+fmtDate(nextWeekData.date).short+'</span><b>'+f.name+'</b>'+f.industry+'</div></div>').join('')+
       '</div></div>';
-    window.__NEXT=nextWeekData.speakers;
+    window.__NEXT=nextWeekData.speakers;window.__NEXT_D=nextWeekData.date;
   }
   nextHtml+='</div>';
   heroNext.innerHTML=(pastEdm||nextWeekData)?nextHtml:'';
@@ -463,13 +482,14 @@ function adaGlitch(el,on){
 
 /* ============ EDM 燈箱 ============ */
 let _LBX=null;
-function openLbxPast(i){if(window.__PAST)showLbx(window.__PAST[i],'上週主題簡報・')}
-function openLbx(i){if(window.__NEXT)showLbx(window.__NEXT[i],'下週主題簡報・')}
-function openLbxWeek(i){if(window.__WEEK)showLbx(window.__WEEK[i],'本週主題簡報・')}
-function showLbx(f,prefix){
+function openLbxPast(i){if(window.__PAST)showLbx(window.__PAST[i],'上週主題簡報・',window.__PAST_D)}
+function openLbx(i){if(window.__NEXT)showLbx(window.__NEXT[i],'下週主題簡報・',window.__NEXT_D)}
+function openLbxWeek(i){if(window.__WEEK)showLbx(window.__WEEK[i],'本週主題簡報・',window.__WEEK_D)}
+function showLbx(f,prefix,iso){
   if(!f)return;_LBX=f;
   document.getElementById('lbxImg').src=f.edm;
-  document.getElementById('lbxCap').innerHTML='<b>'+(prefix||'')+f.name+'</b>'+f.industry;
+  const D=fmtDate(iso);
+  document.getElementById('lbxCap').innerHTML=(D.full?'<span class="ld">'+D.full+'　'+D.wd+'</span>':'')+'<b>'+(prefix||'')+f.name+'</b>'+f.industry;
   document.getElementById('lbx').classList.add('on');document.body.style.overflow='hidden';
 }
 function closeLbx(){document.getElementById('lbx').classList.remove('on');document.body.style.overflow='';_LBX=null}
