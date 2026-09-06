@@ -46,8 +46,7 @@
         {
           "name": "蔡阿達",
           "industry": "SEO業",
-          "edm": "edm/2026-05-15-蔡阿達-SEO業.png",
-          "article": "https://www.triplew.tw/tsai"
+          "edm": "edm/2026-05-15-蔡阿達-SEO業.png"
         },
         {
           "name": "陳宗民",
@@ -218,6 +217,21 @@
           "name": "江俊毅",
           "industry": "碗粿罐頭",
           "edm": "edm/2026-09-04-江俊毅-碗粿罐頭.png"
+        }
+      ]
+    },
+    {
+      "date": "2026-09-11",
+      "speakers": [
+        {
+          "name": "林芳淇",
+          "industry": "活動主持人",
+          "edm": "edm/2026-09-11-林芳淇-活動主持人.png"
+        },
+        {
+          "name": "棋翌博士",
+          "industry": "木作工程",
+          "edm": "edm/2026-09-11-棋翌博士-木作工程.png"
         }
       ]
     }
