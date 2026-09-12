@@ -236,9 +236,15 @@ let EDM_SCHEDULE=null,VIEW_DATE=null;
 const KFX_FEED='https://www.triplew.tw/wp-json/wp/v2/posts?categories=380&per_page=100&_embed=wp:term&_fields=link,title,date,_links,_embedded';
 const KFX_ALIAS={'湘湘_Vita':'徐湘榆','簡湘怡 Ivy':'簡湘怡','Mario':'鄭景隆','蔡阿達':'蔡俊達','棋翌博士':'張棋翌'};
 let ARTICLE_IDX=null;
+/* ⚠️ 文章索引快取 10 分鐘就過期。sessionStorage 會跨「重新整理」存活，
+   不設期限的話，分頁一直開著的人永遠看不到新上稿的文章，按 F5 也沒用。
+   （2026-09-12 實際踩到：文章補了分類與標籤，阿達的分頁還是抓不到）
+   換 key 名稱（Idx2→Idx3）也順便讓所有人既有的舊快取立刻失效。 */
+const KFX_TTL=600000;
 async function loadArticleIndex(){
   if(ARTICLE_IDX) return ARTICLE_IDX;
-  try{const c=sessionStorage.getItem('bniArtIdx2'); if(c){ARTICLE_IDX=JSON.parse(c); return ARTICLE_IDX;}}catch(e){}
+  try{const c=JSON.parse(sessionStorage.getItem('bniArtIdx3')||'null');
+      if(c&&c.d&&(Date.now()-(c.t||0))<KFX_TTL){ARTICLE_IDX=c.d; return ARTICLE_IDX;}}catch(e){}
   try{
     const r=await fetch(KFX_FEED,{cache:'no-store'});
     if(!r.ok) throw new Error(r.status);
@@ -256,7 +262,7 @@ async function loadArticleIndex(){
     });
     Object.keys(idx).forEach(k=>idx[k].sort((a,b)=>String(b.d).localeCompare(String(a.d))));
     ARTICLE_IDX=idx;
-    try{sessionStorage.setItem('bniArtIdx2',JSON.stringify(idx));}catch(e){}
+    try{sessionStorage.setItem('bniArtIdx3',JSON.stringify({t:Date.now(),d:idx}));}catch(e){}
   }catch(e){ ARTICLE_IDX={}; }
   return ARTICLE_IDX;
 }
