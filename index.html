@@ -160,6 +160,18 @@ h1,h2,h3,h4{font-family:"Noto Serif TC",serif;font-weight:900;letter-spacing:.02
 
 .toast{position:fixed;bottom:32px;left:50%;transform:translateX(-50%);background:var(--gold);color:var(--deep);padding:14px 28px;border-radius:4px;font-weight:700;box-shadow:0 12px 32px rgba(0,0,0,.4);opacity:0;transition:opacity .3s;pointer-events:none;z-index:100}
 .toast.on{opacity:1}
+/* 行銷小聚紀錄入口（2026-09-23 新增）：放在 EDM 與成功見證之間，中文 16px 起跳 */
+.huddle-cta{position:relative;padding:56px 24px 60px;text-align:center;background:radial-gradient(ellipse at 50% 100%,rgba(212,171,93,.12),transparent 60%),linear-gradient(180deg,#0a1f3d,#06152b);border-top:1px solid rgba(212,171,93,.25)}
+.huddle-cta .en{color:var(--gold);font-size:16px;letter-spacing:.35em;opacity:.85}
+.huddle-cta .hc-cap{margin:12px auto 0;font-family:"Noto Serif TC",serif;font-weight:900;font-size:clamp(22px,3.6vw,30px);line-height:1.5;color:var(--paper);max-width:28em}
+.huddle-cta .hc-cap b{color:var(--gold)}
+.huddle-cta .hc-btn{display:inline-flex;align-items:center;gap:10px;margin-top:22px;background:linear-gradient(135deg,#d4ab5d,#e8c478);color:var(--deep);text-decoration:none;padding:17px 44px;border-radius:40px;font-family:"Noto Serif TC",serif;font-weight:900;font-size:clamp(18px,2.4vw,21px);letter-spacing:.08em;box-shadow:0 10px 28px rgba(212,171,93,.4),0 0 0 0 rgba(212,171,93,.55);animation:hcGlow 2.6s ease-in-out infinite;transition:transform .2s,filter .2s}
+.huddle-cta .hc-btn:hover{transform:translateY(-2px);filter:brightness(1.07)}
+.huddle-cta .hc-btn .arr{font-size:.9em}
+.huddle-cta .hc-sub{margin:18px auto 0;font-size:16px;line-height:1.8;color:rgba(246,239,225,.78);max-width:34em}
+@keyframes hcGlow{0%,100%{box-shadow:0 10px 28px rgba(212,171,93,.4),0 0 0 0 rgba(212,171,93,.55)}50%{box-shadow:0 10px 28px rgba(212,171,93,.4),0 0 0 12px rgba(212,171,93,0)}}
+@media(max-width:640px){.huddle-cta{padding:44px 18px 48px}.huddle-cta .hc-btn{padding:15px 26px;width:100%;justify-content:center}}
+@media(prefers-reduced-motion:reduce){.huddle-cta .hc-btn{animation:none}}
 </style></head>
 <body>
 
@@ -189,6 +201,13 @@ h1,h2,h3,h4{font-family:"Noto Serif TC",serif;font-weight:900;letter-spacing:.02
 </div>
 <div class="hero-next" id="heroNext"></div>
 <div class="scroll-hint" onclick="goAlbum()">SCROLL ↓</div>
+</section>
+
+<section class="huddle-cta" id="huddleCta">
+<div class="en">MARKETING HUDDLE</div>
+<p class="hc-cap">富真<b>行銷產業鏈</b>的每週小聚紀錄</p>
+<a class="hc-btn" href="/huddle" target="_blank" rel="noopener">🤝 前往每週小聚紀錄 <span class="arr">↗</span></a>
+<p class="hc-sub">每週三下午 1 點線上小聚——誰在推什麼、誰需要誰、誰跟誰該合作，都整理在這一頁。</p>
 </section>
 
 <section class="album" id="album">
