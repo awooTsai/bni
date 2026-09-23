@@ -4,334 +4,514 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
+<meta name="color-scheme" content="light">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🤝</text></svg>">
 <title>FUZEN 行銷小聚 HUDDLE｜專業推廣 × 尋求引薦 × 資源共享</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bungee&family=Space+Mono:wght@400;700&family=Noto+Sans+TC:wght@400;500;700;900&display=swap">
 <style>
-:root {
-  --paper:#faf7f2; --ink:#1c1a17; --sub:#6b645a; --line:#e5dfd5; --dash:#d8d0c3;
-  --red:#C80A14; --red-soft:#fdf0ee; --card:#ffffff;
+/* 復古普普：奶油網點紙、粗黑輪廓、硬陰影撞色、實體按壓感。
+   刻意只有淺色一套——不跟著手機深色模式變黑。中文字一律 16px 起跳。 */
+:root{
+  --ink:#16130F; --paper:#FFF4DE; --white:#FFFFFF;
+  --red:#C80A14; --yellow:#FFC63C; --blue:#1D7BA8; --pink:#F4708E; --green:#2E9E68;
+  --red-wash:#FFE1E3; --yellow-wash:#FFEFC6; --blue-wash:#DBEFFA; --green-wash:#DBF4E7; --pink-wash:#FFE4EC;
+  --t2:#5C544A; --hair:#D9CFBC;
+  --mono:'Space Mono','SFMono-Regular',Menlo,monospace;
+  --pop:'Bungee','Space Mono',monospace;
 }
-@media (prefers-color-scheme: dark) {
-  :root { --paper:#171511; --ink:#ece7de; --sub:#a39b8e; --line:#35302a; --dash:#3e3830;
-          --red:#e5695c; --red-soft:#2f1c19; --card:#1e1b17; }
+@property --sa{ syntax:'<angle>'; initial-value:0deg; inherits:false }
+@keyframes sunspin{ to{ --sa:360deg } }
+html{
+  --sa:0deg; overflow-x:hidden; overflow-x:clip;
+  background-color:var(--paper);
+  background-image:
+    radial-gradient(rgba(22,19,15,.11) 1.4px, rgba(22,19,15,0) 1.5px),
+    radial-gradient(circle at 100% 0%, rgba(255,244,222,0) 17%, var(--paper) 34%),
+    repeating-conic-gradient(from var(--sa) at 100% 0%, rgba(255,198,60,.5) 0deg 3.1deg, rgba(255,198,60,0) 3.1deg 6.4deg);
+  background-repeat:repeat, no-repeat, no-repeat;
+  background-size:15px 15px, 880px 880px, 880px 880px;
+  background-position:0 0, right top, right top;
+  background-attachment:scroll, fixed, fixed;
+  animation:sunspin 90s linear infinite;
 }
-* { margin:0; padding:0; box-sizing:border-box; }
-body { background:var(--paper); color:var(--ink); font-size:16.5px; line-height:1.8;
-  font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",-apple-system,sans-serif; }
-.mono { font-family:ui-monospace,"SF Mono",Menlo,monospace; }
-.wrap { max-width:820px; margin:0 auto; padding:36px 18px 80px; }
+*{box-sizing:border-box}
+body{margin:0; color:var(--ink); background:transparent; overflow-x:hidden; overflow-x:clip;
+  font-family:'Noto Sans TC','PingFang TC','Microsoft JhengHei',system-ui,sans-serif;
+  font-size:17px; line-height:1.8; -webkit-font-smoothing:antialiased}
+[hidden]{display:none !important}
+.wrap{max-width:1060px; margin:0 auto; padding:0 18px 90px}
+h1,h2,h3,h4{margin:0; text-wrap:balance}
+p{margin:0}
+ul{margin:0; padding:0; list-style:none}
 
-.topline { display:flex; justify-content:space-between; align-items:baseline; gap:10px;
-  padding-bottom:14px; border-bottom:2px solid var(--ink); }
-.topline .brand { font-size:16px; font-weight:700; letter-spacing:.12em; }
-.topline .brand b { color:var(--red); }
-.topline .tag { font-size:11px; letter-spacing:.14em; color:var(--sub); white-space:nowrap; }
+@keyframes popIn{0%{opacity:0; transform:translateY(18px) scale(.96)} 62%{opacity:1; transform:translateY(-4px) scale(1.01)} 100%{opacity:1; transform:none}}
+@keyframes wig{0%,100%{transform:rotate(0)} 25%{transform:rotate(-9deg)} 75%{transform:rotate(9deg)}}
+.pop{animation:popIn .55s cubic-bezier(.2,.8,.2,1) both}
 
-header.hero { padding:28px 0 22px; border-bottom:1px dashed var(--dash); }
-h1 { font-size:clamp(24px,6vw,32px); font-weight:900; line-height:1.35; text-wrap:balance; }
-.hero .sub { margin-top:8px; font-size:16px; color:var(--sub); max-width:36em; }
-.howto { margin-top:14px; border-left:3px solid var(--red); padding:4px 0 4px 14px;
-  font-size:16px; color:var(--sub); }
-.howto b { color:var(--ink); }
+/* ── 刊頭 ── */
+.masthead{padding:40px 0 22px}
+.brand{display:inline-flex; align-items:center; gap:10px; background:var(--ink); color:var(--paper);
+  border-radius:999px; padding:7px 18px; font-weight:700; font-size:16px; letter-spacing:.08em}
+.brand b{font-family:var(--pop); font-weight:400; color:var(--yellow); letter-spacing:.06em}
+h1{margin-top:16px; font-size:clamp(32px,6.4vw,50px); font-weight:900; line-height:1.18; letter-spacing:-.01em;
+  text-shadow:4px 4px 0 var(--yellow), 7px 7px 0 var(--ink)}
+.sub{margin-top:18px; font-size:17px; color:var(--t2); font-weight:500; max-width:44em}
+.metabar{display:flex; flex-wrap:wrap; margin:24px 0 8px; background:var(--ink); border:3px solid var(--ink);
+  border-radius:14px; box-shadow:7px 7px 0 var(--pink); overflow:hidden}
+.metabar .m{flex:1 1 170px; padding:12px 18px; color:var(--paper); font-size:16px; border-right:1px solid rgba(255,244,222,.22)}
+.metabar .m:last-child{border-right:0}
+.metabar .m b{display:block; color:var(--yellow); font-size:19px; font-weight:900}
+.metabar .m b .en{font-family:var(--pop); font-weight:400; letter-spacing:.04em}
 
-.weekbar { display:flex; align-items:center; gap:12px; flex-wrap:wrap; padding:20px 0 0; }
-.weekbar .wlabel { font-size:16px; font-weight:700; letter-spacing:.1em; color:var(--red); }
-.wtabs { display:flex; gap:8px; flex-wrap:wrap; }
-.wtab { font:inherit; font-size:16px; font-weight:700; padding:9px 16px; color:var(--ink);
-  background:var(--card); border:1px solid var(--ink); border-radius:0; cursor:pointer;
-  -webkit-tap-highlight-color:transparent; }
-.wtab small { font-weight:400; margin-left:6px; font-size:16px; color:var(--sub); }
-.wtab.active { background:var(--ink); color:var(--paper); }
-.wtab.active small { color:var(--paper); opacity:.75; }
-.weekmeta { font-size:16px; color:var(--sub); padding:8px 0 2px; }
+/* ── 頁籤 ── */
+.tabbar{position:sticky; top:0; z-index:20; padding:12px 0; margin:18px 0 8px;
+  background:linear-gradient(var(--paper) 78%, rgba(255,244,222,0))}
+.tabs{display:flex; gap:10px; flex-wrap:wrap}
+.tab{appearance:none; font:inherit; font-size:17px; font-weight:900; cursor:pointer; color:var(--ink);
+  background:var(--white); border:3px solid var(--ink); border-radius:12px; padding:10px 18px;
+  box-shadow:4px 4px 0 var(--ink); transition:transform .12s, box-shadow .12s, background .12s}
+.tab .n{font-family:var(--pop); font-weight:400; margin-right:6px}
+.tab .cnt{display:inline-block; margin-left:6px; font-size:16px; font-weight:700; background:var(--ink); color:var(--paper);
+  border-radius:999px; padding:0 9px; line-height:1.6}
+.tab[aria-selected="true"]{background:var(--yellow)}
+.tab:hover{transform:translate(2px,2px); box-shadow:2px 2px 0 var(--ink)}
+.tab:active{transform:translate(4px,4px); box-shadow:0 0 0 var(--ink)}
+.tab:focus-visible{outline:3px solid var(--blue); outline-offset:3px}
 
-/* 逐字稿 */
-.txd { border:1px solid var(--line); background:var(--card); }
-.txd summary { cursor:pointer; padding:13px 16px; font-size:16px; font-weight:700; list-style:none; }
-.txd summary::-webkit-details-marker { display:none; }
-.txd summary::before { content:"▸ "; color:var(--red); }
-.txd[open] summary::before { content:"▾ "; }
-.txd .txnote { padding:0 16px 8px; font-size:16px; color:var(--sub); }
-.txd pre { white-space:pre-wrap; word-break:break-word; font:inherit; font-size:16px; line-height:1.8;
-  color:var(--sub); padding:4px 16px 16px; max-height:70vh; overflow-y:auto; }
+/* ── 大卡片 ── */
+.card{background:var(--white); border:3px solid var(--ink); border-radius:18px; padding:26px 26px 24px; margin:22px 0 34px}
+.c-red{box-shadow:9px 9px 0 var(--red)} .c-blue{box-shadow:9px 9px 0 var(--blue)}
+.c-pink{box-shadow:9px 9px 0 var(--pink)} .c-yellow{box-shadow:9px 9px 0 var(--yellow)} .c-green{box-shadow:9px 9px 0 var(--green)}
+.cardhd{display:flex; align-items:center; gap:14px; margin-bottom:6px}
+.cardhd > div{flex:1; min-width:0}
+.badge{flex:0 0 auto; width:50px; height:50px; border-radius:50%; border:3px solid var(--ink); box-shadow:3px 3px 0 var(--ink);
+  font-family:var(--pop); font-size:22px; line-height:1; display:grid; place-items:center; color:#fff}
+.card:hover .badge{animation:wig .5s ease}
+.b-red{background:var(--red)} .b-blue{background:var(--blue)} .b-pink{background:var(--pink)}
+.b-yellow{background:var(--yellow); color:var(--ink)} .b-green{background:var(--green)}
+.kicker{display:block; font-size:16px; font-weight:900; color:var(--t2); letter-spacing:.06em}
+.cardhd h2{font-size:clamp(22px,3.4vw,27px); font-weight:900; line-height:1.4}
+.tagpill{display:inline-block; font-size:16px; font-weight:900; color:#fff; background:var(--red); border:3px solid var(--ink);
+  border-radius:999px; padding:1px 14px; box-shadow:3px 3px 0 var(--ink)}
+.tagpill.pk{background:var(--pink); color:var(--ink)}
+.lead{margin:14px 0 4px; font-size:18px; font-weight:500; border-left:6px solid var(--yellow); padding:4px 0 4px 14px}
+.subhd{display:inline-block; margin:26px 0 12px; font-size:19px; font-weight:900; border-bottom:5px solid var(--red); padding-bottom:1px}
+.subhd.blue{border-color:var(--blue)} .subhd.pink{border-color:var(--pink)} .subhd.green{border-color:var(--green)}
 
-section { padding:26px 0 22px; border-bottom:1px dashed var(--dash); }
-section:last-of-type { border-bottom:none; }
-.sec-head { display:flex; align-items:baseline; gap:10px; margin-bottom:14px; }
-.sec-num { font-size:12px; font-weight:700; color:var(--red); letter-spacing:.06em; white-space:nowrap; }
-h2 { font-size:20px; font-weight:900; }
-.sec-note { font-size:16px; color:var(--sub); margin:-8px 0 14px; }
+/* 講法泡泡 */
+.say{position:relative; margin:24px 0 8px; background:var(--blue-wash); border:3px solid var(--ink); border-radius:16px;
+  padding:18px 20px 16px; font-size:18px; font-weight:700; box-shadow:5px 5px 0 var(--ink)}
+.say::after{content:""; position:absolute; left:34px; bottom:-15px; width:22px; height:22px; background:var(--blue-wash);
+  border-right:3px solid var(--ink); border-bottom:3px solid var(--ink); transform:rotate(45deg)}
+.say small{display:block; margin-top:8px; font-size:16px; font-weight:500; color:var(--t2)}
 
-/* 媒合快報 */
-.match { border:1px solid var(--ink); background:var(--card); padding:16px 18px; margin-bottom:12px; }
-.match .who { display:inline-block; font-size:16px; font-weight:700; color:var(--red);
-  border:1px solid var(--red); padding:2px 9px; margin-bottom:8px; }
-.match .idea { font-size:16.5px; }
-.match .next { margin-top:8px; font-size:16px; color:var(--sub); border-top:1px dashed var(--dash); padding-top:8px; }
-.match .next b { color:var(--ink); }
+/* 加值包四格 */
+.pack{display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:14px}
+.tile{border:3px solid var(--ink); border-radius:14px; padding:14px 16px 12px; box-shadow:4px 4px 0 var(--ink);
+  transition:transform .15s, box-shadow .15s}
+.tile:hover{transform:translate(-2px,-2px); box-shadow:6px 6px 0 var(--ink)}
+.tile .no{font-family:var(--pop); font-size:26px; line-height:1}
+.tile h4{font-size:18px; font-weight:900; margin:6px 0 4px}
+.tile p{font-size:16px}
+.t1{background:var(--yellow-wash)} .t2{background:var(--blue-wash)} .t3{background:var(--pink-wash)} .t4{background:var(--green-wash)}
 
-/* 各攤主打 */
-.stall { border:1px solid var(--line); background:var(--card); padding:18px 18px 14px; margin-bottom:14px; }
-.stall .head { display:flex; align-items:baseline; gap:10px; flex-wrap:wrap; margin-bottom:8px; }
-.stall .name { font-size:17px; font-weight:900; }
-.stall .biz { font-size:16px; color:var(--sub); }
-.stall ul { list-style:none; margin-bottom:10px; }
-.stall li { font-size:16px; color:var(--sub); padding:5px 0 5px 16px; position:relative; }
-.stall li::before { content:"—"; position:absolute; left:0; color:var(--red); }
-.askrow { border-top:1px dashed var(--dash); padding-top:10px; font-size:16px; }
-.askrow .lbl { display:inline-block; font-size:16px; font-weight:700; letter-spacing:.08em;
-  color:var(--red); border:1px solid var(--red); padding:1px 7px; margin-right:8px; vertical-align:1px; }
-.opener { margin-top:8px; background:var(--red-soft); padding:10px 14px; font-size:16px; }
-.opener .lbl { font-size:16px; font-weight:700; letter-spacing:.08em; color:var(--red); display:block; margin-bottom:2px; }
+.dash li{position:relative; padding:6px 0 6px 26px; font-size:17px}
+.dash li::before{content:""; position:absolute; left:2px; top:17px; width:12px; height:12px; border-radius:50%;
+  background:var(--red); border:2px solid var(--ink)}
+.dash.blue li::before{background:var(--blue)} .dash.green li::before{background:var(--green)}
+.dash.pink li::before{background:var(--pink)} .dash.yellow li::before{background:var(--yellow)}
+
+.callout{margin:24px 0 4px; background:var(--yellow-wash); border:3px solid var(--ink); border-radius:14px; padding:16px 18px;
+  font-size:17px; font-weight:500}
+.callout b{font-weight:900}
+.nextbar{margin-top:24px; display:flex; gap:12px; align-items:flex-start; background:var(--ink); color:var(--paper);
+  border-radius:14px; padding:14px 18px; font-size:17px}
+.nextbar .lbl{flex:0 0 auto; font-family:var(--pop); color:var(--yellow); font-size:18px; letter-spacing:.04em; padding-top:1px}
+
+/* 講者標籤 */
+.sp{display:inline-block; font-size:16px; font-weight:900; border:2px solid var(--ink); border-radius:999px;
+  padding:0 11px; line-height:1.75; margin:0 6px 4px 0; white-space:nowrap}
+.sp-ada{background:var(--red); color:#fff} .sp-wei{background:var(--blue); color:#fff} .sp-karen{background:var(--pink); color:var(--ink)}
+.sp-zm{background:var(--green); color:#fff} .sp-mars{background:var(--yellow); color:var(--ink)} .sp-all,.sp-hf{background:var(--ink); color:var(--paper)}
+
+/* 時間軸 */
+.tl{position:relative; margin-top:8px}
+.tl::before{content:""; position:absolute; left:34px; top:8px; bottom:8px; width:4px; background:var(--ink); border-radius:4px}
+.ti{position:relative; display:grid; grid-template-columns:72px 1fr; gap:14px; padding:10px 0}
+.ti .tm{position:relative; z-index:1; align-self:start; font-family:var(--pop); font-size:16px; text-align:center;
+  background:var(--white); border:3px solid var(--ink); border-radius:10px; padding:4px 0; box-shadow:3px 3px 0 var(--ink)}
+.ti .bx{background:var(--white); border:3px solid var(--ink); border-radius:14px; padding:12px 16px 10px;
+  transition:transform .15s, box-shadow .15s}
+.ti .bx:hover{transform:translate(-2px,-2px); box-shadow:5px 5px 0 var(--ink)}
+.ti h3{font-size:18px; font-weight:900; margin:4px 0 4px; line-height:1.5}
+.ti .dash li{font-size:16px; padding:4px 0 4px 24px}
+.ti .dash li::before{top:13px; width:10px; height:10px}
+.goto{display:inline-block; margin-top:6px; font-size:16px; font-weight:900; color:var(--red); cursor:pointer;
+  background:none; border:0; padding:0; font-family:inherit; text-decoration:underline; text-underline-offset:3px}
+
+/* 阿達 × Karen */
+.boxes{display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:16px; margin-top:18px}
+.box{border:3px solid var(--ink); border-radius:16px; padding:16px 18px 12px; background:var(--white)}
+.box h4{display:inline-block; font-size:18px; font-weight:900; margin-bottom:6px; padding:0 10px; border-radius:6px}
+.bx-yellow{box-shadow:5px 5px 0 var(--yellow)} .bx-yellow h4{background:var(--yellow)}
+.bx-blue{box-shadow:5px 5px 0 var(--blue)} .bx-blue h4{background:var(--blue); color:#fff}
+.bx-pink{box-shadow:5px 5px 0 var(--pink)} .bx-pink h4{background:var(--pink)}
+.bx-red{box-shadow:5px 5px 0 var(--red)} .bx-red h4{background:var(--red); color:#fff}
+.bx-green{box-shadow:5px 5px 0 var(--green)} .bx-green h4{background:var(--green); color:#fff}
+.box .dash li{font-size:16px}
+
+.chat{margin-top:8px; display:flex; flex-direction:column; gap:12px}
+.msg{max-width:86%; border:3px solid var(--ink); border-radius:16px; padding:10px 15px; font-size:17px; box-shadow:4px 4px 0 var(--ink)}
+.msg .who{display:block; font-size:16px; font-weight:900; margin-bottom:2px}
+.msg.ada{align-self:flex-start; background:var(--red-wash); border-bottom-left-radius:4px}
+.msg.ada .who{color:var(--red)}
+.msg.karen{align-self:flex-end; background:var(--pink-wash); border-bottom-right-radius:4px}
+.msg.karen .who{color:#B0305A}
+details.fold{margin-top:22px; border:3px solid var(--ink); border-radius:14px; background:var(--white)}
+details.fold summary{cursor:pointer; list-style:none; padding:13px 18px; font-size:17px; font-weight:900}
+details.fold summary::-webkit-details-marker{display:none}
+details.fold summary::before{content:"\25B6  "; color:var(--red)}
+details.fold[open] summary::before{content:"\25BC  "}
+details.fold .in{padding:4px 16px 18px}
 
 /* 待辦 */
-.todo { display:grid; grid-template-columns:112px 1fr; gap:10px; padding:9px 0;
-  border-top:1px dashed var(--dash); font-size:16px; }
-.todo:first-of-type { border-top:none; }
-.todo .owner { font-weight:700; }
+.todo{display:grid; grid-template-columns:auto 1fr; gap:12px; align-items:start; padding:12px 0; border-top:2px dashed var(--hair)}
+.todo:first-child{border-top:0}
+.todo .sp{margin:2px 0 0}
+.todo .tk{font-size:17px}
 
-/* 產業鏈地圖 */
-.chain { display:flex; flex-wrap:wrap; gap:8px; align-items:stretch; }
-.chain .node { flex:1 1 118px; border:1px solid var(--ink); background:var(--card); padding:12px 12px 10px; position:relative; }
-.chain .step { font-size:10.5px; font-weight:700; letter-spacing:.1em; color:var(--red); display:block; }
-.chain .what { font-size:16px; font-weight:900; margin:2px 0; }
-.chain .whom { font-size:16px; color:var(--sub); }
-.chain-note { margin-top:12px; font-size:16px; color:var(--sub); max-width:40em; }
+/* 逐字稿 */
+.txrow{display:flex; gap:14px; flex-wrap:wrap; align-items:center; margin-top:10px}
+.btn{appearance:none; display:inline-flex; align-items:center; gap:8px; font:inherit; font-size:17px; font-weight:900;
+  cursor:pointer; text-decoration:none; color:var(--ink); background:var(--yellow); border:3px solid var(--ink);
+  border-radius:12px; padding:11px 20px; box-shadow:5px 5px 0 var(--ink); transition:transform .12s, box-shadow .12s}
+.btn:hover{transform:translate(2px,2px); box-shadow:3px 3px 0 var(--ink)}
+.btn:active{transform:translate(5px,5px); box-shadow:0 0 0 var(--ink)}
+.btn.ghost{background:var(--white)}
+.txnote{font-size:16px; color:var(--t2); margin-top:14px}
+pre.tx{white-space:pre-wrap; word-break:break-word; font:inherit; font-size:16px; line-height:1.85; color:var(--t2);
+  max-height:70vh; overflow-y:auto; margin:0; border:3px solid var(--ink); border-radius:14px; padding:14px 16px; background:var(--white)}
 
-/* 名片牆 */
-.member { border:1px solid var(--line); background:var(--card); padding:14px 16px; margin-bottom:10px; }
-.member .top { display:flex; justify-content:space-between; align-items:baseline; gap:8px; flex-wrap:wrap; }
-.member .nm { font-size:16.5px; font-weight:900; }
-.member .fld { font-size:16px; color:var(--sub); }
-.member .svc { font-size:16px; color:var(--sub); margin-top:4px; }
-.member .best { margin-top:6px; font-size:16px; }
-.member .best .lbl { color:var(--red); font-weight:700; font-size:16px; letter-spacing:.06em; margin-right:6px; }
+/* 之前的會議記錄摘要 */
+.arch-intro{font-size:17px; color:var(--t2); font-weight:500; margin-top:8px}
+.monthnav{display:flex; flex-wrap:wrap; gap:8px; margin:16px 0 4px}
+.monthnav a{font-size:16px; font-weight:900; color:var(--ink); text-decoration:none; background:var(--white);
+  border:2px solid var(--ink); border-radius:999px; padding:2px 14px; box-shadow:2px 2px 0 var(--ink)}
+.monthnav a:hover{background:var(--yellow)}
+.monthnav a small{font-size:16px; font-weight:700; color:var(--t2)}
+.month{margin:34px 0 14px; display:flex; align-items:center; gap:12px; scroll-margin-top:90px}
+.month h3{font-size:22px; font-weight:900}
+.month .yr{font-family:var(--pop); font-size:20px; background:var(--ink); color:var(--yellow); border-radius:10px; padding:2px 12px}
+.agrid{display:grid; grid-template-columns:repeat(auto-fit,minmax(310px,1fr)); gap:20px}
+.ac{background:var(--white); border:3px solid var(--ink); border-radius:16px; padding:16px 18px 14px; transition:transform .15s}
+.ac:hover{transform:translate(-2px,-2px)}
+.ac:nth-child(5n+1){box-shadow:6px 6px 0 var(--red)} .ac:nth-child(5n+2){box-shadow:6px 6px 0 var(--blue)}
+.ac:nth-child(5n+3){box-shadow:6px 6px 0 var(--yellow)} .ac:nth-child(5n+4){box-shadow:6px 6px 0 var(--pink)}
+.ac:nth-child(5n+5){box-shadow:6px 6px 0 var(--green)}
+.ac .top{display:flex; align-items:baseline; gap:10px; flex-wrap:wrap}
+.ac .dt{font-family:var(--pop); font-size:30px; line-height:1}
+.ac .wd{font-size:16px; font-weight:900}
+.ac .du{font-size:16px; font-weight:700; background:var(--ink); color:var(--paper); border-radius:999px; padding:0 10px; line-height:1.7}
+.ac h4{font-size:18px; font-weight:900; margin:8px 0 6px; line-height:1.5}
+.ac .ppl{font-size:16px; color:var(--t2); margin-bottom:6px}
+.ac .dash li{font-size:16px; padding:4px 0 4px 24px}
+.ac .dash li::before{top:13px; width:10px; height:10px}
 
-[hidden] { display:none !important; }
+/* 常駐區：產業鏈地圖、名片牆 */
+.chain{display:flex; flex-wrap:wrap; gap:12px; margin-top:16px}
+.node{flex:1 1 150px; background:var(--white); border:3px solid var(--ink); border-radius:14px; padding:12px 14px; box-shadow:4px 4px 0 var(--ink)}
+.node .st{font-family:var(--pop); font-size:16px; color:var(--red)}
+.node .wt{font-size:17px; font-weight:900}
+.node .wh{font-size:16px; color:var(--t2)}
+.members{display:grid; grid-template-columns:repeat(auto-fit,minmax(290px,1fr)); gap:16px; margin-top:14px}
+.mem{background:var(--white); border:3px solid var(--ink); border-radius:14px; padding:14px 16px; box-shadow:4px 4px 0 var(--hair)}
+.mem .nm{font-size:18px; font-weight:900}
+.mem .fd{display:inline-block; font-size:16px; font-weight:700; background:var(--yellow-wash); border:2px solid var(--ink);
+  border-radius:999px; padding:0 10px; margin:4px 0}
+.mem .sv{font-size:16px; color:var(--t2)}
+.mem .bt{font-size:16px; margin-top:6px}
+.mem .bt b{color:var(--red)}
 
-/* 本週焦點合作 */
-.spot { border:2px solid var(--red); background:var(--card); padding:20px 20px 18px; }
-.spot .who { display:inline-block; font-size:16px; font-weight:700; color:#fff; background:var(--red); padding:2px 10px; margin-bottom:10px; }
-.spot h3 { font-size:21px; font-weight:900; line-height:1.45; margin-bottom:10px; text-wrap:balance; }
-.spot .lead { font-size:17px; border-left:3px solid var(--red); padding:2px 0 2px 12px; margin-bottom:18px; }
-.spot .blocks { display:grid; grid-template-columns:1fr; gap:16px; }
-@media (min-width:720px) { .spot .blocks { grid-template-columns:1fr 1fr; } }
-.spot .blk { border-top:1px dashed var(--dash); padding-top:10px; }
-.spot .blk h4 { font-size:16.5px; font-weight:900; color:var(--red); margin-bottom:4px; }
-.spot .blk ul { list-style:none; }
-.spot .blk li { font-size:16px; color:var(--sub); padding:5px 0 5px 16px; position:relative; }
-.spot .blk li::before { content:"—"; position:absolute; left:0; color:var(--red); }
-.spot .next { margin-top:16px; background:var(--red-soft); padding:12px 14px; font-size:16px; }
-.spot .next b { color:var(--red); }
+footer{margin-top:30px; padding:16px 18px; background:var(--ink); color:var(--paper); border-radius:14px; font-size:16px}
+footer b{font-family:var(--pop); font-weight:400; color:var(--yellow)}
 
-/* 逐字稿下載 */
-.txdl { display:inline-block; margin-top:12px; font-size:16px; font-weight:700; color:var(--ink);
-  border:1px solid var(--ink); padding:9px 16px; text-decoration:none; background:var(--card); }
-.txdl:hover { background:var(--ink); color:var(--paper); }
-
-footer { margin-top:26px; padding-top:14px; border-top:2px solid var(--ink);
-  font-size:16px; color:var(--sub); letter-spacing:.04em; }
-footer b { color:var(--red); }
+@media (max-width:640px){
+  .card{padding:20px 16px 18px; border-radius:16px}
+  .tl::before{left:28px}
+  .ti{grid-template-columns:60px 1fr; gap:10px}
+  .msg{max-width:94%}
+  .todo{grid-template-columns:1fr; gap:6px}
+  .tabbar{padding:8px 0}
+  .tabs{flex-wrap:nowrap; gap:8px}
+  .tab{padding:8px 12px; font-size:16px; box-shadow:3px 3px 0 var(--ink)}
+  .tab .long{display:none}
+}
+@media (prefers-reduced-motion:reduce){
+  html{animation:none} .pop{animation:none} .card:hover .badge{animation:none}
+}
 </style>
 </head>
 <body>
 <div class="wrap">
-  <div class="topline">
-    <span class="brand"><b>FUZEN</b> 行銷小聚 · HUDDLE</span>
-    <span class="tag mono">WEEKLY MATCHMAKING</span>
-  </div>
 
-  <header class="hero">
+  <header class="masthead">
+    <span class="brand"><b>FUZEN</b>行銷小聚 · <b>HUDDLE</b></span>
     <h1>專業推廣 × 尋求引薦 × 資源共享</h1>
-    <p class="sub">每週小聚後更新：這一頁幫你記住「誰在推什麼、誰需要誰、誰跟誰該合作」——讓小聚講過的話，變成帶得走的生意。</p>
-    <div class="howto"><b>怎麼用：</b>看到適合的引薦對象，直接抄各攤位的「幫他開場」那句話去說；每週的「媒合快報」是本週最值得跟進的合作火花；有重點合作時，最上方的「本週焦點合作」會整理完整構想與下一步。</div>
+    <p class="sub">富真白金分會的行銷產業鏈，每週三下午一點線上小聚。誰在推什麼、誰需要誰、誰跟誰該合作——都整理在這一頁，看到適合的對象就直接幫忙牽線。</p>
+    <div class="metabar" id="metabar"></div>
   </header>
 
-  <div class="weekbar">
-    <span class="wlabel">週次</span>
-    <div class="wtabs" id="weekTabs"></div>
-  </div>
-  <div class="weekmeta" id="weekMeta"></div>
+  <nav class="tabbar" aria-label="切換頁籤">
+    <div class="tabs" role="tablist">
+      <button class="tab" role="tab" id="tab-latest" aria-controls="p-latest" aria-selected="true"></button>
+      <button class="tab" role="tab" id="tab-arch" aria-controls="p-arch" aria-selected="false"></button>
+    </div>
+  </nav>
 
-  <section id="spotSec" hidden>
-    <div class="sec-head"><span class="sec-num mono">★</span><h2>本週焦點合作</h2></div>
-    <div id="spot"></div>
+  <!-- ═══════════ 頁籤一：最新一場 ═══════════ -->
+  <main id="p-latest" role="tabpanel" aria-labelledby="tab-latest">
+
+    <section class="card c-red pop" id="focus">
+      <div class="cardhd">
+        <span class="badge b-red">★</span>
+        <div><span class="kicker">本週重點</span><h2 id="fTitle"></h2></div>
+      </div>
+      <span class="tagpill" id="fTag"></span>
+      <p class="lead" id="fLead"></p>
+      <div class="say"><span id="fScript"></span><small id="fScriptBy"></small></div>
+
+      <span class="subhd">客戶會拿到什麼</span>
+      <div class="pack" id="fPack"></div>
+
+      <span class="subhd blue">為什麼這招有效</span>
+      <ul class="dash blue" id="fWhy"></ul>
+
+      <div class="callout" id="fRule"></div>
+
+      <span class="subhd green">韋翰要準備什麼</span>
+      <ul class="dash green" id="fNeed"></ul>
+
+      <span class="subhd pink">延伸到 ESG 形象影片</span>
+      <ul class="dash pink" id="fEsg"></ul>
+
+      <div class="nextbar"><span class="lbl">NEXT</span><span id="fNext"></span></div>
+    </section>
+
+    <section class="card c-blue pop">
+      <div class="cardhd">
+        <span class="badge b-blue">2</span>
+        <div><span class="kicker">依大家發言的順序</span><h2>會議時間軸</h2></div>
+      </div>
+      <p class="lead">左邊是會議進行到第幾分鐘，方便對照最下面的逐字稿。</p>
+      <div class="tl" id="tl"></div>
+    </section>
+
+    <section class="card c-pink pop" id="karen">
+      <div class="cardhd">
+        <span class="badge b-pink">3</span>
+        <div><span class="kicker">最後登場</span><h2 id="kTitle"></h2></div>
+      </div>
+      <span class="tagpill pk" id="kTag"></span>
+      <p class="lead" id="kLead"></p>
+      <div class="boxes" id="kBoxes"></div>
+      <details class="fold" open>
+        <summary>兩人的完整對話脈絡（依時間順序）</summary>
+        <div class="in"><div class="chat" id="kChat"></div></div>
+      </details>
+      <div class="nextbar"><span class="lbl">NEXT</span><span id="kNext"></span></div>
+    </section>
+
+    <section class="card c-yellow pop">
+      <div class="cardhd">
+        <span class="badge b-yellow">4</span>
+        <div><span class="kicker">誰要做什麼</span><h2>決議與待辦</h2></div>
+      </div>
+      <div id="todos"></div>
+    </section>
+
+    <section class="card c-green pop">
+      <div class="cardhd">
+        <span class="badge b-green">5</span>
+        <div><span class="kicker">原始紀錄</span><h2>本場逐字稿</h2></div>
+      </div>
+      <div class="txrow">
+        <a class="btn" id="txDl" href="#" download>⬇ 下載逐字稿（.txt）</a>
+        <button class="btn ghost" type="button" id="txShow">在頁面上展開</button>
+      </div>
+      <p class="txnote">會議軟體自動轉寫、未經人工校對；人名可能被誤聽，正確姓名與專業以上方整理為準。</p>
+      <div id="txWrap" hidden style="margin-top:16px"><pre class="tx" id="txBox">載入中⋯</pre></div>
+    </section>
+  </main>
+
+  <!-- ═══════════ 頁籤二：之前的會議記錄摘要 ═══════════ -->
+  <section id="p-arch" role="tabpanel" aria-labelledby="tab-arch" hidden>
+    <div class="card c-blue pop">
+      <div class="cardhd">
+        <span class="badge b-blue">≡</span>
+        <div><span class="kicker">從最近往前排</span><h2>之前的會議記錄摘要</h2></div>
+      </div>
+      <p class="arch-intro" id="archIntro"></p>
+      <div class="monthnav" id="monthnav"></div>
+    </div>
+    <div id="archList"></div>
   </section>
 
-  <section>
-    <div class="sec-head"><span class="sec-num mono">01</span><h2>本週媒合快報</h2></div>
-    <div id="matches"></div>
-  </section>
-
-  <section>
-    <div class="sec-head"><span class="sec-num mono">02</span><h2>本週各攤主打</h2></div>
-    <p class="sec-note">每位夥伴這週推什麼、要找誰，以及一句可以直接說出口的開場白。</p>
-    <div id="stalls"></div>
-  </section>
-
-  <section>
-    <div class="sec-head"><span class="sec-num mono">03</span><h2>決議與待辦</h2></div>
-    <div id="todos"></div>
-  </section>
-
-  <section>
-    <div class="sec-head"><span class="sec-num mono">04</span><h2>本週逐字稿</h2></div>
-    <details class="txd" id="txDetails">
-      <summary>展開本週小聚逐字稿</summary>
-      <div class="txnote">原始 SeaMeet 自動轉寫、未經人工校對；內文人名可能誤辨，正確姓名與專業別以上方整理及會員名冊為準。</div>
-      <pre id="txBox">載入中⋯</pre>
-    </details>
-    <a class="txdl" id="txDl" href="#" download>⬇ 下載本週逐字稿（.txt）</a>
-  </section>
-
-  <section>
-    <div class="sec-head"><span class="sec-num mono">05</span><h2>行銷產業鏈地圖</h2></div>
-    <p class="sec-note">小聚成員在客戶旅程上的位置——共同面對客戶時，任何一站都能把整條鏈帶進去。</p>
+  <!-- ═══════════ 常駐：產業鏈地圖與名片牆 ═══════════ -->
+  <section class="card c-yellow" style="margin-top:44px">
+    <div class="cardhd">
+      <span class="badge b-yellow">➜</span>
+      <div><span class="kicker">一起面對客戶時</span><h2>行銷產業鏈地圖</h2></div>
+    </div>
+    <p class="lead">客戶只要有產品，這條鏈可以從包裝、官網、內容、影像、會員經營，一路做到線下活動——任何一站都能把整條鏈帶進去。</p>
     <div class="chain">
-      <div class="node"><span class="step mono">STEP 1</span><div class="what">產品與包裝</div><div class="whom">許珈愷（貳捌行銷）</div></div>
-      <div class="node"><span class="step mono">STEP 2</span><div class="what">官網建置</div><div class="whom">MarsZ Chen</div></div>
-      <div class="node"><span class="step mono">STEP 3</span><div class="what">內容與 AI 搜尋</div><div class="whom">蔡俊達（awoo）</div></div>
-      <div class="node"><span class="step mono">STEP 4</span><div class="what">品牌影像</div><div class="whom">遙空映畫（陳韋翰）</div></div>
-      <div class="node"><span class="step mono">STEP 5</span><div class="what">會員經營 CRM</div><div class="whom">陳恒丰（數位巴克斯）</div></div>
-      <div class="node"><span class="step mono">STEP 6</span><div class="what">線下活動導流</div><div class="whom">許珈愷（貳捌行銷）</div></div>
-    </div>
-    <p class="chain-note">一句話版本：「客戶只要有產品，我們這條鏈可以從包裝、官網、內容、影像、會員經營一路做到線下活動。」——對外聯合提案就從這裡開口。</p>
-  </section>
-
-  <section>
-    <div class="sec-head"><span class="sec-num mono">06</span><h2>成員名片牆</h2></div>
-    <p class="sec-note">跨週累積的固定檔案；新夥伴加入小聚後於此新增。</p>
-    <div class="member">
-      <div class="top"><span class="nm">蔡俊達（阿達）｜awoo 阿物科技</span><span class="fld">SEO / GEO</span></div>
-      <div class="svc">品牌價值主張與關鍵字策略、GEO 健檢、AI 搜尋能見度、品牌內容生成工具</div>
-      <div class="best"><span class="lbl">最想認識</span>有官網、有心經營品牌內容的業主</div>
-    </div>
-    <div class="member">
-      <div class="top"><span class="nm">MarsZ Chen</span><span class="fld">多語系網站建置 × AI 提案</span></div>
-      <div class="svc">多語系官網設計建置（以 Claude 輔助）、AI 快速提案（簡報＋報價＋首頁預覽＋CIS）、上線後低門檻維護</div>
-      <div class="best"><span class="lbl">最想認識</span>要做／改官網、有多語系需求的業主；手上有設計稿、想做成網站的平面設計師；經銷夥伴</div>
-    </div>
-    <div class="member">
-      <div class="top"><span class="nm">許珈愷（Karen）｜貳捌行銷</span><span class="fld">網路社群行銷</span></div>
-      <div class="svc">AI 短影音（產品照片即可生成）、社群健檢（FB／IG 後台優化報告）、產品包裝全流程（視覺、國際條碼、印刷落地）、展場輸出、LINE 分眾導流與裂變活動</div>
-      <div class="best"><span class="lbl">最想認識</span>新品上市或包裝想升級的品牌主、想搞懂社群在經營什麼的品牌</div>
-    </div>
-    <div class="member">
-      <div class="top"><span class="nm">陳恒丰（恆峰）｜數位巴克斯</span><span class="fld">資訊系統開發</span></div>
-      <div class="svc">輕量 CRM（官方 LINE 分群推播）、AI 商業媒合／商務雷達、客製系統開發</div>
-      <div class="best"><span class="lbl">最想認識</span>有官方 LINE、想有系統經營會員的業者</div>
-    </div>
-    <div class="member">
-      <div class="top"><span class="nm">遙空映畫（陳韋翰）</span><span class="fld">企業形象影片</span></div>
-      <div class="svc">企業形象影片、ESG 形象影片、見證影片、活動現場攝影快剪；1 萬 5 入門形象影片方案（重畫面質感、非口播短影音）</div>
-      <div class="best"><span class="lbl">最想認識</span>室內設計業者、有在做 ESG 的企業、需要質感影像的品牌</div>
-    </div>
-    <div class="member">
-      <div class="top"><span class="nm">陳宗民（Adam）｜華翼國際行銷</span><span class="fld">品牌策略顧問</span></div>
-      <div class="svc">品牌策略與企業顧問、AI 導入與 AI 講師、傳產企業的行銷與經營輔導</div>
-      <div class="best"><span class="lbl">最想認識</span>有在開 AI 課程的單位；傳產與行銷業界的企業主</div>
+      <div class="node"><div class="st">STEP 1</div><div class="wt">產品與包裝</div><div class="wh">許珈愷（貳捌行銷）</div></div>
+      <div class="node"><div class="st">STEP 2</div><div class="wt">官網建置</div><div class="wh">MarsZ Chen</div></div>
+      <div class="node"><div class="st">STEP 3</div><div class="wt">內容與 AI 搜尋</div><div class="wh">蔡俊達（awoo）</div></div>
+      <div class="node"><div class="st">STEP 4</div><div class="wt">品牌影像</div><div class="wh">陳韋翰（遙空映畫）</div></div>
+      <div class="node"><div class="st">STEP 5</div><div class="wt">會員經營 CRM</div><div class="wh">陳恒丰（數位巴克斯）</div></div>
+      <div class="node"><div class="st">STEP 6</div><div class="wt">線下活動導流</div><div class="wh">許珈愷（貳捌行銷）</div></div>
     </div>
   </section>
 
-  <footer>
-    <b>FUZEN</b> 行銷小聚 · 每週三 13:00 線上舉行 · 本頁由蔡阿達的 AI 助手於每週小聚後更新
-  </footer>
+  <section class="card c-red">
+    <div class="cardhd">
+      <span class="badge b-red">♥</span>
+      <div><span class="kicker">跨週累積</span><h2>成員名片牆</h2></div>
+    </div>
+    <div class="members">
+      <div class="mem"><div class="nm">蔡俊達（阿達）｜awoo 阿物科技</div><span class="fd">SEO / GEO</span>
+        <div class="sv">品牌價值主張與關鍵字策略、GEO 健檢、AI 搜尋能見度、品牌內容生成</div>
+        <div class="bt"><b>最想認識：</b>有官網、有心經營品牌內容的業主</div></div>
+      <div class="mem"><div class="nm">陳韋翰｜遙空映畫</div><span class="fd">企業形象影片</span>
+        <div class="sv">企業形象影片、ESG 形象影片、見證影片、活動快剪；1 萬 5 入門形象影片方案</div>
+        <div class="bt"><b>最想認識：</b>有在做 ESG 的企業、需要質感影像的品牌、室內設計業者</div></div>
+      <div class="mem"><div class="nm">許珈愷（Karen）｜貳捌行銷</div><span class="fd">網路社群行銷</span>
+        <div class="sv">AI 短影音（產品照片即可生成）、社群顧問與健檢、產品包裝全流程、展場輸出、LINE 導流活動</div>
+        <div class="bt"><b>最想認識：</b>新品上市或包裝想升級的品牌主、想把社群經營起來的品牌</div></div>
+      <div class="mem"><div class="nm">陳宗民（Adam）｜華翼國際行銷</div><span class="fd">品牌策略顧問</span>
+        <div class="sv">品牌策略與企業顧問、AI 導入與 AI 講師、傳產企業的行銷與經營輔導</div>
+        <div class="bt"><b>最想認識：</b>有在開 AI 課程的單位；傳產與行銷業界的企業主</div></div>
+      <div class="mem"><div class="nm">MarsZ Chen</div><span class="fd">多語系網站建置 × AI 提案</span>
+        <div class="sv">多語系官網、AI 切版與設計、電商平台、網站流量自動分析報告</div>
+        <div class="bt"><b>最想認識：</b>要做／改官網的業主；手上有設計稿、想做成網站的平面設計師；經銷夥伴</div></div>
+      <div class="mem"><div class="nm">陳恒丰（恆峰）｜數位巴克斯</div><span class="fd">資訊系統開發</span>
+        <div class="sv">官方 LINE 分群推播 CRM、AI 商業媒合、團購工具、客製系統開發</div>
+        <div class="bt"><b>最想認識：</b>有官方 LINE、想有系統經營會員的業者</div></div>
+    </div>
+  </section>
+
+  <footer><b>FUZEN</b> 行銷小聚 · 每週三 13:00 線上舉行 · 本頁由蔡阿達的 AI 助手於每週小聚後更新</footer>
 </div>
 
-<script src="weeks.js"></script>
+<!-- ⚠️ 一律用絕對路徑：網址結尾沒有斜線（/huddle）時，相對路徑會抓不到資料（2026-09-23 踩到） -->
+<script src="/huddle/weeks.js?v=20260923c"></script>
 <script>
 (function(){
-  var tabs = document.getElementById('weekTabs');
-  var meta = document.getElementById('weekMeta');
-  var txD = document.getElementById('txDetails');
-  var txBox = document.getElementById('txBox');
-  var txDl = document.getElementById('txDl');
-  var spotSec = document.getElementById('spotSec');
-  var txCache = {};
-  var cur = 0;
+  var L = HUDDLE.latest, A = HUDDLE.archive;
+  var WD = ['日','一','二','三','四','五','六'];
+  var NAME = {ada:'阿達', wei:'韋翰', karen:'Karen', zm:'宗民', mars:'MarsZ', hf:'恒丰', all:'全體'};
+  function esc(s){ var d=document.createElement('div'); d.textContent = s==null ? '' : String(s); return d.innerHTML; }
+  function $(id){ return document.getElementById(id); }
+  function dparts(iso){ var p=iso.split('-'); var d=new Date(+p[0],+p[1]-1,+p[2]); return {y:p[0], m:p[1], d:p[2], wd:WD[d.getDay()]}; }
+  function sp(k){ return '<span class="sp sp-'+k+'">'+esc(NAME[k]||k)+'</span>'; }
+  function list(arr){ return arr.map(function(x){ return '<li>'+esc(x)+'</li>'; }).join(''); }
 
-  function esc(s){ var d=document.createElement('div'); d.textContent=s; return d.innerHTML; }
+  // 刊頭資訊列與頁籤
+  var ld = dparts(L.date);
+  $('metabar').innerHTML =
+    '<div class="m">最新一場<b><span class="en">'+ld.m+'.'+ld.d+'</span> 週'+ld.wd+'</b></div>' +
+    '<div class="m">時間<b><span class="en">'+esc(L.time)+'</span></b></div>' +
+    '<div class="m">出席<b>'+L.who.length+' 位夥伴</b></div>' +
+    '<div class="m">之前的紀錄<b>'+A.length+' 場</b></div>';
+  $('tab-latest').innerHTML = '<span class="n">'+ld.m+'/'+ld.d+'</span>最新<span class="long">一場</span>';
+  $('tab-arch').innerHTML = '之前的<span class="long">會議記錄</span>摘要<span class="cnt">'+A.length+' 場</span>';
 
-  HUDDLE_WEEKS.forEach(function(w, i){
-    var b = document.createElement('button');
-    b.type = 'button';
-    b.className = 'wtab';
-    b.innerHTML = esc(w.date.slice(5).replace('-','/')) + (i===0 ? '<small>最新</small>' : '');
-    b.addEventListener('click', function(){ render(i); });
-    tabs.appendChild(b);
+  // ★ 本週重點
+  var F = L.focus;
+  $('fTitle').textContent = F.title; $('fTag').textContent = F.tag; $('fLead').textContent = F.lead;
+  $('fScript').textContent = F.script; $('fScriptBy').textContent = '— ' + F.scriptBy;
+  $('fPack').innerHTML = F.pack.map(function(p,i){
+    return '<div class="tile t'+(i+1)+'"><div class="no">0'+(i+1)+'</div><h4>'+esc(p.h)+'</h4><p>'+esc(p.t)+'</p></div>';
+  }).join('');
+  $('fWhy').innerHTML = list(F.why); $('fNeed').innerHTML = list(F.need); $('fEsg').innerHTML = list(F.esg);
+  $('fRule').innerHTML = '<b>提案原則：</b>' + esc(F.rule);
+  $('fNext').textContent = F.next;
+
+  // 2 會議時間軸
+  $('tl').innerHTML = L.timeline.map(function(t){
+    return '<div class="ti"><div class="tm">'+esc(t.t)+'</div><div class="bx">' +
+      t.who.map(sp).join('') + '<h3>'+esc(t.title)+'</h3><ul class="dash">'+list(t.points)+'</ul>' +
+      (t.link ? '<button class="goto" type="button" data-goto="focus">▲ 詳見本週重點</button>' : '') +
+      '</div></div>';
+  }).join('');
+
+  // 3 阿達 × Karen
+  var K = L.karen;
+  $('kTitle').textContent = K.title; $('kTag').textContent = K.tag; $('kLead').textContent = K.lead;
+  $('kBoxes').innerHTML = K.boxes.map(function(b){
+    return '<div class="box bx-'+b.c+'"><h4>'+esc(b.h)+'</h4><ul class="dash '+b.c+'">'+list(b.items)+'</ul></div>';
+  }).join('');
+  $('kChat').innerHTML = K.flow.map(function(m){
+    return '<div class="msg '+m.who+'"><span class="who">'+(m.who==='ada'?'阿達':'Karen')+'</span>'+esc(m.t)+'</div>';
+  }).join('');
+  $('kNext').textContent = K.next;
+
+  // 4 待辦
+  $('todos').innerHTML = L.todos.map(function(t){
+    return '<div class="todo">'+sp(t.who)+'<span class="tk">'+esc(t.task)+'</span></div>';
+  }).join('');
+
+  // 5 逐字稿
+  var dl = $('txDl'); dl.href = L.tx; dl.setAttribute('download', 'FUZEN行銷小聚逐字稿_'+L.date+'.txt');
+  var loaded = false;
+  $('txShow').addEventListener('click', function(){
+    var w = $('txWrap'); w.hidden = !w.hidden;
+    this.textContent = w.hidden ? '在頁面上展開' : '收起逐字稿';
+    if (!w.hidden && !loaded){
+      fetch(L.tx).then(function(r){ if(!r.ok) throw 0; return r.text(); })
+        .then(function(t){ $('txBox').textContent = t; loaded = true; })
+        .catch(function(){ $('txBox').textContent = '逐字稿載入失敗，請改用上面的下載按鈕。'; });
+    }
   });
 
-  function loadTx(i){
-    var w = HUDDLE_WEEKS[i];
-    if (!w.tx){ txBox.textContent = '本週無逐字稿。'; return; }
-    if (txCache[w.tx]){ txBox.textContent = txCache[w.tx]; return; }
-    txBox.textContent = '載入中⋯';
-    fetch(w.tx).then(function(r){
-      if(!r.ok) throw new Error(r.status);
-      return r.text();
-    }).then(function(t){
-      txCache[w.tx] = t;
-      if (cur === i) txBox.textContent = t;
-    }).catch(function(){
-      if (cur === i) txBox.textContent = '逐字稿載入失敗，請重新整理後再試。';
-    });
+  // 頁籤二：之前的會議記錄摘要（依月份分組）
+  $('archIntro').textContent = '從 '+A[A.length-1].date.replace(/-/g,'/')+' 到 '+A[0].date.replace(/-/g,'/')+
+    '，共 '+A.length+' 場小聚。每場只留結論、合作與決議；最新一場的完整內容在「最新一場」頁籤。';
+  var groups = [], gi = {};
+  A.forEach(function(a){ var k=a.date.slice(0,7); if(!(k in gi)){ gi[k]=groups.length; groups.push({k:k, items:[]}); } groups[gi[k]].items.push(a); });
+  $('monthnav').innerHTML = groups.map(function(g){
+    return '<a href="#m-'+g.k+'">'+(+g.k.slice(5))+' 月<small> · '+g.items.length+' 場</small></a>';
+  }).join('');
+  $('archList').innerHTML = groups.map(function(g){
+    return '<div class="month" id="m-'+g.k+'"><span class="yr">'+g.k.slice(0,4)+'</span><h3>'+(+g.k.slice(5))+' 月</h3></div>' +
+      '<div class="agrid">' + g.items.map(function(a){
+        var p = dparts(a.date);
+        return '<article class="ac"><div class="top"><span class="dt">'+p.m+'.'+p.d+'</span><span class="wd">週'+p.wd+'</span>' +
+          (a.dur ? '<span class="du">'+esc(a.dur)+'</span>' : '') + '</div>' +
+          '<h4>'+esc(a.title)+'</h4><div class="ppl">出席：'+esc(a.who.join('、'))+'</div>' +
+          '<ul class="dash">'+list(a.points)+'</ul></article>';
+      }).join('') + '</div>';
+  }).join('');
+
+  // 頁籤切換（網址帶 #archive 可直接開第二個頁籤）
+  var tabs = [$('tab-latest'), $('tab-arch')], panels = [$('p-latest'), $('p-arch')];
+  function show(i, scroll){
+    tabs.forEach(function(t,j){ t.setAttribute('aria-selected', j===i ? 'true' : 'false'); });
+    panels.forEach(function(p,j){ p.hidden = (j!==i); });
+    try{ history.replaceState(null, '', i===1 ? '#archive' : location.pathname); }catch(e){}
+    if (scroll) document.querySelector('.tabbar').scrollIntoView({behavior:'smooth'});
   }
-
-  txD.addEventListener('toggle', function(){ if (txD.open) loadTx(cur); });
-
-  function render(i){
-    cur = i;
-    var w = HUDDLE_WEEKS[i];
-    Array.prototype.forEach.call(tabs.children, function(el, j){
-      el.className = 'wtab' + (j === i ? ' active' : '');
-    });
-    meta.textContent = w.date.replace(/-/g,'/') + ' 出席：' + w.participants.join('、');
-    txD.open = false;
-    txBox.textContent = '載入中⋯';
-    if (w.tx) {
-      txDl.hidden = false;
-      txDl.href = w.tx;
-      txDl.setAttribute('download', 'FUZEN行銷小聚逐字稿_' + w.date + '.txt');
-    } else { txDl.hidden = true; }
-
-    var sp = w.spotlight;
-    if (sp) {
-      document.getElementById('spot').innerHTML = '<div class="spot">' +
-        '<span class="who">'+esc(sp.who)+'</span>' +
-        '<h3>'+esc(sp.title)+'</h3>' +
-        '<p class="lead">'+esc(sp.lead)+'</p>' +
-        '<div class="blocks">' + sp.blocks.map(function(b){
-          return '<div class="blk"><h4>'+esc(b.h)+'</h4><ul>' +
-            b.items.map(function(x){ return '<li>'+esc(x)+'</li>'; }).join('') + '</ul></div>';
-        }).join('') + '</div>' +
-        '<div class="next"><b>下一步：</b>'+esc(sp.next)+'</div></div>';
-      spotSec.hidden = false;
-    } else {
-      document.getElementById('spot').innerHTML = '';
-      spotSec.hidden = true;
-    }
-
-    document.getElementById('matches').innerHTML = w.matches.map(function(m){
-      return '<div class="match"><span class="who">'+esc(m.who)+'</span>' +
-        '<div class="idea">'+esc(m.idea)+'</div>' +
-        '<div class="next"><b>下一步：</b>'+esc(m.next)+'</div></div>';
-    }).join('');
-
-    document.getElementById('stalls').innerHTML = w.stalls.map(function(s){
-      return '<div class="stall">' +
-        '<div class="head"><span class="name">'+esc(s.name)+'</span><span class="biz">'+esc(s.biz)+'</span></div>' +
-        '<ul>' + s.pitch.map(function(p){ return '<li>'+esc(p)+'</li>'; }).join('') + '</ul>' +
-        '<div class="askrow"><span class="lbl">要找的人</span>'+esc(s.ask)+'</div>' +
-        '<div class="opener"><span class="lbl">幫他開場</span>'+esc(s.opener)+'</div>' +
-        '</div>';
-    }).join('');
-
-    document.getElementById('todos').innerHTML = w.todos.map(function(t){
-      return '<div class="todo"><span class="owner">'+esc(t.owner)+'</span><span>'+esc(t.task)+'</span></div>';
-    }).join('');
-  }
-
-  render(0);
+  tabs[0].addEventListener('click', function(){ show(0,true); });
+  tabs[1].addEventListener('click', function(){ show(1,true); });
+  document.addEventListener('click', function(e){
+    var g = e.target.closest && e.target.closest('[data-goto]');
+    if (g){ show(0,false); $(g.getAttribute('data-goto')).scrollIntoView({behavior:'smooth'}); }
+    var m = e.target.closest && e.target.closest('.monthnav a');
+    if (m){ e.preventDefault(); var t=document.querySelector(m.getAttribute('href')); if(t) t.scrollIntoView({behavior:'smooth'}); }
+  });
+  if (location.hash === '#archive' || /^#m-/.test(location.hash)) show(1, false);
 })();
 </script>
 </body>
