@@ -23,36 +23,36 @@ body { background:var(--paper); color:var(--ink); font-size:16.5px; line-height:
 
 .topline { display:flex; justify-content:space-between; align-items:baseline; gap:10px;
   padding-bottom:14px; border-bottom:2px solid var(--ink); }
-.topline .brand { font-size:13px; font-weight:700; letter-spacing:.12em; }
+.topline .brand { font-size:16px; font-weight:700; letter-spacing:.12em; }
 .topline .brand b { color:var(--red); }
 .topline .tag { font-size:11px; letter-spacing:.14em; color:var(--sub); white-space:nowrap; }
 
 header.hero { padding:28px 0 22px; border-bottom:1px dashed var(--dash); }
 h1 { font-size:clamp(24px,6vw,32px); font-weight:900; line-height:1.35; text-wrap:balance; }
-.hero .sub { margin-top:8px; font-size:15px; color:var(--sub); max-width:36em; }
+.hero .sub { margin-top:8px; font-size:16px; color:var(--sub); max-width:36em; }
 .howto { margin-top:14px; border-left:3px solid var(--red); padding:4px 0 4px 14px;
-  font-size:14px; color:var(--sub); }
+  font-size:16px; color:var(--sub); }
 .howto b { color:var(--ink); }
 
 .weekbar { display:flex; align-items:center; gap:12px; flex-wrap:wrap; padding:20px 0 0; }
-.weekbar .wlabel { font-size:12.5px; font-weight:700; letter-spacing:.1em; color:var(--red); }
+.weekbar .wlabel { font-size:16px; font-weight:700; letter-spacing:.1em; color:var(--red); }
 .wtabs { display:flex; gap:8px; flex-wrap:wrap; }
-.wtab { font:inherit; font-size:15px; font-weight:700; padding:9px 16px; color:var(--ink);
+.wtab { font:inherit; font-size:16px; font-weight:700; padding:9px 16px; color:var(--ink);
   background:var(--card); border:1px solid var(--ink); border-radius:0; cursor:pointer;
   -webkit-tap-highlight-color:transparent; }
-.wtab small { font-weight:400; margin-left:5px; font-size:11px; color:var(--sub); }
+.wtab small { font-weight:400; margin-left:6px; font-size:16px; color:var(--sub); }
 .wtab.active { background:var(--ink); color:var(--paper); }
 .wtab.active small { color:var(--paper); opacity:.75; }
-.weekmeta { font-size:13px; color:var(--sub); padding:8px 0 2px; }
+.weekmeta { font-size:16px; color:var(--sub); padding:8px 0 2px; }
 
 /* 逐字稿 */
 .txd { border:1px solid var(--line); background:var(--card); }
-.txd summary { cursor:pointer; padding:13px 16px; font-size:14.5px; font-weight:700; list-style:none; }
+.txd summary { cursor:pointer; padding:13px 16px; font-size:16px; font-weight:700; list-style:none; }
 .txd summary::-webkit-details-marker { display:none; }
 .txd summary::before { content:"▸ "; color:var(--red); }
 .txd[open] summary::before { content:"▾ "; }
-.txd .txnote { padding:0 16px 8px; font-size:12.5px; color:var(--sub); }
-.txd pre { white-space:pre-wrap; word-break:break-word; font:inherit; font-size:14px; line-height:1.75;
+.txd .txnote { padding:0 16px 8px; font-size:16px; color:var(--sub); }
+.txd pre { white-space:pre-wrap; word-break:break-word; font:inherit; font-size:16px; line-height:1.8;
   color:var(--sub); padding:4px 16px 16px; max-height:70vh; overflow-y:auto; }
 
 section { padding:26px 0 22px; border-bottom:1px dashed var(--dash); }
@@ -60,33 +60,33 @@ section:last-of-type { border-bottom:none; }
 .sec-head { display:flex; align-items:baseline; gap:10px; margin-bottom:14px; }
 .sec-num { font-size:12px; font-weight:700; color:var(--red); letter-spacing:.06em; white-space:nowrap; }
 h2 { font-size:20px; font-weight:900; }
-.sec-note { font-size:13px; color:var(--sub); margin:-8px 0 14px; }
+.sec-note { font-size:16px; color:var(--sub); margin:-8px 0 14px; }
 
 /* 媒合快報 */
 .match { border:1px solid var(--ink); background:var(--card); padding:16px 18px; margin-bottom:12px; }
-.match .who { display:inline-block; font-size:12.5px; font-weight:700; color:var(--red);
+.match .who { display:inline-block; font-size:16px; font-weight:700; color:var(--red);
   border:1px solid var(--red); padding:2px 9px; margin-bottom:8px; }
-.match .idea { font-size:15px; }
-.match .next { margin-top:8px; font-size:13.5px; color:var(--sub); border-top:1px dashed var(--dash); padding-top:8px; }
+.match .idea { font-size:16.5px; }
+.match .next { margin-top:8px; font-size:16px; color:var(--sub); border-top:1px dashed var(--dash); padding-top:8px; }
 .match .next b { color:var(--ink); }
 
 /* 各攤主打 */
 .stall { border:1px solid var(--line); background:var(--card); padding:18px 18px 14px; margin-bottom:14px; }
 .stall .head { display:flex; align-items:baseline; gap:10px; flex-wrap:wrap; margin-bottom:8px; }
 .stall .name { font-size:17px; font-weight:900; }
-.stall .biz { font-size:12.5px; color:var(--sub); }
+.stall .biz { font-size:16px; color:var(--sub); }
 .stall ul { list-style:none; margin-bottom:10px; }
-.stall li { font-size:14.5px; color:var(--sub); padding:5px 0 5px 16px; position:relative; }
+.stall li { font-size:16px; color:var(--sub); padding:5px 0 5px 16px; position:relative; }
 .stall li::before { content:"—"; position:absolute; left:0; color:var(--red); }
-.askrow { border-top:1px dashed var(--dash); padding-top:10px; font-size:14.5px; }
-.askrow .lbl { display:inline-block; font-size:11.5px; font-weight:700; letter-spacing:.08em;
+.askrow { border-top:1px dashed var(--dash); padding-top:10px; font-size:16px; }
+.askrow .lbl { display:inline-block; font-size:16px; font-weight:700; letter-spacing:.08em;
   color:var(--red); border:1px solid var(--red); padding:1px 7px; margin-right:8px; vertical-align:1px; }
-.opener { margin-top:8px; background:var(--red-soft); padding:10px 14px; font-size:14.5px; }
-.opener .lbl { font-size:11.5px; font-weight:700; letter-spacing:.08em; color:var(--red); display:block; margin-bottom:2px; }
+.opener { margin-top:8px; background:var(--red-soft); padding:10px 14px; font-size:16px; }
+.opener .lbl { font-size:16px; font-weight:700; letter-spacing:.08em; color:var(--red); display:block; margin-bottom:2px; }
 
 /* 待辦 */
-.todo { display:grid; grid-template-columns:96px 1fr; gap:10px; padding:9px 0;
-  border-top:1px dashed var(--dash); font-size:14.5px; }
+.todo { display:grid; grid-template-columns:112px 1fr; gap:10px; padding:9px 0;
+  border-top:1px dashed var(--dash); font-size:16px; }
 .todo:first-of-type { border-top:none; }
 .todo .owner { font-weight:700; }
 
@@ -94,21 +94,43 @@ h2 { font-size:20px; font-weight:900; }
 .chain { display:flex; flex-wrap:wrap; gap:8px; align-items:stretch; }
 .chain .node { flex:1 1 118px; border:1px solid var(--ink); background:var(--card); padding:12px 12px 10px; position:relative; }
 .chain .step { font-size:10.5px; font-weight:700; letter-spacing:.1em; color:var(--red); display:block; }
-.chain .what { font-size:14.5px; font-weight:900; margin:2px 0; }
-.chain .whom { font-size:12.5px; color:var(--sub); }
-.chain-note { margin-top:12px; font-size:13.5px; color:var(--sub); max-width:40em; }
+.chain .what { font-size:16px; font-weight:900; margin:2px 0; }
+.chain .whom { font-size:16px; color:var(--sub); }
+.chain-note { margin-top:12px; font-size:16px; color:var(--sub); max-width:40em; }
 
 /* 名片牆 */
 .member { border:1px solid var(--line); background:var(--card); padding:14px 16px; margin-bottom:10px; }
 .member .top { display:flex; justify-content:space-between; align-items:baseline; gap:8px; flex-wrap:wrap; }
-.member .nm { font-size:15.5px; font-weight:900; }
-.member .fld { font-size:12.5px; color:var(--sub); }
-.member .svc { font-size:13.5px; color:var(--sub); margin-top:4px; }
-.member .best { margin-top:6px; font-size:13.5px; }
-.member .best .lbl { color:var(--red); font-weight:700; font-size:11.5px; letter-spacing:.06em; margin-right:6px; }
+.member .nm { font-size:16.5px; font-weight:900; }
+.member .fld { font-size:16px; color:var(--sub); }
+.member .svc { font-size:16px; color:var(--sub); margin-top:4px; }
+.member .best { margin-top:6px; font-size:16px; }
+.member .best .lbl { color:var(--red); font-weight:700; font-size:16px; letter-spacing:.06em; margin-right:6px; }
+
+[hidden] { display:none !important; }
+
+/* 本週焦點合作 */
+.spot { border:2px solid var(--red); background:var(--card); padding:20px 20px 18px; }
+.spot .who { display:inline-block; font-size:16px; font-weight:700; color:#fff; background:var(--red); padding:2px 10px; margin-bottom:10px; }
+.spot h3 { font-size:21px; font-weight:900; line-height:1.45; margin-bottom:10px; text-wrap:balance; }
+.spot .lead { font-size:17px; border-left:3px solid var(--red); padding:2px 0 2px 12px; margin-bottom:18px; }
+.spot .blocks { display:grid; grid-template-columns:1fr; gap:16px; }
+@media (min-width:720px) { .spot .blocks { grid-template-columns:1fr 1fr; } }
+.spot .blk { border-top:1px dashed var(--dash); padding-top:10px; }
+.spot .blk h4 { font-size:16.5px; font-weight:900; color:var(--red); margin-bottom:4px; }
+.spot .blk ul { list-style:none; }
+.spot .blk li { font-size:16px; color:var(--sub); padding:5px 0 5px 16px; position:relative; }
+.spot .blk li::before { content:"—"; position:absolute; left:0; color:var(--red); }
+.spot .next { margin-top:16px; background:var(--red-soft); padding:12px 14px; font-size:16px; }
+.spot .next b { color:var(--red); }
+
+/* 逐字稿下載 */
+.txdl { display:inline-block; margin-top:12px; font-size:16px; font-weight:700; color:var(--ink);
+  border:1px solid var(--ink); padding:9px 16px; text-decoration:none; background:var(--card); }
+.txdl:hover { background:var(--ink); color:var(--paper); }
 
 footer { margin-top:26px; padding-top:14px; border-top:2px solid var(--ink);
-  font-size:12px; color:var(--sub); letter-spacing:.04em; }
+  font-size:16px; color:var(--sub); letter-spacing:.04em; }
 footer b { color:var(--red); }
 </style>
 </head>
@@ -122,7 +144,7 @@ footer b { color:var(--red); }
   <header class="hero">
     <h1>專業推廣 × 尋求引薦 × 資源共享</h1>
     <p class="sub">每週小聚後更新：這一頁幫你記住「誰在推什麼、誰需要誰、誰跟誰該合作」——讓小聚講過的話，變成帶得走的生意。</p>
-    <div class="howto"><b>怎麼用：</b>看到適合的引薦對象，直接抄各攤位的「幫他開場」那句話去說；每週的「媒合快報」是本週最值得跟進的合作火花。</div>
+    <div class="howto"><b>怎麼用：</b>看到適合的引薦對象，直接抄各攤位的「幫他開場」那句話去說；每週的「媒合快報」是本週最值得跟進的合作火花；有重點合作時，最上方的「本週焦點合作」會整理完整構想與下一步。</div>
   </header>
 
   <div class="weekbar">
@@ -130,6 +152,11 @@ footer b { color:var(--red); }
     <div class="wtabs" id="weekTabs"></div>
   </div>
   <div class="weekmeta" id="weekMeta"></div>
+
+  <section id="spotSec" hidden>
+    <div class="sec-head"><span class="sec-num mono">★</span><h2>本週焦點合作</h2></div>
+    <div id="spot"></div>
+  </section>
 
   <section>
     <div class="sec-head"><span class="sec-num mono">01</span><h2>本週媒合快報</h2></div>
@@ -154,6 +181,7 @@ footer b { color:var(--red); }
       <div class="txnote">原始 SeaMeet 自動轉寫、未經人工校對；內文人名可能誤辨，正確姓名與專業別以上方整理及會員名冊為準。</div>
       <pre id="txBox">載入中⋯</pre>
     </details>
+    <a class="txdl" id="txDl" href="#" download>⬇ 下載本週逐字稿（.txt）</a>
   </section>
 
   <section>
@@ -181,11 +209,11 @@ footer b { color:var(--red); }
     <div class="member">
       <div class="top"><span class="nm">MarsZ Chen</span><span class="fld">多語系網站建置 × AI 提案</span></div>
       <div class="svc">多語系官網設計建置（以 Claude 輔助）、AI 快速提案（簡報＋報價＋首頁預覽＋CIS）、上線後低門檻維護</div>
-      <div class="best"><span class="lbl">最想認識</span>要做／改官網、有多語系需求的業主；能承接投放需求的廣告夥伴</div>
+      <div class="best"><span class="lbl">最想認識</span>要做／改官網、有多語系需求的業主；手上有設計稿、想做成網站的平面設計師；經銷夥伴</div>
     </div>
     <div class="member">
       <div class="top"><span class="nm">許珈愷（Karen）｜貳捌行銷</span><span class="fld">網路社群行銷</span></div>
-      <div class="svc">社群健檢（FB／IG 後台優化報告）、產品包裝全流程（視覺、國際條碼、印刷落地）、展場輸出、LINE 分眾導流與裂變活動</div>
+      <div class="svc">AI 短影音（產品照片即可生成）、社群健檢（FB／IG 後台優化報告）、產品包裝全流程（視覺、國際條碼、印刷落地）、展場輸出、LINE 分眾導流與裂變活動</div>
       <div class="best"><span class="lbl">最想認識</span>新品上市或包裝想升級的品牌主、想搞懂社群在經營什麼的品牌</div>
     </div>
     <div class="member">
@@ -195,13 +223,18 @@ footer b { color:var(--red); }
     </div>
     <div class="member">
       <div class="top"><span class="nm">遙空映畫（陳韋翰）</span><span class="fld">企業形象影片</span></div>
-      <div class="svc">企業形象影片、見證影片、活動現場攝影快剪；1 萬 5 入門形象影片方案（重畫面質感、非口播短影音）</div>
-      <div class="best"><span class="lbl">最想認識</span>室內設計業者、需要質感影像的品牌</div>
+      <div class="svc">企業形象影片、ESG 形象影片、見證影片、活動現場攝影快剪；1 萬 5 入門形象影片方案（重畫面質感、非口播短影音）</div>
+      <div class="best"><span class="lbl">最想認識</span>室內設計業者、有在做 ESG 的企業、需要質感影像的品牌</div>
+    </div>
+    <div class="member">
+      <div class="top"><span class="nm">陳宗民（Adam）｜華翼國際行銷</span><span class="fld">品牌策略顧問</span></div>
+      <div class="svc">品牌策略與企業顧問、AI 導入與 AI 講師、傳產企業的行銷與經營輔導</div>
+      <div class="best"><span class="lbl">最想認識</span>有在開 AI 課程的單位；傳產與行銷業界的企業主</div>
     </div>
   </section>
 
   <footer>
-    <b>FUZEN</b> 行銷小聚 · 每週二 13:00 線上舉行 · 本頁由蔡阿達的 AI 助手於每週小聚後更新
+    <b>FUZEN</b> 行銷小聚 · 每週三 13:00 線上舉行 · 本頁由蔡阿達的 AI 助手於每週小聚後更新
   </footer>
 </div>
 
@@ -212,6 +245,8 @@ footer b { color:var(--red); }
   var meta = document.getElementById('weekMeta');
   var txD = document.getElementById('txDetails');
   var txBox = document.getElementById('txBox');
+  var txDl = document.getElementById('txDl');
+  var spotSec = document.getElementById('spotSec');
   var txCache = {};
   var cur = 0;
 
@@ -253,6 +288,28 @@ footer b { color:var(--red); }
     meta.textContent = w.date.replace(/-/g,'/') + ' 出席：' + w.participants.join('、');
     txD.open = false;
     txBox.textContent = '載入中⋯';
+    if (w.tx) {
+      txDl.hidden = false;
+      txDl.href = w.tx;
+      txDl.setAttribute('download', 'FUZEN行銷小聚逐字稿_' + w.date + '.txt');
+    } else { txDl.hidden = true; }
+
+    var sp = w.spotlight;
+    if (sp) {
+      document.getElementById('spot').innerHTML = '<div class="spot">' +
+        '<span class="who">'+esc(sp.who)+'</span>' +
+        '<h3>'+esc(sp.title)+'</h3>' +
+        '<p class="lead">'+esc(sp.lead)+'</p>' +
+        '<div class="blocks">' + sp.blocks.map(function(b){
+          return '<div class="blk"><h4>'+esc(b.h)+'</h4><ul>' +
+            b.items.map(function(x){ return '<li>'+esc(x)+'</li>'; }).join('') + '</ul></div>';
+        }).join('') + '</div>' +
+        '<div class="next"><b>下一步：</b>'+esc(sp.next)+'</div></div>';
+      spotSec.hidden = false;
+    } else {
+      document.getElementById('spot').innerHTML = '';
+      spotSec.hidden = true;
+    }
 
     document.getElementById('matches').innerHTML = w.matches.map(function(m){
       return '<div class="match"><span class="who">'+esc(m.who)+'</span>' +
