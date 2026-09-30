@@ -251,6 +251,19 @@ footer b{font-family:var(--pop); font-weight:400; color:var(--yellow)}
 @media (prefers-reduced-motion:reduce){
   html{animation:none} .pop{animation:none} .card:hover .badge{animation:none}
 }
+
+/* 頁籤：第一行日期＋重點，第二行要留意的公司 */
+.tabs{overflow-x:auto; padding-bottom:6px}
+.tab{text-align:left; max-width:360px; flex:0 0 auto}
+.tab .hl{display:block; font-size:17px; font-weight:900; line-height:1.35; margin-top:2px}
+.tab .wt{display:block; font-size:16px; font-weight:500; line-height:1.4; margin-top:4px; opacity:.85}
+.tab .wt b{font-weight:900}
+.txoff{font-size:16px; line-height:1.7; background:var(--paper); border:2px dashed var(--ink); padding:12px 16px; margin-top:6px}
+@media (max-width:680px){
+  .tabbar{position:static}
+  .tabs{flex-wrap:nowrap; overflow-x:auto; padding-bottom:6px}
+  .tab{flex:0 0 auto; max-width:260px}
+}
 </style>
 </head>
 <body>
@@ -264,86 +277,11 @@ footer b{font-family:var(--pop); font-weight:400; color:var(--yellow)}
   </header>
 
   <nav class="tabbar" aria-label="切換頁籤">
-    <div class="tabs" role="tablist">
-      <button class="tab" role="tab" id="tab-latest" aria-controls="p-latest" aria-selected="true"></button>
-      <button class="tab" role="tab" id="tab-arch" aria-controls="p-arch" aria-selected="false"></button>
-    </div>
+    <div class="tabs" role="tablist" id="tablist"></div>
   </nav>
 
-  <!-- ═══════════ 頁籤一：最新一場 ═══════════ -->
-  <main id="p-latest" role="tabpanel" aria-labelledby="tab-latest">
-
-    <section class="card c-red pop" id="focus">
-      <div class="cardhd">
-        <span class="badge b-red">★</span>
-        <div><span class="kicker">本週重點</span><h2 id="fTitle"></h2></div>
-      </div>
-      <span class="tagpill" id="fTag"></span>
-      <p class="lead" id="fLead"></p>
-      <div class="say"><span id="fScript"></span><small id="fScriptBy"></small></div>
-
-      <span class="subhd">客戶會拿到什麼</span>
-      <div class="pack" id="fPack"></div>
-
-      <span class="subhd blue">為什麼這招有效</span>
-      <ul class="dash blue" id="fWhy"></ul>
-
-      <div class="callout" id="fRule"></div>
-
-      <span class="subhd green">韋翰要準備什麼</span>
-      <ul class="dash green" id="fNeed"></ul>
-
-      <span class="subhd pink">延伸到 ESG 形象影片</span>
-      <ul class="dash pink" id="fEsg"></ul>
-
-      <div class="nextbar"><span class="lbl">NEXT</span><span id="fNext"></span></div>
-    </section>
-
-    <section class="card c-blue pop">
-      <div class="cardhd">
-        <span class="badge b-blue">2</span>
-        <div><span class="kicker">依大家發言的順序</span><h2>會議時間軸</h2></div>
-      </div>
-      <p class="lead">左邊是會議進行到第幾分鐘，方便對照最下面的逐字稿。</p>
-      <div class="tl" id="tl"></div>
-    </section>
-
-    <section class="card c-pink pop" id="karen">
-      <div class="cardhd">
-        <span class="badge b-pink">3</span>
-        <div><span class="kicker">最後登場</span><h2 id="kTitle"></h2></div>
-      </div>
-      <span class="tagpill pk" id="kTag"></span>
-      <p class="lead" id="kLead"></p>
-      <div class="boxes" id="kBoxes"></div>
-      <details class="fold" open>
-        <summary>兩人的完整對話脈絡（依時間順序）</summary>
-        <div class="in"><div class="chat" id="kChat"></div></div>
-      </details>
-      <div class="nextbar"><span class="lbl">NEXT</span><span id="kNext"></span></div>
-    </section>
-
-    <section class="card c-yellow pop">
-      <div class="cardhd">
-        <span class="badge b-yellow">4</span>
-        <div><span class="kicker">誰要做什麼</span><h2>決議與待辦</h2></div>
-      </div>
-      <div id="todos"></div>
-    </section>
-
-    <section class="card c-green pop">
-      <div class="cardhd">
-        <span class="badge b-green">5</span>
-        <div><span class="kicker">原始紀錄</span><h2>本場逐字稿</h2></div>
-      </div>
-      <div class="txrow">
-        <a class="btn" id="txDl" href="#" download>⬇ 下載逐字稿（.txt）</a>
-        <button class="btn ghost" type="button" id="txShow">在頁面上展開</button>
-      </div>
-      <p class="txnote">會議軟體自動轉寫、未經人工校對；人名可能被誤聽，正確姓名與專業以上方整理為準。</p>
-      <div id="txWrap" hidden style="margin-top:16px"><pre class="tx" id="txBox">載入中⋯</pre></div>
-    </section>
-  </main>
+  <!-- ═══════════ 每一場的完整紀錄（由 weeks.js 產生，一場一個頁籤）═══════════ -->
+  <div id="weekPanels"></div>
 
   <!-- ═══════════ 頁籤二：之前的會議記錄摘要 ═══════════ -->
   <section id="p-arch" role="tabpanel" aria-labelledby="tab-arch" hidden>
@@ -406,79 +344,84 @@ footer b{font-family:var(--pop); font-weight:400; color:var(--yellow)}
 </div>
 
 <!-- ⚠️ 一律用絕對路徑：網址結尾沒有斜線（/huddle）時，相對路徑會抓不到資料（2026-09-23 踩到） -->
-<script src="/huddle/weeks.js?v=20260923d"></script>
+<script src="/huddle/weeks.js?v=20260930a"></script>
 <script>
 (function(){
-  var L = HUDDLE.latest, A = HUDDLE.archive;
+  var W = HUDDLE.weeks || [HUDDLE.latest], A = HUDDLE.archive;
   var WD = ['日','一','二','三','四','五','六'];
   var NAME = {ada:'阿達', wei:'韋翰', karen:'Karen', zm:'宗民', mars:'MarsZ', hf:'恒丰', all:'全體'};
+  var DEF = {pack:'客戶會拿到什麼', why:'為什麼這招有效', need:'韋翰要準備什麼', esg:'延伸到 ESG 形象影片'};
   function esc(s){ var d=document.createElement('div'); d.textContent = s==null ? '' : String(s); return d.innerHTML; }
   function $(id){ return document.getElementById(id); }
   function dparts(iso){ var p=iso.split('-'); var d=new Date(+p[0],+p[1]-1,+p[2]); return {y:p[0], m:p[1], d:p[2], wd:WD[d.getDay()]}; }
   function sp(k){ return '<span class="sp sp-'+k+'">'+esc(NAME[k]||k)+'</span>'; }
-  function list(arr){ return arr.map(function(x){ return '<li>'+esc(x)+'</li>'; }).join(''); }
+  function list(arr){ return (arr||[]).map(function(x){ return '<li>'+esc(x)+'</li>'; }).join(''); }
+  function head(badge, cls, kicker, title){
+    return '<div class="cardhd"><span class="badge b-'+cls+'">'+badge+'</span><div><span class="kicker">'+kicker+'</span><h2>'+esc(title)+'</h2></div></div>';
+  }
 
-  // 刊頭資訊列與頁籤
-  var ld = dparts(L.date);
+  function weekHTML(L, i){
+    var id = 'w'+i, F = L.focus, H = {}, n = 1, k;
+    for (k in DEF) H[k] = (F.heads && F.heads[k]) || DEF[k];
+    var o = '<section class="card c-red pop" id="'+id+'-focus">' + head('★','red','本週重點',F.title) +
+      '<span class="tagpill">'+esc(F.tag)+'</span><p class="lead">'+esc(F.lead)+'</p>' +
+      '<div class="say"><span>'+esc(F.script)+'</span><small>— '+esc(F.scriptBy)+'</small></div>' +
+      '<span class="subhd">'+esc(H.pack)+'</span><div class="pack">' + F.pack.map(function(p,j){
+        return '<div class="tile t'+(j+1)+'"><div class="no">0'+(j+1)+'</div><h4>'+esc(p.h)+'</h4><p>'+esc(p.t)+'</p></div>'; }).join('') + '</div>' +
+      '<span class="subhd blue">'+esc(H.why)+'</span><ul class="dash blue">'+list(F.why)+'</ul>' +
+      (F.rule ? '<div class="callout"><b>'+esc(F.ruleLbl||'提案原則')+'：</b>'+esc(F.rule)+'</div>' : '') +
+      (F.need && F.need.length ? '<span class="subhd green">'+esc(H.need)+'</span><ul class="dash green">'+list(F.need)+'</ul>' : '') +
+      (F.esg && F.esg.length ? '<span class="subhd pink">'+esc(H.esg)+'</span><ul class="dash pink">'+list(F.esg)+'</ul>' : '') +
+      '<div class="nextbar"><span class="lbl">NEXT</span><span>'+esc(F.next)+'</span></div></section>';
+    o += '<section class="card c-blue pop">' + head(++n,'blue','依大家發言的順序','會議時間軸') +
+      '<p class="lead">左邊是會議進行到第幾分鐘'+(L.tx ? '，方便對照最下面的逐字稿' : '')+'。</p><div class="tl">' +
+      L.timeline.map(function(t){
+        return '<div class="ti"><div class="tm">'+esc(t.t)+'</div><div class="bx">' + t.who.map(sp).join('') +
+          '<h3>'+esc(t.title)+'</h3><ul class="dash">'+list(t.points)+'</ul>' +
+          (t.link ? '<button class="goto" type="button" data-goto="'+id+'-focus">▲ 詳見本週重點</button>' : '') + '</div></div>';
+      }).join('') + '</div></section>';
+    if (L.karen){
+      var K = L.karen, nm = K.names || {ada:'阿達', karen:'Karen'};
+      o += '<section class="card c-pink pop">' + head(++n,'pink','最後登場',K.title) +
+        '<span class="tagpill pk">'+esc(K.tag)+'</span><p class="lead">'+esc(K.lead)+'</p><div class="boxes">' +
+        K.boxes.map(function(b){ return '<div class="box bx-'+b.c+'"><h4>'+esc(b.h)+'</h4><ul class="dash '+b.c+'">'+list(b.items)+'</ul></div>'; }).join('') +
+        '</div><details class="fold" open><summary>兩人的完整對話脈絡（依時間順序）</summary><div class="in"><div class="chat">' +
+        K.flow.map(function(m){ return '<div class="msg '+m.who+'"><span class="who">'+esc(nm[m.who]||m.who)+'</span>'+esc(m.t)+'</div>'; }).join('') +
+        '</div></div></details><div class="nextbar"><span class="lbl">NEXT</span><span>'+esc(K.next)+'</span></div></section>';
+    }
+    o += '<section class="card c-yellow pop">' + head(++n,'yellow','誰要做什麼','決議與待辦') +
+      L.todos.map(function(t){ return '<div class="todo">'+sp(t.who)+'<span class="tk">'+esc(t.task)+'</span></div>'; }).join('') + '</section>';
+    o += '<section class="card c-green pop">' + head(++n,'green','原始紀錄','本場逐字稿') + (L.tx ?
+      '<div class="txrow"><a class="btn" href="'+esc(L.tx)+'" download="FUZEN行銷小聚逐字稿_'+L.date+'.txt">⬇ 下載逐字稿（.txt）</a>' +
+      '<button class="btn ghost" type="button" data-tx="'+esc(L.tx)+'">在頁面上展開</button></div>' +
+      '<p class="txnote">會議軟體自動轉寫、未經人工校對；人名可能被誤聽，正確姓名與專業以上方整理為準。</p>' +
+      '<div hidden style="margin-top:16px"><pre class="tx">載入中⋯</pre></div>'
+      : '<p class="txoff">'+esc(L.txNote || '本場逐字稿不公開。')+'</p>') + '</section>';
+    return '<main id="p-'+id+'" role="tabpanel" aria-labelledby="tab-'+id+'" hidden>' + o + '</main>';
+  }
+
+  // 刊頭資訊列
+  var L0 = W[0], ld = dparts(L0.date);
   $('metabar').innerHTML =
     '<div class="m">最新一場<b><span class="en">'+ld.m+'.'+ld.d+'</span> 週'+ld.wd+'</b></div>' +
-    '<div class="m">時間<b><span class="en">'+esc(L.time)+'</span></b></div>' +
-    '<div class="m">出席<b>'+L.who.length+' 位夥伴</b></div>' +
-    '<div class="m">之前的紀錄<b>'+A.length+' 場</b></div>';
-  $('tab-latest').innerHTML = '<span class="n">'+ld.m+'/'+ld.d+'</span>最新<span class="long">一場</span>';
-  $('tab-arch').innerHTML = '之前的<span class="long">會議記錄</span>摘要<span class="cnt">'+A.length+' 場</span>';
+    '<div class="m">時間<b><span class="en">'+esc(L0.time)+'</span></b></div>' +
+    '<div class="m">出席<b>'+L0.who.length+' 位夥伴</b></div>' +
+    '<div class="m">完整紀錄<b>'+W.length+' 場＋摘要 '+A.length+' 場</b></div>';
 
-  // ★ 本週重點
-  var F = L.focus;
-  $('fTitle').textContent = F.title; $('fTag').textContent = F.tag; $('fLead').textContent = F.lead;
-  $('fScript').textContent = F.script; $('fScriptBy').textContent = '— ' + F.scriptBy;
-  $('fPack').innerHTML = F.pack.map(function(p,i){
-    return '<div class="tile t'+(i+1)+'"><div class="no">0'+(i+1)+'</div><h4>'+esc(p.h)+'</h4><p>'+esc(p.t)+'</p></div>';
-  }).join('');
-  $('fWhy').innerHTML = list(F.why); $('fNeed').innerHTML = list(F.need); $('fEsg').innerHTML = list(F.esg);
-  $('fRule').innerHTML = '<b>提案原則：</b>' + esc(F.rule);
-  $('fNext').textContent = F.next;
+  // 頁籤：每場一個（日期＋重點＋要留意的公司），最後是之前的摘要
+  $('weekPanels').innerHTML = W.map(weekHTML).join('');
+  $('tablist').innerHTML = W.map(function(L,i){
+    var p = dparts(L.date);
+    return '<button class="tab" role="tab" id="tab-w'+i+'" aria-controls="p-w'+i+'" aria-selected="false">' +
+      '<span class="n">'+p.m+'/'+p.d+'</span>'+(i===0 ? '最新' : '') +
+      '<span class="hl">'+esc(L.hl||'')+'</span>' +
+      (L.watch && L.watch.length ? '<span class="wt"><b>留意：</b>'+esc(L.watch.join('、'))+'</span>' : '') + '</button>';
+  }).join('') + '<button class="tab" role="tab" id="tab-arch" aria-controls="p-arch" aria-selected="false">之前的<span class="long">會議記錄</span>摘要<span class="cnt">'+A.length+' 場</span>' +
+    '<span class="wt">'+A[A.length-1].date.slice(5).replace('-','/')+' – '+A[0].date.slice(5).replace('-','/')+'</span></button>';
 
-  // 2 會議時間軸
-  $('tl').innerHTML = L.timeline.map(function(t){
-    return '<div class="ti"><div class="tm">'+esc(t.t)+'</div><div class="bx">' +
-      t.who.map(sp).join('') + '<h3>'+esc(t.title)+'</h3><ul class="dash">'+list(t.points)+'</ul>' +
-      (t.link ? '<button class="goto" type="button" data-goto="focus">▲ 詳見本週重點</button>' : '') +
-      '</div></div>';
-  }).join('');
-
-  // 3 阿達 × Karen
-  var K = L.karen;
-  $('kTitle').textContent = K.title; $('kTag').textContent = K.tag; $('kLead').textContent = K.lead;
-  $('kBoxes').innerHTML = K.boxes.map(function(b){
-    return '<div class="box bx-'+b.c+'"><h4>'+esc(b.h)+'</h4><ul class="dash '+b.c+'">'+list(b.items)+'</ul></div>';
-  }).join('');
-  $('kChat').innerHTML = K.flow.map(function(m){
-    return '<div class="msg '+m.who+'"><span class="who">'+(m.who==='ada'?'阿達':'Karen')+'</span>'+esc(m.t)+'</div>';
-  }).join('');
-  $('kNext').textContent = K.next;
-
-  // 4 待辦
-  $('todos').innerHTML = L.todos.map(function(t){
-    return '<div class="todo">'+sp(t.who)+'<span class="tk">'+esc(t.task)+'</span></div>';
-  }).join('');
-
-  // 5 逐字稿
-  var dl = $('txDl'); dl.href = L.tx; dl.setAttribute('download', 'FUZEN行銷小聚逐字稿_'+L.date+'.txt');
-  var loaded = false;
-  $('txShow').addEventListener('click', function(){
-    var w = $('txWrap'); w.hidden = !w.hidden;
-    this.textContent = w.hidden ? '在頁面上展開' : '收起逐字稿';
-    if (!w.hidden && !loaded){
-      fetch(L.tx).then(function(r){ if(!r.ok) throw 0; return r.text(); })
-        .then(function(t){ $('txBox').textContent = t; loaded = true; })
-        .catch(function(){ $('txBox').textContent = '逐字稿載入失敗，請改用上面的下載按鈕。'; });
-    }
-  });
-
-  // 頁籤二：之前的會議記錄摘要（依月份分組）
+  // 之前的會議記錄摘要（依月份分組）
   $('archIntro').textContent = '從 '+A[A.length-1].date.replace(/-/g,'/')+' 到 '+A[0].date.replace(/-/g,'/')+
-    '，共 '+A.length+' 場小聚。每場只留結論、合作與決議；最新一場的完整內容在「最新一場」頁籤。';
+    '，共 '+A.length+' 場小聚。每場只留結論、合作與決議；近幾場的完整內容在前面各自的頁籤。';
   var groups = [], gi = {};
   A.forEach(function(a){ var k=a.date.slice(0,7); if(!(k in gi)){ gi[k]=groups.length; groups.push({k:k, items:[]}); } groups[gi[k]].items.push(a); });
   $('monthnav').innerHTML = groups.map(function(g){
@@ -495,23 +438,35 @@ footer b{font-family:var(--pop); font-weight:400; color:var(--yellow)}
       }).join('') + '</div>';
   }).join('');
 
-  // 頁籤切換（網址帶 #archive 可直接開第二個頁籤）
-  var tabs = [$('tab-latest'), $('tab-arch')], panels = [$('p-latest'), $('p-arch')];
+  // 頁籤切換：#w-2026-09-23 直接開某一場；#archive 開摘要
+  var tabs = [].slice.call(document.querySelectorAll('#tablist .tab')), panels = W.map(function(_,i){ return $('p-w'+i); }).concat([$('p-arch')]);
   function show(i, scroll){
     tabs.forEach(function(t,j){ t.setAttribute('aria-selected', j===i ? 'true' : 'false'); });
     panels.forEach(function(p,j){ p.hidden = (j!==i); });
-    try{ history.replaceState(null, '', i===1 ? '#archive' : location.pathname); }catch(e){}
+    try{ history.replaceState(null, '', i===tabs.length-1 ? '#archive' : (i===0 ? location.pathname : '#w-'+W[i].date)); }catch(e){}
     if (scroll) document.querySelector('.tabbar').scrollIntoView({behavior:'smooth'});
   }
-  tabs[0].addEventListener('click', function(){ show(0,true); });
-  tabs[1].addEventListener('click', function(){ show(1,true); });
+  tabs.forEach(function(t,i){ t.addEventListener('click', function(){ show(i,true); }); });
   document.addEventListener('click', function(e){
     var g = e.target.closest && e.target.closest('[data-goto]');
-    if (g){ show(0,false); $(g.getAttribute('data-goto')).scrollIntoView({behavior:'smooth'}); }
+    if (g){ var el = $(g.getAttribute('data-goto')); if (el) el.scrollIntoView({behavior:'smooth'}); }
     var m = e.target.closest && e.target.closest('.monthnav a');
     if (m){ e.preventDefault(); var t=document.querySelector(m.getAttribute('href')); if(t) t.scrollIntoView({behavior:'smooth'}); }
+    var x = e.target.closest && e.target.closest('[data-tx]');
+    if (x){
+      var wrap = x.parentNode.parentNode.querySelector('div[hidden], div.txopen'), pre = wrap.querySelector('pre');
+      var open = wrap.hidden; wrap.hidden = !open; wrap.className = open ? 'txopen' : '';
+      x.textContent = open ? '收起逐字稿' : '在頁面上展開';
+      if (open && !x.dataset.loaded){
+        fetch(x.getAttribute('data-tx')).then(function(r){ if(!r.ok) throw 0; return r.text(); })
+          .then(function(t){ pre.textContent = t; x.dataset.loaded = '1'; })
+          .catch(function(){ pre.textContent = '逐字稿載入失敗，請改用上面的下載按鈕。'; });
+      }
+    }
   });
-  if (location.hash === '#archive' || /^#m-/.test(location.hash)) show(1, false);
+  var h = location.hash, wi = -1;
+  W.forEach(function(L,i){ if (h === '#w-'+L.date) wi = i; });
+  if (h === '#archive' || /^#m-/.test(h)) show(tabs.length-1, false); else show(wi >= 0 ? wi : 0, false);
 })();
 </script>
 </body>
