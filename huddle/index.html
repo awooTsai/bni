@@ -134,7 +134,7 @@ h1{margin-top:16px; font-size:clamp(32px,6.4vw,50px); font-weight:900; line-heig
 .sp{display:inline-block; font-size:16px; font-weight:900; border:2px solid var(--ink); border-radius:999px;
   padding:0 11px; line-height:1.75; margin:0 6px 4px 0; white-space:nowrap}
 .sp-ada{background:var(--red); color:#fff} .sp-wei{background:var(--blue); color:#fff} .sp-karen{background:var(--pink); color:var(--ink)}
-.sp-zm{background:var(--green); color:#fff} .sp-mars{background:var(--yellow); color:var(--ink)} .sp-all,.sp-hf{background:var(--ink); color:var(--paper)}
+.sp-zm{background:var(--green); color:#fff} .sp-mars{background:var(--yellow); color:var(--ink)} .sp-all,.sp-hf{background:var(--ink); color:var(--paper)} .sp-jack{background:var(--white); color:var(--ink)}
 
 /* 時間軸 */
 .tl{position:relative; margin-top:8px}
@@ -344,12 +344,12 @@ footer b{font-family:var(--pop); font-weight:400; color:var(--yellow)}
 </div>
 
 <!-- ⚠️ 一律用絕對路徑：網址結尾沒有斜線（/huddle）時，相對路徑會抓不到資料（2026-09-23 踩到） -->
-<script src="/huddle/weeks.js?v=20260930b"></script>
+<script src="/huddle/weeks.js?v=20261007a"></script>
 <script>
 (function(){
   var W = HUDDLE.weeks || [HUDDLE.latest], A = HUDDLE.archive;
   var WD = ['日','一','二','三','四','五','六'];
-  var NAME = {ada:'阿達', wei:'韋翰', karen:'Karen', zm:'宗民', mars:'Mars', hf:'恒丰', all:'全體'};
+  var NAME = {ada:'阿達', wei:'韋翰', karen:'Karen', zm:'宗民', mars:'Mars', hf:'恒丰', jack:'Jack', all:'全體'};
   var DEF = {pack:'客戶會拿到什麼', why:'為什麼這招有效', need:'韋翰要準備什麼', esg:'延伸到 ESG 形象影片'};
   function esc(s){ var d=document.createElement('div'); d.textContent = s==null ? '' : String(s); return d.innerHTML; }
   function $(id){ return document.getElementById(id); }
