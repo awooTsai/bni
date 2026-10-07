@@ -49,6 +49,10 @@ const HUDDLE = {
           "阿達的進階構想：先追蹤品牌在 AI 回答裡的狀況，再用活動內容補上缺口。每個品牌需要兩到三天準備，一次性活動比較難帶到長期服務，先當成選配。",
           "粉絲專頁會不會被 AI 推薦？阿達的說明：AI 會參考粉專裡的內容，但不一定直接推薦粉專本身。"
         ],
+        links: [
+          { t: "示範成品：活動發稿包（新聞稿初稿、照片圖說、四個平台貼文）", url: "https://docs.google.com/document/d/1tnT62WtrbAJt33jmMrFAEzzJHrJMjGc942VxxvtuHPY/edit" },
+          { t: "合作構想說明（資料包內容、要準備的資料、討論事項）", url: "https://docs.google.com/document/d/1rKoNyqLTEquN4NtMjTePhrAEJ2y42Nf5LIeVP6MKfu8/edit" }
+        ],
         next: "這週末的活動當第一個試做：Jack 先拿預擬稿、補圖說，阿達從照片裡挑三到五張搭配粉專貼文，並把流程做成「上傳資料就能產出」的機制。"
       },
 
