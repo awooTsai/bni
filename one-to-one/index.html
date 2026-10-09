@@ -5,7 +5,7 @@
 <meta name="description" content="依每位會員當週 30 秒簡報的內容，整理出這週最值得約一對一的幾組夥伴，以及見面可以聊什麼。">
 <meta property="og:title" content="本週建議一對一｜BNI 富真白金分會">
 <meta property="og:description" content="這週最值得約一對一的幾組夥伴，以及見面可以聊什麼。">
-<meta property="og:image" content="https://bni-fuzen.vercel.app/one-to-one/img/1002-1.jpg">
+<meta property="og:image" content="https://bni-fuzen.vercel.app/one-to-one/img/1002-1p.jpg">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@700;900&display=swap" rel="stylesheet">
 <style>
 :root{--deep:#06152b;--ink:#0a1f3d;--gold:#d4ab5d;--paper:#f6efe1;--line:#1a3458;--soft:rgba(246,239,225,.8)}
@@ -83,10 +83,10 @@ a{color:var(--gold)}
 
 <footer class="foot"><div class="foot-in">
 <p>配對依當週「每人 30 秒」的內容整理，只是建議；沒有出現在這裡的組合，一樣歡迎自己約。</p>
-<p>每組的圖片是 AI 繪製的示意圖，不是會員本人。</p>
+<p>每組的照片是 AI 依兩位的專業與當週簡報內容想像出來的情境，不是實際拍攝，畫面中的人物也不是會員本人。</p>
 </div></footer>
 
-<script src="/one-to-one/pairs.js?v=20261009a"></script>
+<script src="/one-to-one/pairs.js?v=20261009b"></script>
 <script>
 (function(){
   var W=(window.ONE2ONE&&ONE2ONE.weeks)||[];
@@ -96,7 +96,7 @@ a{color:var(--gold)}
     var w=W[i];if(!w)return;
     document.getElementById('wk').textContent=w.label+'｜共 '+w.pairs.length+' 組';
     document.getElementById('pairs').innerHTML=w.pairs.map(function(p){
-      return '<section class="pair"><div class="pic"><img loading="lazy" width="1280" height="853" src="/one-to-one/'+esc(p.img)+'" alt="'+esc(p.a.name+'（'+p.a.pro+'）與'+p.b.name+'（'+p.b.pro+'）一對一的示意圖')+'"></div>'
+      return '<section class="pair"><div class="pic"><img loading="lazy" width="1280" height="853" src="/one-to-one/'+esc(p.img)+'" alt="'+esc(p.a.name+'（'+p.a.pro+'）與'+p.b.name+'（'+p.b.pro+'）一對一的情境示意照')+'"></div>'
         +'<div class="txt"><div class="names"><div class="who"><h2>'+esc(p.a.name)+'</h2><span>'+esc(p.a.pro)+'</span></div><div class="x" aria-hidden="true">×</div><div class="who"><h2>'+esc(p.b.name)+'</h2><span>'+esc(p.b.pro)+'</span></div></div>'
         +'<p class="hook">'+esc(p.hook)+'</p><p class="why">'+esc(p.why)+'</p>'
         +'<div class="talk"><h3>見面可以先聊</h3><ul>'+p.talk.map(function(t){return '<li>'+esc(t)+'</li>'}).join('')+'</ul></div></div></section>';
