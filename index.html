@@ -44,7 +44,7 @@ a{color:var(--amber)}
 /* hero：滿版真實高雄港＋大尺寸 EDM */
 .hero{position:relative;display:block;overflow:hidden;padding:0;background:var(--bg)}
 .hero-first{position:relative;min-height:calc(100svh - 62px);display:flex;align-items:center;overflow:hidden}
-.hero-bg{position:absolute;inset:0;background:url('img/hero-v5.jpg') 36% center/cover no-repeat}
+.hero-bg{position:absolute;inset:0;background:url('/img/hero-v5.jpg') 36% center/cover no-repeat}
 .hero-bg::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(5,9,15,.9) 0,rgba(5,9,15,.62) 34%,rgba(5,9,15,.12) 64%,rgba(5,9,15,.38) 100%),linear-gradient(180deg,rgba(5,9,15,.5) 0,rgba(5,9,15,0) 24%,rgba(5,9,15,0) 72%,var(--bg) 100%)}
 .hero-grid{position:relative;z-index:2;max-width:1380px;width:100%;margin:0 auto;padding:48px 28px 80px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.3fr);gap:36px;align-items:center}
 .hero-grid:has(.feat .edm-card:nth-child(2)){grid-template-columns:1fr}
@@ -92,7 +92,7 @@ a{color:var(--amber)}
 @media(max-width:900px){
   .hero-first{min-height:0;align-items:flex-start}
   .hero-grid,.hero-grid:has(.feat .edm-card:nth-child(2)){grid-template-columns:1fr;gap:28px;padding:36px 18px 56px}
-  .hero-bg{background:url('img/hero-v5m.jpg') center top/cover no-repeat}
+  .hero-bg{background:url('/img/hero-v5m.jpg') center top/cover no-repeat}
   .hero-bg::before{background:linear-gradient(180deg,rgba(5,9,15,.78) 0,rgba(5,9,15,.2) 26%,rgba(5,9,15,.05) 42%,rgba(5,9,15,.55) 62%,var(--bg) 100%)}
   .hero-top{margin-top:min(56vw,240px)}
   .feat,.hero-grid:has(.feat .edm-card:nth-child(2)) .feat{justify-content:center}
@@ -104,14 +104,14 @@ a{color:var(--amber)}
 .scroll-hint{display:none}
 
 /* huddle */
-.huddle-cta{position:relative;padding:84px max(24px,calc((100% - 1100px)/2)) 88px;text-align:left;background:linear-gradient(90deg,var(--bg) 0,rgba(5,9,15,.86) 38%,rgba(5,9,15,.25) 100%),url('img/band-port.jpg') center/cover;color:#fff;border-top:1px solid var(--line2);border-bottom:1px solid var(--line2)}
+.huddle-cta{position:relative;padding:84px max(24px,calc((100% - 1100px)/2)) 88px;text-align:left;background:linear-gradient(90deg,var(--bg) 0,rgba(5,9,15,.86) 38%,rgba(5,9,15,.25) 100%),url('/img/band-port.jpg') center/cover;color:#fff;border-top:1px solid var(--line2);border-bottom:1px solid var(--line2)}
 .huddle-cta .en{color:var(--amber);font-size:1rem;letter-spacing:.24em}
 .huddle-cta .hc-cap{margin-top:10px;font-weight:300;font-size:clamp(26px,3.8vw,40px);line-height:1.35;color:#e6ecf4;max-width:16em}
 .huddle-cta .hc-cap b{color:#fff;font-weight:700}
 .huddle-cta .hc-btn{display:flex;width:fit-content;align-items:center;gap:10px;margin-top:26px;background:var(--amber);color:#1a0d00;text-decoration:none;padding:15px 34px;border-radius:3px;font-weight:700;font-size:1.1rem;letter-spacing:.04em;transition:background .2s,transform .2s,box-shadow .2s}
 .huddle-cta .hc-btn:hover{background:#ffc274;transform:translateY(-2px);box-shadow:0 12px 36px rgba(255,169,64,.35)}
 .huddle-cta .hc-sub{margin-top:18px;font-size:1.05rem;line-height:1.8;color:rgba(238,242,247,.78);max-width:34em}
-@media(max-width:640px){.huddle-cta{padding:56px 18px 60px;background:linear-gradient(180deg,rgba(5,9,15,.92),rgba(5,9,15,.7)),url('img/band-port.jpg') 70% center/cover}.huddle-cta .hc-btn{width:100%;justify-content:center}}
+@media(max-width:640px){.huddle-cta{padding:56px 18px 60px;background:linear-gradient(180deg,rgba(5,9,15,.92),rgba(5,9,15,.7)),url('/img/band-port.jpg') 70% center/cover}.huddle-cta .hc-btn{width:100%;justify-content:center}}
 
 /* album */
 .album{position:relative;padding:84px 24px 84px;background:var(--bg);animation:fadeIn .6s}
