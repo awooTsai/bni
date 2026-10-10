@@ -6,63 +6,67 @@
 <meta property="og:title" content="本週建議一對一｜BNI 富真白金分會">
 <meta property="og:description" content="這週最值得約一對一的幾組夥伴，以及見面可以聊什麼。">
 <meta property="og:image" content="https://bni-fuzen.vercel.app/one-to-one/img/1002-1p.jpg">
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700&family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
 <style>
-:root{--ink:#0b1f3a;--ink2:#16355f;--red:#e8452c;--sun:#ffb81c;--teal:#0fa3a3;--sky:#d9e8f5;--bg:#f3f6f9;--line:#d5dee8;--mute:#51647c}
+:root{--bg:#05090f;--bg2:#09101b;--panel:rgba(255,255,255,.045);--line:rgba(255,255,255,.14);--line2:rgba(255,255,255,.08);--text:#eef2f7;--mute:#9aa8ba;--amber:#ffa940;--amber2:#ff7a3d}
 *{box-sizing:border-box;margin:0;padding:0}
 html{font-size:17px;-webkit-font-smoothing:antialiased;scroll-behavior:smooth}
-body{font-family:"Noto Sans TC","Inter",-apple-system,BlinkMacSystemFont,sans-serif;background:var(--bg);color:var(--ink);line-height:1.8;overflow-x:hidden}
-h1,h2,h3{font-family:"Noto Sans TC",sans-serif;font-weight:900;letter-spacing:.01em}
-a{color:var(--red)}
+body{font-family:"Inter","Noto Sans TC",-apple-system,BlinkMacSystemFont,sans-serif;background:var(--bg);color:var(--text);line-height:1.75;overflow-x:hidden}
+h1,h2,h3,h4{font-family:"Inter","Noto Sans TC",sans-serif;letter-spacing:.01em}
+a{color:var(--amber)}
 
-.topnav{position:sticky;top:0;z-index:80;background:#fff;border-bottom:3px solid var(--ink)}
+.topnav{position:sticky;top:0;z-index:80;background:rgba(5,9,15,.72);backdrop-filter:blur(18px) saturate(1.4);-webkit-backdrop-filter:blur(18px) saturate(1.4);border-bottom:1px solid var(--line2)}
 .topnav-in{max-width:1180px;margin:0 auto;padding:12px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
-.topnav-brand{display:flex;align-items:center;gap:10px;font-weight:900;color:var(--ink);font-size:18px;letter-spacing:.03em;text-decoration:none}
-.topnav-brand::before{content:"";width:14px;height:14px;background:var(--red);display:block}
-.topnav-links{display:flex;gap:12px;flex-wrap:wrap}
-.topnav-links a{font-size:16px;font-weight:700;text-decoration:none;color:var(--ink);border:2px solid var(--ink);border-radius:6px;padding:6px 14px;transition:background .15s,color .15s}
-.topnav-links a:hover{background:var(--ink);color:#fff}
+.topnav-brand{display:flex;align-items:center;gap:11px;font-weight:700;color:var(--text);font-size:17px;letter-spacing:.04em;text-decoration:none}
+.topnav-brand::before{content:"";width:9px;height:9px;border-radius:50%;background:var(--amber);box-shadow:0 0 0 4px rgba(255,169,64,.18),0 0 16px 2px rgba(255,169,64,.8)}
+.topnav-links{display:flex;gap:10px;flex-wrap:wrap}
+.topnav-links a{font-size:16px;font-weight:500;text-decoration:none;color:var(--text);border:1px solid var(--line);border-radius:3px;padding:7px 15px;transition:background .2s,color .2s}
+.topnav-links a:hover{background:var(--text);color:var(--bg)}
 
-.band{position:relative;background:var(--sky) url('img/band-bridge-v3.jpg') center bottom/max(100%,900px) auto no-repeat;padding-bottom:clamp(170px,19vw,270px)}
-.intro{max-width:1180px;margin:0 auto;padding:56px 24px 0}
-.intro .wk{display:inline-block;background:var(--red);color:#fff;font-size:16px;font-weight:700;letter-spacing:.1em;padding:3px 14px}
-.intro h1{font-size:clamp(32px,4.6vw,54px);line-height:1.25;margin-top:16px;text-wrap:balance;color:var(--ink)}
-.intro p{max-width:34em;margin-top:16px;font-size:18px;color:var(--ink)}
-.intro .how{margin-top:18px;padding:2px 0 2px 16px;border-left:5px solid var(--red);font-size:17px;font-weight:500;max-width:36em}
-.weeks{margin-top:20px;display:flex;gap:10px;flex-wrap:wrap;font-size:16px}
-.weeks a{text-decoration:none;cursor:pointer;color:var(--ink);border:2px solid var(--ink);border-radius:6px;padding:3px 14px;font-weight:700;background:#fff}
-.weeks a.on{background:var(--ink);color:#fff}
+.band{position:relative;background:var(--bg) url('img/band-bridge-v4.jpg') center bottom/max(100%,1000px) auto no-repeat;padding-bottom:clamp(190px,21vw,300px)}
+.band::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(5,9,15,.8) 0,rgba(5,9,15,.35) 55%,rgba(5,9,15,0) 100%),linear-gradient(180deg,rgba(5,9,15,0) 55%,var(--bg) 100%);pointer-events:none}
+.intro{position:relative;z-index:2;max-width:1180px;margin:0 auto;padding:64px 24px 0}
+.intro .wk{display:flex;align-items:center;gap:14px;color:var(--amber);font-size:16px;font-weight:600;letter-spacing:.16em}
+.intro .wk::before{content:"";width:44px;height:1px;background:var(--amber)}
+.intro h1{font-size:clamp(32px,4.4vw,54px);font-weight:300;line-height:1.25;margin-top:16px;text-wrap:balance;color:#fff}
+.intro p{max-width:34em;margin-top:16px;font-size:18px;color:rgba(238,242,247,.85)}
+.intro .how{margin-top:18px;padding:2px 0 2px 16px;border-left:2px solid var(--amber);font-size:17px;max-width:36em;color:var(--text)}
+.weeks{margin-top:22px;display:flex;gap:10px;flex-wrap:wrap;font-size:16px}
+.weeks a{text-decoration:none;cursor:pointer;color:var(--text);border:1px solid var(--line);border-radius:3px;padding:3px 14px;font-weight:500;background:rgba(5,9,15,.5)}
+.weeks a.on{background:var(--amber);border-color:var(--amber);color:#1a0d00;font-weight:700}
 
-.pairs{max-width:1180px;margin:0 auto;padding:30px 24px 40px}
-.pair{display:grid;grid-template-columns:minmax(0,1.08fr) minmax(0,1fr);gap:44px;align-items:center;padding:44px 0;border-top:3px solid var(--ink)}
+.pairs{max-width:1180px;margin:0 auto;padding:30px 24px 50px}
+.pair{display:grid;grid-template-columns:minmax(0,1.08fr) minmax(0,1fr);gap:48px;align-items:center;padding:52px 0;border-top:1px solid var(--line)}
 .pair:first-child{border-top:0}
 .pair:nth-child(even) .pic{order:2}
-.pic img{display:block;width:100%;height:auto;aspect-ratio:3/2;object-fit:cover;border-bottom:6px solid var(--red);box-shadow:0 18px 40px rgba(11,31,58,.2);background:var(--ink)}
+.pic{position:relative}
+.pic::after{content:"";position:absolute;left:24px;right:24px;top:-1px;height:2px;background:linear-gradient(90deg,transparent,var(--amber),transparent)}
+.pic img{display:block;width:100%;height:auto;aspect-ratio:3/2;object-fit:cover;border:1px solid var(--line);border-radius:4px;box-shadow:0 30px 70px rgba(0,0,0,.55),0 0 60px rgba(255,169,64,.08);background:var(--bg2)}
 .names{display:flex;align-items:flex-start;gap:16px;flex-wrap:wrap}
-.who h2{font-size:clamp(28px,3.6vw,40px);line-height:1.2;color:var(--ink)}
-.who span{display:block;margin-top:4px;font-size:16px;color:var(--mute);font-weight:700}
-.x{font-weight:900;font-size:30px;color:var(--red);line-height:1.3}
-.hook{margin-top:18px;font-weight:900;font-size:21px;line-height:1.55;color:var(--red)}
-.why{margin-top:12px;font-size:17px;color:var(--ink)}
-.talk{margin-top:22px;background:#fff;border-top:4px solid var(--ink);padding:14px 20px 8px}
-.talk h3{font-weight:900;font-size:16px;letter-spacing:.06em;color:var(--ink)}
+.who h2{font-size:clamp(28px,3.6vw,40px);font-weight:600;line-height:1.2;color:#fff}
+.who span{display:block;margin-top:4px;font-size:16px;color:var(--mute);font-weight:500}
+.x{font-weight:200;font-size:32px;color:var(--amber);line-height:1.3}
+.hook{margin-top:18px;font-weight:600;font-size:21px;line-height:1.55;color:var(--amber)}
+.why{margin-top:12px;font-size:17px;color:rgba(238,242,247,.88)}
+.talk{margin-top:22px;background:var(--panel);border:1px solid var(--line2);border-radius:4px;padding:16px 22px 8px}
+.talk h3{font-weight:600;font-size:16px;letter-spacing:.08em;color:var(--mute)}
 .talk ul{list-style:none;margin-top:6px}
-.talk li{position:relative;padding:9px 0 9px 22px;font-size:17px;border-bottom:1px solid var(--line)}
+.talk li{position:relative;padding:10px 0 10px 24px;font-size:17px;border-bottom:1px solid var(--line2)}
 .talk li:last-child{border-bottom:0}
-.talk li::before{content:"";position:absolute;left:2px;top:20px;width:10px;height:10px;background:var(--red)}
+.talk li::before{content:"";position:absolute;left:3px;top:20px;width:8px;height:8px;border-radius:50%;background:var(--amber);box-shadow:0 0 10px rgba(255,169,64,.7)}
 
-.foot{background:var(--ink);position:relative}
-.foot::before{content:"";display:block;height:18px;background:repeating-linear-gradient(90deg,var(--red) 0 64px,var(--sun) 64px 128px,var(--teal) 128px 192px,#fff 192px 256px,var(--ink2) 256px 320px)}
-.foot-in{max-width:1180px;margin:0 auto;padding:30px 24px 52px;font-size:16px;color:rgba(255,255,255,.88)}
+.foot{background:var(--bg);border-top:1px solid var(--line2)}
+.foot-in{max-width:1180px;margin:0 auto;padding:34px 24px 56px;font-size:16px;color:rgba(238,242,247,.78)}
 .foot-in p+p{margin-top:8px}
 
 @media(max-width:820px){
-  .intro{padding:36px 18px 0}
+  .intro{padding:40px 18px 0}
   .pairs{padding:10px 18px 30px}
-  .pair{grid-template-columns:1fr;gap:22px;padding:34px 0}
+  .pair{grid-template-columns:1fr;gap:24px;padding:36px 0}
   .pair:nth-child(even) .pic{order:0}
   .topnav-in{padding:12px 18px}
-  .band{padding-bottom:150px;background-position:62% bottom}
+  .band{padding-bottom:160px;background-position:70% bottom}
+  .band::before{background:linear-gradient(180deg,rgba(5,9,15,.7) 0,rgba(5,9,15,.5) 55%,var(--bg) 100%)}
 }
 </style>
 </head><body>
@@ -90,7 +94,7 @@ a{color:var(--red)}
 <p>每組的照片是 AI 以兩位會員的簡報形象照合成的日常情境，依當週媒合內容想像，不是實際拍攝的畫面；已取得會員同意。</p>
 </div></footer>
 
-<script src="/one-to-one/pairs.js?v=20261011"></script>
+<script src="/one-to-one/pairs.js?v=20261012"></script>
 <script>
 (function(){
   var W=(window.ONE2ONE&&ONE2ONE.weeks)||[];
