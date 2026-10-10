@@ -51,7 +51,7 @@
     text-align: center; background: #16181D; color: #fff;
     font-size: 13px; font-weight: 700; border-radius: 5px; margin-right: 8px;
   }
-  label .opt {
+  label .opt, .sub-label .opt {
     display: inline-block; margin-left: 8px; padding: 2px 8px;
     background: #F3F2F0; color: #7B7D84; border-radius: 4px;
     font-size: 16px; font-weight: 600; vertical-align: 1px;
@@ -83,6 +83,10 @@
   .preview .meta b { color: #16181D; word-break: break-all; }
   .preview .redo { font-size: 16px; color: #C80A14; font-weight: 600; cursor: pointer; }
   .preview .redo:hover { text-decoration: underline; }
+  .sub-label { margin-top: 22px; font-size: 17px; font-weight: 700; color: #16181D; }
+  .sub-label .opt { margin-left: 8px; }
+  .drop.slim { padding: 16px 18px; margin-top: 10px; }
+  #pvLogoImg { object-fit: contain; background: #F3F2EF; }
 
   button {
     width: 100%; font-family: inherit; font-size: 18px; font-weight: 700;
@@ -386,6 +390,18 @@
       <div class="preview" id="preview">
         <img id="pvImg" alt="預覽">
         <div class="meta"><b id="pvName"></b><br><span id="pvSize"></span> ・ <span class="redo" id="pvRedo">重新選一張</span></div>
+      </div>
+
+      <div class="sub-label">品牌 Logo<span class="opt">選填</span></div>
+      <div class="hint">若需要出現您的品牌 Logo，請一併上傳圖檔。<em>去背的 PNG</em> 效果最好，沒有的話 JPG 也可以</div>
+      <div class="drop slim" id="dropLogo">
+        <div class="big">點這裡選 Logo 圖檔</div>
+        <div class="small">PNG／JPG，也可以直接把檔案拖進來</div>
+        <input type="file" id="f_logo" accept="image/*">
+      </div>
+      <div class="preview" id="previewLogo">
+        <img id="pvLogoImg" alt="Logo 預覽">
+        <div class="meta"><b id="pvLogoName"></b><br><span id="pvLogoSize"></span> ・ <span class="redo" id="pvLogoRedo">換一張</span> ・ <span class="redo" id="pvLogoDel">不放 Logo</span></div>
       </div>
     </div>
 
@@ -709,6 +725,7 @@
   const MAX_EDGE = 1600;      // 長邊上限，避免手機原圖 8MB 撐爆 Apps Script
   const JPEG_QUALITY = 0.86;
   let photo = null;           // { name, mime, b64 }
+  const LOGO_SUFFIX = '（品牌 Logo）';   // 同步到 Notion 的程式靠這個字尾把 Logo 併回本人那一筆
 
   drop.addEventListener('click', () => fileInput.click());
   ['dragenter','dragover'].forEach(ev =>
@@ -758,6 +775,82 @@
     reader.readAsDataURL(file);
   }
 
+  /* ── 品牌 Logo（選填）：保留去背所以輸出 PNG；壓不下來才改成白底 JPG ── */
+  const dropLogo = document.getElementById('dropLogo');
+  const logoInput = document.getElementById('f_logo');
+  const previewLogo = document.getElementById('previewLogo');
+  const LOGO_MAX_EDGE = 1200;
+  const LOGO_MAX_B64 = 2000000;   // 約 1.5 MB
+  let logo = null;            // { name, mime, b64 }
+
+  dropLogo.addEventListener('click', () => logoInput.click());
+  ['dragenter','dragover'].forEach(ev =>
+    dropLogo.addEventListener(ev, e => { e.preventDefault(); dropLogo.classList.add('over'); }));
+  ['dragleave','drop'].forEach(ev =>
+    dropLogo.addEventListener(ev, e => { e.preventDefault(); dropLogo.classList.remove('over'); }));
+  dropLogo.addEventListener('drop', e => {
+    if (e.dataTransfer.files && e.dataTransfer.files[0]) handleLogo(e.dataTransfer.files[0]);
+  });
+  logoInput.addEventListener('change', () => {
+    if (logoInput.files && logoInput.files[0]) handleLogo(logoInput.files[0]);
+  });
+  function clearLogo() {
+    logo = null; logoInput.value = '';
+    previewLogo.classList.remove('show'); dropLogo.style.display = '';
+  }
+  document.getElementById('pvLogoDel').addEventListener('click', clearLogo);
+  document.getElementById('pvLogoRedo').addEventListener('click', () => { clearLogo(); logoInput.click(); });
+
+  function handleLogo(file) {
+    if (!file.type.match(/^image\//)) { alert('請選擇圖片檔（PNG／JPG）'); return; }
+    const reader = new FileReader();
+    reader.onload = () => {
+      const img = new Image();
+      img.onload = () => {
+        let w = img.naturalWidth || img.width, h = img.naturalHeight || img.height;
+        if (!w || !h) { alert('這張圖讀不起來，換一張試試'); return; }
+        const scale = Math.min(1, LOGO_MAX_EDGE / Math.max(w, h));
+        w = Math.round(w * scale); h = Math.round(h * scale);
+        const cv = document.createElement('canvas');
+        cv.width = w; cv.height = h;
+        const ctx = cv.getContext('2d');
+        ctx.drawImage(img, 0, 0, w, h);
+        let mime = 'image/png', ext = '.png';
+        let dataUrl = cv.toDataURL(mime);
+        if (dataUrl.length > LOGO_MAX_B64) {
+          ctx.globalCompositeOperation = 'destination-over';
+          ctx.fillStyle = '#fff'; ctx.fillRect(0, 0, w, h);
+          mime = 'image/jpeg'; ext = '.jpg';
+          dataUrl = cv.toDataURL(mime, JPEG_QUALITY);
+        }
+        logo = {
+          name: file.name.replace(/\.[^.]+$/, '') + ext,
+          mime: mime,
+          b64: dataUrl.split(',')[1]
+        };
+        document.getElementById('pvLogoImg').src = dataUrl;
+        document.getElementById('pvLogoName').textContent = logo.name;
+        document.getElementById('pvLogoSize').textContent =
+          (logo.b64.length * 0.75 / 1024).toFixed(0) + ' KB';
+        previewLogo.classList.add('show');
+        dropLogo.style.display = 'none';
+      };
+      img.onerror = () => alert('這張圖讀不起來，換一張試試');
+      img.src = reader.result;
+    };
+    reader.onerror = () => alert('讀取檔案失敗，請再試一次');
+    reader.readAsDataURL(file);
+  }
+
+  function post(body) {
+    return fetch(SCRIPT_URL, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+      body: JSON.stringify(body)
+    });
+  }
+
   btn.addEventListener('click', () => {
     const v = {};
     for (const k in F) v[k] = F[k].value.trim();
@@ -776,11 +869,22 @@
     btn.disabled = true;
     btn.textContent = '送出中…';
 
-    fetch(SCRIPT_URL, {
-      method: 'POST',
-      mode: 'no-cors',
-      headers: { 'Content-Type': 'text/plain;charset=utf-8' },
-      body: JSON.stringify(v)
+    post(v)
+    .then(() => {
+      if (!logo) return;
+      btn.textContent = '上傳 Logo 中…';
+      return post({
+        formType: 'bni-edm',
+        date: v.date,
+        biz: v.biz,
+        name: v.name + LOGO_SUFFIX,
+        slogan: '這一筆是品牌 Logo 圖檔，請搭配「' + v.name + '」的需求單使用',
+        invite: '—',
+        style: '',
+        photoName: logo.name,
+        photoMime: logo.mime,
+        photoB64: logo.b64
+      });
     })
     .then(() => {
       document.getElementById('formView').style.display = 'none';
