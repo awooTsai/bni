@@ -842,6 +842,13 @@
     reader.readAsDataURL(file);
   }
 
+  /* 後端是否已經能把 Logo 跟需求單寫在同一列。問不到或還沒生效就沿用舊做法（Logo 另外送一筆）。 */
+  let logoSameRow = false;
+  fetch(SCRIPT_URL + '?ping=edm-logo')
+    .then(r => r.json())
+    .then(j => { logoSameRow = !!(j && j.edmLogo === true); })
+    .catch(() => {});
+
   function post(body) {
     return fetch(SCRIPT_URL, {
       method: 'POST',
@@ -869,9 +876,16 @@
     btn.disabled = true;
     btn.textContent = '送出中…';
 
+    const sameRow = !!logo && logoSameRow;
+    if (sameRow) {
+      v.logoName = logo.name;
+      v.logoMime = logo.mime;
+      v.logoB64  = logo.b64;
+    }
+
     post(v)
     .then(() => {
-      if (!logo) return;
+      if (!logo || sameRow) return;
       btn.textContent = '上傳 Logo 中…';
       return post({
         formType: 'bni-edm',
