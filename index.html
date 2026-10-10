@@ -254,7 +254,7 @@ let EDM_SCHEDULE=null,VIEW_DATE=null;
    來源＝咖啡鄉「BNI 主題簡報」分類（id 380）；用文章上的「講者姓名」標籤對應。
    任何一步失敗就靜默略過，官網維持原樣。 */
 const KFX_FEED='https://www.triplew.tw/wp-json/wp/v2/posts?categories=380&per_page=100&_embed=wp:term&_fields=link,title,date,_links,_embedded';
-const KFX_ALIAS={'湘湘_Vita':'徐湘榆','簡湘怡 Ivy':'簡湘怡','Mario':'鄭景隆','蔡阿達':'蔡俊達','棋翌博士':'張棋翌'};
+const KFX_ALIAS={'湘湘_Vita':'徐詩筑','簡湘怡 Ivy':'簡湘怡','Mario':'鄭景隆','蔡阿達':'蔡俊達','棋翌博士':'張棋翌'};
 let ARTICLE_IDX=null;
 /* ⚠️ 文章索引快取 10 分鐘就過期。sessionStorage 會跨「重新整理」存活，
    不設期限的話，分頁一直開著的人永遠看不到新上稿的文章，按 F5 也沒用。
