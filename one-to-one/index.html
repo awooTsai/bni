@@ -6,59 +6,63 @@
 <meta property="og:title" content="本週建議一對一｜BNI 富真白金分會">
 <meta property="og:description" content="這週最值得約一對一的幾組夥伴，以及見面可以聊什麼。">
 <meta property="og:image" content="https://bni-fuzen.vercel.app/one-to-one/img/1002-1p.jpg">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@700;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
 <style>
-:root{--deep:#06152b;--ink:#0a1f3d;--gold:#d4ab5d;--paper:#f6efe1;--line:#1a3458;--soft:rgba(246,239,225,.8)}
+:root{--ink:#0b1f3a;--ink2:#16355f;--red:#e8452c;--sun:#ffb81c;--teal:#0fa3a3;--sky:#d9e8f5;--bg:#f3f6f9;--line:#d5dee8;--mute:#51647c}
 *{box-sizing:border-box;margin:0;padding:0}
 html{font-size:17px;-webkit-font-smoothing:antialiased;scroll-behavior:smooth}
-body{font-family:"Inter","Noto Sans TC",-apple-system,BlinkMacSystemFont,sans-serif;background:var(--deep);color:var(--paper);line-height:1.8;overflow-x:hidden}
-h1,h2,h3{font-family:"Noto Serif TC",serif;font-weight:900;letter-spacing:.02em}
-a{color:var(--gold)}
+body{font-family:"Noto Sans TC","Inter",-apple-system,BlinkMacSystemFont,sans-serif;background:var(--bg);color:var(--ink);line-height:1.8;overflow-x:hidden}
+h1,h2,h3{font-family:"Noto Sans TC",sans-serif;font-weight:900;letter-spacing:.01em}
+a{color:var(--red)}
 
-.topnav{position:sticky;top:0;z-index:80;background:rgba(6,21,43,.92);backdrop-filter:blur(12px);border-bottom:1px solid rgba(212,171,93,.2)}
-.topnav-in{max-width:1180px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
-.topnav-brand{font-family:"Noto Serif TC",serif;font-weight:900;color:var(--gold);font-size:18px;letter-spacing:.05em;text-decoration:none}
-.topnav-links{display:flex;gap:22px;flex-wrap:wrap}
-.topnav-links a{font-size:16px;font-weight:600;text-decoration:none;border-bottom:1px solid rgba(212,171,93,.45);padding-bottom:2px}
-.topnav-links a:hover{color:var(--paper);border-color:var(--paper)}
+.topnav{position:sticky;top:0;z-index:80;background:#fff;border-bottom:3px solid var(--ink)}
+.topnav-in{max-width:1180px;margin:0 auto;padding:12px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.topnav-brand{display:flex;align-items:center;gap:10px;font-weight:900;color:var(--ink);font-size:18px;letter-spacing:.03em;text-decoration:none}
+.topnav-brand::before{content:"";width:14px;height:14px;background:var(--red);display:block}
+.topnav-links{display:flex;gap:12px;flex-wrap:wrap}
+.topnav-links a{font-size:16px;font-weight:700;text-decoration:none;color:var(--ink);border:2px solid var(--ink);border-radius:6px;padding:6px 14px;transition:background .15s,color .15s}
+.topnav-links a:hover{background:var(--ink);color:#fff}
 
-.intro{max-width:1180px;margin:0 auto;padding:64px 24px 28px}
-.intro .wk{color:var(--gold);font-size:16px;font-weight:700;letter-spacing:.12em}
-.intro h1{font-size:clamp(34px,5.4vw,58px);line-height:1.25;margin-top:10px;text-wrap:balance}
-.intro p{max-width:34em;margin-top:18px;font-size:18px;color:var(--soft)}
-.intro .how{margin-top:22px;padding-left:16px;border-left:3px solid var(--gold);font-size:17px;color:var(--paper);max-width:36em}
-.weeks{margin-top:26px;display:flex;gap:18px;flex-wrap:wrap;font-size:16px}
-.weeks a{text-decoration:none;border-bottom:1px solid rgba(212,171,93,.45);cursor:pointer}
-.weeks a.on{color:var(--paper);border-color:var(--paper);font-weight:700}
+.band{position:relative;background:var(--sky) url('img/band-bridge-v3.jpg') center bottom/max(100%,900px) auto no-repeat;padding-bottom:clamp(170px,19vw,270px)}
+.intro{max-width:1180px;margin:0 auto;padding:56px 24px 0}
+.intro .wk{display:inline-block;background:var(--red);color:#fff;font-size:16px;font-weight:700;letter-spacing:.1em;padding:3px 14px}
+.intro h1{font-size:clamp(32px,4.6vw,54px);line-height:1.25;margin-top:16px;text-wrap:balance;color:var(--ink)}
+.intro p{max-width:34em;margin-top:16px;font-size:18px;color:var(--ink)}
+.intro .how{margin-top:18px;padding:2px 0 2px 16px;border-left:5px solid var(--red);font-size:17px;font-weight:500;max-width:36em}
+.weeks{margin-top:20px;display:flex;gap:10px;flex-wrap:wrap;font-size:16px}
+.weeks a{text-decoration:none;cursor:pointer;color:var(--ink);border:2px solid var(--ink);border-radius:6px;padding:3px 14px;font-weight:700;background:#fff}
+.weeks a.on{background:var(--ink);color:#fff}
 
-.pairs{max-width:1180px;margin:0 auto;padding:20px 24px 40px}
-.pair{display:grid;grid-template-columns:minmax(0,1.08fr) minmax(0,1fr);gap:44px;align-items:center;padding:52px 0;border-top:1px solid var(--line)}
+.pairs{max-width:1180px;margin:0 auto;padding:30px 24px 40px}
+.pair{display:grid;grid-template-columns:minmax(0,1.08fr) minmax(0,1fr);gap:44px;align-items:center;padding:44px 0;border-top:3px solid var(--ink)}
+.pair:first-child{border-top:0}
 .pair:nth-child(even) .pic{order:2}
-.pic img{display:block;width:100%;height:auto;aspect-ratio:3/2;object-fit:cover;border-radius:6px;border:1px solid rgba(212,171,93,.28);background:var(--ink)}
+.pic img{display:block;width:100%;height:auto;aspect-ratio:3/2;object-fit:cover;border-bottom:6px solid var(--red);box-shadow:0 18px 40px rgba(11,31,58,.2);background:var(--ink)}
 .names{display:flex;align-items:flex-start;gap:16px;flex-wrap:wrap}
-.who h2{font-size:clamp(28px,3.6vw,38px);line-height:1.2;color:var(--paper)}
-.who span{display:block;margin-top:4px;font-size:16px;color:var(--gold);font-weight:600}
-.x{font-family:"Noto Serif TC",serif;font-size:28px;color:var(--gold);line-height:1.5}
-.hook{margin-top:20px;font-family:"Noto Serif TC",serif;font-weight:700;font-size:21px;line-height:1.55;color:var(--gold)}
-.why{margin-top:12px;font-size:17px;color:var(--soft)}
-.talk{margin-top:22px}
-.talk h3{font-family:"Noto Sans TC",sans-serif;font-weight:700;font-size:16px;letter-spacing:.08em;color:var(--paper)}
-.talk ul{list-style:none;margin-top:8px}
-.talk li{position:relative;padding:9px 0 9px 22px;font-size:17px;border-bottom:1px dashed rgba(246,239,225,.16)}
+.who h2{font-size:clamp(28px,3.6vw,40px);line-height:1.2;color:var(--ink)}
+.who span{display:block;margin-top:4px;font-size:16px;color:var(--mute);font-weight:700}
+.x{font-weight:900;font-size:30px;color:var(--red);line-height:1.3}
+.hook{margin-top:18px;font-weight:900;font-size:21px;line-height:1.55;color:var(--red)}
+.why{margin-top:12px;font-size:17px;color:var(--ink)}
+.talk{margin-top:22px;background:#fff;border-top:4px solid var(--ink);padding:14px 20px 8px}
+.talk h3{font-weight:900;font-size:16px;letter-spacing:.06em;color:var(--ink)}
+.talk ul{list-style:none;margin-top:6px}
+.talk li{position:relative;padding:9px 0 9px 22px;font-size:17px;border-bottom:1px solid var(--line)}
 .talk li:last-child{border-bottom:0}
-.talk li::before{content:"";position:absolute;left:2px;top:21px;width:9px;height:2px;background:var(--gold)}
+.talk li::before{content:"";position:absolute;left:2px;top:20px;width:10px;height:10px;background:var(--red)}
 
-.foot{border-top:1px solid var(--line);background:var(--ink)}
-.foot-in{max-width:1180px;margin:0 auto;padding:36px 24px 56px;font-size:16px;color:var(--soft)}
+.foot{background:var(--ink);position:relative}
+.foot::before{content:"";display:block;height:18px;background:repeating-linear-gradient(90deg,var(--red) 0 64px,var(--sun) 64px 128px,var(--teal) 128px 192px,#fff 192px 256px,var(--ink2) 256px 320px)}
+.foot-in{max-width:1180px;margin:0 auto;padding:30px 24px 52px;font-size:16px;color:rgba(255,255,255,.88)}
 .foot-in p+p{margin-top:8px}
 
 @media(max-width:820px){
-  .intro{padding:44px 18px 18px}
+  .intro{padding:36px 18px 0}
   .pairs{padding:10px 18px 30px}
-  .pair{grid-template-columns:1fr;gap:22px;padding:36px 0}
+  .pair{grid-template-columns:1fr;gap:22px;padding:34px 0}
   .pair:nth-child(even) .pic{order:0}
   .topnav-in{padding:12px 18px}
-  .topnav-links{gap:16px}
+  .band{padding-bottom:150px;background-position:62% bottom}
 }
 </style>
 </head><body>
@@ -71,13 +75,13 @@ a{color:var(--gold)}
 </div>
 </div></nav>
 
-<header class="intro">
+<header class="band"><div class="intro">
 <div class="wk" id="wk"></div>
 <h1>這週，建議先約這幾位一對一</h1>
 <p>每週例會結束後，我們會把每位夥伴 30 秒講的內容對過一輪，找出這週最容易談出合作的組合。</p>
 <p class="how">看到自己的名字，就直接約對方。下面寫了為什麼是你們兩位，以及見面可以先聊哪幾件事。</p>
 <div class="weeks" id="weeks"></div>
-</header>
+</div></header>
 
 <main class="pairs" id="pairs"></main>
 
@@ -86,7 +90,7 @@ a{color:var(--gold)}
 <p>每組的照片是 AI 以兩位會員的簡報形象照合成的日常情境，依當週媒合內容想像，不是實際拍攝的畫面；已取得會員同意。</p>
 </div></footer>
 
-<script src="/one-to-one/pairs.js?v=20261010"></script>
+<script src="/one-to-one/pairs.js?v=20261011"></script>
 <script>
 (function(){
   var W=(window.ONE2ONE&&ONE2ONE.weeks)||[];
