@@ -66,10 +66,13 @@ a{color:var(--amber)}
   .pair{grid-template-columns:1fr;gap:24px;padding:36px 0}
   .pair:nth-child(even) .pic{order:0}
   .topnav-in{padding:12px 18px}
-  .band{min-height:calc(100svh - 56px);align-items:flex-end;background:var(--bg) url('/one-to-one/img/o2o-hero-m.jpg') center top/cover no-repeat}
-  .band::before{background:linear-gradient(180deg,rgba(5,9,15,.2) 0,rgba(5,9,15,0) 22%,rgba(5,9,15,0) 40%,rgba(5,9,15,.82) 66%,var(--bg) 100%)}
-  .intro{padding:40px 18px 40px}
-  .intro>*{max-width:none}
+}
+@media(max-width:820px) and (min-aspect-ratio:6/5){
+  /* 窄但橫向的視窗：沿用橫圖，把人物留在畫面內，文字壓在左側暗處 */
+  .band{background-position:92% center}
+  .intro{padding:40px 18px 56px}
+  .intro>*{max-width:min(30em,42vw)}
+  .intro h1{max-width:min(9em,42vw)}
 }
 @media(max-aspect-ratio:6/5){
   .band{min-height:calc(100svh - 56px);align-items:flex-end;background:var(--bg) url('/one-to-one/img/o2o-hero-m.jpg') center top/cover no-repeat}
@@ -103,7 +106,7 @@ a{color:var(--amber)}
 <p>每組的照片是 AI 以兩位會員的簡報形象照合成的日常情境，依當週媒合內容想像，不是實際拍攝的畫面；已取得會員同意。</p>
 </div></footer>
 
-<script src="/one-to-one/pairs.js?v=20261016"></script>
+<script src="/one-to-one/pairs.js?v=20261017"></script>
 <script>
 (function(){
   var W=(window.ONE2ONE&&ONE2ONE.weeks)||[];
