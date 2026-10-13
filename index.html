@@ -390,8 +390,6 @@ function renderEdm(){
      就繼續顯示手上最新的一場，不要開天窗 */
   const thisWeekEdm=upcoming.length?upcoming[0]:(allWeeks.length?allWeeks[allWeeks.length-1]:null);
   const nextWeekData=upcoming.length>1?upcoming[1]:null;
-  /* 「上一場」要抓比主位更早的那一場，不能用今天去抓，否則退回顯示時會跟主位重複 */
-  const pastEdm=thisWeekEdm?getPastEdmBefore(thisWeekEdm.date):getPastEdmBefore(refDate);
   /* 主位那一場如果已經過完它所屬的那一週，就改稱「最新」而不是「本週」 */
   const stillThisWeek=thisWeekEdm?(sundayOf(thisWeekEdm.date)>=refDate):false;
   const mainWord=stillThisWeek?'本週':'最新';
@@ -405,13 +403,7 @@ function renderEdm(){
   window.__WEEK=featured;
   const heroNext=document.getElementById('heroNext');
   let nextHtml='<div class="next-inner tri">';
-  if(pastEdm&&pastEdm.speakers&&pastEdm.speakers.length){
-    const dt=pastEdm.date.replace(/-/g,'.');
-    nextHtml+='<div class="tri-col past"><div class="tri-label">'+(stillThisWeek?'上週':'上一場')+'主題簡報 · '+dt+'</div><div class="tri-grid">'+
-      pastEdm.speakers.map((f,i)=>'<div class="next-item" onclick="openLbxPast('+i+')"><img src="'+f.edm+'" alt="'+f.name+'"><div class="cap" data-speaker="'+f.name+'" data-article="'+(f.article||'')+'" data-date="'+pastEdm.date+'"><span class="nd">'+fmtDate(pastEdm.date).short+'</span><b>'+f.name+'</b>'+f.industry+'</div></div>').join('')+
-      '</div></div>';
-    window.__PAST=pastEdm.speakers;window.__PAST_D=pastEdm.date;window.__PAST_W=stillThisWeek?'上週':'上一場';
-  }
+  /* 2026-10-13 起首頁只放「本週／最新」與「下週」兩場，不再顯示上一場（蔡阿達要求） */
   if(nextWeekData&&nextWeekData.speakers&&nextWeekData.speakers.length){
     const dt=(nextWeekData.date||'').replace(/-/g,'.');
     nextHtml+='<div class="tri-col next"><div class="tri-label">下週主題簡報 · '+dt+'</div><div class="tri-grid">'+
@@ -420,7 +412,7 @@ function renderEdm(){
     window.__NEXT=nextWeekData.speakers;window.__NEXT_D=nextWeekData.date;
   }
   nextHtml+='</div>';
-  heroNext.innerHTML=(pastEdm||nextWeekData)?nextHtml:'';
+  heroNext.innerHTML=nextWeekData?nextHtml:'';
   fillArticleLinks();
 }
 
