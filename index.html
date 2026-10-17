@@ -190,17 +190,42 @@ a{color:var(--amber)}
 .top1[hidden]{display:none}
 .top1-lab{display:flex;align-items:center;gap:14px;color:var(--amber,#ffa940);font-size:1rem;font-weight:600;letter-spacing:.14em;margin-bottom:14px}
 .top1-lab::before{content:"";width:44px;height:1px;background:var(--amber,#ffa940)}
-.top1-card{display:block;position:relative;border:1px solid rgba(255,255,255,.14);border-radius:6px;overflow:hidden;box-shadow:0 30px 70px rgba(0,0,0,.5);text-decoration:none;color:#fff;background:#09101b}
-.top1-card img{display:block;width:100%;height:auto;aspect-ratio:3/2;max-height:620px;object-fit:cover}
-.top1-cap{position:absolute;left:0;right:0;bottom:0;padding:70px 28px 24px;background:linear-gradient(180deg,rgba(5,9,15,0),rgba(5,9,15,.88) 70%)}
-.top1-cap .r{display:inline-block;background:var(--amber,#ffa940);color:#1a0d00;font-weight:700;font-size:1rem;letter-spacing:.08em;padding:3px 12px;border-radius:3px}
-.top1-cap h3{margin-top:10px;font-size:clamp(26px,3.2vw,38px);font-weight:600;line-height:1.25}
-.top1-cap h3 span{font-size:1rem;font-weight:500;color:#cdd6e2;margin-left:12px}
-.top1-cap p{margin-top:6px;font-size:clamp(18px,2vw,22px);font-weight:600;color:var(--amber,#ffa940);line-height:1.5}
+.top1-card{display:block;border:1px solid rgba(255,255,255,.14);border-radius:6px;overflow:hidden;box-shadow:0 30px 70px rgba(0,0,0,.5);color:#fff;background:#09101b}
+.top1-pic{display:block;position:relative;text-decoration:none}
+.top1-pic img{display:block;width:100%;height:auto;aspect-ratio:3/2;max-height:620px;object-fit:cover}
+.top1-pic .r{position:absolute;left:18px;top:16px;background:var(--amber,#ffa940);color:#1a0d00;font-weight:700;font-size:1rem;letter-spacing:.08em;padding:4px 14px;border-radius:3px}
+.top1-body{padding:24px 28px 28px}
+.top1-name{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap}
+.top1-name h3{font-size:clamp(28px,3.4vw,38px);font-weight:600;color:#fff;line-height:1.2}
+.top1-name span{font-size:1rem;color:#9aa8ba;font-weight:500}
+.top1-head{margin-top:10px;font-weight:600;font-size:clamp(20px,2.4vw,24px);line-height:1.5;color:var(--amber,#ffa940)}
+.top1-kv{margin-top:14px;font-size:1.05rem;line-height:1.7}
+.top1-kv b{color:#9aa8ba;font-weight:600;letter-spacing:.06em;font-size:1rem;margin-right:8px}
+.top1-cols{margin-top:18px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:18px}
+.top1-box{background:rgba(255,255,255,.045);border:1px solid rgba(255,255,255,.08);border-radius:4px;padding:14px 18px}
+.top1-box h4{font-weight:600;font-size:1rem;letter-spacing:.08em;color:#9aa8ba;margin-bottom:6px}
+.top1-box ul{list-style:none;margin:0;padding:0}
+.top1-box li{position:relative;padding:8px 0 8px 22px;font-size:1.05rem;line-height:1.7;border-bottom:1px solid rgba(255,255,255,.08)}
+.top1-box li:last-child{border-bottom:0}
+.top1-box li::before{content:"";position:absolute;left:3px;top:19px;width:8px;height:8px;border-radius:50%;background:var(--amber,#ffa940);box-shadow:0 0 10px rgba(255,169,64,.7)}
+.top1-box p{font-size:1.05rem;line-height:1.75;padding:4px 0;margin:0}
+.top1-box.how{border-color:rgba(255,169,64,.45);background:rgba(255,169,64,.07)}
 .top1-more{display:flex;justify-content:flex-end;margin-top:14px}
 .top1-more a{font-size:1rem;font-weight:600;color:var(--amber,#ffa940);text-decoration:none;border:1px solid rgba(255,169,64,.55);border-radius:3px;padding:8px 18px}
 .top1-more a:hover{background:var(--amber,#ffa940);color:#1a0d00}
-@media(max-width:820px){.top1{padding:4px 18px 40px}.top1-cap{padding:48px 16px 16px}.top1-card img{aspect-ratio:4/3}}
+@media(max-width:820px){.top1{padding:4px 18px 40px}.top1-pic img{aspect-ratio:4/3}.top1-body{padding:18px 16px 20px}.top1-cols{grid-template-columns:1fr}}
+
+/* 導覽列：四個連結都用「圖示＋兩到四字」，同一個高度與間距；完整說明放在 title，手機收掉箭頭 */
+.topnav-right{gap:8px}
+.topnav-right .sheet-link,.topnav-right .wk-toggle{padding:7px 13px;font-size:.92rem;line-height:1.3;gap:5px;height:36px}
+.topnav-right .sheet-link .arr{font-size:.8em;margin-left:-2px}
+@media(max-width:640px){
+  .topnav-in{padding:8px 12px;gap:8px}
+  .topnav-right{width:100%;justify-content:space-between;gap:5px;flex-wrap:nowrap}
+  .topnav-right .sheet-link,.topnav-right .wk-toggle{padding:6px 7px;font-size:.84rem;height:34px;flex:1 1 auto;justify-content:center;min-width:0}
+  .topnav-right .sheet-link .arr{display:none}
+  .wkpick{flex:0 0 auto}
+}
 </style></head>
 <body>
 
@@ -212,9 +237,10 @@ a{color:var(--amber)}
 <button class="wk-toggle" onclick="toggleWeekPicker()" id="wkToggle">📅 <span class="wk-txt">切換週次</span> ▾</button>
 <div class="wk-menu" id="wkMenu"></div>
 </div>
-<a class="sheet-link" href="/one-to-one" target="_blank" rel="noopener">🤝 <span class="full">本週建議</span>一對一 <span class="arr">↗</span></a>
-<a class="sheet-link" href="/edm-form" target="_blank" rel="noopener">📝 <span class="full">準備主題簡報？</span>填寫資料表單 <span class="arr">↗</span></a>
-<a class="sheet-link" href="https://docs.google.com/spreadsheets/d/1HjaORwPAahieiA2uMeoxMzmcAY7VrIRfA_pdf3boTiQ/edit?usp=sharing" target="_blank" rel="noopener"><span class="full">本週會員專業 · 主題簡報 · </span>開啟引薦對話 <span class="arr">↗</span></a>
+<a class="sheet-link" href="/one-to-one" target="_blank" rel="noopener" title="本週建議一對一">🤝 一對一<i class="arr"> ↗</i></a>
+<a class="sheet-link" href="/top5/" target="_blank" rel="noopener" title="本週 30 秒前五名">⭐ 前五名<i class="arr"> ↗</i></a>
+<a class="sheet-link" href="/edm-form" target="_blank" rel="noopener" title="準備主題簡報？填寫資料表單">📝 簡報表單<i class="arr"> ↗</i></a>
+<a class="sheet-link" href="https://docs.google.com/spreadsheets/d/1HjaORwPAahieiA2uMeoxMzmcAY7VrIRfA_pdf3boTiQ/edit?usp=sharing" target="_blank" rel="noopener" title="本週會員專業・主題簡報・開啟引薦對話">💬 引薦對話<i class="arr"> ↗</i></a>
 </div>
 </div>
 </nav>
@@ -237,7 +263,10 @@ a{color:var(--amber)}
 </div>
 <section class="top1" id="top1" hidden>
 <div class="top1-lab" id="top1Lab"></div>
-<a class="top1-card" id="top1Card" href="/top5/"><img id="top1Img" alt="" width="1280" height="853"><div class="top1-cap"><span class="r" id="top1R"></span><h3 id="top1N"></h3><p id="top1H"></p></div></a>
+<div class="top1-card"><a class="top1-pic" id="top1Pic" href="/top5/"><img id="top1Img" alt="" width="1280" height="853"><span class="r" id="top1R"></span></a>
+<div class="top1-body"><div class="top1-name"><h3 id="top1N"></h3><span id="top1P"></span></div><p class="top1-head" id="top1H"></p>
+<p class="top1-kv"><b>專業</b><span id="top1K"></span></p><p class="top1-kv"><b>這週需要的引薦</b><span id="top1D"></span></p>
+<div class="top1-cols"><div class="top1-box"><h4>30 秒精華</h4><ul id="top1E"></ul></div><div class="top1-box how"><h4>你可以這樣幫他介紹</h4><p id="top1W"></p></div></div></div></div>
 <div class="top1-more"><a href="/top5/" id="top1More">看更多 → 本週前五名</a></div>
 </section>
 <script src="/top5/top5.js?v=20261017"></script>
@@ -250,8 +279,9 @@ a{color:var(--amber)}
     document.getElementById('top1Lab').textContent=d[0]+'.'+d[1]+'.'+d[2]+' 例會 · 30 秒分享第一名';
     var img=document.getElementById('top1Img');img.src='/top5/'+m.img;img.alt=m.name+'（'+m.pro+'）的專業現場與被介紹的對象示意照';
     document.getElementById('top1R').textContent='第 1 位';
-    document.getElementById('top1N').innerHTML=m.name+'<span>'+m.pro+'｜'+m.co+'</span>';
-    document.getElementById('top1H').textContent=m.head;
+    function t(i,v){document.getElementById(i).textContent=v}
+    t('top1N',m.name);t('top1P',m.pro+'｜'+m.co);t('top1H',m.head);t('top1K',m.know);t('top1D',m.need);t('top1W',m.how);
+    document.getElementById('top1E').innerHTML=m.essence.map(function(e){return '<li>'+e.replace(/[&<>]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;'}[c]})+'</li>'}).join('');
     document.getElementById('top1').hidden=false;
   }catch(e){}
 })();
