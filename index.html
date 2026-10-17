@@ -231,7 +231,7 @@ a{color:var(--amber)}
 
 <nav class="topnav" id="topnav">
 <div class="topnav-in">
-<span class="topnav-brand">BNI 富真白金分會</span>
+<span class="topnav-brand">BNI 富真分會</span>
 <div class="topnav-right">
 <div class="wkpick">
 <button class="wk-toggle" onclick="toggleWeekPicker()" id="wkToggle">📅 <span class="wk-txt">切換週次</span> ▾</button>
@@ -301,7 +301,7 @@ a{color:var(--amber)}
 <div class="album-head">
 <div class="en">SUCCESS STORIES</div>
 <h2>成功見證</h2>
-<p class="sub" id="albumSub">高雄 BNI 富真白金分會 · 真實成交見證</p>
+<p class="sub" id="albumSub">高雄 BNI 富真分會 · 真實成交見證</p>
 </div>
 <div class="viewer">
 <div class="stage" id="stage">
@@ -324,7 +324,7 @@ a{color:var(--amber)}
 </section>
 
 <footer class="foot">
-<div style="margin-bottom:14px;font-size:.95rem">BNI 富真白金分會・高雄・每週五清晨 ｜ <a href="https://line.me/ti/p/8bgrVHyVXQ" target="_blank">加入招集人 LINE</a></div>
+<div style="margin-bottom:14px;font-size:.95rem">BNI 富真分會・高雄・每週五清晨 ｜ <a href="https://line.me/ti/p/8bgrVHyVXQ" target="_blank">加入招集人 LINE</a></div>
 <div class="signature">Powered by <a href="https://awoo.ai" target="_blank" class="awoo-logo"><img src="https://lh3.googleusercontent.com/pw/AP1GczMZZWr30_dY1Ke-Bi8Y5xkmHCR6LbpulIszDS4CBY-83hv8qlFlMUYq0BIpRHWnb-ECK73QEhMme3wZrk8MBJFjJ2AYBa13o6MtY0i6yliFbayXMCTZZ5f0kLXkpqh1nv0HMPKvDTGyUN8a_OQhNpkh6A=w451-h159-s-no-gm?authuser=0" alt="awoo 阿物科技官網"></a><a href="https://www.triplew.tw/tsai" target="_blank" data-text="蔡阿達" class="ada-link" onmouseover="adaGlitch(this,true)" onmouseout="adaGlitch(this,false)">蔡阿達</a><span class="sig-tail">| Crafted with Precision and Innovation</span></div>
 </footer>
 
@@ -535,7 +535,7 @@ async function initAlbum(){
   ALBUM.forEach((p,i)=>{if(i===0)return;(cats[p.cat]=cats[p.cat]||[]).push(p)});
   Object.values(cats).forEach(arr=>arr.forEach((p,j)=>{p.idx=j+1;p.total=arr.length}));
   const stories=ALBUM.length-1,catCount=Object.keys(cats).length;
-  const subTxt='高雄 BNI 富真白金分會 · '+stories+' 個成功見證 · '+catCount+' 大面向';
+  const subTxt='高雄 BNI 富真分會 · '+stories+' 個成功見證 · '+catCount+' 大面向';
   document.getElementById('albumSub').textContent=subTxt;
   document.getElementById('coverMeta').textContent=stories+' 個成功見證 · '+catCount+' 大面向';
   buildDots();bindSwipe();
@@ -633,7 +633,7 @@ document.addEventListener('keydown',e=>{if(e.key==='Escape')closeLbx()});
 function dlEdm(){if(!_LBX)return;const a=document.createElement('a');a.href=_LBX.edm;a.download=_LBX.edm.split('/').pop();a.click()}
 async function shareEdm(){
   if(!_LBX)return;
-  const txt='📅 BNI 富真白金分會・'+_LBX.name+'｜'+_LBX.industry+'\n'+window.location.href;
+  const txt='📅 BNI 富真分會・'+_LBX.name+'｜'+_LBX.industry+'\n'+window.location.href;
   if(navigator.share&&navigator.canShare){
     try{const r=await fetch(_LBX.edm);const b=await r.blob();const fn=_LBX.edm.split('/').pop();const file=new File([b],fn,{type:b.type});
       if(navigator.canShare({files:[file]})){await navigator.share({files:[file],text:txt});return}}catch(e){}
@@ -655,5 +655,5 @@ bootstrap();
   </div>
   <button class="fzl-fab" id="fzlFab" aria-label="加 awoo 蔡阿達的 LINE"><svg viewBox="0 0 24 24" fill="#fff" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.48 2 2 5.72 2 10.3c0 4.1 3.55 7.53 8.35 8.18.32.07.77.22.88.5.1.25.07.65.03.9l-.14.85c-.04.25-.2.98.86.53 1.06-.44 5.72-3.37 7.8-5.77C21.2 13.9 22 12.2 22 10.3 22 5.72 17.52 2 12 2zM7.75 13.2H5.76a.53.53 0 0 1-.53-.53V8.7c0-.29.24-.53.53-.53s.53.24.53.53v3.44h1.46c.29 0 .53.24.53.53s-.24.53-.53.53zm2.08-.53a.53.53 0 0 1-1.06 0V8.7a.53.53 0 0 1 1.06 0v3.97zm4.79 0a.53.53 0 0 1-.36.5.55.55 0 0 1-.17.03.53.53 0 0 1-.43-.21l-2.04-2.77v2.45a.53.53 0 0 1-1.06 0V8.7c0-.23.15-.43.36-.5a.53.53 0 0 1 .6.18l2.04 2.78V8.7a.53.53 0 0 1 1.06 0v3.97zm3.2-2.51c.29 0 .53.24.53.53s-.24.53-.53.53h-1.46v.93h1.46c.29 0 .53.23.53.52s-.24.53-.53.53h-1.99a.53.53 0 0 1-.53-.53V8.7c0-.29.24-.53.53-.53h1.99c.29 0 .53.24.53.53s-.24.53-.53.53h-1.46v.93h1.46z"/></svg></button>
 </div>
-<script>(function(){var M="嗨，我是 awoo 蔡阿達，BNI 富真白金分會行銷開店產業鏈招集人。不論您是想認識這裡的某位夥伴、手上有需求想找人幫忙，還是想來看看我們每週五早上在做什麼，都歡迎直接跟我說。",p=document.getElementById("fzlPanel"),f=document.getElementById("fzlFab"),x=document.getElementById("fzlX"),t=document.getElementById("fzlTxt"),c=document.getElementById("fzlCaret"),a=document.getElementById("fzlCta"),done=false,tm=null,K="fzl_line_seen";function ty(){if(done)return;done=true;t.textContent="";a.classList.remove("on");c.style.display="inline-block";var i=0;clearInterval(tm);tm=setInterval(function(){t.textContent=M.slice(0,++i);if(i>=M.length){clearInterval(tm);c.style.display="none";a.classList.add("on");}},50);}function op(){p.classList.add("on");setTimeout(ty,260);}f.addEventListener("click",function(){if(p.classList.contains("on")){p.classList.remove("on");}else{done=false;op();}});function seen(){try{return localStorage.getItem(K)==="1";}catch(e){return false;}}function mark(){try{localStorage.setItem(K,"1");}catch(e){}}x.addEventListener("click",function(e){e.stopPropagation();p.classList.remove("on");mark();});/* 只有第一次造訪會自動跳出；關閉或看過一次之後就不再自動彈，右下角按鈕仍可隨時手動開啟 */if(!seen()){setTimeout(function(){op();mark();},1600);}})();</script>
+<script>(function(){var M="嗨，我是 awoo 蔡阿達，BNI 富真分會行銷開店產業鏈招集人。不論您是想認識這裡的某位夥伴、手上有需求想找人幫忙，還是想來看看我們每週五早上在做什麼，都歡迎直接跟我說。",p=document.getElementById("fzlPanel"),f=document.getElementById("fzlFab"),x=document.getElementById("fzlX"),t=document.getElementById("fzlTxt"),c=document.getElementById("fzlCaret"),a=document.getElementById("fzlCta"),done=false,tm=null,K="fzl_line_seen";function ty(){if(done)return;done=true;t.textContent="";a.classList.remove("on");c.style.display="inline-block";var i=0;clearInterval(tm);tm=setInterval(function(){t.textContent=M.slice(0,++i);if(i>=M.length){clearInterval(tm);c.style.display="none";a.classList.add("on");}},50);}function op(){p.classList.add("on");setTimeout(ty,260);}f.addEventListener("click",function(){if(p.classList.contains("on")){p.classList.remove("on");}else{done=false;op();}});function seen(){try{return localStorage.getItem(K)==="1";}catch(e){return false;}}function mark(){try{localStorage.setItem(K,"1");}catch(e){}}x.addEventListener("click",function(e){e.stopPropagation();p.classList.remove("on");mark();});/* 只有第一次造訪會自動跳出；關閉或看過一次之後就不再自動彈，右下角按鈕仍可隨時手動開啟 */if(!seen()){setTimeout(function(){op();mark();},1600);}})();</script>
 </body></html>
