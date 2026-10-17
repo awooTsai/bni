@@ -16,7 +16,7 @@ a{color:var(--amber)}
 .topnav{position:sticky;top:0;z-index:80;background:rgba(5,9,15,.72);backdrop-filter:blur(18px) saturate(1.4);-webkit-backdrop-filter:blur(18px) saturate(1.4);border-bottom:1px solid var(--line2)}
 .topnav-in{max-width:1280px;margin:0 auto;padding:12px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
 .topnav-brand{display:flex;align-items:center;gap:11px;font-weight:700;color:var(--text);font-size:1.05rem;letter-spacing:.04em;flex-shrink:0}
-.topnav-brand::before{content:"";width:9px;height:9px;border-radius:50%;background:var(--amber);box-shadow:0 0 0 4px rgba(255,169,64,.18),0 0 16px 2px rgba(255,169,64,.8)}
+.topnav-brand::before{content:"";width:34px;height:38px;flex-shrink:0;border-radius:5px;background:#fff url(/img/fujen-logo.png) center/78% auto no-repeat}
 .topnav-right{display:flex;align-items:center;gap:10px;flex-wrap:wrap;justify-content:flex-end}
 .sheet-link{display:inline-flex;align-items:center;gap:8px;background:transparent;border:1px solid var(--line);color:var(--text);padding:8px 16px;border-radius:3px;text-decoration:none;font-size:.95rem;font-weight:500;transition:background .2s,color .2s,border-color .2s;white-space:nowrap}
 .sheet-link:hover{background:var(--text);color:var(--bg);border-color:var(--text)}
@@ -226,7 +226,9 @@ a{color:var(--amber)}
   .topnav-right .sheet-link .arr{display:none}
   .wkpick{flex:0 0 auto}
 }
-</style></head>
+</style><link rel="icon" type="image/png" sizes="64x64" href="/img/favicon-64.png">
+<link rel="apple-touch-icon" href="/img/apple-touch-icon.png">
+</head>
 <body>
 
 <nav class="topnav" id="topnav">
@@ -263,7 +265,7 @@ a{color:var(--amber)}
 </div>
 <section class="top1" id="top1" hidden>
 <div class="top1-lab" id="top1Lab"></div>
-<div class="top1-card"><a class="top1-pic" id="top1Pic" href="/top5/"><img id="top1Img" alt="" width="1280" height="853"><span class="r" id="top1R"></span></a>
+<div class="top1-card"><div class="top1-pic" id="top1Pic"><img id="top1Img" alt="" width="1280" height="853"><span class="r" id="top1R"></span></div>
 <div class="top1-body"><div class="top1-name"><h3 id="top1N"></h3><span id="top1P"></span></div><p class="top1-head" id="top1H"></p>
 <p class="top1-kv"><b>專業</b><span id="top1K"></span></p><p class="top1-kv"><b>這週需要的引薦</b><span id="top1D"></span></p>
 <div class="top1-cols"><div class="top1-box"><h4>30 秒精華</h4><ul id="top1E"></ul></div><div class="top1-box how"><h4>你可以這樣幫他介紹</h4><p id="top1W"></p></div></div></div></div>
@@ -656,4 +658,5 @@ bootstrap();
   <button class="fzl-fab" id="fzlFab" aria-label="加 awoo 蔡阿達的 LINE"><svg viewBox="0 0 24 24" fill="#fff" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.48 2 2 5.72 2 10.3c0 4.1 3.55 7.53 8.35 8.18.32.07.77.22.88.5.1.25.07.65.03.9l-.14.85c-.04.25-.2.98.86.53 1.06-.44 5.72-3.37 7.8-5.77C21.2 13.9 22 12.2 22 10.3 22 5.72 17.52 2 12 2zM7.75 13.2H5.76a.53.53 0 0 1-.53-.53V8.7c0-.29.24-.53.53-.53s.53.24.53.53v3.44h1.46c.29 0 .53.24.53.53s-.24.53-.53.53zm2.08-.53a.53.53 0 0 1-1.06 0V8.7a.53.53 0 0 1 1.06 0v3.97zm4.79 0a.53.53 0 0 1-.36.5.55.55 0 0 1-.17.03.53.53 0 0 1-.43-.21l-2.04-2.77v2.45a.53.53 0 0 1-1.06 0V8.7c0-.23.15-.43.36-.5a.53.53 0 0 1 .6.18l2.04 2.78V8.7a.53.53 0 0 1 1.06 0v3.97zm3.2-2.51c.29 0 .53.24.53.53s-.24.53-.53.53h-1.46v.93h1.46c.29 0 .53.23.53.52s-.24.53-.53.53h-1.99a.53.53 0 0 1-.53-.53V8.7c0-.29.24-.53.53-.53h1.99c.29 0 .53.24.53.53s-.24.53-.53.53h-1.46v.93h1.46z"/></svg></button>
 </div>
 <script>(function(){var M="嗨，我是 awoo 蔡阿達，BNI 富真分會行銷開店產業鏈招集人。不論您是想認識這裡的某位夥伴、手上有需求想找人幫忙，還是想來看看我們每週五早上在做什麼，都歡迎直接跟我說。",p=document.getElementById("fzlPanel"),f=document.getElementById("fzlFab"),x=document.getElementById("fzlX"),t=document.getElementById("fzlTxt"),c=document.getElementById("fzlCaret"),a=document.getElementById("fzlCta"),done=false,tm=null,K="fzl_line_seen";function ty(){if(done)return;done=true;t.textContent="";a.classList.remove("on");c.style.display="inline-block";var i=0;clearInterval(tm);tm=setInterval(function(){t.textContent=M.slice(0,++i);if(i>=M.length){clearInterval(tm);c.style.display="none";a.classList.add("on");}},50);}function op(){p.classList.add("on");setTimeout(ty,260);}f.addEventListener("click",function(){if(p.classList.contains("on")){p.classList.remove("on");}else{done=false;op();}});function seen(){try{return localStorage.getItem(K)==="1";}catch(e){return false;}}function mark(){try{localStorage.setItem(K,"1");}catch(e){}}x.addEventListener("click",function(e){e.stopPropagation();p.classList.remove("on");mark();});/* 只有第一次造訪會自動跳出；關閉或看過一次之後就不再自動彈，右下角按鈕仍可隨時手動開啟 */if(!seen()){setTimeout(function(){op();mark();},1600);}})();</script>
+<script src="/zoom.js?v=20261017" defer></script>
 </body></html>

@@ -16,7 +16,7 @@ a{color:var(--amber)}
 .topnav{position:sticky;top:0;z-index:80;background:rgba(5,9,15,.72);backdrop-filter:blur(18px) saturate(1.4);-webkit-backdrop-filter:blur(18px) saturate(1.4);border-bottom:1px solid var(--line2)}
 .topnav-in{max-width:1080px;margin:0 auto;padding:12px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
 .topnav-brand{display:flex;align-items:center;gap:11px;font-weight:700;color:var(--text);font-size:17px;letter-spacing:.04em;text-decoration:none}
-.topnav-brand::before{content:"";width:9px;height:9px;border-radius:50%;background:var(--amber);box-shadow:0 0 0 4px rgba(255,169,64,.18),0 0 16px 2px rgba(255,169,64,.8)}
+.topnav-brand::before{content:"";width:34px;height:38px;flex-shrink:0;border-radius:5px;background:#fff url(/img/fujen-logo.png) center/78% auto no-repeat}
 .topnav-links{display:flex;gap:10px;flex-wrap:wrap}
 .topnav-links a{font-size:16px;font-weight:500;text-decoration:none;color:var(--text);border:1px solid var(--line);border-radius:3px;padding:7px 15px;transition:background .2s,color .2s}
 .topnav-links a:hover{background:var(--text);color:var(--bg)}
@@ -65,6 +65,8 @@ a{color:var(--amber)}
   .topnav-in{padding:12px 18px}
 }
 </style>
+<link rel="icon" type="image/png" sizes="64x64" href="/img/favicon-64.png">
+<link rel="apple-touch-icon" href="/img/apple-touch-icon.png">
 </head><body>
 
 <nav class="topnav"><div class="topnav-in">
@@ -119,4 +121,5 @@ a{color:var(--amber)}
   render(pick());
 })();
 </script>
+<script src="/zoom.js?v=20261017" defer></script>
 </body></html>
