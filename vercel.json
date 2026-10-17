@@ -1,3 +1,75 @@
 {
-  "outputDirectory": "."
+  "outputDirectory": ".",
+  "redirects": [
+    {
+      "source": "/edm/2026-04-17-邱家秝-財產保險業.png",
+      "destination": "/edm/2026-04-17-邱家秝-財產保險業.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/edm/2026-05-15-蔡阿達-SEO業.png",
+      "destination": "/edm/2026-05-15-蔡阿達-SEO業.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/edm/2026-05-15-陳宗民-品牌策略顧問業.png",
+      "destination": "/edm/2026-05-15-陳宗民-品牌策略顧問業.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/edm/2026-07-31-黃識頻-手工甜點業.png",
+      "destination": "/edm/2026-07-31-黃識頻-手工甜點業.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/edm/2026-08-07-高祥溢-私人健身教練.png",
+      "destination": "/edm/2026-08-07-高祥溢-私人健身教練.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/edm/2026-08-14-柯子侃-日式居酒屋.png",
+      "destination": "/edm/2026-08-14-柯子侃-日式居酒屋.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/edm/2026-09-04-江俊毅-碗粿罐頭.png",
+      "destination": "/edm/2026-09-04-江俊毅-碗粿罐頭.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/edm/2026-09-11-林芳淇-活動主持人.png",
+      "destination": "/edm/2026-09-11-林芳淇-活動主持人.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/edm/2026-09-11-棋翌博士-木作工程.png",
+      "destination": "/edm/2026-09-11-棋翌博士-木作工程.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/edm/2026-10-02-蕭鈺霏-汽車長租.png",
+      "destination": "/edm/2026-10-02-蕭鈺霏-汽車長租.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/edm/2026-10-16-徐嘉祥-會計師.png",
+      "destination": "/edm/2026-10-16-徐嘉祥-會計師.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/edm/2026-10-16-蔡佳呈-廚具業.png",
+      "destination": "/edm/2026-10-16-蔡佳呈-廚具業.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/edm/2026-10-23-周方茜-杏仁花生酥糖.png",
+      "destination": "/edm/2026-10-23-周方茜-杏仁花生酥糖.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/edm/2026-10-23-蔡阿達-SEO／GEO 專業技術團隊.png",
+      "destination": "/edm/2026-10-23-蔡阿達-SEO／GEO 專業技術團隊.jpg",
+      "permanent": true
+    }
+  ]
 }
