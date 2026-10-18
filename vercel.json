@@ -2,6 +2,16 @@
   "outputDirectory": ".",
   "redirects": [
     {
+      "source": "/v3",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
+      "source": "/v3/",
+      "destination": "/",
+      "statusCode": 301
+    },
+    {
       "source": "/",
       "has": [
         {
