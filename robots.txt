@@ -3,7 +3,6 @@ Allow: /
 Disallow: /huddle/
 Disallow: /edm-form/
 Disallow: /v2/
-Disallow: /v3/
 
 User-agent: GPTBot
 Allow: /
