@@ -267,8 +267,34 @@ footer b{font-family:var(--pop); font-weight:400; color:var(--yellow)}
 </style>
 <link rel="icon" type="image/png" sizes="64x64" href="/img/favicon-64.png">
 <link rel="apple-touch-icon" href="/img/apple-touch-icon.png">
+<!--fjx:head:start--><link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@600;900&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet"><style>.fj-wrap{font-family:"Noto Sans TC",-apple-system,sans-serif;line-height:1.8;font-size:17px;--paper:#fff;--ink:#14171c;--mute:#59616d;--line:#e3e6ea;--soft:#f4f5f7;--red:#cf2030;--blue:#1f3a8a;color:var(--ink)}.fj-wrap *{box-sizing:border-box}.fj-wrap ul{margin:0;padding:0}.fj-wrap p{margin:0}.fj-wrap .fj-topnav{position:relative;background:#fff}
+.fj-air{height:8px;background:repeating-linear-gradient(135deg,var(--red) 0 16px,#fff 16px 24px,var(--blue) 24px 40px,#fff 40px 48px)}
+.fj-topnav{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.95);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.fj-nav{max-width:1240px;margin:0 auto;padding:12px 28px;display:flex;align-items:center;gap:28px}
+.fj-brand{display:flex;align-items:center;gap:10px;color:var(--ink);text-decoration:none;font-weight:700;letter-spacing:.04em;flex-shrink:0}
+.fj-brand::before{content:"";width:32px;height:36px;background:url(/img/fujen-logo.png) center/contain no-repeat}
+.fj-cta{background:var(--red);color:#fff;text-decoration:none;font-weight:700;font-size:16px;padding:10px 18px;border-radius:2px;display:inline-block;white-space:nowrap}
+.fj-cta:hover{background:#a8121f}.tabs a.fj-on{color:var(--ink);font-weight:700;border-color:var(--red)}
+.fj-foot{border-top:1px solid var(--line);margin-top:40px}
+.fj-foot-in{max-width:1240px;margin:0 auto;padding:36px 28px 60px;font-size:16px;color:var(--mute);display:flex;justify-content:space-between;gap:30px;flex-wrap:wrap}
+.fj-foot-in a{color:var(--mute);margin-right:18px}.fj-foot-in p+p{margin-top:6px}
+
+.fj-nav>ul{list-style:none;display:flex;gap:26px;margin-left:auto}
+.fj-nav>ul>li{position:relative}
+.fj-nav>ul a{color:var(--ink);text-decoration:none;font-size:16px;padding:6px 0;border-bottom:2px solid transparent;white-space:nowrap}
+.fj-nav>ul a:hover,.fj-nav>ul a.fj-on{border-color:var(--red)}
+.fj-nav .fj-dd>a::after{content:"";display:inline-block;margin-left:7px;width:6px;height:6px;border-right:2px solid currentColor;border-bottom:2px solid currentColor;transform:translateY(-3px) rotate(45deg)}
+.fj-nav .fj-sub{display:none;position:absolute;left:-18px;top:100%;padding-top:10px;min-width:180px;z-index:60}
+.fj-nav .fj-sub div{background:#fff;border:1px solid var(--line);border-top:3px solid var(--red);box-shadow:0 14px 30px rgba(20,23,28,.12);padding:6px 0}
+.fj-nav .fj-sub a{display:block;padding:10px 18px;border:0;font-size:16px}
+.fj-nav .fj-sub a:hover{background:var(--soft);color:var(--red)}
+.fj-nav .fj-dd:hover .fj-sub,.fj-nav .fj-dd:focus-within .fj-sub{display:block}@media(max-width:900px){.fj-nav{flex-wrap:wrap;gap:10px 16px;padding:10px 18px}.fj-nav>ul{order:3;width:100%;margin-left:0;gap:20px;overflow-x:auto}.fj-nav .fj-cta{margin-left:auto}.fj-nav .fj-dd>a::after,.fj-nav .fj-sub{display:none!important}.fj-foot-in{padding:30px 18px 48px}}</style><!--fjx:head:end-->
 </head>
 <body>
+<!--fjx:top:start--><div class="fj-wrap"><div class="fj-air" aria-hidden="true"></div><nav class="fj-topnav"><div class="fj-nav"><a class="fj-brand" href="/">BNI 富真分會</a><ul><li><a href="/#map">產業鏈地圖</a></li><li class="fj-dd"><a href="/top5/">每週之星</a><div class="fj-sub"><div><a href="/top5/">30 秒之星</a><a href="/stars/">引薦之星</a><a href="/one-to-one/">一對一之星</a></div></div></li><li><a href="/weekly/">每週例會</a></li><li><a href="/stories/">成功見證</a></li><li><a href="/members/">會員</a></li><li><a href="/about/">關於分會</a></li></ul><a class="fj-cta" href="https://line.me/ti/p/8bgrVHyVXQ" target="_blank" rel="noopener">預約參訪</a></div></nav></div><!--fjx:top:end-->
+
+
+
 <div class="wrap">
 
   <header class="masthead">
@@ -473,5 +499,6 @@ footer b{font-family:var(--pop); font-weight:400; color:var(--yellow)}
   if (h === '#archive' || /^#m-/.test(h)) show(tabs.length-1, false); else show(wi >= 0 ? wi : 0, false);
 })();
 </script>
+<!--fjx:foot:start--><div class="fj-wrap"><footer class="fj-foot" style="background:#fff"><div class="fj-foot-in"><div><p>BNI 富真分會・高雄・每週五清晨</p></div><div>會員專區：<a href="/edm-form">主題簡報表單</a><a href="https://docs.google.com/spreadsheets/d/1HjaORwPAahieiA2uMeoxMzmcAY7VrIRfA_pdf3boTiQ/edit?usp=sharing" target="_blank" rel="noopener">每人 30 秒完整紀錄</a><a href="/huddle">行銷小聚</a></div></div></footer></div><!--fjx:foot:end-->
 </body>
 </html>
