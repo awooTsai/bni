@@ -15,9 +15,6 @@ a{color:var(--blue)}
 .nav{max-width:1240px;margin:0 auto;padding:12px 28px;display:flex;align-items:center;gap:28px}
 .brand{display:flex;align-items:center;gap:10px;color:var(--ink);text-decoration:none;font-weight:700;letter-spacing:.04em;flex-shrink:0}
 .brand::before{content:"";width:32px;height:36px;background:url(/img/fujen-logo.png) center/contain no-repeat}
-.nav ul{list-style:none;display:flex;gap:26px;margin-left:auto}
-.nav ul a{color:var(--ink);text-decoration:none;font-size:16px;padding:6px 0;border-bottom:2px solid transparent;white-space:nowrap}
-.nav ul a:hover,.nav ul a.on{border-color:var(--red)}
 .cta{background:var(--red);color:#fff;text-decoration:none;font-weight:700;font-size:16px;padding:10px 18px;border-radius:2px;display:inline-block;white-space:nowrap}
 .cta:hover{background:#a8121f}
 .btn2{color:var(--ink);text-decoration:none;border:1.5px solid var(--ink);padding:9px 18px;border-radius:2px;font-size:16px;display:inline-block}
@@ -33,7 +30,18 @@ a{color:var(--blue)}
 .foot{border-top:1px solid var(--line);margin-top:40px}
 .foot-in{max-width:1240px;margin:0 auto;padding:36px 28px 60px;font-size:16px;color:var(--mute);display:flex;justify-content:space-between;gap:30px;flex-wrap:wrap}
 .foot-in a{color:var(--mute);margin-right:18px}.foot-in p+p{margin-top:6px}
-@media(max-width:900px){.nav{flex-wrap:wrap;gap:10px 16px;padding:10px 18px}.nav ul{order:3;width:100%;margin-left:0;gap:20px;overflow-x:auto}.cta{margin-left:auto}.bc,.tabs{padding-left:18px;padding-right:18px}.foot-in{padding:30px 18px 48px}}
+@media(max-width:900px){.bc,.tabs{padding-left:18px;padding-right:18px}.foot-in{padding:30px 18px 48px}}
+.nav ul{list-style:none;display:flex;gap:26px;margin-left:auto}
+.nav li{position:relative}
+.nav ul a{color:var(--ink);text-decoration:none;font-size:16px;padding:6px 0;border-bottom:2px solid transparent;white-space:nowrap}
+.nav ul a:hover,.nav ul a.on{border-color:var(--red)}
+.nav .dd>a::after{content:"";display:inline-block;margin-left:7px;width:6px;height:6px;border-right:2px solid currentColor;border-bottom:2px solid currentColor;transform:translateY(-3px) rotate(45deg)}
+.nav .sub{display:none;position:absolute;left:-18px;top:100%;padding-top:10px;min-width:180px;z-index:60}
+.nav .sub div{background:#fff;border:1px solid var(--line);border-top:3px solid var(--red);box-shadow:0 14px 30px rgba(20,23,28,.12);padding:6px 0}
+.nav .sub a{display:block;padding:10px 18px;border:0;font-size:16px}
+.nav .sub a:hover{background:var(--soft);color:var(--red)}
+.nav .dd:hover .sub,.nav .dd:focus-within .sub{display:block}
+@media(max-width:900px){.nav{flex-wrap:wrap;gap:10px 16px;padding:10px 18px}.nav ul{order:3;width:100%;margin-left:0;gap:20px;overflow-x:auto}.nav .cta{margin-left:auto}.nav .dd>a::after,.nav .sub{display:none!important}}
 main{max-width:1240px;margin:0 auto;padding:30px 28px 40px}
 h1{font-family:"Noto Serif TC",serif;font-size:clamp(34px,4.2vw,54px);font-weight:900;line-height:1.25}
 .lead,.lead2{margin-top:16px;font-size:19px;color:#2c323a;max-width:36em}
@@ -58,7 +66,7 @@ details p{margin:0 0 16px!important}
 <link rel="icon" type="image/png" sizes="64x64" href="/img/favicon-64.png"><link rel="apple-touch-icon" href="/img/apple-touch-icon.png">
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"AboutPage","@id":"https://fujen.tw/about/#page","url":"https://fujen.tw/about/","name":"BNI 富真分會介紹","inLanguage":"zh-Hant","isPartOf":{"@id":"https://fujen.tw/#site"},"about":{"@id":"https://fujen.tw/#org"},"author":{"@id":"https://fujen.tw/about/#ada"},"dateModified":"2026-10-17"},{"@type":"Person","@id":"https://fujen.tw/about/#ada","name":"蔡阿達","alternateName":"蔡俊達","jobTitle":"BNI 富真分會「行銷開店產業鏈」招集人；awoo 阿物科技共同創辦人","worksFor":{"@type":"Organization","name":"awoo 阿物科技","url":"https://awoo.ai"},"memberOf":{"@id":"https://fujen.tw/#org"},"knowsAbout":["SEO","GEO（生成式引擎優化）","AI 搜尋能見度","BNI 商務媒合"],"url":"https://www.triplew.tw/tsai","sameAs":["https://www.triplew.tw/tsai","https://awoo.ai"]},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"BNI 富真分會多久開一次會？","acceptedAnswer":{"@type":"Answer","text":"每週五清晨開會，早上 6:30 開始。每位會員有 30 秒講自己的專業與這週需要的引薦，每場另有兩位會員做 5 分鐘的主題簡報。"}},{"@type":"Question","name":"例會在哪裡舉行？","acceptedAnswer":{"@type":"Answer","text":"多半在高雄的塔木德酒店，實際地點以當週通知為準。想參訪的話，請先跟招集人確認。"}},{"@type":"Question","name":"我想了解或參訪，要怎麼聯絡？","acceptedAnswer":{"@type":"Answer","text":"可以先加招集人的 LINE 聯絡，說明你的行業與想了解的事。連結在本頁下方。"}},{"@type":"Question","name":"官網上的「30 秒之星」是什麼？","acceptedAnswer":{"@type":"Answer","text":"每週從每人 30 秒的內容中，整理出最容易讓人聽完就知道「專業在哪、需要什麼引薦、可以怎麼幫他介紹」的五位。最新一週在「30 秒之星」頁。"}},{"@type":"Question","name":"「一對一之星」是什麼？","acceptedAnswer":{"@type":"Answer","text":"一對一是會員之間約出來單獨聊的見面。每週例會後，我們依當週 30 秒內容，整理出 12 組這週最容易談出合作的組合，並寫出見面可以先聊的事。"}},{"@type":"Question","name":"富真分會有哪些行業？","acceptedAnswer":{"@type":"Answer","text":"會員一個行業一位，分在 18 條產業服務鏈裡，從設計、工程、新車業務、大健康，到品牌行銷與活動公關。完整名稱在本頁「18 條產業服務鏈」。"}},{"@type":"Question","name":"我是想找廠商，不是想加入，可以找誰？","acceptedAnswer":{"@type":"Answer","text":"可以到咖啡鄉的「找廠商・商務媒合」頁，說明你的需求，由招集人協助介紹合適的夥伴。連結在本頁下方。"}}]},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"BNI 富真分會","item":"https://fujen.tw/"},{"@type":"ListItem","position":2,"name":"分會介紹","item":"https://fujen.tw/about/"}]}]}</script>
 </head><body>
-<div class="air" aria-hidden="true"></div><nav class="topnav"><div class="nav"><a class="brand" href="/">BNI 富真分會</a><ul><li><a href="/#map">產業鏈地圖</a></li><li><a href="/top5/">每週之星</a></li><li><a href="/members/">會員</a></li><li><a href="/about/" class="on">關於分會</a></li></ul><a class="cta" href="https://line.me/ti/p/8bgrVHyVXQ" target="_blank" rel="noopener">預約參訪</a></div></nav>
+<div class="air" aria-hidden="true"></div><nav class="topnav"><div class="nav"><a class="brand" href="/">BNI 富真分會</a><ul><li><a href="/#map">產業鏈地圖</a></li><li class="dd"><a href="/top5/">每週之星</a><div class="sub"><div><a href="/top5/">30 秒之星</a><a href="/stars/">引薦之星</a><a href="/one-to-one/">一對一之星</a></div></div></li><li><a href="/weekly/">每週例會</a></li><li><a href="/stories/">成功見證</a></li><li><a href="/members/">會員</a></li><li><a href="/about/" class="on">關於分會</a></li></ul><a class="cta" href="https://line.me/ti/p/8bgrVHyVXQ" target="_blank" rel="noopener">預約參訪</a></div></nav>
 <nav class="bc" aria-label="麵包屑"><a href="/">BNI 富真分會</a> › <span>關於分會</span></nav>
 
 <main><div class="kick">關於分會</div>
@@ -80,5 +88,5 @@ details p{margin:0 0 16px!important}
 <h2>常見問題</h2>
 <details><summary>BNI 富真分會多久開一次會？</summary><p>每週五清晨開會，早上 6:30 開始。每位會員有 30 秒講自己的專業與這週需要的引薦，每場另有兩位會員做 5 分鐘的主題簡報。</p></details><details><summary>例會在哪裡舉行？</summary><p>多半在高雄的塔木德酒店，實際地點以當週通知為準。想參訪的話，請先跟招集人確認。</p></details><details><summary>我想了解或參訪，要怎麼聯絡？</summary><p>可以先加招集人的 LINE 聯絡，說明你的行業與想了解的事。連結在本頁下方。</p></details><details><summary>官網上的「30 秒之星」是什麼？</summary><p>每週從每人 30 秒的內容中，整理出最容易讓人聽完就知道「專業在哪、需要什麼引薦、可以怎麼幫他介紹」的五位。最新一週在「30 秒之星」頁。</p></details><details><summary>「一對一之星」是什麼？</summary><p>一對一是會員之間約出來單獨聊的見面。每週例會後，我們依當週 30 秒內容，整理出 12 組這週最容易談出合作的組合，並寫出見面可以先聊的事。</p></details><details><summary>富真分會有哪些行業？</summary><p>會員一個行業一位，分在 18 條產業服務鏈裡，從設計、工程、新車業務、大健康，到品牌行銷與活動公關。完整名稱在本頁「18 條產業服務鏈」。</p></details><details><summary>我是想找廠商，不是想加入，可以找誰？</summary><p>可以到咖啡鄉的「找廠商・商務媒合」頁，說明你的需求，由招集人協助介紹合適的夥伴。連結在本頁下方。</p></details>
 <p class="upd">最後更新：2026 年 10 月 18 日。內容依分會例會實際發言與分會公布的產業鏈名單整理。</p></main>
-<footer class="foot"><div class="foot-in"><div><p>BNI 富真分會・高雄・每週五清晨</p></div><div>會員專區：<a href="/weekly/">週次 EDM 與成功見證</a><a href="/edm-form">主題簡報表單</a><a href="https://docs.google.com/spreadsheets/d/1HjaORwPAahieiA2uMeoxMzmcAY7VrIRfA_pdf3boTiQ/edit?usp=sharing" target="_blank" rel="noopener">每人 30 秒完整紀錄</a><a href="/huddle">行銷小聚</a></div></div></footer>
+<footer class="foot"><div class="foot-in"><div><p>BNI 富真分會・高雄・每週五清晨</p></div><div>會員專區：<a href="/edm-form">主題簡報表單</a><a href="https://docs.google.com/spreadsheets/d/1HjaORwPAahieiA2uMeoxMzmcAY7VrIRfA_pdf3boTiQ/edit?usp=sharing" target="_blank" rel="noopener">每人 30 秒完整紀錄</a><a href="/huddle">行銷小聚</a></div></div></footer>
 </body></html>
