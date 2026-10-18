@@ -41,7 +41,20 @@ a{color:var(--blue)}
 .nav .sub a{display:block;padding:10px 18px;border:0;font-size:16px}
 .nav .sub a:hover{background:var(--soft);color:var(--red)}
 .nav .dd:hover .sub,.nav .dd:focus-within .sub{display:block}
-@media(max-width:900px){.nav{flex-wrap:wrap;gap:10px 16px;padding:10px 18px}.nav ul{order:3;width:100%;margin-left:0;gap:20px;overflow-x:auto}.nav .cta{margin-left:auto}.nav .dd>a::after,.nav .sub{display:none!important}}
+.mtoggle,.mnav{display:none}
+@media(max-width:900px){.nav{flex-wrap:nowrap;gap:10px;padding:8px 16px}
+.nav>ul{display:none}
+.brand{font-size:16px;gap:8px}.brand::before{width:28px;height:32px}
+.nav .cta{margin-left:auto;padding:9px 14px}
+.mtoggle{display:flex;flex-direction:column;justify-content:center;gap:5px;width:44px;height:44px;flex:none;border:1.5px solid var(--ink);background:#fff;border-radius:2px;padding:0 11px;cursor:pointer}
+.mtoggle span{display:block;height:2px;background:var(--ink);transition:transform .2s,opacity .2s}
+.mtoggle[aria-expanded=true] span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.mtoggle[aria-expanded=true] span:nth-child(2){opacity:0}
+.mtoggle[aria-expanded=true] span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.mnav.open{display:block;border-top:1px solid var(--line);background:#fff;max-height:calc(100vh - 64px);overflow:auto}
+.mnav a{display:block;padding:14px 20px;font-size:17px;color:var(--ink);text-decoration:none;border-bottom:1px solid var(--line)}
+.mnav a.subi{padding-left:40px;font-size:16px;color:#2c323a}
+.mnav a.on{color:var(--red);font-weight:700}}
 main{max-width:1240px;margin:0 auto;padding:30px 28px 40px}
 h1{font-family:"Noto Serif TC",serif;font-size:clamp(34px,4.2vw,54px);font-weight:900;line-height:1.25}
 .lead,.lead2{margin-top:16px;font-size:19px;color:#2c323a;max-width:36em}
@@ -69,7 +82,7 @@ details p{margin:0 0 16px!important}
 <link rel="icon" type="image/png" sizes="64x64" href="/img/favicon-64.png"><link rel="apple-touch-icon" href="/img/apple-touch-icon.png">
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"ProfilePage","@id":"https://fujen.tw/members/%E9%84%AD%E6%99%AF%E9%9A%86/#page","url":"https://fujen.tw/members/%E9%84%AD%E6%99%AF%E9%9A%86/","name":"鄭景隆｜咖啡批發零售業｜BNI富真分會","description":"鄭景隆，高雄 BNI 富真分會會員，咖啡批發零售業，任職國哲企業股份有限公司。這裡整理他的專文、例會紀錄與可以怎麼認識他。","inLanguage":"zh-Hant","isPartOf":{"@id":"https://fujen.tw/#site"},"mainEntity":{"@id":"https://fujen.tw/members/%E9%84%AD%E6%99%AF%E9%9A%86/#person"},"dateModified":"2026-10-17"},{"@type":"Person","@id":"https://fujen.tw/members/%E9%84%AD%E6%99%AF%E9%9A%86/#person","name":"鄭景隆","jobTitle":"負責人","description":"高雄 BNI 富真分會會員，咖啡批發零售業。","worksFor":{"@type":"Organization","name":"國哲企業股份有限公司"},"memberOf":{"@id":"https://fujen.tw/#org"},"knowsAbout":["咖啡批發零售業"],"subjectOf":{"@type":"Article","headline":"疫情陰晴不定，在家冷泡 Café Legal 樂家咖啡是維持生活品質的安全門","url":"https://www.triplew.tw/legal.html"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"BNI 富真分會","item":"https://fujen.tw/"},{"@type":"ListItem","position":2,"name":"會員專業名單","item":"https://fujen.tw/members/"},{"@type":"ListItem","position":3,"name":"鄭景隆","item":"https://fujen.tw/members/%E9%84%AD%E6%99%AF%E9%9A%86/"}]}]}</script>
 </head><body>
-<div class="air" aria-hidden="true"></div><nav class="topnav"><div class="nav"><a class="brand" href="/">BNI 富真分會</a><ul><li><a href="/#map">產業鏈地圖</a></li><li class="dd"><a href="/top5/">每週之星</a><div class="sub"><div><a href="/top5/">30 秒之星</a><a href="/stars/">引薦之星</a><a href="/one-to-one/">一對一之星</a></div></div></li><li><a href="/weekly/">每週例會</a></li><li><a href="/stories/">成功見證</a></li><li><a href="/members/" class="on">會員</a></li><li><a href="/about/">關於分會</a></li></ul><a class="cta" href="https://line.me/ti/p/8bgrVHyVXQ" target="_blank" rel="noopener">預約參訪</a></div></nav>
+<div class="air" aria-hidden="true"></div><nav class="topnav"><div class="nav"><a class="brand" href="/">BNI 富真分會</a><ul><li><a href="/#map">產業鏈地圖</a></li><li class="dd"><a href="/top5/">每週之星</a><div class="sub"><div><a href="/top5/">30 秒之星</a><a href="/stars/">引薦之星</a><a href="/one-to-one/">一對一之星</a></div></div></li><li><a href="/weekly/">每週例會</a></li><li><a href="/stories/">成功見證</a></li><li><a href="/members/" class="on">會員</a></li><li><a href="/about/">關於分會</a></li></ul><a class="cta" href="https://line.me/ti/p/8bgrVHyVXQ" target="_blank" rel="noopener">預約參訪</a><button class="mtoggle" type="button" aria-label="開啟選單" aria-expanded="false" aria-controls="mnav" onclick="var o=this.getAttribute('aria-expanded')!=='true';this.setAttribute('aria-expanded',o);document.getElementById('mnav').classList.toggle('open',o)"><span></span><span></span><span></span></button></div><div class="mnav" id="mnav" onclick="if(event.target.tagName==='A'){this.classList.remove('open');var t=this.parentNode.querySelector('.mtoggle');if(t)t.setAttribute('aria-expanded','false')}"><a href="/">首頁</a><a href="/#map">產業鏈地圖</a><a href="/top5/">每週之星</a><a href="/top5/" class="subi">30 秒之星</a><a href="/stars/" class="subi">引薦之星</a><a href="/one-to-one/" class="subi">一對一之星</a><a href="/weekly/">每週例會</a><a href="/stories/">成功見證</a><a href="/members/" class="on">會員</a><a href="/about/">關於分會</a></div></nav>
 <nav class="bc" aria-label="麵包屑"><a href="/">BNI 富真分會</a> › <a href="/members/">會員專業名單</a> › <span>鄭景隆</span></nav>
 
 <main><div class="kick">會員</div><h1>鄭景隆</h1><p class="lead2">咖啡批發零售業｜國哲企業股份有限公司（負責人）</p><div class="card"><h2>咖啡鄉專文</h2><ul><li><a href="https://www.triplew.tw/legal.html" target="_blank" rel="noopener">疫情陰晴不定，在家冷泡 Café Legal 樂家咖啡是維持生活品質的安全門</a></li><li>專文主題：咖啡批發、冷泡咖啡</li></ul></div><div class="card"><h2>本站的例會紀錄</h2><ul><li><a href="/one-to-one/2026-10-16/">10/16 例會一對一之星</a>，對象：<a class="pl" href="/members/%E9%99%B3%E9%9F%8B%E7%BF%B0/">陳韋翰</a>（企業形象影片）</li></ul></div><div class="card"><h2>想認識鄭景隆</h2><p>想了解他的咖啡批發零售業，先看上面的專文；想約見面，請透過<a href="https://line.me/ti/p/8bgrVHyVXQ" target="_blank" rel="noopener">招集人 LINE</a>。</p></div></main>

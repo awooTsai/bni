@@ -288,10 +288,28 @@ footer b{font-family:var(--pop); font-weight:400; color:var(--yellow)}
 .fj-nav .fj-sub div{background:#fff;border:1px solid var(--line);border-top:3px solid var(--red);box-shadow:0 14px 30px rgba(20,23,28,.12);padding:6px 0}
 .fj-nav .fj-sub a{display:block;padding:10px 18px;border:0;font-size:16px}
 .fj-nav .fj-sub a:hover{background:var(--soft);color:var(--red)}
-.fj-nav .fj-dd:hover .fj-sub,.fj-nav .fj-dd:focus-within .fj-sub{display:block}@media(max-width:900px){.fj-nav{flex-wrap:wrap;gap:10px 16px;padding:10px 18px}.fj-nav>ul{order:3;width:100%;margin-left:0;gap:20px;overflow-x:auto}.fj-nav .fj-cta{margin-left:auto}.fj-nav .fj-dd>a::after,.fj-nav .fj-sub{display:none!important}.fj-foot-in{padding:30px 18px 48px}}</style><!--fjx:head:end-->
+.fj-nav .fj-dd:hover .fj-sub,.fj-nav .fj-dd:focus-within .fj-sub{display:block}
+.fj-mtoggle,.fj-mnav{display:none}@media(max-width:900px){.fj-nav{flex-wrap:nowrap;gap:10px;padding:8px 16px}
+.fj-nav>ul{display:none}
+.fj-brand{font-size:16px;gap:8px}.fj-brand::before{width:28px;height:32px}
+.fj-nav .fj-cta{margin-left:auto;padding:9px 14px}
+.fj-mtoggle{display:flex;flex-direction:column;justify-content:center;gap:5px;width:44px;height:44px;flex:none;border:1.5px solid var(--ink);background:#fff;border-radius:2px;padding:0 11px;cursor:pointer}
+.fj-mtoggle span{display:block;height:2px;background:var(--ink);transition:transform .2s,opacity .2s}
+.fj-mtoggle[aria-expanded=true] span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.fj-mtoggle[aria-expanded=true] span:nth-child(2){opacity:0}
+.fj-mtoggle[aria-expanded=true] span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.fj-mnav.fj-open{display:block;border-top:1px solid var(--line);background:#fff;max-height:calc(100vh - 64px);overflow:auto}
+.fj-mnav a{display:block;padding:14px 20px;font-size:17px;color:var(--ink);text-decoration:none;border-bottom:1px solid var(--line)}
+.fj-mnav a.fj-subi{padding-left:40px;font-size:16px;color:#2c323a}
+.fj-mnav a.fj-on{color:var(--red);font-weight:700}.fj-foot-in{padding:30px 18px 48px}}</style><!--fjx:head:end-->
 </head>
 <body>
-<!--fjx:top:start--><div class="fj-wrap"><div class="fj-air" aria-hidden="true"></div><nav class="fj-topnav"><div class="fj-nav"><a class="fj-brand" href="/">BNI 富真分會</a><ul><li><a href="/#map">產業鏈地圖</a></li><li class="fj-dd"><a href="/top5/">每週之星</a><div class="fj-sub"><div><a href="/top5/">30 秒之星</a><a href="/stars/">引薦之星</a><a href="/one-to-one/">一對一之星</a></div></div></li><li><a href="/weekly/">每週例會</a></li><li><a href="/stories/">成功見證</a></li><li><a href="/members/">會員</a></li><li><a href="/about/">關於分會</a></li></ul><a class="fj-cta" href="https://line.me/ti/p/8bgrVHyVXQ" target="_blank" rel="noopener">預約參訪</a></div></nav></div><!--fjx:top:end-->
+<!--fjx:top:start--><div class="fj-wrap"><div class="fj-air" aria-hidden="true"></div><nav class="fj-topnav"><div class="fj-nav"><a class="fj-brand" href="/">BNI 富真分會</a><ul><li><a href="/#map">產業鏈地圖</a></li><li class="fj-dd"><a href="/top5/">每週之星</a><div class="fj-sub"><div><a href="/top5/">30 秒之星</a><a href="/stars/">引薦之星</a><a href="/one-to-one/">一對一之星</a></div></div></li><li><a href="/weekly/">每週例會</a></li><li><a href="/stories/">成功見證</a></li><li><a href="/members/">會員</a></li><li><a href="/about/">關於分會</a></li></ul><a class="fj-cta" href="https://line.me/ti/p/8bgrVHyVXQ" target="_blank" rel="noopener">預約參訪</a><button class="fj-mtoggle" type="button" aria-label="開啟選單" aria-expanded="false" aria-controls="mnav" onclick="var o=this.getAttribute('aria-expanded')!=='true';this.setAttribute('aria-expanded',o);document.getElementById('mnav').classList.toggle('fj-open',o)"><span></span><span></span><span></span></button></div><div class="fj-mnav" id="mnav" onclick="if(event.target.tagName==='A'){this.classList.remove('fj-open');var t=this.parentNode.querySelector('.fj-mtoggle');if(t)t.setAttribute('aria-expanded','false')}"><a href="/">首頁</a><a href="/#map">產業鏈地圖</a><a href="/top5/">每週之星</a><a href="/top5/" class="fj-subi">30 秒之星</a><a href="/stars/" class="fj-subi">引薦之星</a><a href="/one-to-one/" class="fj-subi">一對一之星</a><a href="/weekly/">每週例會</a><a href="/stories/">成功見證</a><a href="/members/">會員</a><a href="/about/">關於分會</a></div></nav></div><!--fjx:top:end-->
+
+
+
+
+
 
 
 
