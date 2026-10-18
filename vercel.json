@@ -2,6 +2,28 @@
   "outputDirectory": ".",
   "redirects": [
     {
+      "source": "/",
+      "has": [
+        {
+          "type": "host",
+          "value": "bni-fuzen.vercel.app"
+        }
+      ],
+      "destination": "https://fujen.tw/",
+      "statusCode": 301
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.fujen.tw"
+        }
+      ],
+      "destination": "https://fujen.tw/",
+      "statusCode": 301
+    },
+    {
       "source": "/:path((?!googled10959ef6f9a4809\\.html$).*)",
       "has": [
         {
