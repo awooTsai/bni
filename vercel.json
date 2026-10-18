@@ -2,6 +2,28 @@
   "outputDirectory": ".",
   "redirects": [
     {
+      "source": "/:path((?!googled10959ef6f9a4809\\.html$).*)",
+      "has": [
+        {
+          "type": "host",
+          "value": "bni-fuzen.vercel.app"
+        }
+      ],
+      "destination": "https://fujen.tw/:path",
+      "statusCode": 301
+    },
+    {
+      "source": "/:path((?!googled10959ef6f9a4809\\.html$).*)",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.fujen.tw"
+        }
+      ],
+      "destination": "https://fujen.tw/:path",
+      "statusCode": 301
+    },
+    {
       "source": "/edm/2026-04-17-%E9%82%B1%E5%AE%B6%E7%A7%9D-%E8%B2%A1%E7%94%A2%E4%BF%9D%E9%9A%AA%E6%A5%AD.png",
       "destination": "/edm/2026-04-17-%E9%82%B1%E5%AE%B6%E7%A7%9D-%E8%B2%A1%E7%94%A2%E4%BF%9D%E9%9A%AA%E6%A5%AD.jpg",
       "permanent": true
