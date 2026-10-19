@@ -31,11 +31,11 @@ nav{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.94);backdrop-f
 .btn2:hover{background:var(--ink);color:#fff}
 /* LED 跑馬燈：全頁唯一持續動作的元素 */
 .led{position:relative;background:#111;overflow:hidden;border-bottom:3px solid var(--red)}
-.led .track{display:flex;width:max-content;animation:run 46s linear infinite}
+.led .track{display:flex;width:max-content;animation:run 60s linear infinite}
 .led:hover .track{animation-play-state:paused}
-.led span{flex:none;color:var(--led);font-weight:700;font-size:19px;letter-spacing:.14em;padding:9px 0;margin-right:72px;text-shadow:0 0 6px rgba(255,176,0,.55)}
+.led span{flex:none;color:#ffc23a;font-weight:700;font-size:20px;letter-spacing:.06em;padding:10px 0;margin-right:72px;text-shadow:0 0 2px rgba(255,176,0,.35)}
 .led span::before{content:"◆";color:var(--red);margin-right:16px;text-shadow:none}
-.led::after{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(circle,transparent 1.1px,rgba(17,17,17,.62) 1.5px) 0 0/4px 4px}
+.led::after{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(circle,transparent 1px,rgba(17,17,17,.34) 1.35px) 0 0/3px 3px}
 @keyframes run{to{transform:translateX(-50%)}}
 .hero{max-width:1240px;margin:0 auto;padding:56px 28px 40px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:32px;align-items:center}
 .hero h1{font-family:"Noto Serif TC",serif;font-weight:900;font-size:clamp(34px,4.3vw,64px);line-height:1.2;letter-spacing:.01em}
