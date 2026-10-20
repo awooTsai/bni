@@ -1,6 +1,5 @@
 User-agent: *
 Allow: /
-Disallow: /huddle/
 Disallow: /edm-form/
 Disallow: /v2/
 
