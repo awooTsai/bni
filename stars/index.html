@@ -31,6 +31,11 @@ a{color:var(--blue)}
 .foot{border-top:1px solid var(--line);margin-top:40px}
 .foot-in{max-width:1240px;margin:0 auto;padding:36px 28px 60px;font-size:16px;color:var(--mute);display:flex;justify-content:space-between;gap:30px;flex-wrap:wrap}
 .foot-in a{color:var(--mute);margin-right:18px}.foot-in p+p{margin-top:6px}
+.sig{max-width:1240px;margin:0 auto;padding:18px 28px 44px;border-top:1px solid var(--line);display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:10px;font-size:16px;color:var(--mute)}
+.sig .awoo-logo img{display:block;height:26px;width:auto}
+.ada-link{font-weight:700;color:var(--ink);text-decoration:none;letter-spacing:1px;padding:3px 5px 1px;border-bottom:2px solid rgba(200,10,20,.35);min-width:4.2em;text-align:center}
+.ada-link:hover{color:#c80a14;border-bottom-color:#c80a14}
+.sig-tail{font-size:16px}
 @media(max-width:900px){.bc,.tabs{padding-left:18px;padding-right:18px}.foot-in{padding:30px 18px 48px}}
 .nav ul{list-style:none;display:flex;gap:26px;margin-left:auto}
 .nav li{position:relative}
@@ -90,6 +95,6 @@ details p{margin:0 0 16px!important}
 <div class="card"><h2>商機引薦之星</h2><p>從每週的引薦呈報裡，看誰給了夥伴最有價值的生意機會。機會不一定都會成交，但沒有機會就不會有結果；我們會看這個機會有多難得、如果不是在分會裡是不是很難遇到，綜合給一個潛在分。</p></div>
 <div class="card"><h2>感謝單引薦之星</h2><p>從每週的感謝單裡，看哪些引薦已經真的變成生意。這些引薦已經產生商務價值，會附上當事人同意公開的事蹟。</p></div>
 <div class="card"><h2>現在可以先看</h2><p><a href="/top5/">本週 30 秒之星</a>　<a href="/one-to-one/">本週一對一之星</a>　<a href="/members/">會員專業名單</a></p></div></main>
-<footer class="foot"><div class="foot-in"><div><p>BNI 富真分會・高雄・每週五清晨</p></div><div>會員專區：<a href="/edm-form">主題簡報表單</a><a href="https://docs.google.com/spreadsheets/d/1HjaORwPAahieiA2uMeoxMzmcAY7VrIRfA_pdf3boTiQ/edit?usp=sharing" target="_blank" rel="noopener">每人 30 秒完整紀錄</a><a href="/huddle">行銷小聚</a></div></div></footer>
+<footer class="foot"><div class="foot-in"><div><p>BNI 富真分會・高雄・每週五清晨</p></div><div>會員專區：<a href="/edm-form">主題簡報表單</a><a href="https://docs.google.com/spreadsheets/d/1HjaORwPAahieiA2uMeoxMzmcAY7VrIRfA_pdf3boTiQ/edit?usp=sharing" target="_blank" rel="noopener">每人 30 秒完整紀錄</a><a href="/huddle">行銷小聚</a></div></div><div class="sig">Powered by <a class="awoo-logo" href="https://awoo.ai" target="_blank" rel="noopener"><img src="/img/awoo-logo-red.png" alt="awoo 阿物科技" width="73" height="26"></a><a class="ada-link" href="https://www.triplew.tw/tsai" target="_blank" rel="noopener" data-text="蔡阿達" onmouseover="adaGlitch(this,true)" onmouseout="adaGlitch(this,false)">蔡阿達</a><span class="sig-tail">| Crafted with Precision and Innovation</span></div><script>function adaGlitch(e,o){if(o){var t=e.getAttribute('data-text'),c='█▓▒░_';e._g=setInterval(function(){var s='';for(var i=0;i<t.length;i++)s+=Math.random()>.9?c[Math.floor(Math.random()*c.length)]:t[i];e.textContent=s},80)}else{clearInterval(e._g);e.textContent=e.getAttribute('data-text')}}</script></footer>
 <script src="/zoom.js?v=20261018" defer></script>
 </body></html>
