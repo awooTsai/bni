@@ -87,6 +87,14 @@
   .sub-label .opt { margin-left: 8px; }
   .drop.slim { padding: 16px 18px; margin-top: 10px; }
   #pvLogoImg { object-fit: contain; background: #F3F2EF; }
+  .opt.rec { background: #FDECEC; color: #C80A14; }
+  .why { background: #FCFCFB; border: 1px solid #EEEEEC; border-left: 3px solid #1F3A8A; border-radius: 6px; padding: 12px 15px; margin: 4px 0 12px; font-size: 16px; color: #34363C; line-height: 1.7; }
+  .why b { color: #16181D; }
+  .why ul { margin: 6px 0 0 1.2em; padding: 0; }
+  .why li { margin: 2px 0; }
+  .why a { color: #C80A14; font-weight: 700; }
+  .or { font-size: 16px; color: #7B7D84; margin: 10px 0 6px; }
+  #pvO2oImg { object-fit: contain; background: #F3F2EF; }
 
   button {
     width: 100%; font-family: inherit; font-size: 18px; font-weight: 700;
@@ -388,6 +396,12 @@
 
 
 
+
+
+
+
+
+
 <div class="bg-texture"></div>
 
 <header><img src="data:image/png;base64,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" alt="awoo 阿物科技"></header>
@@ -396,7 +410,7 @@
   <div id="formView">
     <div class="tag">BNI 富真分會 · 主題簡報</div>
     <h1>主題簡報 EDM 需求單</h1>
-    <p class="lede">請填下面 <strong>5 個欄位＋上傳一張形象照</strong>，我會依此為你製作分會官網與群組要用的主題簡報 EDM。</p>
+    <p class="lede">請填下面 <strong>5 個欄位＋上傳一張形象照</strong>，我會依此為你製作分會官網與群組要用的主題簡報 EDM。後面兩欄是選填，但<strong>很建議一起附上</strong>，我能幫你做的事會多很多。</p>
     <div class="note">
       <strong>不需要登入</strong>，手機直接填、照片也在這裡一起上傳就好。<br>
       填完後你的關主會收到通知，可以直接跟你討論簡報內容。
@@ -459,7 +473,40 @@
     </div>
 
     <div class="field">
-      <label><span class="num">7</span>EDM 風格期待<span class="opt">選填</span></label>
+      <label><span class="num">7</span>一對一表格<span class="opt rec">選填・強烈建議</span></label>
+      <div class="why">
+        <b>為什麼強烈建議上傳？</b>一對一表格是你最完整的「專業說明書」。有了它，我們可以：
+        <ul>
+          <li>幫你產生<b>主題簡報的架構</b>：開場、五個切角讓你挑三個、每一頁放什麼、夥伴怎麼開口幫你介紹</li>
+          <li>更新你在分會官網的<b>個人頁</b>，讓想找你這個專業的人搜得到</li>
+          <li>讓<b>每週建議一對一</b>的配對更準，配到真的跟你有交集的夥伴</li>
+          <li>EDM 的標語、想被引薦的對象，也能寫得更貼近你</li>
+        </ul>
+        先看看範例：<a href="https://docs.google.com/document/d/1-vReDgBRgSNJIxcqkpK8FLJDExqX4sTGPChcrkI2WZA/edit" target="_blank" rel="noopener">蔡阿達的主題簡報架構 ↗</a>
+      </div>
+      <div class="drop slim" id="dropO2o">
+        <div class="big">點這裡上傳一對一表格</div>
+        <div class="small">PDF、PPT、Word 或照片都可以，也可以直接把檔案拖進來</div>
+        <input type="file" id="f_o2o" accept="image/*,.pdf,.ppt,.pptx,.doc,.docx,.key,.pages">
+      </div>
+      <div class="preview" id="previewO2o">
+        <img id="pvO2oImg" alt="一對一表格預覽">
+        <div class="meta"><b id="pvO2oName"></b><br><span id="pvO2oSize"></span> ・ <span class="redo" id="pvO2oDel">移除</span></div>
+      </div>
+      <div class="or">或貼上連結（Google 簡報、Google 文件、雲端硬碟都可以，記得開「知道連結的人可以檢視」）</div>
+      <input type="text" id="f_o2o_link" placeholder="https://docs.google.com/…" autocomplete="off" inputmode="url">
+    </div>
+
+    <div class="field">
+      <label><span class="num">8</span>主題簡報想要強調的內容<span class="opt">選填</span></label>
+      <div class="why">
+        <b>為什麼要填？</b>同一份一對一表格，可以切出很多種講法。告訴我這次最想讓大家記住什麼——一個主打的服務、一種想多接的客戶、一個最近的成功案例都可以——我就會把整份簡報架構和 EDM 往這個方向收，5 分鐘講一件事，夥伴最記得住，也最容易幫你介紹。
+      </div>
+      <textarea id="f_focus" placeholder="例：這次想主打「沒有官網也接得住」，希望多認識在地有名、但還沒有網站的老品牌"></textarea>
+    </div>
+
+    <div class="field">
+      <label><span class="num">9</span>EDM 風格期待<span class="opt">選填</span></label>
       <div class="hint">想要什麼調性、想傳達什麼感覺就好，不用很具體。例：<em>工業風</em>、<em>食品生技風格</em>、<em>誇張趣味</em>、<em>正派誠懇</em></div>
       <input type="text" id="f_style" placeholder="想呈現的氛圍或風格（沒有想法就留白）" autocomplete="off">
     </div>
@@ -483,14 +530,14 @@
     <div class="tool">
       <div class="tool-tag">選用工具</div>
       <div class="tool-t">不想從零開始想？讓阿達幫你打一份草稿</div>
-      <p class="tool-d">上傳你的 <b>1對1 表格</b>，我會親自幫你做一份客製化的簡報架構，包含：</p>
+      <p class="tool-d">在上面第 7 欄上傳你的 <b>一對一表格</b>，我會親自幫你做一份客製化的簡報架構，包含：</p>
       <ul class="tool-list">
         <li>封面、摘要與開場</li>
         <li>5 個 LCD 選項，讓你挑最適合的三個</li>
         <li>每一頁的標題與內文文案</li>
         <li>開啟引薦對話的劇本、三級引薦對照</li>
       </ul>
-      <a class="tool-a" href="https://bni-fujen.vercel.app/brief" target="_blank" rel="noopener">開啟主題簡報架構生成器 ↗</a>
+      <a class="tool-a" href="https://docs.google.com/document/d/1-vReDgBRgSNJIxcqkpK8FLJDExqX4sTGPChcrkI2WZA/edit" target="_blank" rel="noopener">看範例：蔡阿達的主題簡報架構 ↗</a>
       <p class="tool-note">產出的是草稿，不是成品——下面這份指南會告訴你為什麼架構要這樣排，你才改得動它。</p>
     </div>
 
@@ -895,6 +942,73 @@
     reader.readAsDataURL(file);
   }
 
+  /* ── 一對一表格（選填）：照片壓成 JPG；PDF／PPT／Word 原檔送出（10 MB 以內，太大請改貼連結） ── */
+  const BRIEF_SUFFIX = '（主題簡報資料）';   // 跟 Logo 一樣另送一列，同步程式靠這個字尾併回本人那一筆
+  const O2O_MAX_BYTES = 10 * 1024 * 1024;
+  const dropO2o = document.getElementById('dropO2o');
+  const o2oInput = document.getElementById('f_o2o');
+  const previewO2o = document.getElementById('previewO2o');
+  let o2o = null;             // { name, mime, b64 }
+
+  dropO2o.addEventListener('click', () => o2oInput.click());
+  ['dragenter','dragover'].forEach(ev =>
+    dropO2o.addEventListener(ev, e => { e.preventDefault(); dropO2o.classList.add('over'); }));
+  ['dragleave','drop'].forEach(ev =>
+    dropO2o.addEventListener(ev, e => { e.preventDefault(); dropO2o.classList.remove('over'); }));
+  dropO2o.addEventListener('drop', e => {
+    if (e.dataTransfer.files && e.dataTransfer.files[0]) handleO2o(e.dataTransfer.files[0]);
+  });
+  o2oInput.addEventListener('change', () => {
+    if (o2oInput.files && o2oInput.files[0]) handleO2o(o2oInput.files[0]);
+  });
+  document.getElementById('pvO2oDel').addEventListener('click', () => {
+    o2o = null; o2oInput.value = ''; previewO2o.classList.remove('show'); dropO2o.style.display = '';
+  });
+
+  function showO2o(name, sizeText, thumb) {
+    const im = document.getElementById('pvO2oImg');
+    im.src = thumb || 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="82" height="82"><rect width="82" height="82" fill="#F3F2EF"/><text x="41" y="48" font-size="18" text-anchor="middle" fill="#7B7D84" font-family="sans-serif">' + (name.split('.').pop() || 'FILE').toUpperCase().slice(0,4) + '</text></svg>');
+    document.getElementById('pvO2oName').textContent = name;
+    document.getElementById('pvO2oSize').textContent = sizeText;
+    previewO2o.classList.add('show');
+    dropO2o.style.display = 'none';
+  }
+
+  function handleO2o(file) {
+    if (file.type.match(/^image\//)) {
+      const reader = new FileReader();
+      reader.onload = () => {
+        const img = new Image();
+        img.onload = () => {
+          let w = img.naturalWidth || img.width, h = img.naturalHeight || img.height;
+          const scale = Math.min(1, 2000 / Math.max(w, h));
+          w = Math.round(w * scale); h = Math.round(h * scale);
+          const cv = document.createElement('canvas'); cv.width = w; cv.height = h;
+          const ctx = cv.getContext('2d'); ctx.fillStyle = '#fff'; ctx.fillRect(0, 0, w, h); ctx.drawImage(img, 0, 0, w, h);
+          const dataUrl = cv.toDataURL('image/jpeg', JPEG_QUALITY);
+          o2o = { name: file.name.replace(/\.[^.]+$/, '') + '.jpg', mime: 'image/jpeg', b64: dataUrl.split(',')[1] };
+          showO2o(o2o.name, (o2o.b64.length * 0.75 / 1024).toFixed(0) + ' KB（已壓縮）', dataUrl);
+        };
+        img.onerror = () => alert('這張圖讀不起來，換一張試試');
+        img.src = reader.result;
+      };
+      reader.readAsDataURL(file);
+      return;
+    }
+    if (file.size > O2O_MAX_BYTES) {
+      alert('檔案超過 10 MB，請改用下面「貼上連結」的方式（Google 簡報、雲端硬碟都可以）');
+      return;
+    }
+    const reader = new FileReader();
+    reader.onload = () => {
+      const dataUrl = String(reader.result);
+      o2o = { name: file.name, mime: file.type || 'application/octet-stream', b64: dataUrl.split(',')[1] };
+      showO2o(file.name, (file.size / 1024 / 1024).toFixed(1) + ' MB', null);
+    };
+    reader.onerror = () => alert('讀取檔案失敗，請再試一次');
+    reader.readAsDataURL(file);
+  }
+
   /* 後端是否已經能把 Logo 跟需求單寫在同一列。問不到或還沒生效就沿用舊做法（Logo 另外送一筆）。 */
   let logoSameRow = false;
   fetch(SCRIPT_URL + '?ping=edm-logo')
@@ -952,6 +1066,23 @@
         photoMime: logo.mime,
         photoB64: logo.b64
       });
+    })
+    .then(() => {
+      const link = document.getElementById('f_o2o_link').value.trim();
+      const focus = document.getElementById('f_focus').value.trim();
+      if (!o2o && !link && !focus) return;
+      btn.textContent = o2o ? '上傳一對一表格中…' : '送出中…';
+      const extra = {
+        formType: 'bni-edm',
+        date: v.date,
+        biz: v.biz,
+        name: v.name + BRIEF_SUFFIX,
+        slogan: focus ? '主題簡報想強調：' + focus : '（沒有填想強調的內容）',
+        invite: link ? '一對一表格連結：' + link : (o2o ? '一對一表格：見照片欄（' + o2o.name + '）' : '（沒有附一對一表格）'),
+        style: ''
+      };
+      if (o2o) { extra.photoName = o2o.name; extra.photoMime = o2o.mime; extra.photoB64 = o2o.b64; }
+      return post(extra);
     })
     .then(() => {
       document.getElementById('formView').style.display = 'none';
