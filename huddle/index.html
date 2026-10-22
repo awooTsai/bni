@@ -196,4 +196,5 @@ var u=location.origin+location.pathname;(navigator.clipboard?navigator.clipboard
 var s=document.querySelector('[data-share]');if(s&&navigator.share){s.hidden=false;s.addEventListener('click',function(){navigator.share({title:document.title,url:location.href}).catch(function(){})})}
 document.querySelectorAll('[data-tx]').forEach(function(b){b.addEventListener('click',function(){var w=b.parentNode.nextElementSibling,o=w.hidden;w.hidden=!o;b.textContent=o?'收起逐字稿':'在頁面上展開逐字稿';
 if(o&&!b.dataset.l){fetch(b.getAttribute('data-tx')).then(function(r){if(!r.ok)throw 0;return r.text()}).then(function(x){w.querySelector('pre').textContent=x;b.dataset.l=1}).catch(function(){w.querySelector('pre').textContent='逐字稿載入失敗，請改用下載。'})}})})})();</script>
+<!--fjbot:start--><script src="https://awoo-showroom.vercel.app/embed/bni.js" data-brand="bni-fujen" async></script><!--fjbot:end-->
 </body></html>
