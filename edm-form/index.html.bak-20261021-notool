@@ -1,0 +1,1102 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>主題簡報 EDM 需求單｜BNI 富真分會</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Inter', 'Noto Sans TC', sans-serif;
+    color: #16181D; background: #FFFFFF;
+    line-height: 1.7; -webkit-font-smoothing: antialiased;
+    font-size: 17px;
+  }
+  .bg-texture {
+    position: fixed; inset: 0; z-index: -1;
+    background-image: radial-gradient(circle, #E8E7E4 1px, transparent 1px);
+    background-size: 28px 28px; background-position: -14px -14px;
+    -webkit-mask-image: radial-gradient(ellipse 80% 55% at 75% 0%, #000 20%, transparent 70%);
+    mask-image: radial-gradient(ellipse 80% 55% at 75% 0%, #000 20%, transparent 70%);
+  }
+  header {
+    padding: 28px 24px; display: flex; justify-content: center;
+    border-bottom: 1px solid #EEEEEC;
+  }
+  header img { height: 62px; display: block; }
+  .wrap { max-width: 680px; margin: 0 auto; padding: 48px 24px 32px; }
+
+  .tag {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 16px; font-weight: 600; color: #C80A14;
+    background: #FDECEC; padding: 6px 14px; border-radius: 999px;
+    margin-bottom: 18px;
+  }
+  h1 { font-size: 30px; font-weight: 900; letter-spacing: -.01em; line-height: 1.35; margin-bottom: 14px; }
+  .lede { font-size: 17px; color: #34363C; margin-bottom: 8px; }
+  .lede strong { color: #16181D; }
+  .note {
+    font-size: 16px; color: #7B7D84; background: #FCFCFB;
+    border: 1px solid #EEEEEC; border-left: 3px solid #C80A14;
+    padding: 14px 16px; border-radius: 6px; margin: 22px 0 34px;
+  }
+
+  .field { margin-bottom: 24px; }
+  label { display: block; font-size: 16px; font-weight: 700; margin-bottom: 4px; }
+  label .num {
+    display: inline-block; min-width: 22px; height: 22px; line-height: 22px;
+    text-align: center; background: #16181D; color: #fff;
+    font-size: 13px; font-weight: 700; border-radius: 5px; margin-right: 8px;
+  }
+  label .opt, .sub-label .opt {
+    display: inline-block; margin-left: 8px; padding: 2px 8px;
+    background: #F3F2F0; color: #7B7D84; border-radius: 4px;
+    font-size: 16px; font-weight: 600; vertical-align: 1px;
+  }
+  .hint { font-size: 16px; color: #7B7D84; margin-bottom: 9px; }
+  .hint em { font-style: normal; color: #C80A14; font-weight: 600; }
+  input[type=text], input[type=date], textarea {
+    width: 100%; font-family: inherit; font-size: 17px; color: #16181D;
+    padding: 13px 15px; border: 1.5px solid #E8E7E4; border-radius: 8px;
+    background: #fff; transition: border-color .15s;
+  }
+  textarea { resize: vertical; min-height: 76px; line-height: 1.65; }
+  input:focus, textarea:focus { outline: none; border-color: #C80A14; }
+
+  .drop {
+    border: 2px dashed #E8E7E4; border-radius: 8px; background: #FCFCFB;
+    padding: 26px 18px; text-align: center; cursor: pointer; transition: border-color .15s, background .15s;
+  }
+  .drop:hover, .drop.over { border-color: #C80A14; background: #FDECEC; }
+  .drop .big { font-size: 17px; font-weight: 700; color: #16181D; margin-bottom: 4px; }
+  .drop .small { font-size: 16px; color: #7B7D84; }
+  .drop input[type=file] { display: none; }
+  .preview { display: none; align-items: center; gap: 14px; margin-top: 14px; }
+  .preview.show { display: flex; }
+  .preview img {
+    width: 82px; height: 82px; object-fit: cover; border-radius: 8px; border: 1px solid #E8E7E4;
+  }
+  .preview .meta { font-size: 16px; color: #34363C; line-height: 1.6; }
+  .preview .meta b { color: #16181D; word-break: break-all; }
+  .preview .redo { font-size: 16px; color: #C80A14; font-weight: 600; cursor: pointer; }
+  .preview .redo:hover { text-decoration: underline; }
+  .sub-label { margin-top: 22px; font-size: 17px; font-weight: 700; color: #16181D; }
+  .sub-label .opt { margin-left: 8px; }
+  .drop.slim { padding: 16px 18px; margin-top: 10px; }
+  #pvLogoImg { object-fit: contain; background: #F3F2EF; }
+  .opt.rec { background: #FDECEC; color: #C80A14; }
+  .why { background: #FCFCFB; border: 1px solid #EEEEEC; border-left: 3px solid #1F3A8A; border-radius: 6px; padding: 12px 15px; margin: 4px 0 12px; font-size: 16px; color: #34363C; line-height: 1.7; }
+  .why b { color: #16181D; }
+  .why ul { margin: 6px 0 0 1.2em; padding: 0; }
+  .why li { margin: 2px 0; }
+  .why a { color: #C80A14; font-weight: 700; }
+  .or { font-size: 16px; color: #7B7D84; margin: 10px 0 6px; }
+  #pvO2oImg { object-fit: contain; background: #F3F2EF; }
+
+  button {
+    width: 100%; font-family: inherit; font-size: 18px; font-weight: 700;
+    color: #fff; background: #C80A14; border: none; border-radius: 8px;
+    padding: 17px; cursor: pointer; margin-top: 8px; transition: opacity .15s;
+  }
+  button:hover { opacity: .88; }
+  button:disabled { opacity: .5; cursor: default; }
+
+  .success {
+    display: none; text-align: center; padding: 52px 24px;
+  }
+  .success.show { display: block; }
+  .success .ico { font-size: 46px; margin-bottom: 14px; }
+  .success h2 { font-size: 25px; font-weight: 900; margin-bottom: 12px; }
+  .success p { font-size: 17px; color: #34363C; }
+
+  .sig {
+    margin-top: 52px; padding-top: 28px; border-top: 1px solid #EEEEEC;
+    font-size: 16px; color: #7B7D84; line-height: 1.85;
+  }
+  .sig .who { font-size: 16px; font-weight: 700; color: #16181D; margin-bottom: 6px; }
+  .sig a { color: #C80A14; text-decoration: none; font-weight: 600; }
+  .sig a:hover { text-decoration: underline; }
+  .sig .row { margin-top: 3px; }
+
+  @media (max-width: 560px) {
+    .wrap { padding: 34px 20px 28px; }
+    h1 { font-size: 25px; }
+    header img { height: 50px; }
+  }
+
+  /* ===== 準備指南（表單下方）===== */
+  .guide {
+    background: #FAF9F7; border-top: 1px solid #E8E7E4;
+    margin: 46px -24px 0; padding: 44px 24px 10px;
+  }
+  .g-eyebrow {
+    font-size: 13px; font-weight: 700; color: #C80A14;
+    letter-spacing: .14em; margin-bottom: 11px;
+  }
+  .g-title { font-size: 27px; font-weight: 900; line-height: 1.4; margin-bottom: 13px; }
+  .g-lede { font-size: 16px; color: #34363C; }
+  .g-lede + .g-lede { margin-top: 9px; }
+  .g-rule { height: 3px; width: 46px; background: #16181D; margin: 22px 0 8px; }
+
+  .tool {
+    background: #16181D; color: #fff; padding: 22px 24px; margin: 28px 0 40px;
+  }
+  .tool-tag {
+    font-size: 16px; font-weight: 700; color: #FF8A90;
+    letter-spacing: .1em; margin-bottom: 9px;
+  }
+  .tool-t { font-size: 20px; font-weight: 900; line-height: 1.45; margin-bottom: 10px; }
+  .tool-d { font-size: 16px; color: #C6C8CD; line-height: 1.72; }
+  .tool-d b { color: #fff; font-weight: 700; }
+  .tool-list { list-style: none; margin: 13px 0 17px; }
+  .tool-list li {
+    font-size: 16px; color: #C6C8CD; padding: 6px 0;
+    border-bottom: 1px dashed #33363D; display: flex; gap: 9px; line-height: 1.55;
+  }
+  .tool-list li:last-child { border-bottom: none; }
+  .tool-list li::before { content: '→'; color: #FF8A90; flex-shrink: 0; }
+  .tool-a {
+    display: inline-block; background: #C80A14; color: #fff; text-decoration: none;
+    font-size: 16px; font-weight: 700; padding: 13px 22px; transition: opacity .15s;
+  }
+  .tool-a:hover { opacity: .88; }
+  .tool-note { font-size: 16px; color: #8A8D94; margin-top: 13px; line-height: 1.6; }
+
+  .toc {
+    background: #fff; border: 1px solid #E8E7E4; padding: 16px 18px; margin: 26px 0 42px;
+  }
+  .toc-h { font-size: 16px; font-weight: 700; color: #7B7D84; letter-spacing: .06em; margin-bottom: 10px; }
+  .toc ol { list-style: none; counter-reset: toc; }
+  .toc li {
+    counter-increment: toc; font-size: 16px; padding: 7px 0;
+    border-bottom: 1px dashed #E8E7E4; display: flex; gap: 11px;
+  }
+  .toc li:last-child { border-bottom: none; padding-bottom: 0; }
+  .toc li::before {
+    content: counter(toc); font-weight: 900; color: #C80A14;
+    font-variant-numeric: tabular-nums; min-width: 15px;
+  }
+  .toc a { color: #16181D; text-decoration: none; }
+  .toc a:hover { color: #C80A14; }
+
+  .sec { margin-bottom: 48px; scroll-margin-top: 16px; }
+  .sec-h {
+    font-size: 21px; font-weight: 900; padding-bottom: 11px;
+    border-bottom: 2px solid #16181D; margin-bottom: 7px;
+    display: flex; align-items: baseline; gap: 10px;
+  }
+  .sec-h .sn {
+    font-size: 13px; font-weight: 700; color: #C80A14;
+    font-variant-numeric: tabular-nums; letter-spacing: .06em;
+  }
+  .sec-sub { font-size: 16px; color: #7B7D84; margin: 13px 0 22px; }
+
+  /* 六週時間軸 */
+  .tl { list-style: none; border-left: 2px solid #E0DED9; margin: 0 0 0 5px; }
+  .tl > li { position: relative; padding: 0 0 24px 21px; }
+  .tl > li::before {
+    content: ''; position: absolute; left: -6px; top: 7px;
+    width: 10px; height: 10px; background: #16181D;
+  }
+  .tl > li:last-child { padding-bottom: 2px; }
+  .tl-wk { font-size: 17px; font-weight: 900; }
+  .tl-tag {
+    font-size: 16px; font-weight: 700; color: #C80A14;
+    background: #FDECEC; padding: 2px 9px; margin-left: 9px; white-space: nowrap;
+  }
+  .tl-body { list-style: none; margin-top: 9px; background: #fff; border: 1px solid #E8E7E4; }
+  .tl-body li {
+    font-size: 16px; color: #34363C; padding: 10px 14px;
+    border-bottom: 1px dashed #E8E7E4; line-height: 1.62;
+  }
+  .tl-body li:last-child { border-bottom: none; }
+
+  .thread {
+    background: #16181D; color: #fff; padding: 15px 18px; margin: 4px 0 0;
+    font-size: 16px; line-height: 1.65;
+  }
+  .thread b { color: #FFD9DB; }
+
+  /* 5 分鐘結構 */
+  .st-box {
+    border: 1px solid #E8E7E4; background: #fff; padding: 13px 15px; margin-bottom: 9px;
+  }
+  .st-hd { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; }
+  .st-t { font-size: 16px; font-weight: 900; }
+  .st-s { font-size: 16px; color: #7B7D84; line-height: 1.6; margin-top: 5px; }
+  .st-min {
+    font-size: 13px; font-weight: 700; color: #C80A14;
+    white-space: nowrap; font-variant-numeric: tabular-nums;
+  }
+  .st-three { display: grid; grid-template-columns: repeat(3, 1fr); gap: 9px; }
+  .st-three .st-box { padding: 12px 13px; margin-bottom: 9px; }
+  .st-steps { list-style: none; counter-reset: sp; margin-top: 8px; }
+  .st-steps li {
+    counter-increment: sp; font-size: 16px; color: #34363C;
+    padding: 6px 0; border-bottom: 1px dashed #EEEEEC; display: flex; gap: 8px; line-height: 1.5;
+  }
+  .st-steps li:last-child { border-bottom: none; padding-bottom: 0; }
+  .st-steps li::before {
+    content: counter(sp); font-size: 12px; font-weight: 700; color: #A9ABB0;
+    font-variant-numeric: tabular-nums; min-width: 11px;
+  }
+  .st-steps li.hl { font-weight: 700; color: #16181D; }
+
+  /* ABCD */
+  .abcd { border: 1px solid #E8E7E4; background: #fff; list-style: none; }
+  .abcd li {
+    display: flex; gap: 13px; padding: 13px 15px;
+    border-bottom: 1px dashed #E8E7E4; font-size: 16px; line-height: 1.6;
+  }
+  .abcd li:last-child { border-bottom: none; }
+  .abcd .k {
+    font-weight: 900; color: #C80A14; min-width: 17px; flex-shrink: 0;
+  }
+  .abcd .sub { display: block; font-size: 16px; color: #7B7D84; margin-top: 2px; }
+
+  /* 範例表 */
+  .ex-wrap { overflow-x: auto; }
+  .ex {
+    width: 100%; border-collapse: collapse; background: #fff;
+    border: 1px solid #E8E7E4; font-size: 16px; min-width: 420px;
+  }
+  .ex caption {
+    text-align: left; font-size: 16px; font-weight: 700;
+    padding: 0 0 8px; color: #34363C;
+  }
+  .ex th {
+    background: #FCFCFB; text-align: left; padding: 10px 13px;
+    border-bottom: 1px solid #E8E7E4; font-size: 16px; font-weight: 700; color: #7B7D84;
+  }
+  .ex td { padding: 10px 13px; border-bottom: 1px dashed #E8E7E4; vertical-align: top; line-height: 1.6; }
+  .ex tr:last-child td { border-bottom: none; }
+  .ex .kk { font-weight: 900; color: #C80A14; width: 26px; }
+
+  /* 頁數配置 */
+  .pages { list-style: none; background: #fff; border: 1px solid #E8E7E4; }
+  .pages li {
+    display: flex; justify-content: space-between; gap: 14px; align-items: baseline;
+    padding: 11px 15px; border-bottom: 1px dashed #E8E7E4; font-size: 16px; line-height: 1.55;
+  }
+  .pages li:last-child { border-bottom: none; }
+  .pages .p {
+    font-weight: 700; white-space: nowrap; font-variant-numeric: tabular-nums;
+    color: #C80A14; font-size: 16px;
+  }
+  .pages .sub { display: block; font-size: 16px; color: #7B7D84; margin-top: 2px; }
+
+  /* 硬規則 */
+  .nums { display: grid; grid-template-columns: repeat(3, 1fr); gap: 9px; margin-bottom: 14px; }
+  .num-box { border: 1px solid #E8E7E4; background: #fff; padding: 15px 10px; text-align: center; }
+  .num-box .v {
+    font-size: 29px; font-weight: 900; line-height: 1.15;
+    font-variant-numeric: tabular-nums; letter-spacing: -.02em;
+  }
+  .num-box .l { font-size: 16px; color: #7B7D84; margin-top: 5px; line-height: 1.45; }
+  .rules { display: grid; grid-template-columns: 1fr 1fr; gap: 9px; }
+  .rule-box { border: 1px solid #E8E7E4; background: #fff; padding: 14px 15px; }
+  .rule-box.no { border-color: #F0D8D8; }
+  .rule-h { font-size: 16px; font-weight: 700; margin-bottom: 9px; letter-spacing: .04em; }
+  .rule-box.no .rule-h { color: #C80A14; }
+  .rule-box.yes .rule-h { color: #1F7A4D; }
+  .rule-box ul { list-style: none; }
+  .rule-box li {
+    font-size: 16px; color: #34363C; padding: 5px 0;
+    border-bottom: 1px dashed #EEEEEC; line-height: 1.55;
+  }
+  .rule-box li:last-child { border-bottom: none; }
+
+  /* 金句 */
+  .quote {
+    background: #fff; border-left: 3px solid #C80A14;
+    padding: 15px 18px; font-size: 16px; color: #34363C; line-height: 1.7; margin: 18px 0;
+  }
+  .quote b { color: #16181D; }
+
+  /* 兩條共識 */
+  .creed { display: grid; gap: 9px; }
+  .creed-box { border: 1px solid #E8E7E4; background: #fff; padding: 15px 17px; }
+  .creed-t { font-size: 18px; font-weight: 900; margin-bottom: 6px; }
+  .creed-d { font-size: 16px; color: #34363C; line-height: 1.65; }
+  .creed-chain {
+    display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px;
+    font-size: 16px; font-weight: 700;
+  }
+  .creed-chain span { background: #FDECEC; color: #C80A14; padding: 3px 9px; }
+
+  .g-foot {
+    font-size: 16px; color: #7B7D84; line-height: 1.7;
+    border-top: 1px dashed #D8D6D1; padding-top: 18px; margin-top: 6px;
+  }
+
+  @media (max-width: 560px) {
+    .guide { margin: 40px -20px 0; padding: 38px 20px 10px; }
+    .g-title { font-size: 23px; }
+    .sec-h { font-size: 19px; }
+    .st-three, .rules, .nums { grid-template-columns: 1fr; }
+    .num-box { display: flex; align-items: baseline; gap: 12px; text-align: left; }
+    .num-box .l { margin-top: 0; }
+  }
+</style>
+<link rel="icon" type="image/png" sizes="64x64" href="/img/favicon-64.png">
+<link rel="apple-touch-icon" href="/img/apple-touch-icon.png">
+<!--fjx:head:start--><link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@600;900&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet"><style>.fj-wrap{font-family:"Noto Sans TC",-apple-system,sans-serif;line-height:1.8;font-size:17px;--paper:#fff;--ink:#14171c;--mute:#59616d;--line:#e3e6ea;--soft:#f4f5f7;--red:#cf2030;--blue:#1f3a8a;color:var(--ink)}.fj-wrap *{box-sizing:border-box}.fj-wrap ul{margin:0;padding:0}.fj-wrap p{margin:0}.fj-wrap .fj-topnav{position:relative;background:#fff}
+.fj-air{height:8px;background:repeating-linear-gradient(135deg,var(--red) 0 16px,#fff 16px 24px,var(--blue) 24px 40px,#fff 40px 48px)}
+.fj-topnav{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.95);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.fj-nav{max-width:1240px;margin:0 auto;padding:12px 28px;display:flex;align-items:center;gap:28px}
+.fj-brand{display:flex;align-items:center;gap:10px;color:var(--ink);text-decoration:none;font-weight:700;letter-spacing:.04em;flex-shrink:0}
+.fj-brand::before{content:"";width:32px;height:36px;background:url(/img/fujen-logo.png) center/contain no-repeat}
+.fj-cta{background:var(--red);color:#fff;text-decoration:none;font-weight:700;font-size:16px;padding:10px 18px;border-radius:2px;display:inline-block;white-space:nowrap}
+.fj-cta:hover{background:#a8121f}.tabs a.fj-on{color:var(--ink);font-weight:700;border-color:var(--red)}
+.fj-foot{border-top:1px solid var(--line);margin-top:40px}
+.fj-foot-in{max-width:1240px;margin:0 auto;padding:36px 28px 60px;font-size:16px;color:var(--mute);display:flex;justify-content:space-between;gap:30px;flex-wrap:wrap}
+.fj-foot-in a{color:var(--mute);margin-right:18px}.fj-foot-in p+p{margin-top:6px}
+.fj-sig{max-width:1240px;margin:0 auto;padding:18px 28px 44px;border-top:1px solid var(--line);display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:8px;font-size:16px;color:var(--mute)}
+.fj-sig .fj-awoo-logo img{display:block;height:22px;width:auto}
+.fj-ada-link{font-weight:700;color:var(--ink);text-decoration:none;letter-spacing:1px;padding:2px 2px 1px;border-bottom:2px solid rgba(200,10,20,.35)}
+.fj-ada-link:hover{color:#c80a14;border-bottom-color:#c80a14}
+.fj-sig-tail{font-size:16px}
+
+.fj-nav>ul{list-style:none;display:flex;gap:26px;margin-left:auto}
+.fj-nav>ul>li{position:relative}
+.fj-nav>ul a{color:var(--ink);text-decoration:none;font-size:16px;padding:6px 0;border-bottom:2px solid transparent;white-space:nowrap}
+.fj-nav>ul a:hover,.fj-nav>ul a.fj-on{border-color:var(--red)}
+.fj-nav .fj-dd>a::after{content:"";display:inline-block;margin-left:7px;width:6px;height:6px;border-right:2px solid currentColor;border-bottom:2px solid currentColor;transform:translateY(-3px) rotate(45deg)}
+.fj-nav .fj-sub{display:none;position:absolute;left:-18px;top:100%;padding-top:10px;min-width:180px;z-index:60}
+.fj-nav .fj-sub div{background:#fff;border:1px solid var(--line);border-top:3px solid var(--red);box-shadow:0 14px 30px rgba(20,23,28,.12);padding:6px 0}
+.fj-nav .fj-sub a{display:block;padding:10px 18px;border:0;font-size:16px}
+.fj-nav .fj-sub a:hover{background:var(--soft);color:var(--red)}
+.fj-nav .fj-dd:hover .fj-sub,.fj-nav .fj-dd:focus-within .fj-sub{display:block}
+.fj-mtoggle,.fj-mnav{display:none}@media(max-width:900px){.fj-nav{flex-wrap:nowrap;gap:10px;padding:8px 16px}
+.fj-nav>ul{display:none}
+.fj-brand{font-size:16px;gap:8px}.fj-brand::before{width:28px;height:32px}
+.fj-nav .fj-cta{margin-left:auto;padding:9px 14px}
+.fj-mtoggle{display:flex;flex-direction:column;justify-content:center;gap:5px;width:44px;height:44px;flex:none;border:1.5px solid var(--ink);background:#fff;border-radius:2px;padding:0 11px;cursor:pointer}
+.fj-mtoggle span{display:block;height:2px;background:var(--ink);transition:transform .2s,opacity .2s}
+.fj-mtoggle[aria-expanded=true] span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.fj-mtoggle[aria-expanded=true] span:nth-child(2){opacity:0}
+.fj-mtoggle[aria-expanded=true] span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.fj-mnav.fj-open{display:block;border-top:1px solid var(--line);background:#fff;max-height:calc(100vh - 64px);overflow:auto}
+.fj-mnav a{display:block;padding:14px 20px;font-size:17px;color:var(--ink);text-decoration:none;border-bottom:1px solid var(--line)}
+.fj-mnav a.fj-subi{padding-left:40px;font-size:16px;color:#2c323a}
+.fj-mnav a.fj-on{color:var(--red);font-weight:700}.fj-foot-in{padding:30px 18px 48px}}</style><!--fjx:head:end-->
+</head>
+<body>
+<!--fjx:top:start--><div class="fj-wrap"><div class="fj-air" aria-hidden="true"></div><nav class="fj-topnav"><div class="fj-nav"><a class="fj-brand" href="/">BNI 富真分會</a><ul><li><a href="/#map">產業鏈地圖</a></li><li class="fj-dd"><a href="/top5/">每週之星</a><div class="fj-sub"><div><a href="/top5/">30 秒之星</a><a href="/stars/">引薦之星</a><a href="/one-to-one/">一對一之星</a></div></div></li><li><a href="/weekly/">每週例會</a></li><li><a href="/stories/">成功見證</a></li><li><a href="/members/">會員</a></li><li><a href="/about/">關於分會</a></li></ul><a class="fj-cta" href="https://line.me/ti/p/8bgrVHyVXQ" target="_blank" rel="noopener">預約參訪</a><button class="fj-mtoggle" type="button" aria-label="開啟選單" aria-expanded="false" aria-controls="mnav" onclick="var o=this.getAttribute('aria-expanded')!=='true';this.setAttribute('aria-expanded',o);document.getElementById('mnav').classList.toggle('fj-open',o)"><span></span><span></span><span></span></button></div><div class="fj-mnav" id="mnav" onclick="if(event.target.tagName==='A'){this.classList.remove('fj-open');var t=this.parentNode.querySelector('.fj-mtoggle');if(t)t.setAttribute('aria-expanded','false')}"><a href="/">首頁</a><a href="/#map">產業鏈地圖</a><a href="/top5/">每週之星</a><a href="/top5/" class="fj-subi">30 秒之星</a><a href="/stars/" class="fj-subi">引薦之星</a><a href="/one-to-one/" class="fj-subi">一對一之星</a><a href="/weekly/">每週例會</a><a href="/stories/">成功見證</a><a href="/members/">會員</a><a href="/about/">關於分會</a></div></nav></div><!--fjx:top:end-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="bg-texture"></div>
+
+<header><img src="data:image/png;base64,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" alt="awoo 阿物科技"></header>
+
+<div class="wrap">
+  <div id="formView">
+    <div class="tag">BNI 富真分會 · 主題簡報</div>
+    <h1>主題簡報 EDM 需求單</h1>
+    <p class="lede">請填下面 <strong>5 個欄位＋上傳一張形象照</strong>，我會依此為你製作分會官網與群組要用的主題簡報 EDM。後面兩欄是選填，但<strong>很建議一起附上</strong>，我能幫你做的事會多很多。</p>
+    <div class="note">
+      <strong>不需要登入</strong>，手機直接填、照片也在這裡一起上傳就好。<br>
+      填完後你的關主會收到通知，可以直接跟你討論簡報內容。
+    </div>
+
+    <div class="field">
+      <label><span class="num">1</span>專業別／公司（品牌）名</label>
+      <div class="hint">例：<em>SEO/awoo 阿物科技</em></div>
+      <input type="text" id="f_biz" placeholder="專業別／公司（品牌）名" autocomplete="off">
+    </div>
+
+    <div class="field">
+      <label><span class="num">2</span>姓名</label>
+      <div class="hint">請填本名，會直接印在 EDM 上</div>
+      <input type="text" id="f_name" placeholder="姓名" autocomplete="off">
+    </div>
+
+    <div class="field">
+      <label><span class="num">3</span>標語</label>
+      <div class="hint">一句話讓人記住你。例：<em>為什麼AI都不是推薦自家的產品/服務？</em></div>
+      <input type="text" id="f_slogan" placeholder="標語" autocomplete="off">
+    </div>
+
+    <div class="field">
+      <label><span class="num">4</span>誠摯邀請（想被引薦的對象）</label>
+      <div class="hint">你希望夥伴幫你找誰。例：<em>有自己品牌官網且想被AI指名道姓推薦的企業主、創辦人</em></div>
+      <input type="text" id="f_invite" placeholder="想被引薦的對象" autocomplete="off">
+    </div>
+
+    <div class="field">
+      <label><span class="num">5</span>簡報日期</label>
+      <div class="hint">你上台的那一週例會日期。例：<em>8/28</em></div>
+      <input type="date" id="f_date">
+    </div>
+
+    <div class="field">
+      <label><span class="num">6</span>個人專業形象照</label>
+      <div class="hint">直接用手機拍或從相簿選都可以，會自動幫你壓縮，<em>不需要登入任何帳號</em></div>
+      <div class="drop" id="drop">
+        <div class="big">點這裡選照片</div>
+        <div class="small">JPG／PNG，也可以直接把檔案拖進來</div>
+        <input type="file" id="f_photo" accept="image/*">
+      </div>
+      <div class="preview" id="preview">
+        <img id="pvImg" alt="預覽">
+        <div class="meta"><b id="pvName"></b><br><span id="pvSize"></span> ・ <span class="redo" id="pvRedo">重新選一張</span></div>
+      </div>
+
+      <div class="sub-label">品牌 Logo<span class="opt">選填</span></div>
+      <div class="hint">若需要出現您的品牌 Logo，請一併上傳圖檔。<em>去背的 PNG</em> 效果最好，沒有的話 JPG 也可以</div>
+      <div class="drop slim" id="dropLogo">
+        <div class="big">點這裡選 Logo 圖檔</div>
+        <div class="small">PNG／JPG，也可以直接把檔案拖進來</div>
+        <input type="file" id="f_logo" accept="image/*">
+      </div>
+      <div class="preview" id="previewLogo">
+        <img id="pvLogoImg" alt="Logo 預覽">
+        <div class="meta"><b id="pvLogoName"></b><br><span id="pvLogoSize"></span> ・ <span class="redo" id="pvLogoRedo">換一張</span> ・ <span class="redo" id="pvLogoDel">不放 Logo</span></div>
+      </div>
+    </div>
+
+    <div class="field">
+      <label><span class="num">7</span>一對一表格<span class="opt rec">選填・強烈建議</span></label>
+      <div class="why">
+        <b>為什麼強烈建議上傳？</b>一對一表格是你最完整的「專業說明書」。有了它，我們可以：
+        <ul>
+          <li>幫你產生<b>主題簡報的架構</b>：開場、五個切角讓你挑三個、每一頁放什麼、夥伴怎麼開口幫你介紹</li>
+          <li>更新你在分會官網的<b>個人頁</b>，讓想找你這個專業的人搜得到</li>
+          <li>讓<b>每週建議一對一</b>的配對更準，配到真的跟你有交集的夥伴</li>
+          <li>EDM 的標語、想被引薦的對象，也能寫得更貼近你</li>
+        </ul>
+        先看看範例：<a href="https://docs.google.com/document/d/1-vReDgBRgSNJIxcqkpK8FLJDExqX4sTGPChcrkI2WZA/edit" target="_blank" rel="noopener">蔡阿達的主題簡報架構 ↗</a>
+      </div>
+      <div class="drop slim" id="dropO2o">
+        <div class="big">點這裡上傳一對一表格</div>
+        <div class="small">PDF、PPT、Word 或照片都可以，也可以直接把檔案拖進來</div>
+        <input type="file" id="f_o2o" accept="image/*,.pdf,.ppt,.pptx,.doc,.docx,.key,.pages">
+      </div>
+      <div class="preview" id="previewO2o">
+        <img id="pvO2oImg" alt="一對一表格預覽">
+        <div class="meta"><b id="pvO2oName"></b><br><span id="pvO2oSize"></span> ・ <span class="redo" id="pvO2oDel">移除</span></div>
+      </div>
+      <div class="or">或貼上連結（Google 簡報、Google 文件、雲端硬碟都可以，記得開「知道連結的人可以檢視」）</div>
+      <input type="text" id="f_o2o_link" placeholder="https://docs.google.com/…" autocomplete="off" inputmode="url">
+    </div>
+
+    <div class="field">
+      <label><span class="num">8</span>主題簡報想要強調的內容<span class="opt">選填</span></label>
+      <div class="why">
+        <b>為什麼要填？</b>同一份一對一表格，可以切出很多種講法。告訴我這次最想讓大家記住什麼——一個主打的服務、一種想多接的客戶、一個最近的成功案例都可以——我就會把整份簡報架構和 EDM 往這個方向收，5 分鐘講一件事，夥伴最記得住，也最容易幫你介紹。
+      </div>
+      <textarea id="f_focus" placeholder="例：這次想主打「沒有官網也接得住」，希望多認識在地有名、但還沒有網站的老品牌"></textarea>
+    </div>
+
+    <div class="field">
+      <label><span class="num">9</span>EDM 風格期待<span class="opt">選填</span></label>
+      <div class="hint">想要什麼調性、想傳達什麼感覺就好，不用很具體。例：<em>工業風</em>、<em>食品生技風格</em>、<em>誇張趣味</em>、<em>正派誠懇</em></div>
+      <input type="text" id="f_style" placeholder="想呈現的氛圍或風格（沒有想法就留白）" autocomplete="off">
+    </div>
+
+    <button id="submitBtn">送出需求單</button>
+  </div>
+
+  <div class="success" id="successBox">
+    <div class="ico">✅</div>
+    <h2>收到了，謝謝你！</h2>
+    <p>資料與照片都已經收到。<br>EDM 完成後會發到主題簡報群，再麻煩你留意。</p>
+  </div>
+
+  <section class="guide">
+    <div class="g-eyebrow">PREPARATION GUIDE</div>
+    <div class="g-title">主題簡報，八成決定在上台前</div>
+    <p class="g-lede">很多人以為主題簡報是「那 5 分鐘的事」，所以前面五週都在忙別的，最後一週才熬夜做投影片。結果台下坐滿人，卻沒有人知道該怎麼幫你。</p>
+    <p class="g-lede">下面這份整理自 BNI 官方培訓教材，把「上台前六週要做什麼」和「上台那 5 分鐘怎麼講」拆成可以照著跑的步驟。<strong>建議你在填上面表單的同時，一邊往下看</strong>——尤其是第 3 段，它會直接影響你表單裡「標語」和「誠摯邀請」要怎麼寫。</p>
+    <div class="g-rule"></div>
+
+    <div class="tool">
+      <div class="tool-tag">選用工具</div>
+      <div class="tool-t">不想從零開始想？讓阿達幫你打一份草稿</div>
+      <p class="tool-d">在上面第 7 欄上傳你的 <b>一對一表格</b>，我會親自幫你做一份客製化的簡報架構，包含：</p>
+      <ul class="tool-list">
+        <li>封面、摘要與開場</li>
+        <li>5 個 LCD 選項，讓你挑最適合的三個</li>
+        <li>每一頁的標題與內文文案</li>
+        <li>開啟引薦對話的劇本、三級引薦對照</li>
+      </ul>
+      <a class="tool-a" href="https://docs.google.com/document/d/1-vReDgBRgSNJIxcqkpK8FLJDExqX4sTGPChcrkI2WZA/edit" target="_blank" rel="noopener">看範例：蔡阿達的主題簡報架構 ↗</a>
+      <p class="tool-note">產出的是草稿，不是成品——下面這份指南會告訴你為什麼架構要這樣排，你才改得動它。</p>
+    </div>
+
+    <nav class="toc">
+      <div class="toc-h">這份指南包含</div>
+      <ol>
+        <li><a href="#g1">六週倒數：每一週該做的事</a></li>
+        <li><a href="#g2">上台 5 分鐘：時間怎麼分配</a></li>
+        <li><a href="#g3">內容怎麼想：ABCD 倒推法</a></li>
+        <li><a href="#g4">兩個真實範例</a></li>
+        <li><a href="#g5">投影片怎麼排：頁數配置</a></li>
+        <li><a href="#g6">製作硬規則</a></li>
+        <li><a href="#g7">兩條共識</a></li>
+      </ol>
+    </nav>
+
+    <div class="sec" id="g1">
+      <div class="sec-h"><span class="sn">01</span>六週倒數：每一週該做的事</div>
+      <p class="sec-sub">重點不是「什麼時候開始做投影片」，而是<strong>題目根本不該自己想</strong>——它要從會員的疑問裡長出來。</p>
+
+      <ol class="tl">
+        <li>
+          <span class="tl-wk">六週前</span><span class="tl-tag">決定題目</span>
+          <ul class="tl-body">
+            <li>大量向會員蒐集，他們對你的行業有疑問、有興趣的問題</li>
+            <li>綜合這些問題，決定你專講的題目及內容</li>
+            <li>和這些提出問題的會員進行一對一</li>
+          </ul>
+        </li>
+        <li>
+          <span class="tl-wk">五週前</span><span class="tl-tag">學習與鋪梗</span>
+          <ul class="tl-body">
+            <li>每一週會員的 30 秒及專講，都是你非常好的學習教材</li>
+            <li>如果可以，開始鋪「梗」</li>
+            <li>讓會員願意討論你；沒人會在乎你多厲害，直到你願意關心他們多少</li>
+          </ul>
+        </li>
+        <li>
+          <span class="tl-wk">四週前</span><span class="tl-tag">講清楚你要誰</span>
+          <ul class="tl-body">
+            <li>持續的做一對一</li>
+            <li>告訴會員，你想要合作的對象；B2B2C、B2B2B</li>
+            <li>經營業務人脈圈</li>
+          </ul>
+        </li>
+        <li>
+          <span class="tl-wk">三週前</span><span class="tl-tag">開始邀來賓</span>
+          <ul class="tl-body">
+            <li>持續的做一對一</li>
+            <li>邀請 <strong>10～15 位</strong>，你的客戶、你的供應商、你的家人、你的朋友</li>
+            <li>告訴他們，你需要他們的幫忙、見證，以獲取更多的生意機會</li>
+          </ul>
+        </li>
+        <li>
+          <span class="tl-wk">二週前</span><span class="tl-tag">確認出席</span>
+          <ul class="tl-body">
+            <li>持續的做一對一</li>
+            <li>跟進你邀請的來賓，請會員提醒他們的嘉賓</li>
+            <li>邀請函：將來賓登入 Connect，如果你有他們的 mail，他們將會收到電子邀請函；分會提供的紙本邀請函，也在這週寄出</li>
+          </ul>
+        </li>
+        <li>
+          <span class="tl-wk">一週前</span><span class="tl-tag">補人＋練習</span>
+          <ul class="tl-body">
+            <li>持續的一對一</li>
+            <li>確保有來賓到場</li>
+            <li>練習、練習、再練習</li>
+          </ul>
+        </li>
+      </ol>
+
+      <div class="thread">
+        六格看下來，<b>唯一每一週都出現的動作是「一對一」</b>。題目從一對一來、來賓從一對一來、上台那天願意幫你轉介的人也從一對一來。
+      </div>
+
+      <div class="quote">
+        「一場沒有來賓的例會、專講，就像<b>產品發表會只有工作人員，沒有任何顧客</b>。」
+      </div>
+    </div>
+
+    <div class="sec" id="g2">
+      <div class="sec-h"><span class="sn">02</span>上台 5 分鐘：時間怎麼分配</div>
+      <p class="sec-sub">整份簡報拆成 5 個各 1 分鐘的積木。中間三塊叫 LCD，是你要主打的三個方向，三塊的內部結構完全一樣——想好一塊，另外兩塊照套。</p>
+
+      <div class="st-box">
+        <div class="st-hd"><span class="st-t">開場 ＋ 標題</span><span class="st-min">1 min</span></div>
+        <div class="st-s">公司優勢 · 個人優勢 · 一次點出你的三個 LCD</div>
+      </div>
+
+      <div class="st-three">
+        <div class="st-box">
+          <div class="st-hd"><span class="st-t">LCD 1</span><span class="st-min">1 min</span></div>
+          <ol class="st-steps">
+            <li>細節</li>
+            <li class="hl">成功案例</li>
+            <li>要求引薦</li>
+            <li>小總結</li>
+          </ol>
+        </div>
+        <div class="st-box">
+          <div class="st-hd"><span class="st-t">LCD 2</span><span class="st-min">1 min</span></div>
+          <ol class="st-steps">
+            <li>細節</li>
+            <li class="hl">成功案例</li>
+            <li>要求引薦</li>
+            <li>小總結</li>
+          </ol>
+        </div>
+        <div class="st-box">
+          <div class="st-hd"><span class="st-t">LCD 3</span><span class="st-min">1 min</span></div>
+          <ol class="st-steps">
+            <li>細節</li>
+            <li class="hl">成功案例</li>
+            <li>要求引薦</li>
+            <li>小總結</li>
+          </ol>
+        </div>
+      </div>
+
+      <div class="st-box">
+        <div class="st-hd"><span class="st-t">總結</span><span class="st-min">1 min</span></div>
+        <div class="st-s">開啟對話 · 三級引薦</div>
+      </div>
+
+      <p class="sec-sub" style="margin-top:20px">教材裡把「成功案例」那一格特別框起來——它是「要求引薦」前面的鋪陳，<strong>沒有案例，後面那句要求就只是推銷</strong>。每個 LCD 的小總結要複述一次「特色」和「案例」，讓聽的人記得住。</p>
+    </div>
+
+    <div class="sec" id="g3">
+      <div class="sec-h"><span class="sn">03</span>內容怎麼想：ABCD 倒推法</div>
+      <p class="sec-sub">教材的原話是「<strong>從結果面開始來做規劃</strong>」——不要先想我要講什麼，而是先寫下你希望聽完之後拿到什麼引薦，再回推內容。每一個 LCD 都各寫一份。</p>
+
+      <ol class="abcd">
+        <li><span class="k">A</span><span>特定的產品或服務</span></li>
+        <li><span class="k">B</span><span>對客戶的效益</span></li>
+        <li><span class="k">C</span><span>特定的客戶<span class="sub">＝ 交易引薦。直接會買的人。</span></span></li>
+        <li><span class="k">D</span><span>能固定給你客戶的產業<span class="sub">＝ 關係引薦。他自己不買，但他手上一直有你要的客戶。</span></span></li>
+      </ol>
+
+      <div class="quote">
+        寫完 ABCD，再幫每個 LCD 準備<b>協助素材</b>：DM、產品手冊、樣品、照片、見證、成功案例⋯等。這批東西就是投影片上要放的內容。
+      </div>
+      <p class="sec-sub" style="margin-top:16px">卡在這一段想不出來，是最常見的狀況。把你的 1對1 表格丟進 <a href="https://bni-fujen.vercel.app/brief" target="_blank" rel="noopener" style="color:#C80A14;font-weight:700;text-decoration:none;border-bottom:1px solid #C80A14">主題簡報架構生成器</a>，我會幫你先生出 5 個 LCD 選項和對應的 ABCD，你再挑、再改。</p>
+    </div>
+
+    <div class="sec" id="g4">
+      <div class="sec-h"><span class="sn">04</span>兩個真實範例</div>
+      <p class="sec-sub">特別注意 <strong>D 欄</strong>——填的都不是客戶本人，而是「手上一直有這種客戶的人」。這是關係引薦最容易寫錯的一格。</p>
+
+      <div class="ex-wrap">
+        <table class="ex">
+          <caption>範例一 · 長期看護險</caption>
+          <tbody>
+            <tr><td class="kk">A</td><td>長期看護險</td><td>DM 或服務清單</td></tr>
+            <tr><td class="kk">B</td><td>失能時不用擔心生活支出</td><td>照片</td></tr>
+            <tr><td class="kk">C</td><td>單身或結婚無子女者</td><td>成功案例</td></tr>
+            <tr><td class="kk">D</td><td>婚友社、愛情顧問</td><td>—</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="ex-wrap" style="margin-top:20px">
+        <table class="ex">
+          <caption>範例二 · 商業法律顧問</caption>
+          <tbody>
+            <tr><td class="kk">A</td><td>商業法律顧問</td><td>顧問證書</td></tr>
+            <tr><td class="kk">B</td><td>事先預防法律問題發生</td><td>成功案例</td></tr>
+            <tr><td class="kk">C</td><td>中小型診所（醫美）</td><td>知名客戶</td></tr>
+            <tr><td class="kk">D</td><td>保養品或醫材廠商</td><td>—</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="sec-sub" style="margin-top:14px">右欄是協助素材，會依行業不同而換。兩個範例的 D 欄邏輯一致：往<strong>客戶的上游或周邊</strong>找，那裡的人能穩定替你帶客戶。</p>
+    </div>
+
+    <div class="sec" id="g5">
+      <div class="sec-h"><span class="sn">05</span>投影片怎麼排：頁數配置</div>
+      <p class="sec-sub">把架構直接翻譯成「哪一段做幾頁」，照著排就不會漏段落，也不會頭重腳輕。</p>
+
+      <ol class="pages">
+        <li><span>標題</span><span class="p">1 頁</span></li>
+        <li><span>個人簡介</span><span class="p">1 頁</span></li>
+        <li><span>公司簡介</span><span class="p">1 頁</span></li>
+        <li><span>獨特銷售主張<span class="sub">寫 3～5 點</span></span><span class="p">1–2 頁</span></li>
+        <li><span>目標市場 ＋ 成功案例<span class="sub">三個市場各 1 頁；說明時要帶出前面講過的獨特銷售主張</span></span><span class="p">各 1 頁 ×3</span></li>
+        <li><span>開啟引薦對話<span class="sub">針對目標市場的總結。其中「看到目標市場」1 頁、「設定 Q&amp;A」1 頁</span></span><span class="p">3–6 頁</span></li>
+        <li><span>三級引薦</span><span class="p">1 頁</span></li>
+      </ol>
+      <div class="quote" style="margin-top:16px">
+        照上表排下來大約 <b>11～15 頁</b>，但整體目標是 <b>12 頁以內</b>。超出的話，先從「開啟引薦對話」那段收（它彈性最大），<b>不要去砍成功案例</b>——那是最有說服力的一段。
+      </div>
+    </div>
+
+    <div class="sec" id="g6">
+      <div class="sec-h"><span class="sn">06</span>製作硬規則</div>
+      <p class="sec-sub">這些是教材直接給的數字，不是建議，是規格。</p>
+
+      <div class="nums">
+        <div class="num-box">
+          <div class="v">30<span style="font-size:19px">+</span></div>
+          <div class="l">字體級數<br>再小台下看不到</div>
+        </div>
+        <div class="num-box">
+          <div class="v">12<span style="font-size:19px">↓</span></div>
+          <div class="l">總頁數上限<br>頁數多不等於講得好</div>
+        </div>
+        <div class="num-box">
+          <div class="v">10–15</div>
+          <div class="l">要邀的來賓數<br>三週前就要開始</div>
+        </div>
+      </div>
+
+      <div class="rules">
+        <div class="rule-box no">
+          <div class="rule-h">✕ 不要出現</div>
+          <ul>
+            <li>影片</li>
+            <li>動畫效果</li>
+            <li>大量圖片</li>
+            <li>整段網站、PDF 資料</li>
+          </ul>
+        </div>
+        <div class="rule-box yes">
+          <div class="rule-h">✓ 要這樣做</div>
+          <ul>
+            <li>條列式呈現</li>
+            <li>左邊文字、右邊圖</li>
+            <li>用故事舉例</li>
+            <li>字大、頁少、講清楚</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="sec" id="g7">
+      <div class="sec-h"><span class="sn">07</span>兩條共識</div>
+      <p class="sec-sub">整份簡報最容易犯的兩個錯，都在這兩句話裡。</p>
+
+      <div class="creed">
+        <div class="creed-box">
+          <div class="creed-t">聚焦，非放大</div>
+          <div class="creed-d">不是把服務範圍講得越大越好。你什麼都做，別人就記不住你做什麼，也就無從幫你介紹。</div>
+        </div>
+        <div class="creed-box">
+          <div class="creed-t">一氣呵成</div>
+          <div class="creed-d">下面這四塊必須彼此呼應、串成一條線，不能各講各的：</div>
+          <div class="creed-chain">
+            <span>獨特銷售主張</span><span>三個目標市場</span><span>成功案例</span><span>引薦對話</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="g-foot">
+      內容整理自 BNI 官方主題簡報培訓教材（高屏區 · 高雄市中心區／屏東區）。<br>
+      填完上面的表單後，分會會安排夥伴陪你走三個階段：<strong>先一對一抓出架構 → 做出簡報並調整內容 → 練稿微調</strong>。有任何一段卡住，直接在主題簡報群裡問。
+    </div>
+  </section>
+
+  <div class="sig">
+    <div class="who">蔡阿達 · BNI 富真分會 行銷開店產業鏈召集人</div>
+    <div class="row">awoo 阿物科技 共同創辦人暨業務開發部資深總監</div>
+    <div class="row"><a href="https://awoo.ai/zh-hant/" target="_blank" rel="noopener noreferrer">awoo 阿物科技官網</a> ・ <a href="https://www.triplew.tw/tsai" target="_blank" rel="noopener noreferrer">認識蔡阿達</a> ・ <a href="https://fujen.tw" target="_blank" rel="noopener noreferrer">富真分會官網</a></div>
+  </div>
+</div>
+
+<script>
+  const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbykVs1f4fUlZOc3jABkRisbIg4JlXxFvqS2cdqAvL1E0mhR1WX7CRN4rQeaUF_23BRl/exec';
+
+  const F = {
+    biz:    document.getElementById('f_biz'),
+    name:   document.getElementById('f_name'),
+    slogan: document.getElementById('f_slogan'),
+    invite: document.getElementById('f_invite'),
+    date:   document.getElementById('f_date'),
+    style:  document.getElementById('f_style')
+  };
+  const LABEL = { biz:'專業別／公司（品牌）名', name:'姓名', slogan:'標語', invite:'誠摯邀請', date:'簡報日期', style:'EDM 風格期待' };
+  const OPTIONAL = ['style'];   // 沒填也能送出，其餘都必填
+  const btn = document.getElementById('submitBtn');
+
+  /* ── 照片：選檔 → 前端縮圖壓縮 → base64（不需登入，隨表單一起 POST） ── */
+  const drop = document.getElementById('drop');
+  const fileInput = document.getElementById('f_photo');
+  const preview = document.getElementById('preview');
+  const MAX_EDGE = 1600;      // 長邊上限，避免手機原圖 8MB 撐爆 Apps Script
+  const JPEG_QUALITY = 0.86;
+  let photo = null;           // { name, mime, b64 }
+  const LOGO_SUFFIX = '（品牌 Logo）';   // 同步到 Notion 的程式靠這個字尾把 Logo 併回本人那一筆
+
+  drop.addEventListener('click', () => fileInput.click());
+  ['dragenter','dragover'].forEach(ev =>
+    drop.addEventListener(ev, e => { e.preventDefault(); drop.classList.add('over'); }));
+  ['dragleave','drop'].forEach(ev =>
+    drop.addEventListener(ev, e => { e.preventDefault(); drop.classList.remove('over'); }));
+  drop.addEventListener('drop', e => {
+    if (e.dataTransfer.files && e.dataTransfer.files[0]) handleFile(e.dataTransfer.files[0]);
+  });
+  fileInput.addEventListener('change', () => {
+    if (fileInput.files && fileInput.files[0]) handleFile(fileInput.files[0]);
+  });
+  document.getElementById('pvRedo').addEventListener('click', e => {
+    e.stopPropagation(); photo = null; fileInput.value = '';
+    preview.classList.remove('show'); drop.style.display = '';
+  });
+
+  function handleFile(file) {
+    if (!file.type.match(/^image\//)) { alert('請選擇圖片檔（JPG／PNG）'); return; }
+    const reader = new FileReader();
+    reader.onload = () => {
+      const img = new Image();
+      img.onload = () => {
+        let { width: w, height: h } = img;
+        const scale = Math.min(1, MAX_EDGE / Math.max(w, h));
+        w = Math.round(w * scale); h = Math.round(h * scale);
+        const cv = document.createElement('canvas');
+        cv.width = w; cv.height = h;
+        cv.getContext('2d').drawImage(img, 0, 0, w, h);
+        const dataUrl = cv.toDataURL('image/jpeg', JPEG_QUALITY);
+        photo = {
+          name: file.name.replace(/\.[^.]+$/, '') + '.jpg',
+          mime: 'image/jpeg',
+          b64: dataUrl.split(',')[1]
+        };
+        document.getElementById('pvImg').src = dataUrl;
+        document.getElementById('pvName').textContent = photo.name;
+        document.getElementById('pvSize').textContent =
+          (photo.b64.length * 0.75 / 1024).toFixed(0) + ' KB（已壓縮）';
+        preview.classList.add('show');
+        drop.style.display = 'none';
+      };
+      img.onerror = () => alert('這張圖讀不起來，換一張試試');
+      img.src = reader.result;
+    };
+    reader.onerror = () => alert('讀取檔案失敗，請再試一次');
+    reader.readAsDataURL(file);
+  }
+
+  /* ── 品牌 Logo（選填）：保留去背所以輸出 PNG；壓不下來才改成白底 JPG ── */
+  const dropLogo = document.getElementById('dropLogo');
+  const logoInput = document.getElementById('f_logo');
+  const previewLogo = document.getElementById('previewLogo');
+  const LOGO_MAX_EDGE = 1200;
+  const LOGO_MAX_B64 = 2000000;   // 約 1.5 MB
+  let logo = null;            // { name, mime, b64 }
+
+  dropLogo.addEventListener('click', () => logoInput.click());
+  ['dragenter','dragover'].forEach(ev =>
+    dropLogo.addEventListener(ev, e => { e.preventDefault(); dropLogo.classList.add('over'); }));
+  ['dragleave','drop'].forEach(ev =>
+    dropLogo.addEventListener(ev, e => { e.preventDefault(); dropLogo.classList.remove('over'); }));
+  dropLogo.addEventListener('drop', e => {
+    if (e.dataTransfer.files && e.dataTransfer.files[0]) handleLogo(e.dataTransfer.files[0]);
+  });
+  logoInput.addEventListener('change', () => {
+    if (logoInput.files && logoInput.files[0]) handleLogo(logoInput.files[0]);
+  });
+  function clearLogo() {
+    logo = null; logoInput.value = '';
+    previewLogo.classList.remove('show'); dropLogo.style.display = '';
+  }
+  document.getElementById('pvLogoDel').addEventListener('click', clearLogo);
+  document.getElementById('pvLogoRedo').addEventListener('click', () => { clearLogo(); logoInput.click(); });
+
+  function handleLogo(file) {
+    if (!file.type.match(/^image\//)) { alert('請選擇圖片檔（PNG／JPG）'); return; }
+    const reader = new FileReader();
+    reader.onload = () => {
+      const img = new Image();
+      img.onload = () => {
+        let w = img.naturalWidth || img.width, h = img.naturalHeight || img.height;
+        if (!w || !h) { alert('這張圖讀不起來，換一張試試'); return; }
+        const scale = Math.min(1, LOGO_MAX_EDGE / Math.max(w, h));
+        w = Math.round(w * scale); h = Math.round(h * scale);
+        const cv = document.createElement('canvas');
+        cv.width = w; cv.height = h;
+        const ctx = cv.getContext('2d');
+        ctx.drawImage(img, 0, 0, w, h);
+        let mime = 'image/png', ext = '.png';
+        let dataUrl = cv.toDataURL(mime);
+        if (dataUrl.length > LOGO_MAX_B64) {
+          ctx.globalCompositeOperation = 'destination-over';
+          ctx.fillStyle = '#fff'; ctx.fillRect(0, 0, w, h);
+          mime = 'image/jpeg'; ext = '.jpg';
+          dataUrl = cv.toDataURL(mime, JPEG_QUALITY);
+        }
+        logo = {
+          name: file.name.replace(/\.[^.]+$/, '') + ext,
+          mime: mime,
+          b64: dataUrl.split(',')[1]
+        };
+        document.getElementById('pvLogoImg').src = dataUrl;
+        document.getElementById('pvLogoName').textContent = logo.name;
+        document.getElementById('pvLogoSize').textContent =
+          (logo.b64.length * 0.75 / 1024).toFixed(0) + ' KB';
+        previewLogo.classList.add('show');
+        dropLogo.style.display = 'none';
+      };
+      img.onerror = () => alert('這張圖讀不起來，換一張試試');
+      img.src = reader.result;
+    };
+    reader.onerror = () => alert('讀取檔案失敗，請再試一次');
+    reader.readAsDataURL(file);
+  }
+
+  /* ── 一對一表格（選填）：照片壓成 JPG；PDF／PPT／Word 原檔送出（10 MB 以內，太大請改貼連結） ── */
+  const BRIEF_SUFFIX = '（主題簡報資料）';   // 跟 Logo 一樣另送一列，同步程式靠這個字尾併回本人那一筆
+  const O2O_MAX_BYTES = 10 * 1024 * 1024;
+  const dropO2o = document.getElementById('dropO2o');
+  const o2oInput = document.getElementById('f_o2o');
+  const previewO2o = document.getElementById('previewO2o');
+  let o2o = null;             // { name, mime, b64 }
+
+  dropO2o.addEventListener('click', () => o2oInput.click());
+  ['dragenter','dragover'].forEach(ev =>
+    dropO2o.addEventListener(ev, e => { e.preventDefault(); dropO2o.classList.add('over'); }));
+  ['dragleave','drop'].forEach(ev =>
+    dropO2o.addEventListener(ev, e => { e.preventDefault(); dropO2o.classList.remove('over'); }));
+  dropO2o.addEventListener('drop', e => {
+    if (e.dataTransfer.files && e.dataTransfer.files[0]) handleO2o(e.dataTransfer.files[0]);
+  });
+  o2oInput.addEventListener('change', () => {
+    if (o2oInput.files && o2oInput.files[0]) handleO2o(o2oInput.files[0]);
+  });
+  document.getElementById('pvO2oDel').addEventListener('click', () => {
+    o2o = null; o2oInput.value = ''; previewO2o.classList.remove('show'); dropO2o.style.display = '';
+  });
+
+  function showO2o(name, sizeText, thumb) {
+    const im = document.getElementById('pvO2oImg');
+    im.src = thumb || 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="82" height="82"><rect width="82" height="82" fill="#F3F2EF"/><text x="41" y="48" font-size="18" text-anchor="middle" fill="#7B7D84" font-family="sans-serif">' + (name.split('.').pop() || 'FILE').toUpperCase().slice(0,4) + '</text></svg>');
+    document.getElementById('pvO2oName').textContent = name;
+    document.getElementById('pvO2oSize').textContent = sizeText;
+    previewO2o.classList.add('show');
+    dropO2o.style.display = 'none';
+  }
+
+  function handleO2o(file) {
+    if (file.type.match(/^image\//)) {
+      const reader = new FileReader();
+      reader.onload = () => {
+        const img = new Image();
+        img.onload = () => {
+          let w = img.naturalWidth || img.width, h = img.naturalHeight || img.height;
+          const scale = Math.min(1, 2000 / Math.max(w, h));
+          w = Math.round(w * scale); h = Math.round(h * scale);
+          const cv = document.createElement('canvas'); cv.width = w; cv.height = h;
+          const ctx = cv.getContext('2d'); ctx.fillStyle = '#fff'; ctx.fillRect(0, 0, w, h); ctx.drawImage(img, 0, 0, w, h);
+          const dataUrl = cv.toDataURL('image/jpeg', JPEG_QUALITY);
+          o2o = { name: file.name.replace(/\.[^.]+$/, '') + '.jpg', mime: 'image/jpeg', b64: dataUrl.split(',')[1] };
+          showO2o(o2o.name, (o2o.b64.length * 0.75 / 1024).toFixed(0) + ' KB（已壓縮）', dataUrl);
+        };
+        img.onerror = () => alert('這張圖讀不起來，換一張試試');
+        img.src = reader.result;
+      };
+      reader.readAsDataURL(file);
+      return;
+    }
+    if (file.size > O2O_MAX_BYTES) {
+      alert('檔案超過 10 MB，請改用下面「貼上連結」的方式（Google 簡報、雲端硬碟都可以）');
+      return;
+    }
+    const reader = new FileReader();
+    reader.onload = () => {
+      const dataUrl = String(reader.result);
+      o2o = { name: file.name, mime: file.type || 'application/octet-stream', b64: dataUrl.split(',')[1] };
+      showO2o(file.name, (file.size / 1024 / 1024).toFixed(1) + ' MB', null);
+    };
+    reader.onerror = () => alert('讀取檔案失敗，請再試一次');
+    reader.readAsDataURL(file);
+  }
+
+  /* 後端是否已經能把 Logo 跟需求單寫在同一列。問不到或還沒生效就沿用舊做法（Logo 另外送一筆）。 */
+  let logoSameRow = false;
+  fetch(SCRIPT_URL + '?ping=edm-logo')
+    .then(r => r.json())
+    .then(j => { logoSameRow = !!(j && j.edmLogo === true); })
+    .catch(() => {});
+
+  function post(body) {
+    return fetch(SCRIPT_URL, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+      body: JSON.stringify(body)
+    });
+  }
+
+  btn.addEventListener('click', () => {
+    const v = {};
+    for (const k in F) v[k] = F[k].value.trim();
+
+    for (const k in v) {
+      if (OPTIONAL.includes(k)) continue;
+      if (!v[k]) { alert('請填寫「' + LABEL[k] + '」'); F[k].focus(); return; }
+    }
+    if (!photo) { alert('請上傳一張個人專業形象照'); drop.scrollIntoView({ behavior:'smooth', block:'center' }); return; }
+
+    v.formType  = 'bni-edm';
+    v.photoName = photo.name;
+    v.photoMime = photo.mime;
+    v.photoB64  = photo.b64;
+
+    btn.disabled = true;
+    btn.textContent = '送出中…';
+
+    const sameRow = !!logo && logoSameRow;
+    if (sameRow) {
+      v.logoName = logo.name;
+      v.logoMime = logo.mime;
+      v.logoB64  = logo.b64;
+    }
+
+    post(v)
+    .then(() => {
+      if (!logo || sameRow) return;
+      btn.textContent = '上傳 Logo 中…';
+      return post({
+        formType: 'bni-edm',
+        date: v.date,
+        biz: v.biz,
+        name: v.name + LOGO_SUFFIX,
+        slogan: '這一筆是品牌 Logo 圖檔，請搭配「' + v.name + '」的需求單使用',
+        invite: '—',
+        style: '',
+        photoName: logo.name,
+        photoMime: logo.mime,
+        photoB64: logo.b64
+      });
+    })
+    .then(() => {
+      const link = document.getElementById('f_o2o_link').value.trim();
+      const focus = document.getElementById('f_focus').value.trim();
+      if (!o2o && !link && !focus) return;
+      btn.textContent = o2o ? '上傳一對一表格中…' : '送出中…';
+      const extra = {
+        formType: 'bni-edm',
+        date: v.date,
+        biz: v.biz,
+        name: v.name + BRIEF_SUFFIX,
+        slogan: focus ? '主題簡報想強調：' + focus : '（沒有填想強調的內容）',
+        invite: link ? '一對一表格連結：' + link : (o2o ? '一對一表格：見照片欄（' + o2o.name + '）' : '（沒有附一對一表格）'),
+        style: ''
+      };
+      if (o2o) { extra.photoName = o2o.name; extra.photoMime = o2o.mime; extra.photoB64 = o2o.b64; }
+      return post(extra);
+    })
+    .then(() => {
+      document.getElementById('formView').style.display = 'none';
+      document.getElementById('successBox').classList.add('show');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    })
+    .catch(() => {
+      alert('送出時發生問題，請稍後再試一次');
+      btn.disabled = false;
+      btn.textContent = '送出需求單';
+    });
+  });
+</script>
+<script src="/zoom.js?v=20261017" defer></script>
+<!--fjx:foot:start--><div class="fj-wrap"><footer class="fj-foot" style="background:#fff"><div class="fj-foot-in"><div><p>BNI 富真分會・高雄・每週五清晨</p></div><div>會員專區：<a href="/edm-form">主題簡報表單</a><a href="https://docs.google.com/spreadsheets/d/1HjaORwPAahieiA2uMeoxMzmcAY7VrIRfA_pdf3boTiQ/edit?usp=sharing" target="_blank" rel="noopener">每人 30 秒完整紀錄</a><a href="/huddle">行銷小聚</a></div></div><div class="fj-sig">Powered by <a class="fj-awoo-logo" href="https://awoo.ai" target="_blank" rel="noopener"><img src="/img/awoo-logo-red.png" alt="awoo 阿物科技" width="102" height="22"></a><a class="fj-ada-link" href="https://www.triplew.tw/tsai" target="_blank" rel="noopener" data-text="蔡阿達" onmouseover="adaGlitch(this,true)" onmouseout="adaGlitch(this,false)">蔡阿達</a></div><script>function adaGlitch(e,o){if(o){var t=e.getAttribute('data-text'),c='█▓▒░_';e._g=setInterval(function(){var s='';for(var i=0;i<t.length;i++)s+=Math.random()>.9?c[Math.floor(Math.random()*c.length)]:t[i];e.textContent=s},80)}else{clearInterval(e._g);e.textContent=e.getAttribute('data-text')}}</script></footer></div><!--fjx:foot:end-->
+</body>
+</html>

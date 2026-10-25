@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="zh-Hant"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>富真每週會員30秒、專題簡報與引薦對話</title>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,700;1,700&family=Inter:wght@400;500;600;700&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@700;900&display=swap" rel="stylesheet">
+<style>
+:root{--deep:#06152b;--ink:#0a1f3d;--gold:#d4ab5d;--coral:#ff6b5b;--paper:#f6efe1;--line:#1a3458}
+*{box-sizing:border-box;margin:0;padding:0}
+html{font-size:17px;-webkit-font-smoothing:antialiased;scroll-behavior:smooth}
+body{font-family:"Inter","Noto Sans TC",-apple-system,BlinkMacSystemFont,sans-serif;background:var(--deep);color:var(--paper);line-height:1.75;overflow-x:hidden}
+h1,h2,h3,h4{font-family:"Noto Serif TC",serif;font-weight:900;letter-spacing:.02em}
+.en{font-family:"Bodoni Moda",serif;font-style:italic;font-weight:700}
+
+/* === topnav === */
+.topnav{position:sticky;top:0;z-index:80;background:rgba(6,21,43,.92);backdrop-filter:blur(12px);border-bottom:1px solid rgba(212,171,93,.2)}
+.topnav-in{max-width:1280px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.topnav-brand{font-family:"Noto Serif TC",serif;font-weight:900;color:var(--gold);font-size:1.05rem;letter-spacing:.05em;flex-shrink:0}
+.topnav-right{display:flex;align-items:center;gap:12px;flex-wrap:wrap;justify-content:flex-end}
+.sheet-link{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,rgba(212,171,93,.16),rgba(212,171,93,.06));border:1px solid rgba(212,171,93,.5);color:var(--gold);padding:9px 16px;border-radius:30px;text-decoration:none;font-size:.9rem;font-weight:600;letter-spacing:.02em;transition:all .2s;white-space:nowrap}
+.sheet-link:hover{background:var(--gold);color:var(--deep);box-shadow:0 6px 18px rgba(212,171,93,.45)}
+.sheet-link .arr{font-style:normal}
+@media(max-width:640px){.topnav-in{padding:12px 16px}.topnav-right{width:100%;justify-content:flex-start}.sheet-link{padding:8px 12px;font-size:.78rem;gap:5px}.sheet-link .full{display:none}}
+.wkpick{position:relative}
+.wk-toggle{display:inline-flex;align-items:center;gap:6px;background:rgba(212,171,93,.1);border:1px solid rgba(212,171,93,.4);color:var(--gold);padding:9px 14px;border-radius:30px;cursor:pointer;font-family:inherit;font-size:.9rem;transition:all .2s;white-space:nowrap}
+.wk-toggle:hover{background:rgba(212,171,93,.2);border-color:var(--gold)}
+.wk-menu{position:absolute;top:calc(100% + 8px);right:0;min-width:300px;max-height:62vh;overflow-y:auto;background:#0a1f3d;border:1px solid rgba(212,171,93,.4);border-radius:8px;box-shadow:0 12px 40px rgba(0,0,0,.6);opacity:0;visibility:hidden;transform:translateY(-8px);transition:all .25s;z-index:90}
+.wk-menu.on{opacity:1;visibility:visible;transform:translateY(0)}
+.wk-item{display:block;width:100%;text-align:left;padding:13px 18px;color:var(--paper);background:none;border:none;border-bottom:1px solid rgba(212,171,93,.1);cursor:pointer;transition:all .2s;font-family:inherit;font-size:.92rem}
+.wk-item:last-child{border-bottom:none}
+.wk-item:hover{background:rgba(212,171,93,.12)}
+.wk-item.current{background:rgba(212,171,93,.18)}
+.wk-item .d{font-family:"Bodoni Moda",serif;font-style:italic;font-weight:700;color:var(--gold);margin-right:8px}
+.wk-item .latest{display:inline-block;background:var(--gold);color:var(--deep);font-size:.68rem;padding:2px 8px;border-radius:10px;margin-left:6px;font-weight:700}
+.wk-item .s{display:block;opacity:.7;font-size:.82rem;margin-top:3px}
+.wk-banner{display:none;background:linear-gradient(90deg,rgba(212,171,93,.18),rgba(255,107,91,.1));border-bottom:1px solid rgba(212,171,93,.3);padding:12px 24px;text-align:center;color:var(--paper);font-size:.92rem}
+.wk-banner.on{display:block}
+.wk-banner b{color:var(--gold);font-family:"Noto Serif TC",serif;margin-right:6px}
+.wk-banner button{background:none;border:none;color:var(--gold);text-decoration:underline;cursor:pointer;margin-left:12px;font-family:inherit;font-size:.92rem}
+@media(max-width:640px){.wk-toggle{padding:8px 11px;font-size:.78rem}.wk-toggle .wk-txt{display:none}.wk-menu{min-width:230px}}
+
+/* === hero / EDM 三層 === */
+.hero{position:relative;min-height:100vh;display:flex;overflow:hidden;flex-direction:column;justify-content:flex-start;padding:0}
+.hero-bg{position:absolute;inset:0;background:url('img/hero-bg.jpg') center/cover;filter:blur(3px) brightness(.55);transform:scale(1.08);z-index:0}
+.hero-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(6,21,43,.3),rgba(6,21,43,.65))}
+.hero-in{position:relative;z-index:2;text-align:center;padding:48px 24px;max-width:1100px;width:100%;margin:0 auto}
+.week{color:var(--gold);font-size:clamp(1rem,2.2vw,1.4rem);letter-spacing:.4em;margin-bottom:28px;opacity:0;transform:translateY(20px);animation:fadeUp .8s .2s forwards}
+.week::before,.week::after{content:"—";margin:0 18px;opacity:.5}
+.hero-top{position:relative;z-index:2;width:100%;flex:0 0 auto;min-height:72vh;display:flex;align-items:center;justify-content:center;padding:48px 24px 32px}
+.hero-next{position:relative;z-index:2;width:100%;padding:28px 24px 60px;background:linear-gradient(180deg,rgba(0,0,0,.15),rgba(0,0,0,.4));border-top:1px solid rgba(212,171,93,.25)}
+.next-inner{max-width:95vw;margin:0 auto;text-align:center}
+.tri{display:flex;gap:28px;justify-content:center;align-items:flex-start;max-width:95vw;margin:0 auto;flex-wrap:wrap}
+.tri-col{flex:1 1 0;min-width:240px;max-width:560px;text-align:center}
+.tri-col .tri-label{font-family:"Bodoni Moda",serif;font-style:italic;color:var(--gold);font-size:clamp(.85rem,1.6vw,1.05rem);letter-spacing:.18em;opacity:.8;margin-bottom:12px}
+.tri-col .tri-grid{display:flex;gap:12px;justify-content:center}
+.tri-col .tri-grid .next-item{flex:1 1 0;min-width:0}
+.tri-col.past .next-item{opacity:.65}
+.tri-col.past .next-item:hover{opacity:1;transform:scale(1.03)}
+.tri-col.past .tri-label{color:rgba(212,171,93,.65)}
+.tri-col.next .tri-label{color:var(--gold)}
+@media(max-width:640px){.tri{flex-direction:column;gap:24px}.tri-col{max-width:100%}.tri-col .tri-grid{flex-wrap:wrap}}
+.next-item{flex:1 1 380px;max-width:520px;opacity:.7;transition:all .4s ease;cursor:pointer}
+.next-item:hover{opacity:1;transform:scale(1.03)}
+.next-item img{width:100%;display:block;border-radius:5px;box-shadow:0 12px 32px rgba(0,0,0,.5);border:1px solid rgba(212,171,93,.2)}
+.next-item .cap{margin-top:10px;color:var(--paper);opacity:.85;font-size:.92rem;letter-spacing:.02em;text-align:center}
+.next-item .cap b{color:var(--gold);font-family:"Noto Serif TC",serif;font-size:1.02rem;margin-right:8px}
+@media(max-width:640px){.hero-top{min-height:80vh;padding:32px 20px 24px}.next-item{flex:1 1 100%}}
+.hero-title{font-family:"Noto Serif TC",serif;font-size:clamp(1.4rem,3.2vw,2.2rem);font-weight:900;color:var(--paper);margin-bottom:36px;line-height:1.5;opacity:0;transform:translateY(20px);animation:fadeUp .9s .35s forwards;text-shadow:0 2px 20px rgba(0,0,0,.5)}
+.feat{display:flex;gap:24px;justify-content:center;flex-wrap:wrap;margin-bottom:8px}
+.edm-card{position:relative;max-width:483px;width:100%;opacity:0;transform:translateY(20px);animation:fadeUp 1s .5s forwards;transition:transform .4s;cursor:pointer}
+.edm-card:hover{transform:translateY(-6px)} .edm-card:hover img{filter:brightness(1.1)}
+.edm-card img{width:100%;display:block;border-radius:6px;transition:filter .3s;box-shadow:0 24px 60px rgba(0,0,0,.5),0 0 0 1px rgba(212,171,93,.3);background:#1a3458;min-height:200px}
+.edm-meta{margin-top:16px}
+.edm-meta .t{font-family:"Noto Serif TC",serif;font-size:1.25rem;color:var(--gold)}
+.edm-meta .s{font-size:.95rem;opacity:.75;margin-top:4px}
+.edm-date{display:flex;align-items:baseline;justify-content:center;gap:12px;margin:0 0 12px;padding:8px 12px;background:linear-gradient(90deg,rgba(212,171,93,0),rgba(212,171,93,.15),rgba(212,171,93,0));border-top:1px solid rgba(212,171,93,.22);border-bottom:1px solid rgba(212,171,93,.22)}
+.edm-date .dd{font-family:'Noto Serif TC',serif;font-size:1.55rem;line-height:1;color:var(--gold);letter-spacing:.05em}
+.edm-date .wd{font-size:1rem;color:var(--paper);opacity:.92;letter-spacing:.14em}
+.edm-date .en{font-size:.82rem;color:var(--gold);opacity:.6;letter-spacing:.24em}
+.next-item .cap .nd{display:inline-block;margin-right:9px;padding:1px 8px;border:1px solid rgba(212,171,93,.5);border-radius:3px;color:var(--gold);font-size:1rem;letter-spacing:.05em}
+.lbx-cap .ld{display:block;margin-bottom:6px;color:var(--gold);font-size:1rem;letter-spacing:.1em}
+.edm-art{display:block;width:fit-content;margin:10px auto 0;font-size:.95rem;color:var(--gold);text-decoration:none;border-bottom:1px solid rgba(212,171,93,.45);padding-bottom:2px;transition:opacity .2s}
+.edm-art:hover{opacity:.7}
+.next-item .edm-art{font-size:.85rem;margin-top:6px}
+@keyframes fadeUp{to{opacity:1;transform:translateY(0)}}
+.scroll-hint{position:absolute;bottom:24px;left:50%;transform:translateX(-50%);color:var(--gold);font-size:.8rem;opacity:.6;letter-spacing:.3em;animation:bounce 2s infinite;z-index:2;cursor:pointer}
+@keyframes bounce{0%,100%{transform:translate(-50%,0)}50%{transform:translate(-50%,8px)}}
+
+/* === 成功見證相簿 === */
+.album{position:relative;padding:72px 24px 64px;background:radial-gradient(ellipse at 50% 0%,rgba(212,171,93,.08),transparent 55%),linear-gradient(180deg,#06152b,#0a1f3d);border-top:1px solid rgba(212,171,93,.15);animation:fadeIn .6s}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+.album-head{text-align:center;margin-bottom:34px}
+.album-head .en{color:var(--gold);font-size:.95rem;letter-spacing:.35em;opacity:.8}
+.album-head h2{font-size:clamp(1.8rem,4vw,2.6rem);margin-top:10px}
+.album-head .sub{margin-top:10px;font-size:.95rem;opacity:.7;letter-spacing:.05em}
+.viewer{max-width:1120px;margin:0 auto;position:relative}
+.stage{position:relative;width:100%;aspect-ratio:16/9;background:#04101f;border-radius:8px;overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,.55),0 0 0 1px rgba(212,171,93,.25);user-select:none}
+.stage img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;background:#04101f;transition:opacity .35s ease}
+.stage.fading img{opacity:.12}
+.cover-ov{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;gap:18px;padding:0 24px 7%;background:linear-gradient(180deg,rgba(4,16,31,0) 42%,rgba(4,16,31,.78));text-align:center;transition:opacity .35s;cursor:pointer}
+.cover-ov.hide{opacity:0;pointer-events:none}
+.cover-ov .meta{color:var(--gold);font-family:"Bodoni Moda",serif;font-style:italic;letter-spacing:.22em;font-size:clamp(.8rem,1.6vw,1rem);opacity:.92}
+.enter-btn{background:linear-gradient(135deg,#d4ab5d,#e8c478);color:var(--deep);border:none;padding:16px 42px;border-radius:40px;font-family:"Noto Serif TC",serif;font-weight:900;font-size:clamp(1rem,2vw,1.2rem);letter-spacing:.1em;cursor:pointer;box-shadow:0 10px 30px rgba(212,171,93,.45);animation:pulseGlow 2.4s ease-in-out infinite}
+@keyframes pulseGlow{0%,100%{box-shadow:0 10px 30px rgba(212,171,93,.4);transform:translateY(0)}50%{box-shadow:0 12px 44px rgba(212,171,93,.75);transform:translateY(-2px)}}
+.enter-btn:hover{filter:brightness(1.06)}
+.badge{position:absolute;top:16px;left:16px;display:flex;align-items:center;gap:9px;background:rgba(4,16,31,.72);backdrop-filter:blur(6px);border:1px solid var(--bdg,#d4ab5d);border-radius:30px;padding:8px 16px;z-index:4;transition:opacity .35s,transform .35s,border-color .5s;box-shadow:0 6px 18px rgba(0,0,0,.4)}
+.badge.hide{opacity:0;transform:translateY(-8px);pointer-events:none}
+.badge .dot{width:9px;height:9px;border-radius:50%;background:var(--bdg,#d4ab5d);box-shadow:0 0 10px var(--bdg,#d4ab5d);transition:background .5s,box-shadow .5s}
+.badge .cat{font-family:"Noto Serif TC",serif;font-weight:900;color:var(--bdg,#d4ab5d);font-size:1rem;letter-spacing:.04em;transition:color .5s}
+.badge .prog{font-family:"Bodoni Moda",serif;font-style:italic;color:var(--paper);opacity:.7;font-size:.9rem;margin-left:2px}
+.badge.flash{animation:bdgFlash .6s}
+@keyframes bdgFlash{0%{transform:scale(1)}40%{transform:scale(1.09)}100%{transform:scale(1)}}
+.counter{position:absolute;top:16px;right:16px;background:rgba(4,16,31,.72);backdrop-filter:blur(6px);border:1px solid rgba(212,171,93,.3);border-radius:30px;padding:8px 14px;z-index:4;font-family:"Bodoni Moda",serif;font-style:italic;color:var(--gold);font-size:.9rem;transition:opacity .35s}
+.counter.hide{opacity:0;pointer-events:none}
+.nav-arrow{position:absolute;top:50%;transform:translateY(-50%);width:54px;height:54px;border-radius:50%;background:rgba(4,16,31,.55);backdrop-filter:blur(6px);border:1px solid rgba(212,171,93,.4);color:var(--gold);font-size:1.7rem;line-height:1;cursor:pointer;z-index:5;display:flex;align-items:center;justify-content:center;transition:all .2s;opacity:.85}
+.nav-arrow:hover{background:var(--gold);color:var(--deep);opacity:1;box-shadow:0 0 24px rgba(212,171,93,.6)}
+.nav-arrow.prev{left:14px}.nav-arrow.next{right:14px}
+.nav-arrow.hide{opacity:0;pointer-events:none}
+.nav-arrow:disabled{opacity:.22;cursor:default;pointer-events:none}
+.flip-hint{position:absolute;bottom:14px;left:50%;transform:translateX(-50%);color:var(--paper);background:rgba(4,16,31,.62);border:1px solid rgba(212,171,93,.35);border-radius:20px;padding:7px 16px;font-size:.82rem;letter-spacing:.08em;z-index:4;opacity:.95;transition:opacity .6s;pointer-events:none}
+.flip-hint.gone{opacity:0}
+.dots{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;align-items:center;margin-top:22px}
+.dots .sep{width:14px}
+.dots button{width:10px;height:10px;border-radius:50%;border:none;background:rgba(212,171,93,.3);cursor:pointer;padding:0;transition:all .25s}
+.dots button:hover{transform:scale(1.35)}
+.dots button.active{width:26px;border-radius:6px;background:var(--dca,#d4ab5d);box-shadow:0 0 10px var(--dca,#d4ab5d)}
+.viewer-foot{display:flex;justify-content:center;gap:14px;margin-top:18px;flex-wrap:wrap}
+.viewer-foot button{background:transparent;border:1px solid rgba(212,171,93,.45);color:var(--gold);padding:10px 22px;border-radius:30px;cursor:pointer;font-family:inherit;font-size:.9rem;transition:all .2s}
+.viewer-foot button:hover{background:var(--gold);color:var(--deep)}
+@media(max-width:640px){.nav-arrow{width:42px;height:42px;font-size:1.3rem}.nav-arrow.prev{left:8px}.nav-arrow.next{right:8px}.badge{top:10px;left:10px;padding:6px 12px}.badge .cat{font-size:.85rem}.counter{top:10px;right:10px;padding:6px 10px;font-size:.8rem}}
+
+/* === 回頂浮動鈕 === */
+.back-top{position:fixed;left:24px;bottom:24px;width:52px;height:52px;border-radius:50%;background:linear-gradient(135deg,#d4ab5d,#b8933f);color:var(--deep);border:none;cursor:pointer;font-size:1.3rem;box-shadow:0 8px 24px rgba(0,0,0,.45),0 0 0 1px rgba(212,171,93,.3);opacity:0;transform:translateY(20px);pointer-events:none;transition:all .3s ease;z-index:90;display:flex;align-items:center;justify-content:center}
+.back-top.on{opacity:.95;transform:translateY(0);pointer-events:auto}
+.back-top:hover{transform:translateY(-4px) scale(1.08);box-shadow:0 12px 32px rgba(212,171,93,.5);opacity:1}
+@media(max-width:640px){.back-top{left:16px;bottom:16px;width:46px;height:46px;font-size:1.1rem}}
+
+/* === Lightbox（EDM 用）=== */
+.lbx{position:fixed;inset:0;background:rgba(0,0,0,.92);z-index:200;display:none;align-items:center;justify-content:center;padding:24px;backdrop-filter:blur(8px)}
+.lbx.on{display:flex;animation:fadeIn .3s}
+.lbx-in{max-width:95vw;max-height:95vh;display:flex;flex-direction:column;align-items:center;gap:20px}
+.lbx img{max-width:95vw;max-height:78vh;object-fit:contain;border-radius:6px;box-shadow:0 24px 80px rgba(0,0,0,.8)}
+.lbx-btns{display:flex;gap:12px;flex-wrap:wrap;justify-content:center}
+.lbx-btns button{background:var(--gold);color:var(--deep);border:none;padding:14px 28px;border-radius:4px;cursor:pointer;font-family:inherit;font-weight:700;font-size:1rem;transition:all .2s}
+.lbx-btns button.sec{background:transparent;color:var(--gold);border:1px solid var(--gold)}
+.lbx-btns button:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(212,171,93,.4)}
+.lbx-close{position:absolute;top:20px;right:24px;background:transparent;border:1px solid rgba(255,255,255,.3);color:#fff;width:44px;height:44px;border-radius:50%;cursor:pointer;font-size:1.3rem;transition:all .2s}
+.lbx-close:hover{background:rgba(255,255,255,.15);border-color:#fff}
+.lbx-cap{color:var(--paper);text-align:center;font-size:1rem}
+.lbx-cap b{color:var(--gold);font-family:"Noto Serif TC",serif;margin-right:10px;font-size:1.1rem}
+
+/* === footer === */
+.foot{text-align:center;padding:60px 24px;border-top:1px solid var(--line);opacity:.7;font-size:.9rem}
+.foot a{color:var(--gold);text-decoration:none}
+.signature{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:10px;font-family:"Inter","Noto Sans TC",sans-serif;font-size:.9rem;opacity:.85;margin-top:8px}
+.signature .awoo-logo img{height:26px;vertical-align:middle;filter:brightness(1.1);transition:filter .3s}
+.signature .awoo-logo:hover img{filter:brightness(1.3) drop-shadow(0 0 8px rgba(212,171,93,.5))}
+.ada-link{font-family:"Noto Sans TC",sans-serif;font-size:1.1rem;font-weight:700;color:#c8f5ff;text-decoration:none;letter-spacing:1px;padding:5px 6px 3px;border-bottom:2px solid rgba(0,255,255,.4);transition:all .3s ease;display:inline-block;cursor:pointer}
+.ada-link:hover{color:#fff;text-shadow:0 0 8px rgba(0,255,255,.9),0 0 20px rgba(0,255,255,.7);border-bottom-color:rgba(0,255,255,.9)}
+.sig-tail{opacity:.7;font-size:.85rem}
+
+.toast{position:fixed;bottom:32px;left:50%;transform:translateX(-50%);background:var(--gold);color:var(--deep);padding:14px 28px;border-radius:4px;font-weight:700;box-shadow:0 12px 32px rgba(0,0,0,.4);opacity:0;transition:opacity .3s;pointer-events:none;z-index:100}
+.toast.on{opacity:1}
+</style></head>
+<body>
+
+<nav class="topnav" id="topnav">
+<div class="topnav-in">
+<span class="topnav-brand">BNI 富真白金分會</span>
+<div class="topnav-right">
+<div class="wkpick">
+<button class="wk-toggle" onclick="toggleWeekPicker()" id="wkToggle">📅 <span class="wk-txt">切換週次</span> ▾</button>
+<div class="wk-menu" id="wkMenu"></div>
+</div>
+<a class="sheet-link" href="/edm-form" target="_blank" rel="noopener">📝 <span class="full">準備主題簡報？</span>填寫資料表單 <span class="arr">↗</span></a>
+<a class="sheet-link" href="https://docs.google.com/spreadsheets/d/1HjaORwPAahieiA2uMeoxMzmcAY7VrIRfA_pdf3boTiQ/edit?usp=sharing" target="_blank" rel="noopener"><span class="full">本週會員專業 · 主題簡報 · </span>開啟引薦對話 <span class="arr">↗</span></a>
+</div>
+</div>
+</nav>
+<div class="wk-banner" id="wkBanner"></div>
+
+<section class="hero">
+<div class="hero-bg"></div>
+<div class="hero-top">
+<div class="hero-in">
+<div class="week en" id="week">WEEK OF</div>
+<h1 class="hero-title">每週超過 50 位高雄在地業者的<br>專業交流・商機引薦</h1>
+<div class="feat" id="feat"></div>
+</div>
+</div>
+<div class="hero-next" id="heroNext"></div>
+<div class="scroll-hint" onclick="goAlbum()">SCROLL ↓</div>
+</section>
+
+<section class="album" id="album">
+<div class="album-head">
+<div class="en">SUCCESS STORIES</div>
+<h2>成功見證</h2>
+<p class="sub" id="albumSub">高雄 BNI 富真白金分會 · 真實成交見證</p>
+</div>
+<div class="viewer">
+<div class="stage" id="stage">
+<img id="albumImg" src="" alt="成功見證">
+<div class="badge hide" id="badge"><span class="dot"></span><span class="cat" id="bdgCat"></span><span class="prog" id="bdgProg"></span></div>
+<div class="counter hide" id="counter"></div>
+<button class="nav-arrow prev hide" id="arrPrev" onclick="albPrev()" aria-label="上一頁">‹</button>
+<button class="nav-arrow next hide" id="arrNext" onclick="albNext()" aria-label="下一頁">›</button>
+<div class="cover-ov" id="coverOv" onclick="albStart()">
+<div class="meta" id="coverMeta"></div>
+<button class="enter-btn" onclick="event.stopPropagation();albStart()">開始翻閱 →</button>
+</div>
+<div class="flip-hint gone" id="flipHint">← → 翻頁，或點兩側箭頭</div>
+</div>
+<div class="dots" id="dots"></div>
+<div class="viewer-foot" id="viewerFoot" style="display:none">
+<button onclick="albCover()">↺ 回封面</button>
+</div>
+</div>
+</section>
+
+<footer class="foot">
+<div style="margin-bottom:14px;font-size:.95rem">BNI 富真白金分會・高雄・每週五清晨 ｜ <a href="https://line.me/ti/p/8bgrVHyVXQ" target="_blank">加入招集人 LINE</a></div>
+<div class="signature">Powered by <a href="https://awoo.ai" target="_blank" class="awoo-logo"><img src="https://lh3.googleusercontent.com/pw/AP1GczMZZWr30_dY1Ke-Bi8Y5xkmHCR6LbpulIszDS4CBY-83hv8qlFlMUYq0BIpRHWnb-ECK73QEhMme3wZrk8MBJFjJ2AYBa13o6MtY0i6yliFbayXMCTZZ5f0kLXkpqh1nv0HMPKvDTGyUN8a_OQhNpkh6A=w451-h159-s-no-gm?authuser=0" alt="awoo 阿物科技官網"></a><a href="https://www.triplew.tw/tsai" target="_blank" data-text="蔡阿達" class="ada-link" onmouseover="adaGlitch(this,true)" onmouseout="adaGlitch(this,false)">蔡阿達</a><span class="sig-tail">| Crafted with Precision and Innovation</span></div>
+</footer>
+
+<div class="toast" id="toast">已複製到剪貼簿 ✓</div>
+<button class="back-top" id="backTop" onclick="toTop()" title="回到頁首" aria-label="回到頁首">↑</button>
+
+<div class="lbx" id="lbx" onclick="if(event.target===this)closeLbx()"><button class="lbx-close" onclick="closeLbx()">✕</button><div class="lbx-in"><img id="lbxImg" src=""><div class="lbx-cap" id="lbxCap"></div><div class="lbx-btns"><button onclick="dlEdm()">📥 下載 EDM</button><button class="sec" onclick="shareEdm()">📤 更多分享</button></div></div></div>
+
+<script>
+/* ============ EDM 三層（沿用既有邏輯：依今天日期算上/本/下週）============ */
+let EDM_SCHEDULE=null,VIEW_DATE=null;
+/* === 主題簡報專文連結：自動向咖啡鄉查詢，不需要手動維護 ===
+   來源＝咖啡鄉「BNI 主題簡報」分類（id 380）；用文章上的「講者姓名」標籤對應。
+   任何一步失敗就靜默略過，官網維持原樣。 */
+const KFX_FEED='https://www.triplew.tw/wp-json/wp/v2/posts?categories=380&per_page=100&_embed=wp:term&_fields=link,title,date,_links,_embedded';
+const KFX_ALIAS={'湘湘_Vita':'徐湘榆','簡湘怡 Ivy':'簡湘怡','Mario':'鄭景隆','蔡阿達':'蔡俊達','棋翌博士':'張棋翌'};
+let ARTICLE_IDX=null;
+async function loadArticleIndex(){
+  if(ARTICLE_IDX) return ARTICLE_IDX;
+  try{const c=sessionStorage.getItem('bniArtIdx2'); if(c){ARTICLE_IDX=JSON.parse(c); return ARTICLE_IDX;}}catch(e){}
+  try{
+    const r=await fetch(KFX_FEED,{cache:'no-store'});
+    if(!r.ok) throw new Error(r.status);
+    const idx={};
+    (await r.json()).forEach(p=>{
+      const groups=(p._embedded&&p._embedded['wp:term'])||[];
+      groups.forEach(g=>g.forEach(t=>{
+        if(t.taxonomy!=='post_tag') return;
+        (idx[t.name]=idx[t.name]||[]).push({
+          u:p.link,
+          t:(p.title&&p.title.rendered||'').replace(/<[^>]+>/g,''),
+          d:String(p.date||'').slice(0,10)
+        });
+      }));
+    });
+    Object.keys(idx).forEach(k=>idx[k].sort((a,b)=>String(b.d).localeCompare(String(a.d))));
+    ARTICLE_IDX=idx;
+    try{sessionStorage.setItem('bniArtIdx2',JSON.stringify(idx));}catch(e){}
+  }catch(e){ ARTICLE_IDX={}; }
+  return ARTICLE_IDX;
+}
+function findArticles(name){
+  const i=ARTICLE_IDX||{};
+  for(const k of [name, KFX_ALIAS[name], String(name||'').split(/[ _]/)[0]])
+    if(k&&i[k]&&i[k].length) return i[k];
+  return [];
+}
+async function fillArticleLinks(){
+  try{ await loadArticleIndex(); }catch(e){ ARTICLE_IDX=ARTICLE_IDX||{}; }
+  document.querySelectorAll('[data-speaker]').forEach(el=>{
+    if(el.querySelector('.edm-art')) return;
+    const iso=el.dataset.date||'';
+    const items=[];
+    if(el.dataset.article){
+      items.push({u:el.dataset.article,t:'',lab:'\u{1F464} 專業介紹 \u2197'});
+    }else{
+      const all=findArticles(el.dataset.speaker);
+      /* 發布日在上台日之後＝為這場簡報寫的；之前＝早就寫好的專業介紹 */
+      const talk=all.filter(a=>iso&&String(a.d)>=iso);
+      const prof=all.filter(a=>!iso||String(a.d)<iso);
+      if(talk[0]) items.push({u:talk[0].u,t:talk[0].t,lab:'\u{1F4C4} 這場主題簡報的專文 \u2197'});
+      if(prof[0]) items.push({u:prof[0].u,t:prof[0].t,lab:'\u{1F464} 他的專業介紹 \u2197'});
+    }
+    items.forEach(it=>{
+      const link=document.createElement('a');
+      link.className='edm-art'; link.href=it.u; link.target='_blank'; link.rel='noopener';
+      link.title=it.t; link.textContent=it.lab;
+      link.addEventListener('click',e=>e.stopPropagation());
+      el.appendChild(link);
+    });
+  });
+}
+function getUpcomingEdmsFrom(refDate){
+  if(!EDM_SCHEDULE||!EDM_SCHEDULE.schedule)return[];
+  return EDM_SCHEDULE.schedule.filter(x=>x.date>=refDate).sort((a,b)=>a.date.localeCompare(b.date));
+}
+function getPastEdmBefore(refDate){
+  if(!EDM_SCHEDULE||!EDM_SCHEDULE.schedule)return null;
+  const past=EDM_SCHEDULE.schedule.filter(x=>x.date<refDate).sort((a,b)=>a.date.localeCompare(b.date));
+  return past.length?past[past.length-1]:null;
+}
+async function bootstrap(){
+  const urlWeek=new URLSearchParams(location.search).get('week');
+  if(urlWeek&&/^\d{4}-\d{2}-\d{2}$/.test(urlWeek))VIEW_DATE=urlWeek;
+  window.addEventListener('popstate',function(){
+    const w=new URLSearchParams(location.search).get('week');
+    VIEW_DATE=(w&&/^\d{4}-\d{2}-\d{2}$/.test(w))?w:null;
+    renderEdm();highlightWk();
+  });
+  try{
+    EDM_SCHEDULE=await fetch('data/edm-schedule.json',{cache:'no-store'}).then(r=>r.json());
+    renderEdm();
+    buildWeekPicker();
+  }catch(e){
+    console.error(e);
+    document.getElementById('feat').innerHTML='<div style="color:#ff6b5b;padding:20px;max-width:700px;background:rgba(255,107,91,.1);border:1px solid #ff6b5b;border-radius:8px;font-family:monospace;line-height:1.8"><b style="font-size:1.1rem">⚠️ EDM 資料載入失敗</b><br><br>'+e.message+'<br><br>請確認 GitHub data/edm-schedule.json 存在</div>';
+  }
+  initAlbum();
+}
+/* 把 2026-09-11 轉成中文星期；new Date(y,m,d) 走本地時區，不會有 UTC 位移 */
+function fmtDate(iso){
+  const W=['日','一','二','三','四','五','六'], E=['SUN','MON','TUE','WED','THU','FRI','SAT'];
+  const p=String(iso||'').split('-');
+  if(p.length<3) return {iso:'',md:'',wd:'',en:'',short:'',full:''};
+  const d=new Date(+p[0], +p[1]-1, +p[2]);
+  const md=p[1]+'.'+p[2];
+  return { iso:iso, md:md, wd:'星期'+W[d.getDay()], en:E[d.getDay()],
+           short:md+'　週'+W[d.getDay()],
+           full:p[0]+'.'+md };
+}
+function renderEdm(){
+  const today=new Date().toISOString().split('T')[0];
+  const refDate=VIEW_DATE||today;
+  updateWkBanner();
+  const upcoming=getUpcomingEdmsFrom(refDate);
+  const pastEdm=getPastEdmBefore(refDate);
+  const thisWeekEdm=upcoming.length?upcoming[0]:null;
+  const nextWeekData=upcoming.length>1?upcoming[1]:null;
+  const wkDisplay=thisWeekEdm?thisWeekEdm.date.replace(/-/g,'.'):(pastEdm?pastEdm.date.replace(/-/g,'.'):'');
+  document.getElementById('week').textContent=wkDisplay?('WEEK OF · '+wkDisplay):'WEEK OF';
+  const featured=thisWeekEdm?thisWeekEdm.speakers:[];
+  const DW=fmtDate(thisWeekEdm?thisWeekEdm.date:'');
+  window.__WEEK_D=thisWeekEdm?thisWeekEdm.date:'';
+  document.getElementById('feat').innerHTML=featured.map((f,i)=>`<div class="edm-card" onclick="openLbxWeek(${i})"><img src="${f.edm}" alt="${f.name} ${f.industry}" onerror="this.onerror=null;this.src='data:image/svg+xml;charset=utf-8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22420%22 height=%22280%22><rect width=%22420%22 height=%22280%22 fill=%22%230a1f3d%22/><text x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22 fill=%22%23d4ab5d%22 font-size=%2218%22 font-family=%22serif%22>EDM 圖片未載入</text></svg>'"><div class="edm-meta" data-speaker="${f.name}" data-article="${f.article||''}" data-date="${DW.iso}"><div class="edm-date"><span class="dd">${DW.md}</span><span class="wd">${DW.wd}</span><span class="en">${DW.en}</span></div><div class="t">本週主題簡報・${f.name}</div><div class="s">${f.industry}</div></div></div>`).join('');
+  window.__WEEK=featured;
+  const heroNext=document.getElementById('heroNext');
+  let nextHtml='<div class="next-inner tri">';
+  if(pastEdm&&pastEdm.speakers&&pastEdm.speakers.length){
+    const dt=pastEdm.date.replace(/-/g,'.');
+    nextHtml+='<div class="tri-col past"><div class="tri-label">上週主題簡報 · '+dt+'</div><div class="tri-grid">'+
+      pastEdm.speakers.map((f,i)=>'<div class="next-item" onclick="openLbxPast('+i+')"><img src="'+f.edm+'" alt="'+f.name+'"><div class="cap" data-speaker="'+f.name+'" data-article="'+(f.article||'')+'" data-date="'+pastEdm.date+'"><span class="nd">'+fmtDate(pastEdm.date).short+'</span><b>'+f.name+'</b>'+f.industry+'</div></div>').join('')+
+      '</div></div>';
+    window.__PAST=pastEdm.speakers;window.__PAST_D=pastEdm.date;
+  }
+  if(nextWeekData&&nextWeekData.speakers&&nextWeekData.speakers.length){
+    const dt=(nextWeekData.date||'').replace(/-/g,'.');
+    nextHtml+='<div class="tri-col next"><div class="tri-label">下週主題簡報 · '+dt+'</div><div class="tri-grid">'+
+      nextWeekData.speakers.map((f,i)=>'<div class="next-item" onclick="openLbx('+i+')"><img src="'+f.edm+'" alt="'+f.name+'"><div class="cap" data-speaker="'+f.name+'" data-article="'+(f.article||'')+'" data-date="'+nextWeekData.date+'"><span class="nd">'+fmtDate(nextWeekData.date).short+'</span><b>'+f.name+'</b>'+f.industry+'</div></div>').join('')+
+      '</div></div>';
+    window.__NEXT=nextWeekData.speakers;window.__NEXT_D=nextWeekData.date;
+  }
+  nextHtml+='</div>';
+  heroNext.innerHTML=(pastEdm||nextWeekData)?nextHtml:'';
+  fillArticleLinks();
+}
+
+/* ---- 切換週次（讓訪客回看過去每一週的 EDM 狀態）---- */
+function buildWeekPicker(){
+  if(!EDM_SCHEDULE||!EDM_SCHEDULE.schedule)return;
+  const weeks=EDM_SCHEDULE.schedule.slice().sort((a,b)=>b.date.localeCompare(a.date));
+  let html='<button class="wk-item" data-reset="1" onclick="resetWeek()">📍 回到本週（依今天）</button>';
+  html+=weeks.map((w,i)=>{
+    const names=(w.speakers||[]).map(s=>s.name).join('、');
+    const latest=i===0?'<span class="latest">最新</span>':'';
+    return '<button class="wk-item" data-date="'+w.date+'" onclick="selectWeek(\''+w.date+'\')"><span class="d">'+w.date+'</span>'+latest+'<span class="s">'+names+'</span></button>';
+  }).join('');
+  document.getElementById('wkMenu').innerHTML=html;
+  highlightWk();
+}
+function highlightWk(){
+  document.querySelectorAll('.wk-item').forEach(el=>{
+    if(el.dataset.reset)el.classList.toggle('current',!VIEW_DATE);
+    else el.classList.toggle('current',el.dataset.date===VIEW_DATE);
+  });
+}
+function toggleWeekPicker(){document.getElementById('wkMenu').classList.toggle('on')}
+function closeWeekPicker(){document.getElementById('wkMenu').classList.remove('on')}
+document.addEventListener('click',e=>{if(!e.target.closest('.wkpick'))closeWeekPicker()});
+function selectWeek(date){VIEW_DATE=date;history.pushState(null,'','?week='+date);renderEdm();highlightWk();closeWeekPicker();window.scrollTo({top:0,behavior:'smooth'})}
+function resetWeek(){VIEW_DATE=null;history.pushState(null,'',location.pathname);renderEdm();highlightWk();closeWeekPicker();window.scrollTo({top:0,behavior:'smooth'})}
+function updateWkBanner(){
+  const b=document.getElementById('wkBanner');if(!b)return;
+  if(VIEW_DATE){b.innerHTML='<b>📅 你正在瀏覽 '+VIEW_DATE+' 的當週狀態</b><button onclick="resetWeek()">回到本週 →</button>';b.classList.add('on')}
+  else b.classList.remove('on');
+}
+
+/* ============ 成功見證相簿（讀 data/clips-order.txt）============ */
+const CAT_ACCENT={'個人收穫':'#d4ab5d','引薦成交':'#e0954e','一對一商務連結':'#6fb7c9','新會員見證':'#8fbf8a','培訓成長':'#a892d6'};
+let ALBUM=[],CUR=0,_hinted=false;
+async function initAlbum(){
+  let txt='';
+  try{txt=await fetch('data/clips-order.txt',{cache:'no-store'}).then(r=>r.text());}
+  catch(e){document.getElementById('albumSub').textContent='見證相簿載入失敗，請確認 data/clips-order.txt';return;}
+  let curCat=null;
+  txt.split(/\r?\n/).forEach(raw=>{
+    const line=raw.trim();
+    if(!line||line[0]==='#')return;
+    const m=line.match(/^【(.+)】$/);
+    if(m){curCat=m[1];return;}
+    ALBUM.push({file:line,cat:curCat});
+  });
+  if(!ALBUM.length){document.getElementById('albumSub').textContent='相簿尚無圖片';return;}
+  ALBUM[0].cover=true;
+  const cats={};
+  ALBUM.forEach((p,i)=>{if(i===0)return;(cats[p.cat]=cats[p.cat]||[]).push(p)});
+  Object.values(cats).forEach(arr=>arr.forEach((p,j)=>{p.idx=j+1;p.total=arr.length}));
+  const stories=ALBUM.length-1,catCount=Object.keys(cats).length;
+  const subTxt='高雄 BNI 富真白金分會 · '+stories+' 個成功見證 · '+catCount+' 大面向';
+  document.getElementById('albumSub').textContent=subTxt;
+  document.getElementById('coverMeta').textContent=stories+' 個成功見證 · '+catCount+' 大面向';
+  buildDots();bindSwipe();
+  ALBUM.forEach(p=>{const im=new Image();im.src='clips/'+encodeURIComponent(p.file)});
+  showAlbum(0);
+}
+function buildDots(){
+  let html='',prev=null;
+  ALBUM.forEach((p,i)=>{
+    if(i>0&&prev!==null&&p.cat!==prev)html+='<span class="sep"></span>';
+    const ac=p.cover?'#d4ab5d':(CAT_ACCENT[p.cat]||'#d4ab5d');
+    html+='<button data-i="'+i+'" style="--dca:'+ac+'" onclick="showAlbum('+i+')" title="'+(p.cover?'封面':p.cat)+'"></button>';
+    if(i>0)prev=p.cat;
+  });
+  document.getElementById('dots').innerHTML=html;
+}
+function showAlbum(i){
+  if(i<0||i>=ALBUM.length)return;
+  CUR=i;const p=ALBUM[i];
+  const stage=document.getElementById('stage'),img=document.getElementById('albumImg');
+  const src='clips/'+encodeURIComponent(p.file);
+  stage.classList.add('fading');
+  const tmp=new Image();
+  const done=()=>{img.src=src;stage.classList.remove('fading')};
+  tmp.onload=done;tmp.onerror=done;tmp.src=src;
+  const isCover=!!p.cover;
+  document.getElementById('coverOv').classList.toggle('hide',!isCover);
+  document.getElementById('badge').classList.toggle('hide',isCover);
+  document.getElementById('counter').classList.toggle('hide',isCover);
+  document.getElementById('arrPrev').classList.toggle('hide',isCover);
+  document.getElementById('arrNext').classList.toggle('hide',isCover);
+  document.getElementById('viewerFoot').style.display=isCover?'none':'flex';
+  if(!isCover){
+    const ac=CAT_ACCENT[p.cat]||'#d4ab5d';
+    const badge=document.getElementById('badge');
+    badge.style.setProperty('--bdg',ac);
+    document.getElementById('bdgCat').textContent=p.cat||'';
+    document.getElementById('bdgProg').textContent=(p.total>1)?(p.idx+' / '+p.total):'';
+    badge.classList.remove('flash');void badge.offsetWidth;badge.classList.add('flash');
+    document.getElementById('counter').textContent=i+' / '+(ALBUM.length-1);
+    document.getElementById('arrPrev').disabled=false;
+    document.getElementById('arrNext').disabled=(i>=ALBUM.length-1);
+    if(i===1&&!_hinted){_hinted=true;const h=document.getElementById('flipHint');h.classList.remove('gone');setTimeout(()=>h.classList.add('gone'),2800)}
+  }
+  document.querySelectorAll('.dots button').forEach(b=>b.classList.toggle('active',+b.dataset.i===i));
+}
+function albStart(){showAlbum(1)}
+function albCover(){showAlbum(0)}
+function albPrev(){showAlbum(CUR-1)}
+function albNext(){showAlbum(CUR+1)}
+function goAlbum(){document.getElementById('album').scrollIntoView({behavior:'smooth'})}
+let _tsx=null;
+function bindSwipe(){
+  const s=document.getElementById('stage');
+  s.addEventListener('touchstart',e=>{_tsx=e.changedTouches[0].clientX},{passive:true});
+  s.addEventListener('touchend',e=>{
+    if(_tsx===null)return;const dx=e.changedTouches[0].clientX-_tsx;_tsx=null;
+    if(Math.abs(dx)<40)return;
+    if(dx<0){if(CUR===0)albStart();else albNext()}else{albPrev()}
+  },{passive:true});
+}
+document.addEventListener('keydown',e=>{
+  if(document.getElementById('lbx').classList.contains('on'))return;
+  const a=document.getElementById('album');if(!a)return;
+  const r=a.getBoundingClientRect();
+  if(!(r.top<window.innerHeight*0.6&&r.bottom>0))return;
+  if(e.key==='ArrowRight'){if(CUR===0)albStart();else albNext()}
+  else if(e.key==='ArrowLeft'){albPrev()}
+});
+
+/* ============ 共用：回頂、toast、簽名特效 ============ */
+function toTop(){window.scrollTo({top:0,behavior:'smooth'})}
+window.addEventListener('scroll',()=>{const bt=document.getElementById('backTop');if(!bt)return;if(window.scrollY>window.innerHeight*0.8)bt.classList.add('on');else bt.classList.remove('on')});
+function toast(msg){const el=document.getElementById('toast');el.textContent=msg;el.classList.add('on');setTimeout(()=>el.classList.remove('on'),2000)}
+function adaGlitch(el,on){
+  if(on){const txt=el.getAttribute('data-text');const chars='█▓▒░_';
+    el.glitchInterval=setInterval(()=>{let s='';for(let i=0;i<txt.length;i++){s+=Math.random()>0.9?chars[Math.floor(Math.random()*chars.length)]:txt[i]}el.innerText=s},80);
+  }else{clearInterval(el.glitchInterval);el.glitchInterval=null;el.innerText=el.getAttribute('data-text')}
+}
+
+/* ============ EDM 燈箱 ============ */
+let _LBX=null;
+function openLbxPast(i){if(window.__PAST)showLbx(window.__PAST[i],'上週主題簡報・',window.__PAST_D)}
+function openLbx(i){if(window.__NEXT)showLbx(window.__NEXT[i],'下週主題簡報・',window.__NEXT_D)}
+function openLbxWeek(i){if(window.__WEEK)showLbx(window.__WEEK[i],'本週主題簡報・',window.__WEEK_D)}
+function showLbx(f,prefix,iso){
+  if(!f)return;_LBX=f;
+  document.getElementById('lbxImg').src=f.edm;
+  const D=fmtDate(iso);
+  document.getElementById('lbxCap').innerHTML=(D.full?'<span class="ld">'+D.full+'　'+D.wd+'</span>':'')+'<b>'+(prefix||'')+f.name+'</b>'+f.industry;
+  document.getElementById('lbx').classList.add('on');document.body.style.overflow='hidden';
+}
+function closeLbx(){document.getElementById('lbx').classList.remove('on');document.body.style.overflow='';_LBX=null}
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeLbx()});
+function dlEdm(){if(!_LBX)return;const a=document.createElement('a');a.href=_LBX.edm;a.download=_LBX.edm.split('/').pop();a.click()}
+async function shareEdm(){
+  if(!_LBX)return;
+  const txt='📅 BNI 富真白金分會・'+_LBX.name+'｜'+_LBX.industry+'\n'+window.location.href;
+  if(navigator.share&&navigator.canShare){
+    try{const r=await fetch(_LBX.edm);const b=await r.blob();const fn=_LBX.edm.split('/').pop();const file=new File([b],fn,{type:b.type});
+      if(navigator.canShare({files:[file]})){await navigator.share({files:[file],text:txt});return}}catch(e){}
+  }
+  if(navigator.share){try{await navigator.share({text:txt});return}catch(e){if(e.name==='AbortError')return}}
+  try{await navigator.clipboard.writeText(txt);toast('圖片網址已複製，可貼到任何 App ✓')}catch(e){toast('請長按圖片另存或複製網址')}
+}
+
+bootstrap();
+</script>
+
+<!-- LINE@ 浮動按鈕：進站自動彈出打字對話框。CSS/JS 壓單行避免被前端處理弄壞 -->
+<style>.fzl-wrap{position:fixed;right:22px;bottom:22px;z-index:99999;font-family:inherit}.fzl-fab{width:60px;height:60px;border-radius:50%;background:#06C755;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 18px rgba(6,199,85,.42),0 2px 6px rgba(0,0,0,.2);transition:transform .25s;margin-left:auto;padding:0;position:relative}.fzl-fab:hover{transform:scale(1.07)}.fzl-fab svg{width:34px;height:34px}.fzl-fab::after{content:"";position:absolute;inset:0;border-radius:50%;animation:fzlP 2.6s infinite}@keyframes fzlP{0%{box-shadow:0 0 0 0 rgba(6,199,85,.5)}70%{box-shadow:0 0 0 16px rgba(6,199,85,0)}100%{box-shadow:0 0 0 0 rgba(6,199,85,0)}}.fzl-panel{width:318px;max-width:calc(100vw - 44px);background:#fff;border-radius:16px;box-shadow:0 14px 44px rgba(0,0,0,.28);overflow:hidden;margin-bottom:14px;opacity:0;transform:translateY(14px) scale(.96);pointer-events:none;transition:opacity .3s,transform .3s}.fzl-panel.on{opacity:1;transform:none;pointer-events:auto}.fzl-head{background:#06C755;color:#fff;padding:13px 16px;display:flex;align-items:center;gap:10px}.fzl-head .av{width:34px;height:34px;border-radius:50%;background:#fff;color:#06C755;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:16px;flex-shrink:0}.fzl-head .nm{font-weight:700;font-size:16px;line-height:1.3}.fzl-head .st{font-size:13px;opacity:.9;line-height:1.3}.fzl-head .x{margin-left:auto;background:none;border:none;color:#fff;font-size:22px;line-height:1;cursor:pointer;opacity:.85;padding:0 2px}.fzl-body{padding:16px;background:#8CABD8}.fzl-bubble{background:#fff;border-radius:4px 16px 16px 16px;padding:13px 15px;font-size:16px;line-height:1.85;color:#222;min-height:110px;text-align:left}.fzl-caret{display:inline-block;width:2px;height:17px;background:#06C755;vertical-align:-3px;animation:fzlB 1s step-end infinite}@keyframes fzlB{50%{opacity:0}}.fzl-cta{display:block;margin:14px 16px 16px;background:#06C755;color:#fff!important;text-align:center;padding:13px;border-radius:10px;font-weight:700;font-size:16px;text-decoration:none!important;opacity:0;pointer-events:none;transition:opacity .35s}.fzl-cta.on{opacity:1;pointer-events:auto}@media(max-width:480px){.fzl-wrap{right:16px;bottom:16px}.fzl-fab{width:54px;height:54px}}</style>
+<div class="fzl-wrap">
+  <div class="fzl-panel" id="fzlPanel">
+    <div class="fzl-head"><div class="av">達</div><div><div class="nm">awoo 蔡阿達</div><div class="st">行銷開店產業鏈招集人</div></div><button class="x" id="fzlX" aria-label="關閉">&times;</button></div>
+    <div class="fzl-body"><div class="fzl-bubble"><span id="fzlTxt"></span><span class="fzl-caret" id="fzlCaret"></span></div></div>
+    <a class="fzl-cta" id="fzlCta" href="https://line.me/ti/p/8bgrVHyVXQ" target="_blank" rel="noopener">加 LINE 跟我聊聊 →</a>
+  </div>
+  <button class="fzl-fab" id="fzlFab" aria-label="加 awoo 蔡阿達的 LINE"><svg viewBox="0 0 24 24" fill="#fff" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.48 2 2 5.72 2 10.3c0 4.1 3.55 7.53 8.35 8.18.32.07.77.22.88.5.1.25.07.65.03.9l-.14.85c-.04.25-.2.98.86.53 1.06-.44 5.72-3.37 7.8-5.77C21.2 13.9 22 12.2 22 10.3 22 5.72 17.52 2 12 2zM7.75 13.2H5.76a.53.53 0 0 1-.53-.53V8.7c0-.29.24-.53.53-.53s.53.24.53.53v3.44h1.46c.29 0 .53.24.53.53s-.24.53-.53.53zm2.08-.53a.53.53 0 0 1-1.06 0V8.7a.53.53 0 0 1 1.06 0v3.97zm4.79 0a.53.53 0 0 1-.36.5.55.55 0 0 1-.17.03.53.53 0 0 1-.43-.21l-2.04-2.77v2.45a.53.53 0 0 1-1.06 0V8.7c0-.23.15-.43.36-.5a.53.53 0 0 1 .6.18l2.04 2.78V8.7a.53.53 0 0 1 1.06 0v3.97zm3.2-2.51c.29 0 .53.24.53.53s-.24.53-.53.53h-1.46v.93h1.46c.29 0 .53.23.53.52s-.24.53-.53.53h-1.99a.53.53 0 0 1-.53-.53V8.7c0-.29.24-.53.53-.53h1.99c.29 0 .53.24.53.53s-.24.53-.53.53h-1.46v.93h1.46z"/></svg></button>
+</div>
+<script>(function(){var M="嗨，我是 awoo 蔡阿達，BNI 富真白金分會行銷開店產業鏈招集人。不論您是想認識這裡的某位夥伴、手上有需求想找人幫忙，還是想來看看我們每週五早上在做什麼，都歡迎直接跟我說。",p=document.getElementById("fzlPanel"),f=document.getElementById("fzlFab"),x=document.getElementById("fzlX"),t=document.getElementById("fzlTxt"),c=document.getElementById("fzlCaret"),a=document.getElementById("fzlCta"),done=false,tm=null,K="fzl_line_seen";function ty(){if(done)return;done=true;t.textContent="";a.classList.remove("on");c.style.display="inline-block";var i=0;clearInterval(tm);tm=setInterval(function(){t.textContent=M.slice(0,++i);if(i>=M.length){clearInterval(tm);c.style.display="none";a.classList.add("on");}},50);}function op(){p.classList.add("on");setTimeout(ty,260);}f.addEventListener("click",function(){if(p.classList.contains("on")){p.classList.remove("on");}else{done=false;op();}});function seen(){try{return localStorage.getItem(K)==="1";}catch(e){return false;}}function mark(){try{localStorage.setItem(K,"1");}catch(e){}}x.addEventListener("click",function(e){e.stopPropagation();p.classList.remove("on");mark();});/* 只有第一次造訪會自動跳出；關閉或看過一次之後就不再自動彈，右下角按鈕仍可隨時手動開啟 */if(!seen()){setTimeout(function(){op();mark();},1600);}})();</script>
+</body></html>
