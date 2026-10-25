@@ -117,12 +117,12 @@
     },
     {
       "source": "/edm/2026-10-23-%E5%91%A8%E6%96%B9%E8%8C%9C-%E6%9D%8F%E4%BB%81%E8%8A%B1%E7%94%9F%E9%85%A5%E7%B3%96.png",
-      "destination": "/edm/2026-10-23-%E5%91%A8%E6%96%B9%E8%8C%9C-%E6%9D%8F%E4%BB%81%E8%8A%B1%E7%94%9F%E9%85%A5%E7%B3%96.jpg",
+      "destination": "/edm/2026-12-11-%E5%91%A8%E6%96%B9%E8%8C%9C-%E6%9D%8F%E4%BB%81%E8%8A%B1%E7%94%9F%E9%85%A5%E7%B3%96.jpg",
       "permanent": true
     },
     {
       "source": "/edm/2026-10-23-%E8%94%A1%E9%98%BF%E9%81%94-SEO%EF%BC%8FGEO%20%E5%B0%88%E6%A5%AD%E6%8A%80%E8%A1%93%E5%9C%98%E9%9A%8A.png",
-      "destination": "/edm/2026-10-23-%E8%94%A1%E9%98%BF%E9%81%94-SEO%EF%BC%8FGEO%20%E5%B0%88%E6%A5%AD%E6%8A%80%E8%A1%93%E5%9C%98%E9%9A%8A.jpg",
+      "destination": "/edm/2026-12-11-%E8%94%A1%E9%98%BF%E9%81%94-SEO%EF%BC%8FGEO%20%E5%B0%88%E6%A5%AD%E6%8A%80%E8%A1%93%E5%9C%98%E9%9A%8A.jpg",
       "permanent": true
     },
     {
@@ -484,6 +484,16 @@
       "source": "/members/%E8%94%A1%E9%98%BF%E9%81%94/index.html",
       "destination": "/members/ada-tsai/",
       "statusCode": 301
+    },
+    {
+      "source": "/edm/2026-10-23-%E5%91%A8%E6%96%B9%E8%8C%9C-%E6%9D%8F%E4%BB%81%E8%8A%B1%E7%94%9F%E9%85%A5%E7%B3%96.jpg",
+      "destination": "/edm/2026-12-11-%E5%91%A8%E6%96%B9%E8%8C%9C-%E6%9D%8F%E4%BB%81%E8%8A%B1%E7%94%9F%E9%85%A5%E7%B3%96.jpg",
+      "permanent": true
+    },
+    {
+      "source": "/edm/2026-10-23-%E8%94%A1%E9%98%BF%E9%81%94-SEO%EF%BC%8FGEO%20%E5%B0%88%E6%A5%AD%E6%8A%80%E8%A1%93%E5%9C%98%E9%9A%8A.jpg",
+      "destination": "/edm/2026-12-11-%E8%94%A1%E9%98%BF%E9%81%94-SEO%EF%BC%8FGEO%20%E5%B0%88%E6%A5%AD%E6%8A%80%E8%A1%93%E5%9C%98%E9%9A%8A.jpg",
+      "permanent": true
     }
   ]
 }
