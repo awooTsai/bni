@@ -494,6 +494,526 @@
       "source": "/edm/2026-10-23-%E8%94%A1%E9%98%BF%E9%81%94-SEO%EF%BC%8FGEO%20%E5%B0%88%E6%A5%AD%E6%8A%80%E8%A1%93%E5%9C%98%E9%9A%8A.jpg",
       "destination": "/edm/2026-12-11-%E8%94%A1%E9%98%BF%E9%81%94-SEO%EF%BC%8FGEO%20%E5%B0%88%E6%A5%AD%E6%8A%80%E8%A1%93%E5%9C%98%E9%9A%8A.jpg",
       "permanent": true
+    },
+    {
+      "source": "/talks/li-ying-juan",
+      "destination": "/talks/lawyer/",
+      "statusCode": 301
+    },
+    {
+      "source": "/talks/li-ying-juan/",
+      "destination": "/talks/lawyer/",
+      "statusCode": 301
+    },
+    {
+      "source": "/talks/lin-yu-shao",
+      "destination": "/talks/hvac/",
+      "statusCode": 301
+    },
+    {
+      "source": "/talks/lin-yu-shao/",
+      "destination": "/talks/hvac/",
+      "statusCode": 301
+    },
+    {
+      "source": "/talks/qiu-jia-li",
+      "destination": "/talks/insurance/",
+      "statusCode": 301
+    },
+    {
+      "source": "/talks/qiu-jia-li/",
+      "destination": "/talks/insurance/",
+      "statusCode": 301
+    },
+    {
+      "source": "/talks/chen-heng-feng",
+      "destination": "/talks/software/",
+      "statusCode": 301
+    },
+    {
+      "source": "/talks/chen-heng-feng/",
+      "destination": "/talks/software/",
+      "statusCode": 301
+    },
+    {
+      "source": "/talks/chen-jing-shen",
+      "destination": "/talks/painting/",
+      "statusCode": 301
+    },
+    {
+      "source": "/talks/chen-jing-shen/",
+      "destination": "/talks/painting/",
+      "statusCode": 301
+    },
+    {
+      "source": "/talks/ada-tsai",
+      "destination": "/talks/geo/",
+      "statusCode": 301
+    },
+    {
+      "source": "/talks/ada-tsai/",
+      "destination": "/talks/geo/",
+      "statusCode": 301
+    },
+    {
+      "source": "/talks/chen-zong-min",
+      "destination": "/talks/branding/",
+      "statusCode": 301
+    },
+    {
+      "source": "/talks/chen-zong-min/",
+      "destination": "/talks/branding/",
+      "statusCode": 301
+    },
+    {
+      "source": "/talks/ren-chang-ming",
+      "destination": "/talks/printing/",
+      "statusCode": 301
+    },
+    {
+      "source": "/talks/ren-chang-ming/",
+      "destination": "/talks/printing/",
+      "statusCode": 301
+    },
+    {
+      "source": "/talks/hong-yu-qi",
+      "destination": "/talks/pediatrics/",
+      "statusCode": 301
+    },
+    {
+      "source": "/talks/hong-yu-qi/",
+      "destination": "/talks/pediatrics/",
+      "statusCode": 301
+    },
+    {
+      "source": "/talks/zhang-jian-cheng-en",
+      "destination": "/talks/photography/",
+      "statusCode": 301
+    },
+    {
+      "source": "/talks/zhang-jian-cheng-en/",
+      "destination": "/talks/photography/",
+      "statusCode": 301
+    },
+    {
+      "source": "/talks/ye-ying-ting",
+      "destination": "/talks/massage/",
+      "statusCode": 301
+    },
+    {
+      "source": "/talks/ye-ying-ting/",
+      "destination": "/talks/massage/",
+      "statusCode": 301
+    },
+    {
+      "source": "/talks/chen-zhen-xin",
+      "destination": "/talks/real-estate/",
+      "statusCode": 301
+    },
+    {
+      "source": "/talks/chen-zhen-xin/",
+      "destination": "/talks/real-estate/",
+      "statusCode": 301
+    },
+    {
+      "source": "/talks/huang-jing-jie",
+      "destination": "/talks/coating/",
+      "statusCode": 301
+    },
+    {
+      "source": "/talks/huang-jing-jie/",
+      "destination": "/talks/coating/",
+      "statusCode": 301
+    },
+    {
+      "source": "/talks/xu-shi-zhu",
+      "destination": "/talks/nails/",
+      "statusCode": 301
+    },
+    {
+      "source": "/talks/xu-shi-zhu/",
+      "destination": "/talks/nails/",
+      "statusCode": 301
+    },
+    {
+      "source": "/talks/zheng-jing-long",
+      "destination": "/talks/coffee/",
+      "statusCode": 301
+    },
+    {
+      "source": "/talks/zheng-jing-long/",
+      "destination": "/talks/coffee/",
+      "statusCode": 301
+    },
+    {
+      "source": "/talks/pan-wei-ting",
+      "destination": "/talks/hr/",
+      "statusCode": 301
+    },
+    {
+      "source": "/talks/pan-wei-ting/",
+      "destination": "/talks/hr/",
+      "statusCode": 301
+    },
+    {
+      "source": "/talks/hu-shun-hua",
+      "destination": "/talks/life-insurance/",
+      "statusCode": 301
+    },
+    {
+      "source": "/talks/hu-shun-hua/",
+      "destination": "/talks/life-insurance/",
+      "statusCode": 301
+    },
+    {
+      "source": "/talks/chen-wei-han",
+      "destination": "/talks/video/",
+      "statusCode": 301
+    },
+    {
+      "source": "/talks/chen-wei-han/",
+      "destination": "/talks/video/",
+      "statusCode": 301
+    },
+    {
+      "source": "/talks/huang-shi-pin",
+      "destination": "/talks/dessert/",
+      "statusCode": 301
+    },
+    {
+      "source": "/talks/huang-shi-pin/",
+      "destination": "/talks/dessert/",
+      "statusCode": 301
+    },
+    {
+      "source": "/talks/jian-xiang-yi",
+      "destination": "/talks/travel/",
+      "statusCode": 301
+    },
+    {
+      "source": "/talks/jian-xiang-yi/",
+      "destination": "/talks/travel/",
+      "statusCode": 301
+    },
+    {
+      "source": "/talks/gao-xiang-yi",
+      "destination": "/talks/fitness/",
+      "statusCode": 301
+    },
+    {
+      "source": "/talks/gao-xiang-yi/",
+      "destination": "/talks/fitness/",
+      "statusCode": 301
+    },
+    {
+      "source": "/talks/ke-zi-kan",
+      "destination": "/talks/izakaya/",
+      "statusCode": 301
+    },
+    {
+      "source": "/talks/ke-zi-kan/",
+      "destination": "/talks/izakaya/",
+      "statusCode": 301
+    },
+    {
+      "source": "/talks/huang-rui-ren",
+      "destination": "/talks/nuts/",
+      "statusCode": 301
+    },
+    {
+      "source": "/talks/huang-rui-ren/",
+      "destination": "/talks/nuts/",
+      "statusCode": 301
+    },
+    {
+      "source": "/talks/lin-hao-han",
+      "destination": "/talks/flooring/",
+      "statusCode": 301
+    },
+    {
+      "source": "/talks/lin-hao-han/",
+      "destination": "/talks/flooring/",
+      "statusCode": 301
+    },
+    {
+      "source": "/talks/zhang-meng-zhe",
+      "destination": "/talks/demolition/",
+      "statusCode": 301
+    },
+    {
+      "source": "/talks/zhang-meng-zhe/",
+      "destination": "/talks/demolition/",
+      "statusCode": 301
+    },
+    {
+      "source": "/talks/lin-guan-ting",
+      "destination": "/talks/mattress/",
+      "statusCode": 301
+    },
+    {
+      "source": "/talks/lin-guan-ting/",
+      "destination": "/talks/mattress/",
+      "statusCode": 301
+    },
+    {
+      "source": "/talks/zheng-jun-cheng",
+      "destination": "/talks/film/",
+      "statusCode": 301
+    },
+    {
+      "source": "/talks/zheng-jun-cheng/",
+      "destination": "/talks/film/",
+      "statusCode": 301
+    },
+    {
+      "source": "/talks/li-zong-zhe",
+      "destination": "/talks/food-oem/",
+      "statusCode": 301
+    },
+    {
+      "source": "/talks/li-zong-zhe/",
+      "destination": "/talks/food-oem/",
+      "statusCode": 301
+    },
+    {
+      "source": "/talks/jiang-jun-yi",
+      "destination": "/talks/rice-cake/",
+      "statusCode": 301
+    },
+    {
+      "source": "/talks/jiang-jun-yi/",
+      "destination": "/talks/rice-cake/",
+      "statusCode": 301
+    },
+    {
+      "source": "/talks/zhang-qi-yi",
+      "destination": "/talks/carpentry/",
+      "statusCode": 301
+    },
+    {
+      "source": "/talks/zhang-qi-yi/",
+      "destination": "/talks/carpentry/",
+      "statusCode": 301
+    },
+    {
+      "source": "/talks/lin-fang-qi",
+      "destination": "/talks/emcee/",
+      "statusCode": 301
+    },
+    {
+      "source": "/talks/lin-fang-qi/",
+      "destination": "/talks/emcee/",
+      "statusCode": 301
+    },
+    {
+      "source": "/talks/xiao-yu-fei",
+      "destination": "/talks/car-leasing/",
+      "statusCode": 301
+    },
+    {
+      "source": "/talks/xiao-yu-fei/",
+      "destination": "/talks/car-leasing/",
+      "statusCode": 301
+    },
+    {
+      "source": "/talks/xu-jia-xiang",
+      "destination": "/talks/accountant/",
+      "statusCode": 301
+    },
+    {
+      "source": "/talks/xu-jia-xiang/",
+      "destination": "/talks/accountant/",
+      "statusCode": 301
+    },
+    {
+      "source": "/talks/cai-jia-cheng",
+      "destination": "/talks/kitchen/",
+      "statusCode": 301
+    },
+    {
+      "source": "/talks/cai-jia-cheng/",
+      "destination": "/talks/kitchen/",
+      "statusCode": 301
+    },
+    {
+      "source": "/talks/gu-ying-xian",
+      "destination": "/talks/logistics/",
+      "statusCode": 301
+    },
+    {
+      "source": "/talks/gu-ying-xian/",
+      "destination": "/talks/logistics/",
+      "statusCode": 301
+    },
+    {
+      "source": "/talks/qiu-yu-xin",
+      "destination": "/talks/truck/",
+      "statusCode": 301
+    },
+    {
+      "source": "/talks/qiu-yu-xin/",
+      "destination": "/talks/truck/",
+      "statusCode": 301
+    },
+    {
+      "source": "/talks/xu-jia-kai",
+      "destination": "/talks/social-media/",
+      "statusCode": 301
+    },
+    {
+      "source": "/talks/xu-jia-kai/",
+      "destination": "/talks/social-media/",
+      "statusCode": 301
+    },
+    {
+      "source": "/talks/zhong-kai-cheng",
+      "destination": "/talks/spa/",
+      "statusCode": 301
+    },
+    {
+      "source": "/talks/zhong-kai-cheng/",
+      "destination": "/talks/spa/",
+      "statusCode": 301
+    },
+    {
+      "source": "/talks/she-yan-hui",
+      "destination": "/talks/waterproofing/",
+      "statusCode": 301
+    },
+    {
+      "source": "/talks/she-yan-hui/",
+      "destination": "/talks/waterproofing/",
+      "statusCode": 301
+    },
+    {
+      "source": "/talks/lin-yu-shao-2",
+      "destination": "/talks/hvac-2/",
+      "statusCode": 301
+    },
+    {
+      "source": "/talks/lin-yu-shao-2/",
+      "destination": "/talks/hvac-2/",
+      "statusCode": 301
+    },
+    {
+      "source": "/talks/chen-zong-min-2",
+      "destination": "/talks/branding-2/",
+      "statusCode": 301
+    },
+    {
+      "source": "/talks/chen-zong-min-2/",
+      "destination": "/talks/branding-2/",
+      "statusCode": 301
+    },
+    {
+      "source": "/talks/chen-heng-feng-2",
+      "destination": "/talks/software-2/",
+      "statusCode": 301
+    },
+    {
+      "source": "/talks/chen-heng-feng-2/",
+      "destination": "/talks/software-2/",
+      "statusCode": 301
+    },
+    {
+      "source": "/talks/su-pei-lun",
+      "destination": "/talks/used-car/",
+      "statusCode": 301
+    },
+    {
+      "source": "/talks/su-pei-lun/",
+      "destination": "/talks/used-car/",
+      "statusCode": 301
+    },
+    {
+      "source": "/talks/huang-jing-jie-2",
+      "destination": "/talks/coating-2/",
+      "statusCode": 301
+    },
+    {
+      "source": "/talks/huang-jing-jie-2/",
+      "destination": "/talks/coating-2/",
+      "statusCode": 301
+    },
+    {
+      "source": "/talks/zhou-fang-qian",
+      "destination": "/talks/peanut-candy/",
+      "statusCode": 301
+    },
+    {
+      "source": "/talks/zhou-fang-qian/",
+      "destination": "/talks/peanut-candy/",
+      "statusCode": 301
+    },
+    {
+      "source": "/talks/ada-tsai-2",
+      "destination": "/talks/geo-2/",
+      "statusCode": 301
+    },
+    {
+      "source": "/talks/ada-tsai-2/",
+      "destination": "/talks/geo-2/",
+      "statusCode": 301
+    },
+    {
+      "source": "/talks/hong-yu-qi-2",
+      "destination": "/talks/pediatrics-2/",
+      "statusCode": 301
+    },
+    {
+      "source": "/talks/hong-yu-qi-2/",
+      "destination": "/talks/pediatrics-2/",
+      "statusCode": 301
+    },
+    {
+      "source": "/talks/hu-shun-hua-2",
+      "destination": "/talks/life-insurance-2/",
+      "statusCode": 301
+    },
+    {
+      "source": "/talks/hu-shun-hua-2/",
+      "destination": "/talks/life-insurance-2/",
+      "statusCode": 301
+    },
+    {
+      "source": "/talks/zhang-jian-cheng-en-2",
+      "destination": "/talks/photography-2/",
+      "statusCode": 301
+    },
+    {
+      "source": "/talks/zhang-jian-cheng-en-2/",
+      "destination": "/talks/photography-2/",
+      "statusCode": 301
+    },
+    {
+      "source": "/talks/chen-wei-han-2",
+      "destination": "/talks/video-2/",
+      "statusCode": 301
+    },
+    {
+      "source": "/talks/chen-wei-han-2/",
+      "destination": "/talks/video-2/",
+      "statusCode": 301
+    },
+    {
+      "source": "/talks/pan-wei-ting-2",
+      "destination": "/talks/hr-2/",
+      "statusCode": 301
+    },
+    {
+      "source": "/talks/pan-wei-ting-2/",
+      "destination": "/talks/hr-2/",
+      "statusCode": 301
+    },
+    {
+      "source": "/talks/huang-shi-pin-2",
+      "destination": "/talks/dessert-2/",
+      "statusCode": 301
+    },
+    {
+      "source": "/talks/huang-shi-pin-2/",
+      "destination": "/talks/dessert-2/",
+      "statusCode": 301
     }
   ]
 }
