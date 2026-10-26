@@ -997,9 +997,10 @@
 
   /* 後端是否已經能把 Logo 跟需求單寫在同一列。問不到或還沒生效就沿用舊做法（Logo 另外送一筆）。 */
   let logoSameRow = false;
+  let briefSameRow = false;   // 2026-10-27：一對一表格、想強調的內容也能寫在同一列（後端「EDM同一列」新增檔案生效後）
   fetch(SCRIPT_URL + '?ping=edm-logo')
     .then(r => r.json())
-    .then(j => { logoSameRow = !!(j && j.edmLogo === true); })
+    .then(j => { logoSameRow = !!(j && j.edmLogo === true); briefSameRow = !!(j && j.edmBrief === true); })
     .catch(() => {});
 
   function post(body) {
@@ -1035,6 +1036,11 @@
       v.logoMime = logo.mime;
       v.logoB64  = logo.b64;
     }
+    if (briefSameRow) {
+      v.o2oLink = document.getElementById('f_o2o_link').value.trim();
+      v.focus   = document.getElementById('f_focus').value.trim();
+      if (o2o) { v.o2oName = o2o.name; v.o2oMime = o2o.mime; v.o2oB64 = o2o.b64; }
+    }
 
     post(v)
     .then(() => {
@@ -1056,7 +1062,7 @@
     .then(() => {
       const link = document.getElementById('f_o2o_link').value.trim();
       const focus = document.getElementById('f_focus').value.trim();
-      if (!o2o && !link && !focus) return;
+      if (briefSameRow || (!o2o && !link && !focus)) return;
       btn.textContent = o2o ? '上傳一對一表格中…' : '送出中…';
       const extra = {
         formType: 'bni-edm',
