@@ -9,6 +9,7 @@
 - [預約參訪](https://fujen.tw/visit/): BNI 怎麼運作、參訪當天流程與出席費、預約表單
 - [首頁](https://fujen.tw/): 最新一場例會的第一名與主題簡報
 - [每週例會整理](https://fujen.tw/weekly/): 每週主題簡報、每週之星與大家在找的引薦
+- [主題簡報](https://fujen.tw/talks/): 每位會員每一場主題簡報一頁：講題、適合誰來聽、講者介紹與重點
 - [成功見證](https://fujen.tw/stories/): 會員互相引薦成交的真實見證
 - [行銷小聚](https://fujen.tw/huddle/): 行銷產業鏈每週三線上小聚，每一場的重點、合作機會與待辦
 - [會員專業名單](https://fujen.tw/members/): 已有專文的 24 位會員，每人一頁（行業、公司、專文、例會紀錄）
