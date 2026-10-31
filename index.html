@@ -82,6 +82,23 @@ nav{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.94);backdrop-f
 .quote blockquote{font-family:"Noto Serif TC",serif;font-size:clamp(26px,2.8vw,38px);line-height:1.5;font-weight:900}
 .quote blockquote b{color:var(--red)}
 .quote p{font-size:18px;color:#2c323a}
+.era2{border-top:0}.era2 .sec{padding-top:56px}
+.refstars{margin-top:48px;border-top:2px solid var(--ink);padding-top:22px}
+.refstars .rhead .k{color:var(--red);font-weight:700;font-size:16px}.refstars .rhead p{margin-top:4px;font-size:17px;color:#2c323a}
+.refstars h3{margin-top:26px;font-family:"Noto Serif TC",serif;font-size:24px;font-weight:900}
+.rgrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px;margin-top:14px}
+.rcard{display:block;text-decoration:none;color:inherit;background:#fff;border:1px solid var(--line);border-top:4px solid var(--red)}
+.rcard img{display:block;width:100%;aspect-ratio:3/2;object-fit:cover}
+.rcard .rt{padding:14px 16px 18px}.rcard .rk{color:var(--red);font-weight:700;font-size:16px}
+.rcard b{display:block;font-family:"Noto Serif TC",serif;font-size:22px;margin-top:2px}.rcard .rm{color:var(--mute);font-size:16px}
+.rcard p{margin-top:8px;font-size:16px;color:#2c323a}
+.ogrid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px;margin-top:26px}
+.ocard{display:block;text-decoration:none;color:inherit;background:#fff;border:1px solid var(--line)}
+.ocard img{display:block;width:100%;aspect-ratio:3/2;object-fit:cover}
+.ocard .ot{padding:12px 14px 16px}.ocard .must{display:inline-block;background:var(--red);color:#fff;font-weight:700;font-size:16px;padding:1px 8px}
+.ocard b{display:block;margin-top:6px;font-size:18px}.ocard p{margin-top:4px;font-size:16px;color:#2c323a;line-height:1.55}
+@media(max-width:900px){.rgrid{grid-template-columns:1fr}.ogrid{grid-template-columns:1fr 1fr}}
+@media(max-width:520px){.ogrid{grid-template-columns:1fr}}
 .mapwrap{display:grid;grid-template-columns:minmax(0,1.45fr) minmax(0,1fr);gap:40px;align-items:start;margin-top:36px}
 .map{width:100%;height:auto;display:block}
 .ln{stroke:var(--c);stroke-width:8;stroke-linecap:round;stroke-dasharray:400;stroke-dashoffset:400;animation:draw 1.1s ease-out forwards;animation-delay:var(--d)}
@@ -219,7 +236,7 @@ a{color:var(--blue)}
 .mnav a.subi{padding-left:40px;font-size:16px;color:#2c323a}
 .mnav a.on{color:var(--red);font-weight:700}}
 </style></head><body>
-<div class="air" aria-hidden="true"></div><nav class="topnav"><div class="nav"><a class="brand" href="/">BNI 富真分會</a><ul><li><a href="/about/">關於富真分會</a></li><li class="dd"><a href="/top5/">每週之星</a><div class="sub"><div><a href="/top5/">30 秒之星</a><a href="/stars/">引薦之星</a></div></div></li><li class="dd"><a href="/weekly/">每週例會</a><div class="sub"><div><a href="/weekly/">例會整理</a><a href="/one-to-one/">商機引爆</a><a href="/learn/">生意技巧</a></div></div></li><li><a href="/talks/">主題簡報</a></li><li><a href="/stories/">成功見證</a></li><li><a href="/members/">會員</a></li></ul><a class="cta" href="/visit/">預約參訪</a><button class="mtoggle" type="button" aria-label="開啟選單" aria-expanded="false" aria-controls="mnav" onclick="var o=this.getAttribute('aria-expanded')!=='true';this.setAttribute('aria-expanded',o);document.getElementById('mnav').classList.toggle('open',o)"><span></span><span></span><span></span></button></div><div class="mnav" id="mnav" onclick="if(event.target.tagName==='A'){this.classList.remove('open');var t=this.parentNode.querySelector('.mtoggle');if(t)t.setAttribute('aria-expanded','false')}"><a href="/">首頁</a><a href="/about/">關於富真分會</a><a href="/top5/">每週之星</a><a href="/top5/" class="subi">30 秒之星</a><a href="/stars/" class="subi">引薦之星</a><a href="/weekly/">每週例會</a><a href="/one-to-one/" class="subi">商機引爆</a><a href="/learn/" class="subi">生意技巧</a><a href="/talks/">主題簡報</a><a href="/stories/">成功見證</a><a href="/members/">會員</a></div><div class="led" aria-label="本週消息"><div class="track"><span>10/30 例會 30 秒之星　邱家秝・財產保險業</span><span>本週必約　鍾凱丞 × 許珈愷　11/6 同場上台：一位做產後美學，一位幫美容產業做社群</span><span>每週五早上 6:30　高雄塔木德酒店</span><span>18 條產業服務鏈・一個行業一位</span><span>引薦之星　整理中，下週起每週前三名</span><span>10/30 例會 30 秒之星　邱家秝・財產保險業</span><span>本週必約　鍾凱丞 × 許珈愷　11/6 同場上台：一位做產後美學，一位幫美容產業做社群</span><span>每週五早上 6:30　高雄塔木德酒店</span><span>18 條產業服務鏈・一個行業一位</span><span>引薦之星　整理中，下週起每週前三名</span></div></div></nav>
+<div class="air" aria-hidden="true"></div><nav class="topnav"><div class="nav"><a class="brand" href="/">BNI 富真分會</a><ul><li><a href="/about/">關於富真分會</a></li><li class="dd"><a href="/top5/">每週之星</a><div class="sub"><div><a href="/top5/">30 秒之星</a><a href="/stars/">引薦之星</a></div></div></li><li class="dd"><a href="/weekly/">每週例會</a><div class="sub"><div><a href="/weekly/">例會整理</a><a href="/one-to-one/">商機引爆</a><a href="/learn/">生意技巧</a></div></div></li><li><a href="/talks/">主題簡報</a></li><li><a href="/stories/">成功見證</a></li><li><a href="/members/">會員</a></li></ul><a class="cta" href="/visit/">預約參訪</a><button class="mtoggle" type="button" aria-label="開啟選單" aria-expanded="false" aria-controls="mnav" onclick="var o=this.getAttribute('aria-expanded')!=='true';this.setAttribute('aria-expanded',o);document.getElementById('mnav').classList.toggle('open',o)"><span></span><span></span><span></span></button></div><div class="mnav" id="mnav" onclick="if(event.target.tagName==='A'){this.classList.remove('open');var t=this.parentNode.querySelector('.mtoggle');if(t)t.setAttribute('aria-expanded','false')}"><a href="/">首頁</a><a href="/about/">關於富真分會</a><a href="/top5/">每週之星</a><a href="/top5/" class="subi">30 秒之星</a><a href="/stars/" class="subi">引薦之星</a><a href="/weekly/">每週例會</a><a href="/one-to-one/" class="subi">商機引爆</a><a href="/learn/" class="subi">生意技巧</a><a href="/talks/">主題簡報</a><a href="/stories/">成功見證</a><a href="/members/">會員</a></div><div class="led" aria-label="本週消息"><div class="track"><span>10/30 例會 30 秒之星　邱家秝・財產保險業</span><span>本週必約　鍾凱丞 × 許珈愷　11/6 同場上台：一位做產後美學，一位幫美容產業做社群</span><span>每週五早上 6:30　高雄塔木德酒店</span><span>18 條產業服務鏈・一個行業一位</span><span>引薦之星　鍾凱丞、鄭景隆</span><span>10/30 例會 30 秒之星　邱家秝・財產保險業</span><span>本週必約　鍾凱丞 × 許珈愷　11/6 同場上台：一位做產後美學，一位幫美容產業做社群</span><span>每週五早上 6:30　高雄塔木德酒店</span><span>18 條產業服務鏈・一個行業一位</span><span>引薦之星　鍾凱丞、鄭景隆</span></div></div></nav>
 
 <header class="hero">
 <div><h1><span class="nw">台灣的生意，</span><br><span class="nw">一直都靠<b>有人介紹</b>。</span></h1>
@@ -239,20 +256,29 @@ a{color:var(--blue)}
 <h2>這座城市，一直在接全世界的生意</h2>
 <img src="/img/home-timeline.webp" alt="從加工出口區的工廠、港口貨櫃，到亞灣的 AI 與演唱會的高雄插畫" width="1536" height="540" loading="lazy">
 <div class="tl"><div><b>1966</b>加工出口區，接全世界的訂單</div><div><b>港口</b>貨櫃把台灣製造送出去</div><div><b>今天</b>亞灣的 AI，和世界巡演的舞台</div></div>
-<div class="quote"><blockquote>在別的地方，<br>你約得到一個人；<br>在這裡，<b>18 條產業鏈</b><br>同時幫你留意客人。</blockquote>
-<p>每個年代的生意都不是一個人做得完的。每週五清晨，每位會員用 30 秒說清楚自己的專業，和這週需要誰；聽的人不是你的客人，而是願意把客人介紹給你的夥伴。</p></div>
 </div></section>
 
-<section class="refer"><div class="refer-in">
-<a class="refer-pic" href="/one-to-one/2026-10-30/"><img src="/one-to-one/img/1030-1p.jpg" alt="鍾凱丞（美容美體業）與許珈愷（網路社群行銷）一對一的情境照" width="1280" height="853"></a>
-<div class="refer-txt"><div class="kick">這週的引薦</div>
-<h2>鍾凱丞 × <a href="/members/xu-jia-kai/">許珈愷</a></h2>
-<p class="who">美容美體業 × 網路社群行銷</p>
-<p class="hook">11/6 同場上台：一位做產後美學，一位幫美容產業做社群</p>
-<p class="why">許珈愷這週在簡報上寫想認識連鎖餐飲與美容產業；鍾凱丞的普拉絲 SPA 正要主打產後媽媽的體態管理課程。兩人 11/6 同一場主題簡報，先聊聊彼此要找的客人，上台時也能互相幫忙介紹。</p>
-<div class="acts"><a class="cta" href="/one-to-one/2026-10-30/">看這週 12 組商機引爆</a></div>
-<p class="note">引薦之星下週起登場：每週商機引薦與感謝單引薦的前三名，會放在這裡。</p>
-</div></div></section>
+<section class="sec" id="stars">
+<div class="kick">每週之星</div>
+<h2>這週，誰最值得被介紹</h2>
+<div class="stars">
+<a class="stampwrap" href="/top5/2026-10-30/"><div class="stamp"><div class="in2">
+<img src="/top5/img/1030-t1.jpg" alt="邱家秝（財產保險業）的專業現場示意照" width="1280" height="853" loading="lazy">
+<div class="postmark" aria-hidden="true"><div>壹<small>30 秒之星</small></div></div>
+<div class="t"><div class="k">30 秒之星｜10/30 例會</div><h3>邱家秝</h3><p class="h">半夜鄰居不小心失火，燒到你家，誰來賠？</p><p class="n">財產保險業｜這週需要的引薦：房子沒有貸款的屋主，以及有兩間以上房子在出租的房東。</p></div>
+</div></div></a>
+<div class="side">
+<div class="box"><div class="k">30 秒之星・同一週</div><ul><li><a href="/top5/2026-10-30/">鍾凱丞</a><span>美容美體業</span></li><li><a href="/top5/2026-10-30/">徐詩筑</a><span>美甲業</span></li><li><a href="/top5/2026-10-30/">邱昱馨</a><span>小貨車新車銷售</span></li><li><a href="/top5/2026-10-30/">洪毓棋</a><span>兒科醫師</span></li></ul></div>
+</div></div>
+<div class="refstars"><div class="rhead"><div class="k">引薦之星｜10/30 例會</div><p>這一週內部引薦 11 張、外部引薦 17 張、感謝單 15 張。</p></div><h3>商機引薦之星</h3><div class="rgrid"><a class="rcard" href="/stars/2026-10-30/"><img src="/stars/img/1030-o1.jpg" alt="鍾凱丞商機引薦之星第 1 名的情境示意照" width="1536" height="1024" loading="lazy"><div class="rt"><span class="rk">第 1 名</span><b>鍾凱丞</b><span class="rm">3 張引薦</span><p>給 張簡承恩：介紹活動公關公司老闆（正是他簡報上想認識的對象）</p></div></a><a class="rcard" href="/stars/2026-10-30/"><img src="/stars/img/1030-o2.jpg" alt="蘇珮綸商機引薦之星第 2 名的情境示意照" width="1536" height="1024" loading="lazy"><div class="rt"><span class="rk">第 2 名</span><b>蘇珮綸</b><span class="rm">3 張引薦</span><p>給 徐詩筑：家人想做美甲</p></div></a><a class="rcard" href="/stars/2026-10-30/"><img src="/stars/img/1030-o3.jpg" alt="陳韋翰商機引薦之星第 3 名的情境示意照" width="1536" height="1024" loading="lazy"><div class="rt"><span class="rk">第 3 名</span><b>陳韋翰</b><span class="rm">2 張引薦</span><p>給 陳恒丰：客戶的系統諮詢</p></div></a></div><h3>感謝單引薦之星</h3><div class="rgrid"><a class="rcard" href="/stars/2026-10-30/"><img src="/stars/img/1030-t1.jpg" alt="鄭景隆感謝單引薦之星第 1 名的情境示意照" width="1536" height="1024" loading="lazy"><div class="rt"><span class="rk">第 1 名</span><b>鄭景隆</b><span class="rm">2 張感謝單</span><p>陳宗民 謝謝他：介紹客戶做品牌</p></div></a><a class="rcard" href="/stars/2026-10-30/"><img src="/stars/img/1030-t2.jpg" alt="徐嘉祥感謝單引薦之星第 2 名的情境示意照" width="1536" height="1024" loading="lazy"><div class="rt"><span class="rk">第 2 名</span><b>徐嘉祥</b><span class="rm">4 張感謝單</span><p>鍾凱丞 謝謝他：持續做臉部保養</p></div></a><a class="rcard" href="/stars/2026-10-30/"><img src="/stars/img/1030-t3.jpg" alt="黃靖傑感謝單引薦之星第 3 名的情境示意照" width="1536" height="1024" loading="lazy"><div class="rt"><span class="rk">第 3 名</span><b>黃靖傑</b><span class="rm">2 張感謝單</span><p>陳宗民 謝謝他：支持品牌策略服務</p></div></a></div><p class="smore"><a class="btn2" href="/stars/2026-10-30/">看引薦之星怎麼選</a></p></div>
+</section>
+
+
+
+<section class="era era2"><div class="sec">
+<div class="quote" style="margin-top:0"><blockquote>在別的地方，<br>你約得到一個人；<br>在這裡，<b>18 條產業鏈</b><br>同時幫你留意客人。</blockquote>
+<p>每個年代的生意都不是一個人做得完的。每週五清晨，每位會員用 30 秒說清楚自己的專業，和這週需要誰；聽的人不是你的客人，而是願意把客人介紹給你的夥伴。</p></div>
+</div></section>
 
 <section class="sec" id="map">
 <div class="kick">產業鏈地圖</div>
@@ -268,21 +294,12 @@ a{color:var(--blue)}
 <ul class="chains"><li style="--c:#c7861a"><b><i>01</i>設計師產業服務鏈</b><span><a href="/members/zheng-jun-cheng/">鄭汮承</a>（裝潢改色貼膜業）、章孟哲（拆除工程業）、<a href="/members/zhang-qi-yi/">張棋翌</a>（木作工程）、林昱劭（冷氣空調業）、林皓瀚（木地板）</span></li><li style="--c:#c4511f"><b><i>02</i>工程產業服務鏈</b><span>邱昱馨（小貨車新車銷售）、<a href="/members/qiu-jia-li/">邱家秝</a>（財產保險業）</span></li><li style="--c:#cf2030"><b><i>03</i>新車業務產業服務鏈</b><span>黃靖傑（車體鍍膜業）、<a href="/members/xiao-yu-fei/">蕭鈺霏</a>（汽車長租）</span></li><li style="--c:#a8326b"><b><i>04</i>業務產業服務鏈</b><span>柯子侃（日式居酒屋）、<a href="/members/huang-rui-ren/">黃瑞仁</a>（堅果食品業）、劉亦亦（手機通訊業）</span></li><li style="--c:#6f3fa0"><b><i>05</i>大健康產業服務鏈</b><span>目前從缺</span></li><li style="--c:#3a4fb5"><b><i>06</i>新居落成產業服務鏈</b><span><a href="/members/chen-zhen-xin/">陳誫昕</a>（住宅房仲業）、馬秀蓮（商用不動產）、佘彥輝（防水工程業）、<a href="/members/lin-guan-ting/">林冠廷</a>（床墊業）、<a href="/members/cai-jia-cheng/">蔡佳呈</a>（廚具業）</span></li><li style="--c:#1f6fc2"><b><i>07</i>建商代銷產業服務鏈</b><span>黃宇捷（廣告版位租賃業）</span></li><li style="--c:#13879c"><b><i>08</i>中小企業營運產業服務鏈</b><span><a href="/members/zheng-jing-long/">鄭景隆</a>（咖啡批發零售業）、<a href="/members/xu-jia-xiang/">徐嘉祥</a>（會計師）、<a href="/members/pan-wei-ting/">潘威廷</a>（勞資顧問）</span></li><li style="--c:#14806a"><b><i>09</i>高端客群產業服務鏈</b><span><a href="/members/hu-shun-hua/">胡舜華</a>（人壽保險業）、簡湘怡（海外旅遊）、<a href="/members/su-pei-lun/">蘇珮綸</a>（進口二手車）</span></li><li style="--c:#3f8a3a"><b><i>10</i>企業資訊產業服務鏈</b><span><a href="/members/chen-heng-feng/">陳恒丰</a>（資訊系統開發）</span></li><li style="--c:#7a8a1f"><b><i>11</i>質感女性產業服務鏈</b><span><a href="/members/xu-shi-zhu/">徐詩筑</a>（美甲業）、<a href="/members/gao-xiang-yi/">高祥溢</a>（私人健身教練）、鍾凱丞（美容美體業）</span></li><li style="--c:#a88a12"><b><i>12</i>幸福家庭產業服務鏈</b><span><a href="/members/li-ying-juan/">酈瀅鵑</a>（律師業）</span></li><li style="--c:#c96a4a"><b><i>13</i>兒童產業服務鏈</b><span>洪毓棋（兒科醫師）</span></li><li style="--c:#9c5a8c"><b><i>14</i>休閒食品團購產業服務鏈</b><span><a href="/members/zhou-fang-qian/">周方茜</a>（杏仁花生酥糖）、黃識頻（手工甜點業）</span></li><li style="--c:#4a5fa8"><b><i>15</i>食品工廠產業服務鏈</b><span><a href="/members/chen-zong-min/">陳宗民</a>（品牌策略顧問）、任昌明（標籤印刷業）、古英憲（物流倉儲業）</span></li><li style="--c:#2f8f80"><b><i>16</i>連鎖餐飲產業服務鏈</b><span><a href="/members/li-zong-zhe/">李宗哲</a>（常溫調理食品代工）、林敬邦（餐飲連鎖規劃）</span></li><li style="--c:#8a6a2a"><b><i>17</i>品牌行銷服務產業鏈</b><span><a href="/members/ada-tsai/">蔡阿達</a>（SEO）、<a href="/members/xu-jia-kai/">許珈愷</a>（網路社群行銷）</span></li><li style="--c:#5b6370"><b><i>18</i>活動公關產業服務鏈</b><span><a href="/members/lin-fang-qi/">林芳淇</a>（活動主持人）、張簡承恩（活動平面攝影）、<a href="/members/chen-wei-han/">陳韋翰</a>（企業形象影片）</span></li></ul>
 </section>
 
-<section class="sec" id="stars" style="padding-top:0">
-<div class="kick">每週之星</div>
-<h2>這週，誰最值得被介紹</h2>
-<div class="stars">
-<a class="stampwrap" href="/top5/2026-10-30/"><div class="stamp"><div class="in2">
-<img src="/top5/img/1030-t1.jpg" alt="邱家秝（財產保險業）的專業現場示意照" width="1280" height="853" loading="lazy">
-<div class="postmark" aria-hidden="true"><div>壹<small>30 秒之星</small></div></div>
-<div class="t"><div class="k">30 秒之星｜10/30 例會</div><h3>邱家秝</h3><p class="h">半夜鄰居不小心失火，燒到你家，誰來賠？</p><p class="n">財產保險業｜這週需要的引薦：房子沒有貸款的屋主，以及有兩間以上房子在出租的房東。</p></div>
-</div></div></a>
-<div class="side">
-<div class="box"><div class="k">30 秒之星・同一週</div><ul><li><a href="/top5/2026-10-30/">鍾凱丞</a><span>美容美體業</span></li><li><a href="/top5/2026-10-30/">徐詩筑</a><span>美甲業</span></li><li><a href="/top5/2026-10-30/">邱昱馨</a><span>小貨車新車銷售</span></li><li><a href="/top5/2026-10-30/">洪毓棋</a><span>兒科醫師</span></li></ul></div>
-<div class="box"><div class="k">引薦之星</div><h3>商機引薦・感謝單引薦</h3><span class="soon">整理中，下週起每週前三名</span></div>
-<div class="box"><div class="k">商機引爆｜10/30 例會</div><h3>鍾凱丞 × 許珈愷</h3><p>11/6 同場上台：一位做產後美學，一位幫美容產業做社群</p><p><a href="/one-to-one/2026-10-30/">看這週 12 組</a></p></div>
-</div></div>
-</section>
+<section class="sec" id="o2o" style="padding-top:0">
+<div class="kick">商機引爆｜10/30 例會</div>
+<h2>這週必約的 12 組</h2>
+<p class="lead">從每位會員想找的客戶，配出這週最值得約一對一的跨產業夥伴。看到自己的名字，就約對方聊聊。</p>
+<div class="ogrid"><a class="ocard" href="/one-to-one/2026-10-30/"><img src="/one-to-one/img/1030-1p.jpg" alt="鍾凱丞（美容美體業）與許珈愷（網路社群行銷）一對一的情境照" width="1536" height="1024" loading="lazy"><div class="ot"><span class="must">本週必約</span><b>鍾凱丞 × 許珈愷</b><p>11/6 同場上台：一位做產後美學，一位幫美容產業做社群</p></div></a><a class="ocard" href="/one-to-one/2026-10-30/"><img src="/one-to-one/img/1030-2p.jpg" alt="邱昱馨（小貨車新車銷售）與鄭景隆（咖啡批發零售業）一對一的情境照" width="1536" height="1024" loading="lazy"><div class="ot"><span class="must">本週必約</span><b>邱昱馨 × 鄭景隆</b><p>一台小貨車加一台咖啡機，就是一間行動咖啡店</p></div></a><a class="ocard" href="/one-to-one/2026-10-30/"><img src="/one-to-one/img/1030-3p.jpg" alt="古英憲（物流倉儲業）與李宗哲（常溫調理食品代工）一對一的情境照" width="1536" height="1024" loading="lazy"><div class="ot"><span class="must">本週必約</span><b>古英憲 × 李宗哲</b><p>代工廠的貨，要交給懂食品的物流</p></div></a><a class="ocard" href="/one-to-one/2026-10-30/"><img src="/one-to-one/img/1030-4p.jpg" alt="周方茜（杏仁花生酥糖）與胡舜華（人壽保險業）一對一的情境照" width="1536" height="1024" loading="lazy"><div class="ot"><span class="must">本週必約</span><b>周方茜 × 胡舜華</b><p>保險團隊拜土地公，供品就用好運花生酥</p></div></a><a class="ocard" href="/one-to-one/2026-10-30/"><img src="/one-to-one/img/1030-5p.jpg" alt="林昱劭（冷氣空調業）與馬秀蓮（商用不動產）一對一的情境照" width="1536" height="1024" loading="lazy"><div class="ot"><span class="must">本週必約</span><b>林昱劭 × 馬秀蓮</b><p>商用空間一成交，第一件事就是冷氣</p></div></a><a class="ocard" href="/one-to-one/2026-10-30/"><img src="/one-to-one/img/1030-6p.jpg" alt="鄭汮承（裝潢改色貼膜業）與蔡佳呈（廚具業）一對一的情境照" width="1536" height="1024" loading="lazy"><div class="ot"><span class="must">本週必約</span><b>鄭汮承 × 蔡佳呈</b><p>廚房舊翻新：換一套廚具，或把櫃子貼膜改色</p></div></a><a class="ocard" href="/one-to-one/2026-10-30/"><img src="/one-to-one/img/1030-7p.jpg" alt="張棋翌（木作工程）與黃宇捷（廣告版位租賃業）一對一的情境照" width="1536" height="1024" loading="lazy"><div class="ot"><span class="must">本週必約</span><b>張棋翌 × 黃宇捷</b><p>建商推案：一位做接待中心木作，一位做戶外看板</p></div></a><a class="ocard" href="/one-to-one/2026-10-30/"><img src="/one-to-one/img/1030-8p.jpg" alt="章孟哲（拆除工程業）與陳誫昕（住宅房仲業）一對一的情境照" width="1536" height="1024" loading="lazy"><div class="ot"><span class="must">本週必約</span><b>章孟哲 × 陳誫昕</b><p>老屋成交後的第一步：拆除重來</p></div></a><a class="ocard" href="/one-to-one/2026-10-30/"><img src="/one-to-one/img/1030-9p.jpg" alt="蔡阿達（SEO／GEO 專業技術團隊）與陳韋翰（企業形象影片）一對一的情境照" width="1536" height="1024" loading="lazy"><div class="ot"><span class="must">本週必約</span><b>蔡阿達 × 陳韋翰</b><p>同樣在找網站設計公司：影片加 AI 搜尋，一起提案</p></div></a><a class="ocard" href="/one-to-one/2026-10-30/"><img src="/one-to-one/img/1030-10p.jpg" alt="酈瀅鵑（律師業）與徐嘉祥（會計師）一對一的情境照" width="1536" height="1024" loading="lazy"><div class="ot"><span class="must">本週必約</span><b>酈瀅鵑 × 徐嘉祥</b><p>財產怎麼分：律師看權利，會計師看數字</p></div></a><a class="ocard" href="/one-to-one/2026-10-30/"><img src="/one-to-one/img/1030-11p.jpg" alt="簡湘怡（海外旅遊）與潘威廷（勞資顧問）一對一的情境照" width="1536" height="1024" loading="lazy"><div class="ot"><span class="must">本週必約</span><b>簡湘怡 × 潘威廷</b><p>員工福利：制度合法，員工旅遊也辦得漂亮</p></div></a><a class="ocard" href="/one-to-one/2026-10-30/"><img src="/one-to-one/img/1030-12p.jpg" alt="陳恒丰（資訊系統開發）與黃瑞仁（堅果食品業）一對一的情境照" width="1536" height="1024" loading="lazy"><div class="ot"><span class="must">本週必約</span><b>陳恒丰 × 黃瑞仁</b><p>團購主要好賣的商品，也要好用的接單系統</p></div></a></div>
+<p class="smore"><a class="btn2" href="/one-to-one/2026-10-30/">看每一組為什麼值得約</a></p></section>
 
 <section class="sec story" id="stories"><div class="kick">成功見證</div>
 <h2>引薦，真的會變成生意</h2>
